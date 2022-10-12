@@ -1,1 +1,1 @@
-# LapTrinhWeb_2022
+Đây là project làm về web bán hóa chất thí nghiệm  
