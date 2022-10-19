@@ -1642,6 +1642,7 @@ body {
    Shop Blog
 ========================================*/
 .shop-blog {
+  margin-top: 100px;
   padding-top: 0;
   padding-bottom: 20px;
 }
