@@ -553,7 +553,7 @@ body {
 }
 
 .header.shop .cat-heading {
-	font-size: 20px;
+	font-size: 16px;
 	color: white;
 	padding: 20px 25px;
 }
@@ -1015,7 +1015,6 @@ body {
 }
 
 .hero-slider .hero-text {
-	padding: 0 30px;
 	margin-top: 100px;
 }
 
@@ -1023,7 +1022,7 @@ body {
 	line-height: 50px;
 	font-size: 47px;
 	font-weight: 700;
-	color: var(--color1);
+	color: yellow;
 	margin-bottom: 20px;
 }
 
@@ -1031,7 +1030,7 @@ body {
 	font-size: 20px;
 	display: block;
 	margin-bottom: 12px;
-	color: #333;
+	color: red;
 	font-weight: 700;
 	line-height: initial;
 }
