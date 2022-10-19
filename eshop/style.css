@@ -1065,75 +1065,13 @@ body {
   background: var(--color1);
   color: white;
 }
-
-/*======================================
-   Small Banner
-========================================*/
-/* .small-banner {
-	padding: 30px 0;
-	padding-bottom: 0;
-}
-
-.small-banner .single-banner {
-	overflow: hidden;
-	position: relative;
-	border-radius: 5px;
-}
-
-.small-banner .single-banner img {
-	height: 100%;
-	width: 100%;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-}
-
-.small-banner .single-banner .content {
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-	padding-left: 35px;
-}
-
-.small-banner .single-banner h3 {
-	font-size: 22px;
-	font-weight: 700;
-	text-transform: capitalize;
-	color: #333;
-}
-
-.small-banner .single-banner h3 span {
-	color: var(--color1);
-}
-
-.small-banner .single-banner p {
-	font-size: 14px;
-	color: var(--color1);
-	font-weight: 500;
-	margin-bottom: 5px;
-	text-transform: capitalize;
-}
-
-.small-banner .single-banner a {
-	color: #333;
-	margin-top: 22px;
-	display: block;
-	font-size: 12px;
-	font-weight: 500;
-	display: inline-block;
-	text-transform: uppercase;
-	border-bottom: 2px solid #333;
-}
-
-.small-banner .single-banner a:hover {
-	color: var(--color1);
-	border-color: var(--color1);
-} */
-
 /*======================================
    Trending Area
 ========================================*/
+.product-area {
+  padding-bottom: 0;
+}
+
 .product-area .nav-tabs {
   text-align: center;
   display: inline-block;
@@ -1421,86 +1359,15 @@ body {
 }
 
 /*======================================
-   Midium Banner
-========================================*/
-/* .midium-banner {
-	padding: 0;
-}
-
-.midium-banner .single-banner {
-	position: relative;
-}
-
-.midium-banner .single-banner img {
-	height: 100%;
-	width: 100%;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-}
-
-.midium-banner .single-banner .content {
-	padding-left: 50px;
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.midium-banner .single-banner h3 {
-	font-size: 27px;
-	font-weight: 700;
-	text-transform: uppercase;
-	color: #333;
-	line-height: 30px;
-}
-
-.midium-banner .single-banner h3 span {
-	color: var(--color1);
-}
-
-.midium-banner .single-banner p {
-	font-size: 13px;
-	color: var(--color1);
-	font-weight: 500;
-	margin-bottom: 5px;
-	text-transform: uppercase;
-}
-
-.midium-banner .single-banner a {
-	display: inline-block;
-	font-weight: 600;
-	text-align: center;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	padding: .375rem .75rem;
-	font-size: 13px;
-	border-radius: .25rem;
-	background: #333;
-	color: white !important;
-	padding: 10px 27px;
-	border-radius: 30px;
-	margin-top: 25px;
-	text-transform: uppercase;
-}
-
-.midium-banner .single-banner a:hover {
-	background: var(--color1);
-	color: white;
-} */
-
-/*======================================
    Most Popular
 ========================================*/
 
 .most-popular .section-title {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 
 .most-popular .single-product {
-  margin: 50px 15px 0 15px;
+  margin: 0 15px;
 }
 
 /* Slider Nav */
@@ -1545,11 +1412,6 @@ body {
 /*======================================
    Shop Home List
 ========================================*/
-
-.shop-home-list {
-  padding: 0;
-  padding-bottom: 100px;
-}
 
 .shop-home-list .shop-section-title {
   margin-bottom: 20px;
@@ -1779,6 +1641,10 @@ body {
 /*======================================
    Shop Blog
 ========================================*/
+.shop-blog {
+  padding-top: 0;
+  padding-bottom: 20px;
+}
 
 .shop-blog .shop-single-blog {
   text-align: center;
@@ -1875,81 +1741,6 @@ body {
   color: #898989;
   line-height: 28px;
   font-size: 14px;
-}
-
-/*======================================
-   Shop Newsletter
-========================================*/
-
-.shop-newsletter {
-  background: white;
-}
-
-.shop-newsletter .inner {
-  text-align: center;
-}
-
-.shop-newsletter .inner h4 {
-  color: #333;
-  font-size: 17px;
-  font-weight: 600;
-  margin-bottom: 5px;
-  text-transform: uppercase;
-}
-
-.shop-newsletter .inner p {
-  color: #777;
-  font-size: 14px;
-  font-weight: 400;
-  margin-bottom: 30px;
-}
-
-.shop-newsletter .inner p span {
-  color: var(--color1);
-}
-
-.shop-newsletter .newsletter-inner {
-  position: relative;
-  display: inline-block;
-}
-
-.shop-newsletter .newsletter-inner input {
-  width: 480px;
-  height: 55px;
-  border-radius: 0px;
-  padding: 0px 30px;
-  font-weight: 400;
-  display: inline-block;
-  text-shadow: none;
-  box-shadow: none;
-  border-radius: 0;
-  border: none;
-  border: 1px solid #ececec;
-  border-radius: 30px 0 0 30px;
-}
-
-.shop-newsletter .newsletter-inner .btn {
-  border: none;
-  text-shadow: none;
-  box-shadow: none;
-  border-radius: 0;
-  display: inline-block;
-  height: 55px;
-  padding: 10px 30px;
-  position: relative;
-  top: 0;
-  background: var(--color1);
-  color: white;
-  left: -4px;
-  border-radius: 0 30px 30px 0;
-  font-size: 14px;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.shop-newsletter .newsletter-inner .btn:hover {
-  background: #333;
-  color: white;
 }
 
 /*======================================
