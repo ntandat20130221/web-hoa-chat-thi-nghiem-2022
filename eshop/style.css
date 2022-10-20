@@ -22,7 +22,7 @@ Version:1.0
 }
 
 body {
-  font-family: "Helvetica";
+  font-family: 'Helvetica';
   background-color: white;
 }
 
@@ -3262,10 +3262,6 @@ body {
 /*======================================
 	Contact - Contact Page
 ========================================*/
-.contact-us {
-  position: relative;
-  z-index: 43;
-}
 
 .contact-us .title {
   margin-bottom: 30px;
@@ -3286,7 +3282,7 @@ body {
 
 .contact-us .single-head {
   padding: 50px;
-  box-shadow: 0px 0px 15px #0000001a;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   height: 100%;
 }
 
@@ -3333,7 +3329,7 @@ body {
 }
 
 .contact-us .form-main {
-  box-shadow: 0px 0px 15px #0000001a;
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   padding: 50px;
 }
 
@@ -3380,11 +3376,28 @@ body {
 .contact-us .form .button .btn {
   height: 50px;
   border: none;
+  padding: 10px 100px;
+  background-color: var(--color1);
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-family: 'Helvetica';
+  cursor: pointer;
+  transition: .3s;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+.contact-us .form .button .btn:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
 #myMap {
   height: 500px;
   width: 100%;
+}
+
+.contact-us .form .form-group .form-check input {
+  height: 18px;
 }
 
 /*=============================
