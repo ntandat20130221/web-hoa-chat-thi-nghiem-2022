@@ -118,7 +118,7 @@ Version:1.0
 		/*=======================
 		  Popular Slider JS
 		=========================*/ 
-		$('.popular-slider').owlCarousel({
+		$('.newest-slider').owlCarousel({
 			items:1,
 			autoplay:true,
 			autoplayTimeout:5000,

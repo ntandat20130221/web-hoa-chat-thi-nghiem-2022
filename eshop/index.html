@@ -58,31 +58,24 @@
 
 	<!-- Header -->
 	<header class="header shop">
-		<!-- Topbar -->
 		<div class="topbar">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-5 col-md-12 col-12">
-						<!-- Top Left -->
+					<div class="col-lg-7 col-md-7 col-12">
 						<div class="top-left">
-							<ul class="list-main">
+							<ul>
 								<li><i class="ti-headphone-alt"></i>0983 803 100</li>
 								<li><i class="fa fa-envelope-o"></i>support@shophub.com</li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-lg-7 col-md-12 col-12">
-						<!-- Top Right -->
+					<div class="col-lg-5 col-md-5 col-12">
 						<div class="top-right">
-							<ul class="list-main">
-								<li>
-									<a href="../login-logout-forgot_pass/login.html"><i
-											class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
-								</li>
-								<li>
-									<a href="../login-logout-forgot_pass/register.html"><i
-											class="bi bi-person-plus"></i>Đăng ký</a>
-								</li>
+							<ul>
+								<li><a href="../login-logout-forgot_pass/login.html"><i
+											class="bi bi-box-arrow-in-right"></i>Đăng nhập</a></li>
+								<li><a href="../login-logout-forgot_pass/register.html"><i
+											class="bi bi-person-plus"></i>Đăng ký</a></li>
 							</ul>
 						</div>
 					</div>
@@ -91,25 +84,23 @@
 		</div>
 
 		<!-- Middle Inner -->
-		<div class="middle-inner">
+		<div class="header-middle">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-							<a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+							<a href="index.html"><img src="images/logo.png" alt="logo"/></a>
 						</div>
 						<!-- Search Mobile -->
 						<div class="mobile-search">
+							<form class="search-form">
+								<input type="text" placeholder="Tìm kiếm..." name="search" />
+								<button value="search" type="submit"><i class="ti-search"></i></button>
+							</form>
 							<div>
 								<a href="#0"><i class="ti-search"></i></a>
 							</div>
-							<form class="search-form">
-								<input type="text" placeholder="Nhập tên sản phẩm..." name="search" />
-								<button value="search" type="submit">
-									<i class="ti-search"></i>
-								</button>
-							</form>
 						</div>
 						<div class="mobile-nav"></div>
 					</div>
@@ -255,23 +246,26 @@
 		</div>
 	</section>
 
+	<!-- Sản phẩm mới nhất -->
 	<section class="newest-products">
 		<div class="container">
 			<div class="section-title">
 				<h2>Sản phẩm mới nhất</h2>
 			</div>
-			<div class="owl-carousel popular-slider">
+			<div class="owl-carousel newest-slider">
 				<div class="single-product">
 					<div class="product-img">
 						<a href="product-details.html">
-							<img class="default-img" src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg" alt="#" />
+							<img class="default-img"
+								src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg" alt="#" />
 							<span class="out-of-stock">Hot</span>
 						</a>
 						<div class="button-head">
 							<div class="product-action">
 								<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
 										class="ti-eye"></i><span>Mua Nhanh</span></a>
-								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa thích</span></a>
+								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa
+										thích</span></a>
 								<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 							</div>
 							<div class="product-action-2">
@@ -293,13 +287,15 @@
 				<div class="single-product">
 					<div class="product-img">
 						<a href="product-details.html">
-							<img class="default-img" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="#" />
+							<img class="default-img"
+								src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="#" />
 						</a>
 						<div class="button-head">
 							<div class="product-action">
 								<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
 										class="ti-eye"></i><span>Mua Nhanh</span></a>
-								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa thích</span></a>
+								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa
+										thích</span></a>
 								<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 							</div>
 							<div class="product-action-2">
@@ -325,7 +321,8 @@
 							<div class="product-action">
 								<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
 										class="ti-eye"></i><span>Mua Nhanh</span></a>
-								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa thích</span></a>
+								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa
+										thích</span></a>
 								<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 							</div>
 							<div class="product-action-2">
@@ -344,13 +341,15 @@
 				<div class="single-product">
 					<div class="product-img">
 						<a href="product-details.html">
-							<img class="default-img" src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt="#" />
+							<img class="default-img" src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png"
+								alt="#" />
 						</a>
 						<div class="button-head">
 							<div class="product-action">
 								<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i
 										class="ti-eye"></i><span>Mua Nhanh</span></a>
-								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa thích</span></a>
+								<a title="Wishlist" href="#"><i class="ti-heart"></i><span>Thêm vào danh sách ưa
+										thích</span></a>
 								<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>So sánh</span></a>
 							</div>
 							<div class="product-action-2">
@@ -403,7 +402,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg" alt="#" />
+															src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -437,7 +437,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/kinh_hien_vi/sinh_hoc/550x750/kinh-hien-vi-sinh-hoc-1.jpg" alt="#" />
+															src="../images/thiet_bi/kinh_hien_vi/sinh_hoc/550x750/kinh-hien-vi-sinh-hoc-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -471,7 +472,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/lo_nung/duoi_1000_do/550x750/lo-nung-duoi-1000-1.jpg" alt="#" />
+															src="../images/thiet_bi/lo_nung/duoi_1000_do/550x750/lo-nung-duoi-1000-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -505,7 +507,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/lo_nung/tren_1000_do/550x750/lo-nung-tren-1000-1.jpg" alt="#" />
+															src="../images/thiet_bi/lo_nung/tren_1000_do/550x750/lo-nung-tren-1000-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -539,7 +542,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/may_cat_nuoc/550x750/may-cat-nuoc-1.jpg" alt="#" />
+															src="../images/thiet_bi/may_cat_nuoc/550x750/may-cat-nuoc-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -573,7 +577,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/kinh_hien_vi/noi_soi/550x750/kinh-noi-soi-noi-1.png" alt="#" />
+															src="../images/thiet_bi/kinh_hien_vi/noi_soi/550x750/kinh-noi-soi-noi-1.png"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -607,7 +612,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg" alt="#" />
+															src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -641,7 +647,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/thiet_bi/lo_nung/duoi_1000_do/550x750/lo-nung-duoi-1000-1.jpg" alt="#" />														<span class="price-dec">30% Off</span>
+															src="../images/thiet_bi/lo_nung/duoi_1000_do/550x750/lo-nung-duoi-1000-1.jpg"
+															alt="#" /> <span class="price-dec">30% Off</span>
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -683,7 +690,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/hydrochloric.jpg" alt="#" />
+															src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/hydrochloric.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -717,7 +725,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg" alt="#" />
+															src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -751,7 +760,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt="#" />
+															src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -785,7 +795,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/dung_moi/dung_moi_may_gc/550x750/dung-moi-gc-1.jpg" alt="#" />
+															src="../images/hoa_chat/dung_moi/dung_moi_may_gc/550x750/dung-moi-gc-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -819,7 +830,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/hidrocacbon/550x750/hidrocacbon-1.jpg" alt="#" />
+															src="../images/hoa_chat/hidrocacbon/550x750/hidrocacbon-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -853,7 +865,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/muoi/muoi_huu_co/550x750/muoi-huu-co-1.jpg" alt="#" />
+															src="../images/hoa_chat/muoi/muoi_huu_co/550x750/muoi-huu-co-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -887,7 +900,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/muoi/muoi_vo_co/550x750/muoi-vo-co-1.jpg" alt="#" />
+															src="../images/hoa_chat/muoi/muoi_vo_co/550x750/muoi-vo-co-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -921,7 +935,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/hoa_chat/hoa_chat_hoa_sinh/550x750/hoa-sinh-2.jpg" alt="#" />
+															src="../images/hoa_chat/hoa_chat_hoa_sinh/550x750/hoa-sinh-2.jpg"
+															alt="#" />
 														<span class="price-dec">30% Off</span>
 													</a>
 													<div class="button-head">
@@ -964,7 +979,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/binh_thi_nghiem/550x750/binh-thi-nghiem-1.png" alt="#" />
+															src="../images/dung_cu/binh_thi_nghiem/550x750/binh-thi-nghiem-1.png"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -998,7 +1014,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/giay_loc_mang_loc/dinh_tinh/550x750/giay-loc-dinh-tinh-1.png" alt="#" />
+															src="../images/dung_cu/giay_loc_mang_loc/dinh_tinh/550x750/giay-loc-dinh-tinh-1.png"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -1032,7 +1049,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-1.jpg" alt="#" />
+															src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-1.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -1066,7 +1084,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-2.jpg" alt="#" />
+															src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-2.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -1100,7 +1119,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/giay_loc_mang_loc/dinh_luong/550x750/giay-loc-dinh-luong-1.png" alt="#" />
+															src="../images/dung_cu/giay_loc_mang_loc/dinh_luong/550x750/giay-loc-dinh-luong-1.png"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -1134,7 +1154,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/binh_thi_nghiem/550x750/binh-thi-nghiem-1.png" alt="#" />
+															src="../images/dung_cu/binh_thi_nghiem/550x750/binh-thi-nghiem-1.png"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -1168,7 +1189,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-2.jpg" alt="#" />
+															src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-2.jpg"
+															alt="#" />
 													</a>
 													<div class="button-head">
 														<div class="product-action">
@@ -1202,7 +1224,8 @@
 												<div class="product-img">
 													<a href="product-details.html">
 														<img class="default-img"
-															src="../images/dung_cu/giay_loc_mang_loc/dinh_tinh/550x750/giay-loc-dinh-tinh-1.png" alt="#" />
+															src="../images/dung_cu/giay_loc_mang_loc/dinh_tinh/550x750/giay-loc-dinh-tinh-1.png"
+															alt="#" />
 														<span class="price-dec">30% Off</span>
 													</a>
 													<div class="button-head">
@@ -1256,7 +1279,8 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="list-image overlay">
-									<img src="../images/thiet_bi/kinh_hien_vi/huynh_quang/115x140/kinh-huynh-quang-1.jpg" alt="#" />
+									<img src="../images/thiet_bi/kinh_hien_vi/huynh_quang/115x140/kinh-huynh-quang-1.jpg"
+										alt="#" />
 									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
 								</div>
 							</div>
@@ -1318,7 +1342,8 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="list-image overlay">
-									<img src="../images/hoa_chat/acid_bazo/bazo/115x140/calcium-hydroxide.jpg" alt="#" />
+									<img src="../images/hoa_chat/acid_bazo/bazo/115x140/calcium-hydroxide.jpg"
+										alt="#" />
 									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
 								</div>
 							</div>
@@ -1356,7 +1381,8 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="list-image overlay">
-									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/axit-sunfuric.jpg" alt="#" />
+									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/axit-sunfuric.jpg"
+										alt="#" />
 									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
 								</div>
 							</div>
@@ -1380,7 +1406,8 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="list-image overlay">
-									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/hydrochloric.jpg" alt="#" />
+									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/hydrochloric.jpg"
+										alt="#" />
 									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
 								</div>
 							</div>
@@ -1399,7 +1426,8 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="list-image overlay">
-									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/sodium-sulfite.jpg" alt="#" />
+									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/sodium-sulfite.jpg"
+										alt="#" />
 									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
 								</div>
 							</div>
@@ -1418,7 +1446,8 @@
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-12">
 								<div class="list-image overlay">
-									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/acid-vo-co-1.jpg" alt="#" />
+									<img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/acid-vo-co-1.jpg"
+										alt="#" />
 									<a href="#" class="buy"><i class="fa fa-shopping-bag"></i></a>
 								</div>
 							</div>

@@ -43,16 +43,6 @@ Version:1.0
 		text-align: center;
 	}
 
-	.header.shop .topbar .top-left {
-		text-align: center;
-	}
-
-	.header.shop .topbar .top-right {
-		text-align: center;
-		float: none;
-		margin-top: 8px;
-	}
-
 	.header.shop .right-bar .right-bar-item .single-icon {
 		font-size: 18px;
 	}
@@ -486,11 +476,11 @@ Version:1.0
 		display: none;
 	}
 
-	.header .middle-inner {
+	.header .header-middle {
 		width: 100%;
 	}
 
-	.header.sticky .middle-inner {
+	.header.sticky .header-middle {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -536,13 +526,12 @@ Version:1.0
 		padding: 20px 0;
 	}
 
-	.header.shop .topbar .top-left {
+	.header .topbar .top-left {
 		text-align: center;
 	}
 
-	.header.shop .topbar .top-right {
+	.header .topbar .top-right {
 		text-align: center;
-		float: none;
 		margin-top: 8px;
 	}
 
@@ -627,10 +616,6 @@ Version:1.0
 	.midium-banner .single-banner a {
 		padding: 6px 20px;
 		margin-top: 15px;
-	}
-
-	.most-popular .single-product {
-		margin: 20px 15px 0 15px;
 	}
 
 	.shop-home-list .shop-section-title {
@@ -1248,12 +1233,6 @@ Version:1.0
 	}
 
 	/* Header Search */
-	.header.shop .mobile-search {
-		display: block;
-		position: absolute;
-		right: 50px;
-		top: 4px;
-	}
 
 	.header.shop .logo {
 		margin: 0;
@@ -1279,48 +1258,6 @@ Version:1.0
 
 	.breadcrumbs {
 		padding: 20px 0;
-	}
-
-	.header.shop .topbar {
-		background: #fff;
-	}
-
-	.header.shop .topbar .top-left {
-		text-align: center;
-	}
-
-	.header.shop .topbar .top-right {
-		text-align: center;
-		float: none;
-		margin-top: 8px;
-	}
-
-	.header.shop .list-main li {
-		border: none;
-		padding: 0;
-		display: block;
-		padding: 5px 0;
-		border-bottom: 1px solid #eee;
-		text-align: left;
-		color: #333;
-	}
-
-	.header.shop .list-main li a {
-		color: #333;
-	}
-
-	.header.shop .list-main li a:hover {
-		color: #fff;
-		text-decoration: underline;
-	}
-
-	.header.shop .list-main li i {
-		color: #fff;
-	}
-
-	.header.shop .topbar .top-right {
-		margin-top: 0px;
-		border-top: 1px solid #ffffff87;
 	}
 
 	.header.shop .search-bar {
@@ -1430,10 +1367,6 @@ Version:1.0
 		padding: 5px 20px;
 		margin-top: 15px;
 		font-size: 12px;
-	}
-
-	.most-popular .single-product {
-		margin: 20px 15px 0 15px;
 	}
 
 	.shop-home-list {

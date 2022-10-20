@@ -128,54 +128,57 @@ body {
 ========================================*/
 
 /* Topbar */
-.header.shop .topbar {
+.header .topbar {
   background-color: var(--color2);
-  border: none;
   padding: 8px 0px;
 }
 
-.header.shop .top-left {
+.header .topbar .top-left {
   text-align: start;
 }
 
-.header.shop .top-right {
+.header .topbar .top-right {
   text-align: end;
 }
 
-.header.shop .list-main li {
+.header .topbar li {
+  position: relative;
   display: inline-block;
   color: white;
   font-size: 13px;
-  border-right: 1px solid #d4d4d4;
-  padding: 0px 13px;
+  margin-right: 18px;
 }
 
-.header.shop .list-main li:first-child {
-  padding-left: 0;
+.header .topbar li:first-child:after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: -10px;
+  width: 0.01em !important;
+  height: 16px;
+  background-color: white;
 }
 
-.header.shop .list-main li:last-child {
-  padding-right: 0;
-  border: none;
+.header .topbar li:last-child {
+  margin-right: 0
 }
 
-.header.shop .list-main li i {
+.header .topbar li i {
   display: inline-block;
   margin-right: 5px;
   font-size: 15px;
-  color: white;
   position: relative;
   top: 1px;
 }
 
-.header.shop .list-main li a:hover,
-.header.shop .list-main li a:hover i {
+.header .topbar li a:hover,
+.header .topbar li a:hover i {
   transition: 0.3s;
   color: rgba(255, 255, 255, 0.8);
 }
 
 /* Middle Inner */
-.header.shop .middle-inner {
+.header .header-middle {
   padding: 20px 0;
   background: white;
   border-top: 1px solid #eee;
@@ -189,7 +192,7 @@ body {
   transition: all 0.4s ease;
 }
 
-.header.shop .mobile-search {
+.header .mobile-search {
   opacity: 1;
   visibility: visible;
   top: 0;
@@ -197,11 +200,7 @@ body {
   border: none;
   box-shadow: none;
   padding: 0;
-  top: 0;
   display: none;
-}
-
-.header .mobile-search a {
   font-size: 17px;
 }
 
