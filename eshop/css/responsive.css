@@ -559,7 +559,7 @@ Version:1.0
 		display: none;
 	}
 
-	.header .header-inner {
+	.header .header-menu {
 		display: none
 	}
 
@@ -588,10 +588,6 @@ Version:1.0
 
 	.hero-slider .hero-text .btn {
 		padding: 10px 25px;
-	}
-
-	.product-area .nav-tabs .nav-item {
-		margin-bottom: 10px;
 	}
 
 	.small-banner {
@@ -1340,7 +1336,7 @@ Version:1.0
 		display: none;
 	}
 
-	.header .header-inner {
+	.header .header-menu {
 		display: none
 	}
 
@@ -1389,10 +1385,6 @@ Version:1.0
 
 	.hero-area3 .small-content .button .btn {
 		font-size: 12px;
-	}
-
-	.product-area .nav-tabs .nav-item {
-		margin-bottom: 10px;
 	}
 
 	.small-banner {
