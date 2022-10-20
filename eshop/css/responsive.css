@@ -1242,20 +1242,6 @@ Version:1.0
 		padding: 50px 0px;
 	}
 
-	.section-title {
-		margin-bottom: 30px;
-		padding: 0px 20px;
-	}
-
-	.section-title h2 {
-		font-size: 22px;
-		margin-bottom: 20px;
-	}
-
-	.section-title p {
-		font-size: 13px;
-	}
-
 	.breadcrumbs {
 		padding: 20px 0;
 	}
@@ -1371,10 +1357,6 @@ Version:1.0
 
 	.shop-home-list {
 		padding-top: 0;
-	}
-
-	.shop-home-list .shop-section-title {
-		margin-top: 20px;
 	}
 
 	.shop-home-list .single-list .content {
