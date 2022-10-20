@@ -1070,6 +1070,7 @@ body {
 ========================================*/
 .product-area {
   padding-bottom: 0;
+  margin-bottom: 100px;
 }
 
 .product-area .nav-tabs {
