@@ -701,13 +701,8 @@ a:focus {
 /*======================================
 	Hero Area
 ========================================*/
-.hero-slider {
-    background: white;
-    overflow: hidden;
-}
-
 .hero-slider .single-slider {
-    height: auto;
+    overflow: hidden;
     background-image: url("images/labs/lab_01.jpg");
     background-size: cover;
     background-position: center;
@@ -4105,4 +4100,175 @@ a:focus {
         -webkit-transform-origin: bottom left;
         transform-origin: bottom left;
     }
+}
+
+.header-sign-in {
+    height: 80px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.header-sign-in .title-left {
+    text-align: start;
+    margin-top: 22px;
+}
+
+.header-sign-in .title-left img {
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.header-sign-in .title-left span {
+    font-size: 24px;
+    font-weight: 400;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.header-sign-in .title-right {
+    text-align: end;
+    margin-top: 26px;
+}
+
+.sign-in {
+    padding: 50px 0;
+    background-color: rgb(92, 138, 225);
+}
+
+.sign-in .slogan {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+}
+
+.sign-in img {
+    width: 70%;
+    margin-left: 100px;
+    margin-top: 200px;
+    margin-bottom: 30px;
+}
+
+.sign-in form {
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.sign-in form h5 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.sign-in form input {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    padding: 8px 15px;
+    outline: unset;
+    border: 1px solid rgb(210, 210, 210);
+    transition: .2s;
+}
+
+.sign-in form input:focus {
+    box-shadow: rgba(0, 0, 0, 0.01) 0px 1px 3px 0px, rgba(27, 31, 35, 0.1) 0px 0px 0px 1px;
+}
+
+.sign-in form .next {
+    background-color: blue;
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 3px;
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+    outline: unset;
+    transition: all ease .3s;
+}
+
+.sign-in form .next:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background-color: rgba(0, 0, 255, 0.8);
+}
+
+.sign-in form .or {
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 22px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: small;
+    color: rgb(128, 128, 128);
+}
+
+.sign-in form .or::before {
+    content: "";
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    width: 123px;
+    background-color: rgb(190, 190, 190);
+    height: 1.5px;
+}
+
+.sign-in form .or::after {
+    content: "";
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    width: 123px;
+    background-color: rgb(190, 190, 190);
+    height: 1.5px;
+}
+
+.sign-in form .google {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid rgb(219, 219, 219);
+    background-color: white;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all ease .3s;
+}
+
+.sign-in form .google:hover {
+    background-color: rgb(246, 246, 246);
+}
+
+.sign-in form .google span {
+    vertical-align: top;
+    color: black;
+}
+
+.sign-in form .google img {
+    margin: 0;
+    margin-right: 15px;
+    width: 25px;
+    height: auto;
+}
+
+.sign-in form p {
+    margin-top: 20px;
+    font-size: 13px;
+}
+
+.sign-in form p a {
+    color: #0058cc;
+}
+
+.sign-in form p a:hover {
+    text-decoration: underline;
+}
+
+.sign-in form .shotcut {
+    color: rgb(187, 187, 187);
+}
+
+.sign-in form .shotcut a {
+    color: #0058cc;
 }
