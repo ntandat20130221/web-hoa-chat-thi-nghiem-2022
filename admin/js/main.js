@@ -11,10 +11,10 @@ function validate() {
             icon: "success",
             close: true,
             button: false,
-          });
+        });
         window.location = "doc/index.html";
         return true;
-       
+
     }
     //Nếu không nhập gì mà nhấn đăng nhập thì sẽ báo lỗi
     if (username == "" && password == "") {
@@ -24,10 +24,10 @@ function validate() {
             icon: "error",
             close: true,
             button: "Thử lại",
-          });
-         
+        });
+
         return false;
-       
+
     }
     //Nếu không nhập mật khẩu mà đúng tài khoản 
     if (username == "admin" && password == "") {
@@ -37,7 +37,7 @@ function validate() {
             icon: "warning",
             close: true,
             button: "Thử lại",
-          });
+        });
         return false;
     }
     //Nếu không nhập tài khoản sẽ báo lỗi
@@ -48,7 +48,7 @@ function validate() {
             icon: "warning",
             close: true,
             button: "Thử lại",
-          });
+        });
         return false;
     }
     //Nếu không nhập mật khẩu sẽ báo lỗi
@@ -59,7 +59,7 @@ function validate() {
             icon: "warning",
             close: true,
             button: "Thử lại",
-          });
+        });
         return false;
     }
     //Nếu trống toàn bộ thì báo lỗi
@@ -70,7 +70,7 @@ function validate() {
             icon: "error",
             close: true,
             button: "Thử lại",
-          });
+        });
         return true;
     };
 }
@@ -97,8 +97,8 @@ function RegexEmail(emailInputBox) {
             icon: "error",
             close: true,
             button: "Thử lại",
-          });
-        
+        });
+
         emailInputBox.focus;
     } else {
         swal({
@@ -107,7 +107,7 @@ function RegexEmail(emailInputBox) {
             icon: "success",
             close: true,
             button: "Đóng",
-          });
+        });
         emailInputBox.focus;
         window.location = "#";
 
