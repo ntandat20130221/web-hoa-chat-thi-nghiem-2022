@@ -208,23 +208,23 @@ Version:1.0
     margin-top: 20px;
   }
 
-  .cown-down {
+  .countdown {
     height: auto;
   }
 
-  .cown-down .padding-left {
+  .countdown .padding-left {
     padding: 0;
   }
 
-  .cown-down .padding-right {
+  .countdown .padding-right {
     padding: 0;
   }
 
-  .cown-down .content {
+  .countdown .content {
     padding: 50px 110px;
   }
 
-  .cown-down .content .heading-block {
+  .countdown .content .heading-block {
     padding: 0;
     position: relative;
   }
@@ -698,36 +698,36 @@ Version:1.0
     padding: 14px 40px;
   }
 
-  .cown-down {
+  .countdown {
     height: auto;
   }
 
-  .cown-down .content .title {
+  .countdown .content .title {
     font-size: 22px;
   }
 
-  .cown-down .padding-left {
+  .countdown .padding-left {
     padding: 0;
   }
 
-  .cown-down .padding-right {
+  .countdown .padding-right {
     padding: 0;
   }
 
-  .cown-down .content {
+  .countdown .content {
     padding: 30px 20px;
   }
 
-  .cown-down .content .price {
+  .countdown .content .price {
     margin-top: 22px;
     font-size: 28px;
   }
 
-  .cown-down .content .price s {
+  .countdown .content .price s {
     font-size: 20px;
   }
 
-  .cown-down .content .heading-block {
+  .countdown .content .heading-block {
     padding: 0;
     position: relative;
   }
@@ -1348,36 +1348,36 @@ Version:1.0
     text-align: center;
   }
 
-  .cown-down {
+  .countdown {
     height: auto;
   }
 
-  .cown-down .content .title {
+  .countdown .content .title {
     font-size: 20px;
   }
 
-  .cown-down .padding-left {
+  .countdown .padding-left {
     padding: 0;
   }
 
-  .cown-down .padding-right {
+  .countdown .padding-right {
     padding: 0;
   }
 
-  .cown-down .content {
+  .countdown .content {
     padding: 30px 20px;
   }
 
-  .cown-down .content .price {
+  .countdown .content .price {
     margin-top: 22px;
     font-size: 25px;
   }
 
-  .cown-down .content .price s {
+  .countdown .content .price s {
     font-size: 20px;
   }
 
-  .cown-down .content .heading-block {
+  .countdown .content .heading-block {
     padding: 0;
     position: relative;
   }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eshop | Đăng Ký Ngay</title>
+    <title>Eshop | Quên Mật Khẩu</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
 
     <!-- ===== STYLESHEET ===== -->
@@ -33,7 +33,7 @@
                 <div class="col-lg-7 col-md-7 col-12">
                     <div class="title-left">
                         <a href="index.html"><img src="images/logo.png" alt="" /></a>
-                        <span>Đăng ký</span>
+                        <span>Đổi mật khẩu</span>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
@@ -55,7 +55,9 @@
                             <li>
                                 <a href="index.html">Trang chủ<i class="ti-arrow-right"></i></a>
                             </li>
-                            <li class="active"><a href="register.html">Đăng Ký</a></li>
+                            <li class="active">
+                                <a href="fogetPass.html">Quên mật khẩu</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -72,19 +74,26 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
                     <form action="">
-                        <h5>Đăng ký</h5>
-                        <input type="text" placeholder="Email" />
-                        <input type="password" placeholder="Mật khẩu" />
-                        <input type="password" placeholder="Nhập lại mật khẩu" />
-                        <button class="next">Tiếp theo</button>
+                        <h5>Quên mật khẩu</h5>
+                        <input type="password" placeholder="Mật khẩu cũ" />
+                        <input type="password" placeholder="Mật khẩu mới" />
+                        <input type="password" placeholder="Xác nhận lại mật khẩu mới" />
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="agreechange" />
+                            <label class="form-check-label" for="agreechange">
+                                Đồng ý đổi mật khẩu!
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox" /> Shipping
+                                (+10$)</label>
+                        </div>
+                        <button class="next">Xác nhận</button>
                         <span class="or">Hoặc</span>
                         <a class="google"><img src="images/logo-google.png" alt="" /><span>Google</span></a>
-                        <p>
-                            Bằng việc đăng ký, bạn đã đồng ý với Eshop về <br />
-                            <a href="">Điều khoản dịch vụ</a> &
-                            <a href="">Chính sách bảo mật</a>
-                        </p>
-                        <span class="shotcut">Bạn đã có tài khoản? <a href="login.html">Đăng nhập</a></span>
+                        <span class="shotcut">
+                            <a class="mr-3" href="login.html">Đăng nhập?</a>
+                            <a href="register.html">Đăng ký?</a></span>
                     </form>
                 </div>
             </div>
