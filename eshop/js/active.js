@@ -11,7 +11,7 @@
     $(document).on('ready', function () {
 
         /* [ Mobile Menu ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.menu').slicknav({
             prependTo: ".mobile-nav",
             duration: 300,
@@ -21,7 +21,7 @@
         });
 
         /* [ Sticky Header ]
-        ==================================================== */
+        -------------------------------------------- */
         jQuery(window).on('scroll', function () {
             if ($(this).scrollTop() > 200)
                 $('.header').addClass("sticky");
@@ -30,13 +30,13 @@
         });
 
         /* [ Mobile Search ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.mobile-search a').on("click", function () {
             $('.mobile-search').toggleClass('active');
         });
 
         /* [ Slider Range ]
-        ==================================================== */
+        -------------------------------------------- */
         $(function () {
             $("#slider-range").slider({
                 range: true,
@@ -51,7 +51,7 @@
         });
 
         /* [ Home Slider ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.home-slider').owlCarousel({
             items: 1,
             autoplay: true,
@@ -85,7 +85,7 @@
         });
 
         /* [ Newest Slider ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.newest-slider').owlCarousel({
             items: 1,
             autoplay: true,
@@ -119,7 +119,7 @@
         });
 
         /* [ Quick View Slider ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.quickview-slider-active').owlCarousel({
             items: 1,
             autoplay: true,
@@ -134,7 +134,7 @@
         });
 
         /* [ Home List 4 ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.home-slider-4').owlCarousel({
             items: 1,
             autoplay: true,
@@ -149,7 +149,7 @@
         });
 
         /* [ Countdown ]
-        ==================================================== */
+        -------------------------------------------- */
         $('[data-countdown]').each(function () {
             var $this = $(this),
                 finalDate = $(this).data('countdown');
@@ -161,7 +161,7 @@
         });
 
         /* [ Flex Slider ]
-        ==================================================== */
+        -------------------------------------------- */
         (function ($) {
             'use strict';
             $('.flexslider-thumbnails').flexslider({
@@ -171,7 +171,7 @@
         })(jQuery);
 
         /* [ Cart Plus-Minus Button ]
-        ==================================================== */
+        -------------------------------------------- */
         var CartPlusMinus = $('.cart-plus-minus');
         CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
         CartPlusMinus.append('<div class="inc qtybutton">+</div>');
@@ -191,7 +191,7 @@
         });
 
         /* [ Extra Scroll ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.scroll').on("click", function (e) {
             var anchor = $(this);
             $('html, body').stop().animate({
@@ -201,7 +201,7 @@
         });
 
         /* [ Checkbox ]
-        ==================================================== */
+        -------------------------------------------- */
         $('input[type="checkbox"]').change(function () {
             if ($(this).is(':checked'))
                 $(this).parent("label").addClass("checked");
@@ -210,7 +210,7 @@
         });
 
         /* [ Product Page Quantity Counter ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.qty-box .quantity-right-plus').on('click', function () {
             var $qty = $('.qty-box .input-number');
             var currentVal = parseInt($qty.val(), 10);
@@ -225,7 +225,7 @@
         });
 
         /* [ Video Popup ]
-        ==================================================== */
+        -------------------------------------------- */
         $('.video-popup').magnificPopup({
             type: 'iframe',
             removalDelay: 300,
@@ -233,7 +233,7 @@
         });
 
         /* [ Scroll Up ]
-        ==================================================== */
+        -------------------------------------------- */
         $.scrollUp({
             scrollText: '<span><i class="fa fa-angle-up"></i></span>',
             easingType: 'easeInOutExpo',
@@ -244,11 +244,11 @@
     });
 
     /* [ Nice Select ]
-    ==================================================== */
+    -------------------------------------------- */
     $('select').niceSelect();
 
     /* [ Others ]
-    ==================================================== */
+    -------------------------------------------- */
     $(function () {
         $("#slider-range").slider({
             range: true,
@@ -263,7 +263,7 @@
     });
 
     /* [ Preloader ]
-    ==================================================== */
+    -------------------------------------------- */
     // After ?s preloader is fade-out
     $('.preloader').delay(0).fadeOut('slow');
     setTimeout(function () {
