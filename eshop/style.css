@@ -833,7 +833,7 @@ a:focus {
   width: 100%;
 }
 
-.single-product .product-img .wishlist-btn {
+/* .single-product .product-img .wishlist-btn {
   display: inline-block;
   position: absolute;
   top: 20px;
@@ -857,7 +857,7 @@ a:focus {
 
 .single-product .product-img:hover .wishlist-btn {
   left: 20px;
-}
+} */
 
 .single-product .product-img a span {
   display: inline-block;
@@ -886,7 +886,7 @@ a:focus {
 .single-product .product-img a span.hot {
   background-color: #ed1b24;
 }
-
+/* 
 .single-product .action-pane {
   display: inline-block;
   background: white;
@@ -1013,7 +1013,7 @@ a:focus {
 
 .single-product .product-img .product-action-2 a:hover {
   color: var(--color1);
-}
+} */
 
 .single-product .product-content {
   padding: 15px;
@@ -2067,7 +2067,7 @@ a:focus {
   margin-top: 30px;
 }
 
-.shop.checkout .checkout-form h2 {
+.shop.checkout .checkout-form h3 {
   font-size: 25px;
   color: #333;
   font-weight: 700;
@@ -2243,10 +2243,6 @@ a:focus {
   margin-bottom: 15px;
 }
 
-.shop.checkout .single-widget .checkbox label:last-child {
-  margin-bottom: 0;
-}
-
 .shop.checkout .single-widget .checkbox label:hover {
   cursor: pointer;
 }
@@ -2288,12 +2284,6 @@ a:focus {
   opacity: 1;
   visibility: visible;
   transform: scale(1);
-}
-
-.shop.checkout .single-widget.payement {
-  padding: 0px 38px;
-  text-align: center;
-  margin-top: 30px;
 }
 
 .shop.checkout .single-widget.get-button {
@@ -3074,17 +3064,6 @@ a:focus {
   font-weight: 400;
 }
 
-.contact-us .form .form-group textarea {
-  height: 180px;
-  width: 100%;
-  border: 1px solid #e6e2f5;
-  padding: 15px 20px;
-  color: #333;
-  border-radius: 0px;
-  resize: none;
-  font-weight: 400;
-}
-
 .contact-us .form .form-group label {
   color: #333;
   position: relative;
@@ -3097,6 +3076,25 @@ a:focus {
   right: -12px;
   top: 4px;
   font-size: 16px;
+}
+
+.contact-us .nice-select {
+  width: 100%;
+  height: 48px;
+  line-height: 50px;
+  margin-bottom: 25px;
+  background: #f6f7fb;
+  border-radius: 0px;
+}
+
+.contact-us .nice-select .list {
+  width: 100%;
+  height: 200px;
+  overflow: scroll;
+}
+
+.contact-us .nice-select .list li.option {
+  color: #333;
 }
 
 .contact-us .form .button {
