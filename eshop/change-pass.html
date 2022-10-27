@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eshop | Xác Nhận Mật Khẩu</title>
+    <title>Eshop | Đổi Mật Khẩu</title>
     <link rel="icon" type="image/png" href="images/favicon.png" />
 
     <!-- ===== STYLESHEET ===== -->
@@ -33,7 +33,7 @@
                 <div class="col-lg-7 col-md-7 col-12">
                     <div class="title-left">
                         <a href="index.html"><img src="images/logo.png" alt="" /></a>
-                        <span>Xác nhận lại mật khẩu</span>
+                        <span>Đổi mật khẩu</span>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
@@ -56,10 +56,7 @@
                                 <a href="index.html">Trang chủ<i class="ti-arrow-right"></i></a>
                             </li>
                             <li class="active">
-                                <a href="fogot-pass.html">Quên mật khẩu<i class="ti-arrow-right"></i></a>
-                            </li>
-                            <li class="active">
-                                <a href="fogot-pass.html">Xác nhận mật khẩu</a>
+                                <a href="fogetPass.html">Đổi mật khẩu</a>
                             </li>
                         </ul>
                     </div>
@@ -77,10 +74,17 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
                     <form action="">
-                        <h5>Xác nhận mật khẩu</h5>
+                        <h5>Đổi mật khẩu</h5>
+                        <input type="password" placeholder="Mật khẩu cũ" />
                         <input type="password" placeholder="Mật khẩu mới" />
                         <input type="password" placeholder="Xác nhận lại mật khẩu mới" />
-                        <button class="next" formaction="login.html">Xác nhận</button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="agreechange" />
+                            <label class="form-check-label" for="agreechange">
+                                Đồng ý đổi mật khẩu!
+                            </label>
+                        </div>
+                        <button class="next">Xác nhận</button>
                         <span class="shotcut">
                             <a class="mr-3" href="login.html">Đăng nhập?</a>
                             <a href="register.html">Đăng ký?</a></span>
@@ -104,7 +108,7 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <div class="single-service">
                         <i class="ti-reload"></i>
-                        <h4>Cam kết hoàn hàng</h4>
+                        <h4>Miễn phí vận chuyển</h4>
                         <p>Tất cả các mặt hàng</p>
                     </div>
                 </div>

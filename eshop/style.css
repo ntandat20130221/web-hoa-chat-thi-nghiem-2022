@@ -1592,38 +1592,6 @@ a:focus {
     color: white;
 }
 
-.shop .view-mode {
-    float: right;
-}
-
-.shop .view-mode li {
-    display: inline-block;
-    margin-right: 5px;
-}
-
-.shop .view-mode li:last-child {
-    margin: 0;
-}
-
-.shop .view-mode li a {
-    width: 43px;
-    height: 32px;
-    background: transparent;
-    border: 1px solid #77777775;
-    text-align: center;
-    display: block;
-    line-height: 32px;
-    color: #888;
-    border-radius: 0px;
-}
-
-.shop .view-mode li.active a,
-.shop .view-mode li:hover a {
-    background: var(--color1);
-    color: white;
-    border-color: transparent;
-}
-
 /* ============================================
     SHOPPING CART - CART PAGE
 ============================================ */
@@ -3978,6 +3946,7 @@ a:focus {
     cursor: pointer;
     outline: unset;
     transition: all ease 0.3s;
+    margin-bottom: 10px;
 }
 
 .from-input form .next:hover {
