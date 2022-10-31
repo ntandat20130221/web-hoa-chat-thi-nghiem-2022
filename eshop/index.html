@@ -42,7 +42,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7 col-md-7 col-12">
-                        <div class="top-left">
+                        <div class="text-left">
                             <ul>
                                 <li><i class="ti-headphone-alt"></i>0983 803 100</li>
                                 <li><i class="fa fa-envelope-o"></i>support@shophub.com</li>
@@ -50,14 +50,10 @@
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-5 col-12">
-                        <div class="top-right">
+                        <div class="text-right">
                             <ul>
-                                <li>
-                                    <a href="login.html"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
-                                </li>
-                                <li>
-                                    <a href="register.html"><i class="bi bi-person-plus"></i>Đăng ký</a>
-                                </li>
+                                <li><a href="login.html"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a></li>
+                                <li><a href="register.html"><i class="bi bi-person-plus"></i>Đăng ký</a></li>
                             </ul>
                         </div>
                     </div>
@@ -103,17 +99,16 @@
                     <div class="col-lg-2 col-md-3 col-12">
                         <div class="right-bar">
                             <!-- Search Form -->
-                            <div class="right-bar-item">
+                            <div class="right-bar-item d-inline-block mr-4">
                                 <a href="profile.html" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                             </div>
-                            <div class="right-bar-item shopping">
-                                <a href="cart.html" class="single-icon"><i class="ti-bag"></i>
-                                    <span class="total-count">2</span></a>
+                            <div class="right-bar-item shopping d-inline-block">
+                                <a href="cart.html" class="single-icon"><i class="ti-bag"></i><span class="total-count">2</span></a>
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span>2 Sản phẩm</span>
-                                        <a href="cart.html">Xem giỏ hàng</a>
+                                        <a class="float-right" href="cart.html">Xem giỏ hàng</a>
                                     </div>
                                     <ul class="shopping-list">
                                         <!-- Cart Item -->
@@ -121,9 +116,7 @@
                                             <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
                                             <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#" /></a>
                                             <h4><a href="#">Sulfuric acid 95%</a></h4>
-                                            <p class="quantity">
-                                                1x - <span class="amount">1,000,000đ</span>
-                                            </p>
+                                            <p class="quantity">1x - <span class="amount">1,000,000đ</span></p>
                                         </li>
 
                                         <!-- Cart Item -->
@@ -131,12 +124,10 @@
                                             <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
                                             <a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#" /></a>
                                             <h4><a href="#">Methanol GR Merck</a></h4>
-                                            <p class="quantity">
-                                                1x - <span class="amount">1,000,000đ</span>
-                                            </p>
+                                            <p class="quantity">1x - <span class="amount">1,000,000đ</span></p>
                                         </li>
                                     </ul>
-                                    <div class="bottom">
+                                    <div class="bottom text-center">
                                         <div class="total">
                                             <span>Tổng cộng</span>
                                             <span class="total-amount">2,000,000đ</span>
@@ -154,11 +145,11 @@
         <!-- ===== HEADER MENU ===== -->
         <div class="header-menu">
             <div class="container">
-                <nav class="navbar navbar-expand-lg">
+                <nav class="navbar navbar-expand-lg p-0">
                     <div class="navbar-collapse">
                         <div class="nav-inner">
                             <ul class="nav main-menu menu navbar-nav">
-                                <li>
+                                <li class="position-relative mr-2">
                                     <a href="products.html">Hóa chất<i class="ti-angle-down"></i></a>
                                     <ul class="dropdown">
                                         <li><a href="">Chất chuẩn</a></li>
@@ -170,7 +161,7 @@
                                         <li><a href="">Dung dịch đệm</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                <li class="position-relative mr-2">
                                     <a href="products.html">Dụng cụ<i class="ti-angle-down"></i></a>
                                     <ul class="dropdown">
                                         <li><a href="">Bình thí nghiệm</a></li>
@@ -181,7 +172,7 @@
                                         <li><a href="">Chai chứa</a></li>
                                     </ul>
                                 </li>
-                                <li>
+                                <li class="position-relative mr-2">
                                     <a href="products.html">Thiết bị<i class="ti-angle-down"></i></a>
                                     <ul class="dropdown">
                                         <li><a href="">Kính hiển vi</a></li>
@@ -191,8 +182,8 @@
                                     </ul>
                                 </li>
 
-                                <li><a href="blog.html">Tin tức</a></li>
-                                <li><a href="contact.html">Liên hệ</a></li>
+                                <li class="position-relative mr-2"><a href="blog.html">Tin tức</a></li>
+                                <li class="position-relative"><a href="contact.html">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -237,7 +228,7 @@
                 <h2>Sản phẩm mới nhất</h2>
             </div>
             <div class="owl-carousel newest-slider">
-                <div class="single-product">
+                <div class="single-product mt-0 mb-0 mr-3 ml-3">
                     <div class="product-img">
                         <a href="product-details.html">
                             <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg" alt="#" />
@@ -253,14 +244,14 @@
                             <i class="yellow fa fa-star"></i>
                             <i class="yellow fa fa-star"></i>
                         </div>
-                        <div class="product-price mt-2">
+                        <div class="product-price">
                             <span class="old">1,800,000đ</span>
                             <span>1,500,000đ</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="single-product">
+                <div class="single-product mt-0 mb-0 mr-3 ml-3">
                     <div class="product-img">
                         <a href="product-details.html">
                             <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="#" />
@@ -275,13 +266,13 @@
                             <i class="yellow fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="product-price mt-2">
+                        <div class="product-price">
                             <span>880,000đ</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="single-product">
+                <div class="single-product mt-0 mb-0 mr-3 ml-3">
                     <div class="product-img">
                         <a href="product-details.html">
                             <img class="default-img" src="../images/hoa_chat/chi_thi/550x750/chi-thi-1.jpg" alt="#" />
@@ -297,13 +288,13 @@
                             <i class="yellow fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="product-price mt-2">
+                        <div class="product-price">
                             <span>450,000đ</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="single-product">
+                <div class="single-product mt-0 mb-0 mr-3 ml-3">
                     <div class="product-img">
                         <a href="product-details.html">
                             <img src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt="#" />
@@ -318,7 +309,7 @@
                             <i class="yellow fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="product-price mt-2">
+                        <div class="product-price">
                             <span>2,900,000đ</span>
                         </div>
                     </div>
@@ -328,8 +319,9 @@
     </section>
 
     <!-- ===== TRENDING PRODUCTS ===== -->
-    <div class="product-area section">
+    <div class="product-area">
         <div class="container">
+            <!-- Title -->
             <div class="section-title">
                 <h2>Sản phẩm tiêu biểu</h2>
             </div>
@@ -339,14 +331,13 @@
                         <div class="nav-main">
                             <!-- Tab Nav -->
                             <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#hoa-chat" role="tab">Hóa
-                                        chất</a>
+                                <li class="nav-item d-inline-block">
+                                    <a class="nav-link active" data-toggle="tab" href="#hoa-chat" role="tab">Hóa chất</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item d-inline-block">
                                     <a class="nav-link" data-toggle="tab" href="#dung-cu" role="tab">Dụng cụ</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item d-inline-block">
                                     <a class="nav-link" data-toggle="tab" href="#thiet-bi" role="tab">Thiết bị</a>
                                 </li>
                             </ul>
@@ -364,10 +355,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Acid Hydrochloric 89% - HCl</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Acid Hydrochloric 89% - HCl</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -388,10 +377,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Acid Acetic 97%</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Acid Acetic 97%</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -412,10 +399,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Dung dịch đệm</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Dung dịch đệm</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -436,10 +421,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Dung môi dùng cho máy GC</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Dung môi dùng cho máy GC</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -460,10 +443,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Hydrocacbon</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Hydrocacbon</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -484,10 +465,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Muối hữu cơ</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Muối hữu cơ</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -508,10 +487,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Muối vô cơ</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Muối vô cơ</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -533,10 +510,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Hóa chất hóa sinh</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Hóa chất hóa sinh</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -566,10 +541,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Bình thí nghiệm</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Bình thí nghiệm</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -590,10 +563,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Màng lọc định tính</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Màng lọc định tính</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -614,10 +585,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Ống nghiệm 200ml</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Ống nghiệm 200ml</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -638,10 +607,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Ống nghiệm 100ml</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Ống nghiệm 100ml</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -662,10 +629,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Giấy lọc định lượng</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Giấy lọc định lượng</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -686,10 +651,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Bình thí nghiệm 150ml</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Bình thí nghiệm 150ml</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -710,10 +673,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Ống nghiệm 50ml</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Ống nghiệm 50ml</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -735,10 +696,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Giấy lọc định tính</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Giấy lọc định tính</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -768,10 +727,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Kính hiển vi điện tử</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Kính hiển vi điện tử</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -792,10 +749,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Kính hiển vi sinh học</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Kính hiển vi sinh học</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -816,10 +771,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Lò nung dưới 1000 độ C</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Lò nung dưới 1000 độ C</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -840,10 +793,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Lò nung trên 1000 độ C</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Lò nung trên 1000 độ C</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -864,10 +815,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Máy cắt nước</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Máy cắt nước</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -888,10 +837,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Kính hiển vi nội soi</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Kính hiển vi nội soi</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -912,10 +859,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Kính hiển vi Đức</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Kính hiển vi Đức</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -937,10 +882,8 @@
                                                     </a>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3>
-                                                        <a href="product-details.html">Lò nung nhiệt độ cao</a>
-                                                    </h3>
-                                                    <div class="rating mt-2">
+                                                    <a href="product-details.html">Lò nung nhiệt độ cao</a>
+                                                    <div class="rating">
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
                                                         <i class="yellow fa fa-star"></i>
@@ -965,29 +908,26 @@
     </div>
 
     <!-- ===== SHOP HOME LIST =====  -->
-    <section class="shop-home-list section">
+    <section class="shop-home-list">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-12">
-                    <div class="shop-section-title">
+                    <div class="shop-list-title">
                         <h1>Giảm giá</h1>
                     </div>
 
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/thiet_bi/kinh_hien_vi/huynh_quang/115x140/kinh-huynh-quang-1.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/thiet_bi/kinh_hien_vi/huynh_quang/115x140/kinh-huynh-quang-1.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h4 class="title">
-                                        <a href="product-details.html">Kính hiển vi điện tử</a>
-                                    </h4>
-                                    <p class="price with-discount">1,200,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Kính hiển vi điện tử</a>
+                                    <p class="price">1,200,000đ</p>
                                 </div>
                             </div>
                         </div>
@@ -996,18 +936,15 @@
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/dd_dem/115x140/dung-dich-dem-1.png" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/dd_dem/115x140/dung-dich-dem-1.png" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Dung dịch đệm</a>
-                                    </h5>
-                                    <p class="price with-discount">230,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Dung dịch đệm</a>
+                                    <p class="price">230,000đ</p>
                                 </div>
                             </div>
                         </div>
@@ -1016,43 +953,37 @@
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/acid_bazo/bazo/115x140/bazo-1.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/acid_bazo/bazo/115x140/bazo-1.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Bazo</a>
-                                    </h5>
-                                    <p class="price with-discount">120,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Bazo</a>
+                                    <p class="price">120,000đ</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12">
-                    <div class="shop-section-title">
+                    <div class="shop-list-title">
                         <h1>Bán chạy</h1>
                     </div>
 
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/acid_bazo/bazo/115x140/calcium-hydroxide.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/acid_bazo/bazo/115x140/calcium-hydroxide.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Calcium Hydroxide</a>
-                                    </h5>
-                                    <p class="price with-discount">450,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Calcium Hydroxide</a>
+                                    <p class="price">450,000đ</p>
                                 </div>
                             </div>
                         </div>
@@ -1061,18 +992,15 @@
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/acid_bazo/bazo/115x140/sodium-hydroxide.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/acid_bazo/bazo/115x140/sodium-hydroxide.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Sodium Hydroxide</a>
-                                    </h5>
-                                    <p class="price with-discount">330,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Sodium Hydroxide</a>
+                                    <p class="price">330,000đ</p>
                                 </div>
                             </div>
                         </div>
@@ -1081,43 +1009,37 @@
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/axit-sunfuric.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/axit-sunfuric.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Acid Sunfuric 95%</a>
-                                    </h5>
-                                    <p class="price with-discount">1,000,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Acid Sunfuric 95%</a>
+                                    <p class="price">1,000,000đ</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12">
-                    <div class="shop-section-title">
+                    <div class="shop-list-title">
                         <h1>Xem nhiều</h1>
                     </div>
 
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/hydrochloric.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/hydrochloric.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Acid Hydrochloric 89%</a>
-                                    </h5>
-                                    <p class="price with-discount">2,200,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Acid Hydrochloric 89%</a>
+                                    <p class="price">2,200,000đ</p>
                                 </div>
                             </div>
                         </div>
@@ -1126,18 +1048,15 @@
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/sodium-sulfite.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/sodium-sulfite.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Sodium Sulfite</a>
-                                    </h5>
-                                    <p class="price with-discount">700,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Sodium Sulfite</a>
+                                    <p class="price">700,000đ</p>
                                 </div>
                             </div>
                         </div>
@@ -1146,18 +1065,15 @@
                     <div class="single-list">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <div class="list-image overlay">
-                                    <a href="product-details.html">
-                                        <img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/acid-vo-co-1.jpg" alt="#" /></a>
+                                <div class="list-image">
+                                    <a href="product-details.html"><img src="../images/hoa_chat/acid_bazo/acid_vo_co/115x140/acid-vo-co-1.jpg" alt="#" /></a>
                                     <a href="product-details.html" class="buy"><i class="fa fa-shopping-bag"></i></a>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-12 no-padding">
-                                <div class="content">
-                                    <h5 class="title">
-                                        <a href="product-details.html">Acid Vô Cơ</a>
-                                    </h5>
-                                    <p class="price with-discount">990,000đ</p>
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="content pt-5">
+                                    <a class="pname" href="product-details.html">Acid Vô Cơ</a>
+                                    <p class="price">990,000đ</p>
                                 </div>
                             </div>
                         </div>
@@ -1169,28 +1085,22 @@
 
     <!-- ===== COUNTDOWN ===== -->
     <section class="countdown">
-        <div class="section-inner">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 col-12 padding-right">
-                        <div class="image">
-                            <img src="../images/hoa_chat/thuoc_thu/750x590/thuoc-thu-2.jpg" alt="#" />
-                        </div>
+        <div class="container-fluid p-0">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="image">
+                        <img src="../images/hoa_chat/thuoc_thu/750x590/thuoc-thu-2.jpg" alt="#" />
                     </div>
-                    <div class="col-lg-6 col-12 padding-left">
-                        <div class="content">
-                            <div class="heading-block">
-                                <p class="small-title">Giảm giá trong ngày</p>
-                                <h3 class="title">Thuốc thử nguyên chất</h3>
-                                <p class="text">
-                                    Thuốc thử nguyên chất Calsio Delatiumn 120-26P 15% được sản
-                                    xuất theo tiêu chuẩn quốc tế IAEA đảm báo chất lượng 100%.
-                                </p>
-                                <h1 class="price">660,000đ <s>900,000đ</s></h1>
-                                <div class="coming-time">
-                                    <div class="clearfix" data-countdown="2021/02/30"></div>
-                                </div>
-                            </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="content">
+                        <div class="heading-block">
+                            <p class="small-title">Giảm giá trong ngày</p>
+                            <h3 class="title">Thuốc thử nguyên chất</h3>
+                            <p>Thuốc thử nguyên chất Calsio Delatiumn 120-26P 15% được sản
+                                xuất theo tiêu chuẩn quốc tế IAEA đảm báo chất lượng 100%.</p>
+                            <h1 class="price">660,000đ <s>900,000đ</s></h1>
+                            <div class="clearfix" data-countdown="2021/02/30"></div>
                         </div>
                     </div>
                 </div>
@@ -1199,7 +1109,7 @@
     </section>
 
     <!-- ===== SHOP BLOG =====  -->
-    <section class="shop-blog section">
+    <section class="shop-blog">
         <div class="container">
             <div class="section-title">
                 <h2>Tin mới nhất</h2>
@@ -1209,22 +1119,19 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="shop-single-blog">
                         <a href="blog.html"><img src="../images/tin_tuc/370x300/tin_01.jpg" alt="#" /></a>
-                        <div class="content">
+                        <div class="content p-4">
                             <p class="date">Thứ Hai, ngày 30/9/2022</p>
-                            <a href="blog.html" class="title">Bộ Hóa chất áp giá các sản phẩm được nhập khẩu từ
-                                Mỹ...</a>
+                            <a href="blog.html" class="title">Bộ Hóa chất áp giá các sản phẩm được nhập khẩu từ Mỹ...</a>
                             <a href="blog.html" class="more-btn">Tiếp tục đọc</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="shop-single-blog">
-                        <a href="blog.html"><img src="../images/tin_tuc/370x300/tin_02.jpg" alt="#" />
-                        </a>
-                        <div class="content">
+                        <a href="blog.html"><img src="../images/tin_tuc/370x300/tin_02.jpg" alt="#" /></a>
+                        <div class="content p-4">
                             <p class="date">Thứ Ba, ngày 31/9/2022</p>
-                            <a href="blog.html" class="title">Công bố chương trình khuyến mãi sản phẩm cho thí
-                                nghiệm...</a>
+                            <a href="blog.html" class="title">Công bố chương trình khuyến mãi sản phẩm cho thí nghiệm...</a>
                             <a href="blog.html" class="more-btn">Tiếp tục đọc</a>
                         </div>
                     </div>
@@ -1232,10 +1139,9 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="shop-single-blog">
                         <a href="blog.html"><img src="../images/tin_tuc/370x300/tin_03.jpg" alt="#" /></a>
-                        <div class="content">
+                        <div class="content p-4">
                             <p class="date">Chủ Nhật, ngày 29/9/2022</p>
-                            <a href="blog.html" class="title">Tổ chức huy hoạch 200 hecta đất để xây dựng nhà máy
-                                chế...</a>
+                            <a href="blog.html" class="title">Tổ chức huy hoạch 200 hecta đất để xây dựng nhà máy chế...</a>
                             <a href="blog.html" class="more-btn">Tiếp tục đọc</a>
                         </div>
                     </div>
@@ -1283,12 +1189,12 @@
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <!-- Footer Top -->
-        <div class="footer-top section">
+        <div class="footer-top pt-5 pb-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5 col-md-6 col-12">
-                        <div class="single-footer about">
-                            <div class="logo">
+                        <div class="single-footer about pr-5">
+                            <div class="logo mb-4">
                                 <a href="index.html"><img src="images/logo2.png" alt="#" /></a>
                             </div>
                             <p class="text">
@@ -1296,21 +1202,18 @@
                                 hóa chất dùng cho thí nghiệm . Chúng tôi cam kết đem đến những
                                 sản phẩm chất lượng với mức giá TỐT NHẤT trên thị trường.
                             </p>
-                            <p class="call">
-                                Có bất kỳ câu hỏi nào vui lòng liên hệ:<span><a href="tel:123456789">0983 803
-                                        100</a></span>
-                            </p>
+                            <p class="call">Có bất kỳ câu hỏi nào vui lòng liên hệ:<span class="d-block"><a href="tel:123456789">0983 803 100</a></span></p>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-6 col-12">
                         <div class="single-footer links">
                             <h4>Thông tin</h4>
                             <ul>
-                                <li><a href="#">Về chúng tôi</a></li>
-                                <li><a href="#">Câu hỏi thường gặp</a></li>
-                                <li><a href="#">Điều khoản dịch vụ</a></li>
-                                <li><a href="#">Liên hệ</a></li>
-                                <li><a href="#">Giúp đỡ</a></li>
+                                <li class="d-block mb-2"><a href="#0">Về chúng tôi</a></li>
+                                <li class="d-block mb-2"><a href="#0">Câu hỏi thường gặp</a></li>
+                                <li class="d-block mb-2"><a href="#0">Điều khoản dịch vụ</a></li>
+                                <li class="d-block mb-2"><a href="#0">Liên hệ</a></li>
+                                <li class="d-block"><a href="#0">Giúp đỡ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1318,11 +1221,11 @@
                         <div class="single-footer links">
                             <h4>Khách hàng</h4>
                             <ul>
-                                <li><a href="#">Thanh toán</a></li>
-                                <li><a href="#">Hoàn tiền</a></li>
-                                <li><a href="#">Lợi nhuận</a></li>
-                                <li><a href="#">Vận chuyển</a></li>
-                                <li><a href="#">Chính sách bảo mật</a></li>
+                                <li class="d-block mb-2"><a href="#0">Thanh toán</a></li>
+                                <li class="d-block mb-2"><a href="#0">Hoàn tiền</a></li>
+                                <li class="d-block mb-2"><a href="#0">Lợi nhuận</a></li>
+                                <li class="d-block mb-2"><a href="#0">Vận chuyển</a></li>
+                                <li class="d-block"><a href="#0">Chính sách bảo mật</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1331,29 +1234,17 @@
                             <h4>Liên lạc</h4>
                             <div class="contact">
                                 <ul>
-                                    <li>
-                                        123, phương Linh Trung, Tp. Thủ Đức, Tp. Hồ Chí Minh
-                                    </li>
-                                    <li>
-                                        35 Đinh Tiên Hoàng, phường 5, quận 5, Tp. Hồ Chí Minh
-                                    </li>
-                                    <li>info@eshop.com</li>
+                                    <li class="mb-2">123, phương Linh Trung, Tp. Thủ Đức, Tp. Hồ Chí Minh</li>
+                                    <li class="mb-2">35 Đinh Tiên Hoàng, phường 5, quận 5, Tp. Hồ Chí Minh</li>
+                                    <li class="mb-2">info@eshop.com</li>
                                     <li>0983 803 100</li>
                                 </ul>
                             </div>
-                            <ul>
-                                <li>
-                                    <a href="#"><i class="ti-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="ti-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="ti-flickr"></i></a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="ti-instagram"></i></a>
-                                </li>
+                            <ul class="icon mt-3">
+                                <li class="d-inline-block mr-4"><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li class="d-inline-block mr-4"><a href="#"><i class="ti-twitter"></i></a></li>
+                                <li class="d-inline-block mr-4"><a href="#"><i class="ti-youtube"></i></a></li>
+                                <li class="d-inline-block"><a href="#"><i class="ti-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -1368,13 +1259,11 @@
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="left">
-                                <p>
-                                    © 2022 - Bản quyền thuộc về Eshop - Đã đăng ký bản quyền.
-                                </p>
+                                <p class="text-white">© 2022 - Bản quyền thuộc về Eshop - Đã đăng ký bản quyền.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">
-                            <div class="right">
+                            <div class="float-right">
                                 <img src="images/payments.png" alt="#" />
                             </div>
                         </div>
@@ -1390,7 +1279,6 @@
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/colors.js"></script>
     <script src="js/slicknav.min.js"></script>
     <script src="js/owl-carousel.js"></script>
     <script src="js/magnific-popup.js"></script>
