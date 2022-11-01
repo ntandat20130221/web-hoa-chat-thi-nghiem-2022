@@ -120,7 +120,7 @@
 
         /* [ Quick View Slider ]
         -------------------------------------------- */
-        $('.quickview-slider-active').owlCarousel({
+        $('.product-slider-active').owlCarousel({
             items: 1,
             autoplay: true,
             autoplayTimeout: 5000,

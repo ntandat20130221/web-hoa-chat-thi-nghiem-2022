@@ -203,23 +203,23 @@
     </div>
 
     <!-- ===== PROFILE ===== -->
-    <section class="contact-us">
+    <section class="contact-us profile">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-12">
                     <div class="single-head">
                         <div class="single-info">
-                            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                            <div class="d-flex flex-column align-items-center text-center mb-5">
                                 <img class="rounded-circle" width="150px"
                                     src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" />
                                 <span class="font-weight-bold">Edogaru</span>
                             </div>
                             <ul>
                                 <li>
-                                    <a href="purchase-history.html">Lịch sử mua hàng</a>
+                                    <a href="purchase-history.html"><i class="bi bi-receipt"></i> Lịch sử mua hàng</a>
                                 </li>
                                 <li>
-                                    <a href="/eshop/change-pass.html">Đổi mật khẩu</a>
+                                    <a href="/eshop/change-pass.html"><i class="bi bi-lock"></i> Đổi mật khẩu</a>
                                 </li>
                             </ul>
                         </div>
@@ -229,7 +229,7 @@
                     <div class="form-main">
                         <div class="title">
                             <h3>Hồ sơ của tôi</h3>
-                            <p>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
+                            <p class="m-0">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
                         </div>
                         <form class="form" method="post" action="mail/mail.php">
                             <div class="row">
@@ -240,18 +240,8 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-12">
-                                    <div class="form-group">
+                                    <div class="form-group sex">
                                         <label class="mr-4">Giới tính:</label>
-                                        <style>
-                                            #male,
-                                            #female {
-                                                display: inline-block;
-                                                width: 16px;
-                                                height: 20px;
-                                                box-shadow: none;
-                                                margin: 0;
-                                            }
-                                        </style>
                                         <div class="form-check form-check-inline mr-4 d-inline-flex  align-items-center">
                                             <input class="form-check-input" type="radio" checked name="flexRadioDefault" id="male" value="male">
                                             <label class="form-check-label d-inline-block ml-2" for="male">Nam</label>
@@ -283,10 +273,8 @@
                                 <div class="col-lg-4 col-12">
                                     <div class="form-group">
                                         <label>Tỉnh / Thành phố<span>*</span></label>
-                                        <select name="company_name" id="company">
-                                            <option value="company" selected="selected">
-                                                TP.Hồ Chí Minh
-                                            </option>
+                                        <select id="company">
+                                            <option value="company" selected="selected">TP.Hồ Chí Minh</option>
                                             <option>Hà Nội</option>
                                             <option>Lâm Đồng</option>
                                             <option>Bến Tre</option>
