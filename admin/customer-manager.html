@@ -18,24 +18,20 @@
 </head>
 
 <body onload="time()" class="app sidebar-mini rtl">
-    <!-- Navbar-->
     <header class="app-header">
-        <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
-        <!-- Navbar Right Menu-->
+        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
         <ul class="app-nav">
-
-
-            <!-- User Menu-->
-            <li><a class="app-nav__item" href="/index.html"><i class='bx bx-log-out bx-rotate-180'></i> </a>
-
+            <li>
+                <a class="app-nav__item" href="login.html"><i class='bx bx-log-out bx-rotate-180'></i></a>
             </li>
         </ul>
     </header>
-    <!-- Sidebar menu-->
+
+    <!-- Sidebar Menu -->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
         <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="\images\hay.jpg" alt="User Image">
-            <p class="app-sidebar__user-name"><b>Võ Trường</b></p>
+            <p class="app-sidebar__user-name"><b>Admin</b></p>
             <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
         </div>
         <hr>
@@ -83,24 +79,19 @@
             <div class="col-md-12">
                 <div class="tile">
                     <div class="tile-body">
-
                         <div class="row element-button">
                             <div class="col-sm-2">
-
-                                <a class="btn btn-add btn-sm" href="form-add-customer.html" title="Thêm"><i class="fas fa-plus"></i>
-                                    Tạo mới khách hàng</a>
+                                <a class="btn btn-add btn-sm" href="form-add-customer.html" title="Thêm"><i class="fas fa-plus"></i> Tạo mới khách hàng</a>
                             </div>
                             <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i class="fas fa-file-upload"></i> Tải từ file</a>
                             </div>
-
                             <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> In dữ liệu</a>
                             </div>
                             <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i class="fas fa-copy"></i> Sao chép</a>
                             </div>
-
                             <div class="col-sm-2">
                                 <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
                             </div>
@@ -108,16 +99,16 @@
                                 <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
                             </div>
                             <div class="col-sm-2">
-                                <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i> Xóa tất cả </a>
+                                <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i> Xóa tất cả</a>
                             </div>
                         </div>
-                        <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0" id="sampleTable">
+                        <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" id="sampleTable">
                             <thead>
                                 <tr>
                                     <th width="10"><input type="checkbox" id="all"></th>
                                     <th>ID khách hàng</th>
                                     <th width="150">Họ và tên</th>
-                                    <th width="20">Ảnh thẻ</th>
+                                    <th width="20">Ảnh</th>
                                     <th width="300">Địa chỉ</th>
                                     <th>Ngày sinh</th>
                                     <th>Giới tính</th>
@@ -130,105 +121,105 @@
                                     <td width="10"><input type="checkbox" name="check1" value="1"></td>
                                     <td>CD12837</td>
                                     <td>Hồ Thị Thanh Ngân</td>
-                                    <td><img class="img-card-person" src="/img-anhthe/1.jpg" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></td>
                                     <td>155-157 Trần Quốc Thảo, Quận 3, Hồ Chí Minh </td>
                                     <td>12/02/1999</td>
                                     <td>Nữ</td>
                                     <td>0926737168</td>
-                                    <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                                        </button>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                                class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="10"><input type="checkbox" name="check2" value="2"></td>
                                     <td>SX22837</td>
                                     <td>Trần Khả Ái</td>
-                                    <td><img class="img-card-person" src="/img-anhthe/2.jpg" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></td>
                                     <td>6 Nguyễn Lương Bằng, Tân Phú, Quận 7, Hồ Chí Minh</td>
                                     <td>22/12/1999</td>
                                     <td>Nữ</td>
                                     <td>0931342432</td>
-                                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                                        </button>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                                class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="10"><input type="checkbox" name="check3" value="3"></td>
                                     <td>LO28471</td>
                                     <td>Phạm Thu Cúc</td>
-                                    <td><img class="img-card-person" src="/img-anhthe/3.jpg" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=600" alt=""></td>
                                     <td>Số 3 Hòa Bình, Phường 3, Quận 11, Hồ Chí Minh </td>
                                     <td>02/06/1998</td>
                                     <td>Nữ</td>
                                     <td>0931491997</td>
-                                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction()"><i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                                        </button>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                                class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="10"><input type="checkbox"></td>
                                     <td>SR28746</td>
                                     <td>Trần Anh Khoa</td>
-                                    <td><img class="img-card-person" src="/img-anhthe/4.jpg" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/11883419/pexels-photo-11883419.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></td>
                                     <td>19 Đường Nguyễn Hữu Thọ, Tân Hưng, Quận 7, Hồ Chí Minh </td>
                                     <td>18/02/1995</td>
                                     <td>Nam</td>
                                     <td>0916706633</td>
-                                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction()"><i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                                        </button>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                                class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="10"><input type="checkbox"></td>
                                     <td>KJS4276</td>
                                     <td>Nguyễn Thành Nhân</td>
-                                    <td><img class="img-card-person" src="/img-anhthe/5.jpg" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/3990502/pexels-photo-3990502.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""></td>
                                     <td>Số 13, Tân Thuận Đông, Quận 7, Hồ Chí Minh </td>
                                     <td>10/03/1996</td>
                                     <td>Nam</td>
                                     <td>0971038066</td>
-                                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction()"><i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                                        </button>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                                class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="10"><input type="checkbox"></td>
                                     <td>BS76228</td>
                                     <td>Nguyễn Đặng Trọng Nhân</td>
-                                    <td><img class="img-card-person" src="/img-anhthe/6.jpg" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/1510601/pexels-photo-1510601.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""></td>
                                     <td>59C Nguyễn Đình Chiểu, Quận 3, Hồ Chí Minh </td>
                                     <td>23/07/1996</td>
                                     <td>Nam</td>
                                     <td>0846881155</td>
-                                    <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction()"><i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                                        </button>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                                class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="10"><input type="checkbox"></td>
                                     <td>YUI2136</td>
                                     <td>Nguyễn Thị Mai</td>
-                                    <td><img class="img-card-person" src="/img-anhthe/4.jpg" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/2112730/pexels-photo-2112730.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt=""></td>
                                     <td>Đường Số 3, Tân Tạo A, Bình Tân, Hồ Chí Minh</td>
                                     <td>09/12/2000</td>
                                     <td>Nữ </td>
                                     <td>0836333037</td>
-                                    <td><button class="btn btn-primary btn-sm trash" title="Xóa" onclick="myFunction()"><i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <button class="btn btn-primary btn-sm edit" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                                        </button>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                                class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
 
@@ -259,7 +250,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Họ và tên</label>
-                            <input class="form-control" type="text" required value="Võ Trường">
+                            <input class="form-control" type="text" required value="Admin">
                         </div>
                         <div class="form-group  col-md-6">
                             <label class="control-label">Số điện thoại</label>
@@ -288,18 +279,13 @@
                             </select>
                         </div>
                     </div>
-                    <BR>
-                    <a href="#" style="    float: right;
-        font-weight: 600;
-        color: #ea0000;">Chỉnh sửa nâng cao</a>
-                    <BR>
-                    <BR>
+                    <br>
+                    <a href="#" style="float: right;font-weight: 600;color: #ea0000;">Chỉnh sửa nâng cao</a><br><br>
                     <button class="btn btn-save" type="button">Lưu lại</button>
                     <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                    <BR>
+                    <br>
                 </div>
-                <div class="modal-footer">
-                </div>
+                <div class="modal-footer"></div>
             </div>
         </div>
     </div>
@@ -313,7 +299,7 @@
     <script src="vendor/plugins/dataTables.bootstrap.min.js"></script>
     <script src="js/main.js"></script>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <!-- ================================================================================================== -->
