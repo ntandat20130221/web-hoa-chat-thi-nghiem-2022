@@ -30,7 +30,8 @@
     <!-- Sidebar Menu -->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://images.pexels.com/photos/2955247/pexels-photo-2955247.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="User Image">
+        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="User Image">
             <p class="app-sidebar__user-name"><b>Admin</b></p>
             <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
         </div>
@@ -118,7 +119,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- col-12 -->
+
                     <div class="col-md-12">
                         <div class="tile">
                             <h3 class="tile-title">Tình trạng đơn hàng</h3>
@@ -168,11 +169,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- / div trống-->
                         </div>
                     </div>
-                    <!-- / col-12 -->
-                    <!-- col-12 -->
+
                     <div class="col-md-12">
                         <div class="tile">
                             <h3 class="tile-title">Khách hàng mới</h3>
@@ -217,11 +216,10 @@
 
                         </div>
                     </div>
-                    <!-- / col-12 -->
                 </div>
             </div>
-            <!--END left-->
-            <!--Right-->
+
+            <!-- Right -->
             <div class="col-md-12 col-lg-6">
                 <div class="row">
                     <div class="col-md-12">
@@ -241,15 +239,15 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <!--END right-->
         </div>
 
         <div class="text-center" style="font-size: 13px">
-            <p><b>Copyright
+            <p>
+                <b>Copyright
                     <script>document.write(new Date().getFullYear());</script> Phần mềm quản lý bán hàng | Dev By Trường
-                </b></p>
+                </b>
+            </p>
         </div>
     </main>
 
@@ -264,7 +262,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
     <!-- ================================================================================================== -->
-    <script type="text/javascript">
+    <script>
         var data = {
             labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6"],
             datasets: [{
@@ -295,8 +293,8 @@
         var ctxb = $("#barChartDemo").get(0).getContext("2d");
         var barChart = new Chart(ctxb).Bar(data);
     </script>
-    <script type="text/javascript">
-        //Thời Gian
+
+    <script>
         function time() {
             var today = new Date();
             var weekday = new Array(7);
