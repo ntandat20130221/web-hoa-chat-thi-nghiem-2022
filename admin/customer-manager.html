@@ -8,13 +8,13 @@
     <title>Quản lý khách hàng | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css" />
 </head>
 
 <body onload="time()" class="app sidebar-mini rtl">
@@ -22,7 +22,7 @@
         <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
         <ul class="app-nav">
             <li>
-                <a class="app-nav__item" href="login.html"><i class='bx bx-log-out bx-rotate-180'></i></a>
+                <a class="app-nav__item" href="login.html"><i class="bx bx-log-out bx-rotate-180"></i></a>
             </li>
         </ul>
     </header>
@@ -219,7 +219,6 @@
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
-
                             </tbody>
                         </table>
                     </div>
@@ -231,10 +230,9 @@
     <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-
                 <div class="modal-body">
                     <div class="row">
-                        <div class="form-group  col-md-12">
+                        <div class="form-group col-md-12">
                             <span class="thong-tin-thanh-toan">
                                 <h5>Chỉnh sửa thông khách hàng viên cơ bản</h5>
                             </span>
@@ -243,25 +241,25 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label class="control-label">ID khách hàng</label>
-                            <input class="form-control" type="text" required value="#CD2187" disabled>
+                            <input class="form-control" type="text" required value="#CD2187" disabled />
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Họ và tên</label>
-                            <input class="form-control" type="text" required value="Admin">
+                            <input class="form-control" type="text" required value="Admin" />
                         </div>
-                        <div class="form-group  col-md-6">
+                        <div class="form-group col-md-6">
                             <label class="control-label">Số điện thoại</label>
-                            <input class="form-control" type="number" required value="09267312388">
+                            <input class="form-control" type="number" required value="09267312388" />
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Địa chỉ email</label>
-                            <input class="form-control" type="text" required value="truong.vd2000@gmail.com">
+                            <input class="form-control" type="text" required value="truong.vd2000@gmail.com" />
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Ngày sinh</label>
-                            <input class="form-control" type="date" value="15/03/2000">
+                            <input class="form-control" type="date" value="15/03/2000" />
                         </div>
-                        <div class="form-group  col-md-6">
+                        <div class="form-group col-md-6">
                             <label for="exampleSelect1" class="control-label">Chức vụ</label>
                             <select class="form-control" id="exampleSelect1">
                                 <option>Bán hàng</option>
@@ -276,11 +274,11 @@
                             </select>
                         </div>
                     </div>
-                    <br>
-                    <a href="#" style="float: right;font-weight: 600;color: #ea0000;">Chỉnh sửa nâng cao</a><br><br>
+                    <br />
+                    <a href="#" style="float: right; font-weight: 600; color: #ea0000">Chỉnh sửa nâng cao</a><br /><br />
                     <button class="btn btn-save" type="button">Lưu lại</button>
                     <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                    <br>
+                    <br />
                 </div>
                 <div class="modal-footer"></div>
             </div>
@@ -300,7 +298,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
     <!-- ================================================================================================== -->
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script type="text/javascript">
+        $("#sampleTable").DataTable();
+    </script>
     <script>
         function deleteRow(r) {
             var i = r.parentNode.parentNode.rowIndex;
@@ -313,19 +313,19 @@
 
                     text: "Bạn có chắc chắn là muốn xóa nhân viên này?",
                     buttons: ["Hủy bỏ", "Đồng ý"],
-                })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            swal("Đã xóa thành công.!", {
-
-                            });
-                        }
-                    });
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        swal("Đã xóa thành công.!", {});
+                    }
+                });
             });
         });
-        oTable = $('#sampleTable').dataTable();
-        $('#all').click(function (e) {
-            $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
+        oTable = $("#sampleTable").dataTable();
+        $("#all").click(function (e) {
+            $("#sampleTable tbody :checkbox").prop(
+                "checked",
+                $(this).is(":checked")
+            );
             e.stopImmediatePropagation();
         });
 
@@ -339,7 +339,6 @@
         //     ]
         //   });
         // });
-
 
         //Thời Gian
         function time() {
@@ -363,14 +362,13 @@
             s = checkTime(s);
             nowTime = h + " giờ " + m + " phút " + s + " giây";
             if (dd < 10) {
-                dd = '0' + dd
+                dd = "0" + dd;
             }
             if (mm < 10) {
-                mm = '0' + mm
+                mm = "0" + mm;
             }
-            today = day + ', ' + dd + '/' + mm + '/' + yyyy;
-            tmp = '<span class="date"> ' + today + ' - ' + nowTime +
-                '</span>';
+            today = day + ", " + dd + "/" + mm + "/" + yyyy;
+            tmp = '<span class="date"> ' + today + " - " + nowTime + "</span>";
             document.getElementById("clock").innerHTML = tmp;
             clocktime = setTimeout("time()", "1000", "Javascript");
 
@@ -382,15 +380,15 @@
             }
         }
         //In dữ liệu
-        var myApp = new function () {
+        var myApp = new (function () {
             this.printTable = function () {
-                var tab = document.getElementById('sampleTable');
-                var win = window.open('', '', 'height=700,width=700');
+                var tab = document.getElementById("sampleTable");
+                var win = window.open("", "", "height=700,width=700");
                 win.document.write(tab.outerHTML);
                 win.document.close();
                 win.print();
-            }
-        }
+            };
+        })();
         //     //Sao chép dữ liệu
         //     var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
 
@@ -408,10 +406,9 @@
         //   }
         // });
 
-
         //Modal
         $("#show-emp").on("click", function () {
-            $("#ModalUP").modal({ backdrop: false, keyboard: false })
+            $("#ModalUP").modal({ backdrop: false, keyboard: false });
         });
     </script>
 </body>
