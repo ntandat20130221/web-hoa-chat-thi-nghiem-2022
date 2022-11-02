@@ -24,4 +24,14 @@
     //Activate bootstrip tooltips
     $("[data-toggle='tooltip']").tooltip();
 
+    // Search
+    $(document).ready(function () {
+        $('#search').on('keyup', function () {
+            var value = $(this).val().toLowerCase();
+            $('#sampleTable tbody tr').filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            })
+        })
+    })
+
 })();

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách nhân viên | Quản trị Admin</title>
+    <title>Quản lý khách hàng | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
     <link rel="stylesheet" href="css/main.css">
@@ -37,11 +37,7 @@
         <hr>
         <ul class="app-menu">
             <li>
-                <a class="app-menu__item haha" href="sale-manager.html"><i class='app-menu__icon bx bx-cart-alt'></i>
-                    <span class="app-menu__label">POS Bán Hàng</span></a>
-            </li>
-            <li>
-                <a class="app-menu__item" href="index.html"><i class='app-menu__icon bx bx-tachometer'></i>
+                <a class="app-menu__item haha" href="index.html"><i class='app-menu__icon bx bx-tachometer'></i>
                     <span class="app-menu__label">Bảng điều khiển</span></a>
             </li>
             <li>
@@ -81,16 +77,7 @@
                     <div class="tile-body">
                         <div class="row element-button">
                             <div class="col-sm-2">
-                                <a class="btn btn-add btn-sm" href="form-add-customer.html" title="Thêm"><i class="fas fa-plus"></i> Tạo mới khách hàng</a>
-                            </div>
-                            <div class="col-sm-2">
-                                <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i class="fas fa-file-upload"></i> Tải từ file</a>
-                            </div>
-                            <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> In dữ liệu</a>
-                            </div>
-                            <div class="col-sm-2">
-                                <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i class="fas fa-copy"></i> Sao chép</a>
                             </div>
                             <div class="col-sm-2">
                                 <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
@@ -98,8 +85,17 @@
                             <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
                             </div>
-                            <div class="col-sm-2">
-                                <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i> Xóa tất cả</a>
+                        </div>
+                        <!-- Search -->
+                        <div class="search-bar d-flex justify-content-end my-3">
+                            <div class="search-wrap">
+                                <label class="font-weight-bold m-0" for="search">Tìm kiếm: </label>
+                                <input type="text" placeholder="" id="search">
+                                <label for="by" class="font-weight-bold m-0 ml-3">Theo: </label>
+                                <select id="by">
+                                    <option>ID</option>
+                                    <option>Tên</option>
+                                </select>
                             </div>
                         </div>
                         <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" id="sampleTable">
@@ -166,7 +162,8 @@
                                     <td width="10"><input type="checkbox"></td>
                                     <td>SR28746</td>
                                     <td>Trần Anh Khoa</td>
-                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/11883419/pexels-photo-11883419.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></td>
+                                    <td><img class="img-card-person" src="https://images.pexels.com/photos/11883419/pexels-photo-11883419.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+                                    </td>
                                     <td>19 Đường Nguyễn Hữu Thọ, Tân Hưng, Quận 7, Hồ Chí Minh </td>
                                     <td>18/02/1995</td>
                                     <td>Nam</td>

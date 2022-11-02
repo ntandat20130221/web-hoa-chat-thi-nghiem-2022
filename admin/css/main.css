@@ -16848,3 +16848,20 @@ th {
     background-color: white;
     color: white;
 }
+
+/* ########################################### */
+.search-bar .search-wrap {
+    width: fit-content;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 5px;
+    padding: 10px 16px;
+}
+
+.search-bar .search-wrap input,
+.search-bar .search-wrap select {
+    outline: unset;
+    border: 1px solid rgb(210, 210, 210);
+    background-color: rgb(245, 245, 245);
+    border-radius: 4px;
+    padding: 4px 8px;
+}
