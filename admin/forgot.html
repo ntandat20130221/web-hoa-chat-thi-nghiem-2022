@@ -8,54 +8,48 @@
     <title>Khôi phục mật khẩu | Website quản trị v2.0</title>
 
     <!-- ===== STYLESHEET ===== -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/login.css">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 </head>
 
 <body>
-    <div class="container-login">
+    <section class="container-login d-flex justify-content-center align-items-center p-3">
         <div class="wrap-login">
-            <div class="login-pic js-tilt" data-tilt>
-                <img src="images/forgot.png" alt="IMG">
+            <div class="login-pic">
+                <img src="images/forgot.png" alt="">
             </div>
-            <form class="login-form">
-                <span class="login-form-title">
-                    <b>KHÔI PHỤC MẬT KHẨU</b>
-                </span>
-                <form action="custommer.html">
-                    <div class="wrap-input"
-                        data-validate="Bạn cần nhập đúng thông tin như: ex@abc.xyz">
-                        <input class="input" type="text" placeholder="Nhập email" name="emailInput"
-                            id="emailInput" value="" />
-                        <span class="focus-input"></span>
-                        <span class="symbol-input">
-                            <i class='bx bx-mail-send'></i>
-                        </span>
+            <div class="login-form">
+                <span class="login-form-title text-center d-block mb-4">KHÔI PHỤC MẬT KHẨU</span>
+                <form>
+                    <div class="wrap-input">
+                        <input class="input" type="email" placeholder="Nhập email" name="email" id="field-email" />
+                        <span class="symbol-input d-flex align-items-center pl-4"><i class='bx bx-mail-send'></i></span>
                     </div>
-                    <div class="container-login-form-btn">
-                        <input type="button" onclick="return RegexEmail('emailInput')" value="Lấy mật khẩu" />
+                    <div class="form-btn d-flex flex-wrap justify-content-center w-100 pt-3">
+                        <input type="button" value="Lấy mật khẩu" id="btn-forgot" />
                     </div>
-
                     <div class="text-center pt-3">
-                        <a class="txt2" href="login.html">
-                            Trở về đăng nhập
-                        </a>
+                        <a href="login.html">Trở về đăng nhập</a>
                     </div>
                 </form>
-                <div class="text-center pt-5 txt2">
-                    Phần mềm quản lý bán hàng <i class="far fa-copyright" aria-hidden="true"></i>
-                    <script type="text/javascript">document.write(new Date().getFullYear());</script> <a
-                        class="txt2" href="https://www.facebook.com/truongvo.vd1503/"> Code bởi Trường </a>
-                </div>
-            </form>
+            </div>
+            <div class="text-center pt-5 w-100">
+                <b>
+                    Phần mềm quản lý bán hàng <i class="bx bx-copyright"></i>
+                    <script>document.write(new Date().getFullYear())</script> <a href="https://www.facebook.com/truongvo.vd1503/"> Code bởi Trường </a>
+                </b>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- ====== JAVASCRIPT ===== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="js/login.js"></script>
 </body>
+
 </html>

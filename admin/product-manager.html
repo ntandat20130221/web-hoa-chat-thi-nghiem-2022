@@ -8,57 +8,58 @@
     <title>Quản lý sản phẩm | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <link rel="stylesheet" href="css/main.css">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
-<body onload="time()" class="app sidebar-mini rtl">
+<body class="app sidebar-mini rtl">
     <header class="app-header">
-        <a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
+        <a class="app-sidebar-toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
         <ul class="app-nav">
             <li>
-                <a class="app-nav__item" href="login.html"><i class='bx bx-log-out bx-rotate-180'></i></a>
+                <a class="app-nav-item" href="login.html"><i class='bx bx-log-out bx-rotate-180'></i></a>
             </li>
         </ul>
     </header>
 
     <!-- Sidebar Menu -->
-    <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+    <div class="app-sidebar-overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-        <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="\images\hay.jpg" alt="User Image">
-            <p class="app-sidebar__user-name"><b>Admin</b></p>
-            <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
+        <div class="app-sidebar-user"><img class="admin-avatar" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="User Image">
+            <p class="app-sidebar-user-name"><b>Admin</b></p>
+            <p class="app-sidebar-user-designation">Chào mừng bạn trở lại</p>
         </div>
         <hr>
         <ul class="app-menu">
             <li>
-                <a class="app-menu__item haha" href="index.html"><i class='app-menu__icon bx bx-tachometer'></i>
-                    <span class="app-menu__label">Bảng điều khiển</span></a>
+                <a class="app-menu-item haha" href="index.html"><i class='bx bx-tachometer'></i>
+                    <span class="app-menu-label">Trang chủ</span></a>
             </li>
             <li>
-                <a class="app-menu__item" href="customer-manager.html"><i class='app-menu__icon bx bx-id-card'></i>
-                    <span class="app-menu__label">Quản lý khách hàng</span></a>
+                <a class="app-menu-item" href="customer-manager.html"><i class='bx bx-id-card'></i>
+                    <span class="app-menu-label">Quản lý khách hàng</span></a>
             </li>
             <li>
-                <a class="app-menu__item active" href="product-manager.html"><i class='app-menu__icon bx bx-purchase-tag-alt'></i>
-                    <span class="app-menu__label">Quản lý sản phẩm</span></a>
+                <a class="app-menu-item active" href="product-manager.html"><i class='bx bx-purchase-tag-alt'></i>
+                    <span class="app-menu-label">Quản lý sản phẩm</span></a>
             </li>
             <li>
-                <a class="app-menu__item" href="order-manager.html"><i class='app-menu__icon bx bx-task'></i>
-                    <span class="app-menu__label">Quản lý đơn hàng</span></a>
+                <a class="app-menu-item" href="order-manager.html"><i class='bx bx-task'></i>
+                    <span class="app-menu-label">Quản lý đơn hàng</span></a>
             </li>
             <li>
-                <a class="app-menu__item" href="sale-report.html"><i class='app-menu__icon bx bx-pie-chart-alt-2'></i>
-                    <span class="app-menu__label">Báo cáo doanh thu</span></a>
+                <a class="app-menu-item" href="sales-report.html"><i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="app-menu-label">Báo cáo doanh thu</span></a>
             </li>
             <li>
-                <a class="app-menu__item" href="system-settings.html"><i class='app-menu__icon bx bx-cog'></i>
-                    <span class="app-menu__label">Cài đặt hệ thống</span></a>
+                <a class="app-menu-item" href="system-settings.html"><i class='bx bx-cog'></i>
+                    <span class="app-menu-label">Cài đặt hệ thống</span></a>
             </li>
         </ul>
     </aside>
@@ -75,21 +76,11 @@
                     <div class="tile-body">
                         <div class="row element-button">
                             <div class="col-sm-2">
-
-                                <a class="btn btn-add btn-sm" href="form-add-product.html" title="Thêm"><i class="fas fa-plus"></i>
-                                    Tạo mới sản phẩm</a>
+                                <a class="btn btn-add btn-sm" href="form-add-product.html" title="Thêm"><i class="fas fa-plus"></i> Tạo mới sản phẩm</a>
                             </div>
-                            <div class="col-sm-2">
-                                <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập" onclick="myFunction(this)"><i class="fas fa-file-upload"></i> Tải từ file</a>
-                            </div>
-
                             <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> In dữ liệu</a>
                             </div>
-                            <div class="col-sm-2">
-                                <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i class="fas fa-copy"></i> Sao chép</a>
-                            </div>
-
                             <div class="col-sm-2">
                                 <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
                             </div>
@@ -101,7 +92,10 @@
                             </div>
                         </div>
                         <!-- Search -->
-                        <div class="search-bar d-flex justify-content-end my-3">
+                        <div class="search-bar d-flex justify-content-between my-3">
+                            <div class="d-flex align-items-center">
+                                <span class="status">Hiện <span class="quantity">10</span> danh mục</span>
+                            </div>
                             <div class="search-wrap">
                                 <label class="font-weight-bold m-0" for="search">Tìm kiếm: </label>
                                 <input type="text" placeholder="" id="search">
@@ -138,7 +132,7 @@
                                     <td>Bàn ăn</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -153,7 +147,7 @@
                                     <td>Bàn ăn</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -168,7 +162,7 @@
                                     <td>Bàn ăn</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -183,7 +177,7 @@
                                     <td>Ghế gỗ</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -198,7 +192,7 @@
                                     <td>Ghế gỗ</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -213,7 +207,7 @@
                                     <td>Ghế gỗ</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -228,7 +222,7 @@
                                     <td>Ghế gỗ</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -243,7 +237,7 @@
                                     <td>Bàn thông minh</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -258,7 +252,7 @@
                                     <td>Bàn thông minh</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -273,7 +267,7 @@
                                     <td>Bàn thông minh</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -288,7 +282,7 @@
                                     <td>Bàn thông minh</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -303,7 +297,7 @@
                                     <td>Tủ</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -318,7 +312,7 @@
                                     <td>Giường người lớn</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -333,7 +327,7 @@
                                     <td>Giường người lớn</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -348,7 +342,7 @@
                                     <td>Giường người lớn</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -363,7 +357,7 @@
                                     <td>Giường người lớn</td>
                                     <td>
                                         <button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
-                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#ModalUP"><i
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp" data-toggle="modal" data-target="#modal-up"><i
                                                 class="fas fa-edit"></i></button>
                                     </td>
                                 </tr>
@@ -375,7 +369,7 @@
         </div>
     </main>
 
-    <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal fade" id="modal-up" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body">
@@ -414,23 +408,16 @@
                         <div class="form-group col-md-6">
                             <label for="exampleSelect1" class="control-label">Danh mục</label>
                             <select class="form-control" id="exampleSelect1">
-                                <option>Bàn ăn</option>
-                                <option>Bàn thông minh</option>
-                                <option>Tủ</option>
-                                <option>Ghế gỗ</option>
-                                <option>Ghế sắt</option>
-                                <option>Giường người lớn</option>
-                                <option>Giường trẻ em</option>
-                                <option>Bàn trang điểm</option>
-                                <option>Giá đỡ</option>
+                                <option>Hóa chất</option>
+                                <option>Dụng cụ</option>
+                                <option>Thiết bị</option>
                             </select>
                         </div>
                     </div>
-                    <br>
-                    <a href="#" style="float: right;font-weight: 600;color: #ea0000;">Chỉnh sửa sản phẩm nâng cao</a><br><br>
-                    <button class="btn btn-save" type="button">Lưu lại</button>
-                    <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                    <br>
+                    <div class="d-flex justify-content-end mt-3">
+                        <button class="btn btn-save mr-3">Lưu lại</button>
+                        <button class="btn btn-cancel" data-dismiss="modal">Hủy bỏ</button>
+                    </div>
                 </div>
                 <div class="modal-footer"></div>
             </div>
@@ -438,88 +425,15 @@
     </div>
 
     <!-- ===== JAVASCRIPT ===== -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
     <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="vendor/bootstrap/js/popper.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="vendor/plugins/pace.min.js"></script>
-    <script src="vendor/plugins/jquery.dataTables.min.js"></script>
-    <script src="vendor/plugins/dataTables.bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-    <!-- ================================================================================================== -->
-    <script type="text/javascript">
-        $('#sampleTable').DataTable();
-        //Thời Gian
-        function time() {
-            var today = new Date();
-            var weekday = new Array(7);
-            weekday[0] = "Chủ Nhật";
-            weekday[1] = "Thứ Hai";
-            weekday[2] = "Thứ Ba";
-            weekday[3] = "Thứ Tư";
-            weekday[4] = "Thứ Năm";
-            weekday[5] = "Thứ Sáu";
-            weekday[6] = "Thứ Bảy";
-            var day = weekday[today.getDay()];
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1;
-            var yyyy = today.getFullYear();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            var s = today.getSeconds();
-            m = checkTime(m);
-            s = checkTime(s);
-            nowTime = h + " giờ " + m + " phút " + s + " giây";
-            if (dd < 10) {
-                dd = '0' + dd
-            }
-            if (mm < 10) {
-                mm = '0' + mm
-            }
-            today = day + ', ' + dd + '/' + mm + '/' + yyyy;
-            tmp = '<span class="date"> ' + today + ' - ' + nowTime +
-                '</span>';
-            document.getElementById("clock").innerHTML = tmp;
-            clocktime = setTimeout("time()", "1000", "Javascript");
-
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i;
-                }
-                return i;
-            }
-        }
-    </script>
-    <script>
-        function deleteRow(r) {
-            var i = r.parentNode.parentNode.rowIndex;
-            document.getElementById("myTable").deleteRow(i);
-        }
-        jQuery(function () {
-            jQuery(".trash").click(function () {
-                swal({
-                    title: "Cảnh báo",
-                    text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
-                    buttons: ["Hủy bỏ", "Đồng ý"],
-                })
-                    .then((willDelete) => {
-                        if (willDelete) {
-                            swal("Đã xóa thành công.!", {
-
-                            });
-                        }
-                    });
-            });
-        });
-        oTable = $('#sampleTable').dataTable();
-        $('#all').click(function (e) {
-            $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
-            e.stopImmediatePropagation();
-        });
-    </script>
 </body>
 
 </html>
