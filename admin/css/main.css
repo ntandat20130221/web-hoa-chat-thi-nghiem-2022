@@ -4799,6 +4799,7 @@ input[type="button"].btn-block {
 }
 
 @media (max-width: 767.98px) {
+
     .navbar-expand-md>.container,
     .navbar-expand-md>.container-fluid {
         padding-right: 0;
@@ -4853,6 +4854,7 @@ input[type="button"].btn-block {
 }
 
 @media (max-width: 991.98px) {
+
     .navbar-expand-lg>.container,
     .navbar-expand-lg>.container-fluid {
         padding-right: 0;
@@ -4907,6 +4909,7 @@ input[type="button"].btn-block {
 }
 
 @media (max-width: 1199.98px) {
+
     .navbar-expand-xl>.container,
     .navbar-expand-xl>.container-fluid {
         padding-right: 0;
@@ -16808,3 +16811,106 @@ th {
 
 /* [ SYSTEM SETTINGS ]
 ==================================================== */
+.system-settings .left,
+.system-settings .right {
+    overflow: hidden;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 50px;
+}
+
+.system-settings .left .img-container {
+    position: relative;
+}
+
+.system-settings .left .img-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 100%;
+}
+
+.system-settings .left .img-container button {
+    position: absolute;
+    right: 10px;
+    bottom: 30px;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: white;
+    outline: unset;
+    border: none;
+    border-radius: .4em;
+    padding: 3px 8px;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+
+.system-settings .left .img-container button:hover {
+    background-color: #555;
+}
+
+.system-settings .left .img-container button i {
+    position: relative;
+    left: 0;
+    top: 2px;
+    font-size: 16px;
+}
+
+.system-settings .left p {
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.system-settings .right {
+    padding: 50px 60px;
+}
+
+.system-settings .right form label {
+    color: rgb(0, 28, 64);
+}
+
+.system-settings .right form label span {
+    color: red;
+}
+
+.system-settings .right form input {
+    width: 100%;
+    border-radius: 3px;
+    outline: unset;
+    border: 1px solid rgb(209, 209, 209);
+    padding: 8px 16px;
+    transition: all ease .3s;
+}
+
+.system-settings .right form input:focus,
+.system-settings .right form input:active {
+    border: 1px solid rgb(0, 28, 64);
+}
+
+.system-settings .right h4::before {
+    content: '';
+    width: 80px;
+    height: .25rem;
+    background-color: rgb(0, 28, 64);
+    position: absolute;
+    bottom: -8px;
+    border-radius: 2px;
+}
+
+.system-settings .right form button {
+    float: right;
+    margin-top: 30px;
+    padding: 6px 32px;
+    outline: unset;
+    border: none;
+    background-color: rgb(0, 28, 64);
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+
+.system-settings .right form button:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
