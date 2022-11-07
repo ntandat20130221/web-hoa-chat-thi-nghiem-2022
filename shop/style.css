@@ -395,7 +395,7 @@ div:has(>.right-bar) {
 }
 
 .header .right-bar .right-bar-item .single-icon i {
-  font-size: 30px !important;
+  font-size: 28px !important;
   color: #333;
   transition: all ease 0.4s;
 }
@@ -406,8 +406,8 @@ div:has(>.right-bar) {
 
 .header .shopping .single-icon .total-count {
   position: absolute;
-  top: -7px;
-  right: 30px;
+  top: -8px;
+  right: 28px;
   background: var(--color4);
   width: 18px;
   height: 18px;
