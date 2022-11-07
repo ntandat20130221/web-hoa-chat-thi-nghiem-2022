@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eshop | Thanh Toán</title>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <title>Lab Chemicals | Lịch Sử Mua Hàng</title>
+    <link rel="icon" type="image/png" href="images/labchemicals-logo-icon.png" />
 
     <!-- ===== STYLESHEET ===== -->
     <link rel="stylesheet" href="css/bootstrap.css" />
@@ -45,7 +45,7 @@
                         <div class="text-left">
                             <ul>
                                 <li><i class="ti-headphone-alt"></i>0983 803 100</li>
-                                <li><i class="fa fa-envelope-o"></i>support@shophub.com</li>
+                                <li><i class="fa fa-envelope-o"></i>support@labchemicals.com</li>
                             </ul>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     <div class="col-lg-2 col-md-2 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img src="images/logo.png" alt="logo" /></a>
+                            <a href="index.html"><img src="images/labchemicals-logo.png" alt="logo" /></a>
                         </div>
                         <!-- Search Mobile -->
                         <div class="mobile-search">
@@ -197,107 +197,151 @@
         <div class="container text-left">
             <ul class="bread-list d-inline-block">
                 <li class="d-inline-block"><a href="index.html">Trang chủ<i class="ti-arrow-right"></i></a></li>
-                <li class="d-inline-block"><a href="cart.html">Giỏ hàng<i class="ti-arrow-right"></i></a></li>
-                <li class="d-inline-block"><a href="checkout.html">Thanh toán</a></li>
+                <li class="d-inline-block"><a href="profile.html">Hồ sơ của tôi<i class="ti-arrow-right"></i></a></li>
+                <li class="d-inline-block"><a href="purchase-history.html">Lịch sử mua hàng</a></li>
             </ul>
         </div>
     </div>
 
-    <!-- ===== CHECKOUT ===== -->
-    <section class="checkout">
+    <!-- ===== PURCHASE HISTORY ===== -->
+    <div class="shopping-cart">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-12">
-                    <div class="checkout-form mt-4">
-                        <div class="checkout-title">
-                            <h3>Thông tin giao hàng</h3>
-                            <p class="my-2">
-                                Yêu cầu quý khách cần điền đầy đủ thông tin để việc giao hàng
-                                được thuận lợi
+            <!-- Shopping Sumary -->
+            <table class="table shopping-summery bg-white">
+                <thead>
+                    <tr class="main-hading">
+                        <th>SẢN PHẨM</th>
+                        <th>TÊN SẢN PHẨM</th>
+                        <th class="text-center">GIÁ</th>
+                        <th class="text-center">SỐ LƯỢNG</th>
+                        <th class="text-center">TỔNG</th>
+                        <th class="text-center">
+                            <i class="ti-trash remove-icon"></i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="image" data-title="No">
+                            <img src="https://via.placeholder.com/100x100" alt="#" />
+                        </td>
+                        <td class="product-des" data-title="Description">
+                            <p class="product-name">
+                                <a href="product-details.html">Axit Sunfuric loãng</a>
                             </p>
-                        </div>
-                        <form class="form" method="post" action="mail/mail.php">
-                            <div class="row">
-                                <div class="col-lg-12 col-12">
-                                    <div class="form-group mb-4">
-                                        <label>Họ và tên</label>
-                                        <input name="name" type="text" placeholder="" />
-                                    </div>
+                            <p class="product-des">
+                                Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
+                                tính chất hóa học chung của axit.
+                            </p>
+                        </td>
+                        <td class="price text-center" data-title="Price">
+                            <span>1,000,000đ</span>
+                        </td>
+                        <td class="qty" data-title="Qty">
+                            <!-- Input Order -->
+                            <div class="input-group">
+                                <div class="button minus">
+                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                        <i class="ti-minus"></i>
+                                    </button>
                                 </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group mb-4">
-                                        <label>Số điện thoại<span>*</span></label>
-                                        <input name="subject" type="text" placeholder="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-12">
-                                    <div class="form-group mb-4">
-                                        <label>Email<span>*</span></label>
-                                        <input name="email" type="email" placeholder="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-8 col-12">
-                                    <div class="form-group">
-                                        <label>Địa chỉ<span>*</span></label>
-                                        <input name="company_name" type="text" placeholder="" />
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-12">
-                                    <div class="form-group">
-                                        <label>Tỉnh / Thành phố<span>*</span></label>
-                                        <select name="company_name" id="company">
-                                            <option value="company" selected="selected">
-                                                TP.Hồ Chí Minh
-                                            </option>
-                                            <option>Hà Nội</option>
-                                            <option>Lâm Đồng</option>
-                                            <option>Bến Tre</option>
-                                            <option>Đồng Tháp</option>
-                                            <option>Sóc Trăng</option>
-                                            <option>Kiên Giang</option>
-                                        </select>
-                                    </div>
+                                <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100" value="1" />
+                                <div class="button plus">
+                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+                                        <i class="ti-plus"></i>
+                                    </button>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-12">
-                    <div class="order-details">
-                        <!-- Order Widget -->
-                        <div class="single-widget mb-4">
-                            <h2>TỔNG CỘNG</h2>
-                            <div class="content mt-3">
-                                <ul>
-                                    <li>Hóa đơn<span>1,000,000đ</span></li>
-                                    <li>(+) Vận chuyển<span>10,000đ</span></li>
-                                    <li>Tổng<span class="total">1,010,000đ</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- Order Widget -->
-                        <div class="single-widget mb-5">
-                            <h2>PHƯƠNG THỨC THANH TOÁN</h2>
-                            <div class="content mt-3">
-                                <div class="radio">
-                                    <input type="radio" id="2" checked>
-                                    <label class="checkbox-inline" for="2">Thanh toán trực tiếp</label>
+                        </td>
+                        <td class="total-amount text-center" data-title="Total">
+                            <span>1,000,000đ</span>
+                        </td>
+                        <td class="action text-center" data-title="Remove">
+                            <a href="#"><i class="ti-trash remove-icon"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="image" data-title="No">
+                            <img src="https://via.placeholder.com/100x100" alt="#" />
+                        </td>
+                        <td class="product-des" data-title="Description">
+                            <p class="product-name">
+                                <a href="product-details.html">Axit Sunfuric loãng</a>
+                            </p>
+                            <p class="product-des">
+                                Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
+                                tính chất hóa học chung của axit.
+                            </p>
+                        </td>
+                        <td class="price text-center" data-title="Price">
+                            <span>1,000,000đ</span>
+                        </td>
+                        <td class="qty" data-title="Qty">
+                            <!-- Input Order -->
+                            <div class="input-group">
+                                <div class="button minus">
+                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                        <i class="ti-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100" value="1" />
+                                <div class="button plus">
+                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+                                        <i class="ti-plus"></i>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Button Widget -->
-                        <div class="single-widget get-button">
-                            <div class="content">
-                                <div class="button">
-                                    <a href="#" class="btn">Thanh toán</a>
+                        </td>
+                        <td class="total-amount text-center" data-title="Total">
+                            <span>1,000,000đ</span>
+                        </td>
+                        <td class="action text-center" data-title="Remove">
+                            <a href="#"><i class="ti-trash remove-icon"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="image" data-title="No">
+                            <img src="https://via.placeholder.com/100x100" alt="#" />
+                        </td>
+                        <td class="product-des" data-title="Description">
+                            <p class="product-name">
+                                <a href="product-details.html">Axit Sunfuric loãng</a>
+                            </p>
+                            <p class="product-des">
+                                Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
+                                tính chất hóa học chung của axit.
+                            </p>
+                        </td>
+                        <td class="price text-center" data-title="Price">
+                            <span>1,000,000đ</span>
+                        </td>
+                        <td class="qty" data-title="Qty">
+                            <!-- Input Order -->
+                            <div class="input-group">
+                                <div class="button minus">
+                                    <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+                                        <i class="ti-minus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100" value="1" />
+                                <div class="button plus">
+                                    <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+                                        <i class="ti-plus"></i>
+                                    </button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        </td>
+                        <td class="total-amount text-center" data-title="Total">
+                            <span>1,000,000đ</span>
+                        </td>
+                        <td class="action text-center" data-title="Remove">
+                            <a href="#"><i class="ti-trash remove-icon"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-    </section>
+    </div>
 
     <!-- ===== SHOP SERVICES ===== -->
     <section class="shop-services">
@@ -344,11 +388,11 @@
                     <div class="col-lg-5 col-md-6 col-12">
                         <div class="single-footer about pr-5">
                             <div class="logo mb-4">
-                                <a href="index.html"><img src="images/logo2.png" alt="#" /></a>
+                                <a href="index.html"><img src="images/labchemicals-logo-non-bg.png" alt="#" /></a>
                             </div>
                             <p class="text">
-                                Eshop là trang web mua sắm trực tuyến với sản phẩm chính là
-                                hóa chất dùng cho thí nghiệm . Chúng tôi cam kết đem đến những
+                                Lab Chemicals là trang web mua sắm trực tuyến với sản phẩm chính là
+                                hóa chất dùng cho thí nghiệm. Chúng tôi cam kết đem đến những
                                 sản phẩm chất lượng với mức giá TỐT NHẤT trên thị trường.
                             </p>
                             <p class="call">Có bất kỳ câu hỏi nào vui lòng liên hệ:<span class="d-block"><a href="tel:123456789">0983 803 100</a></span></p>
@@ -385,7 +429,7 @@
                                 <ul>
                                     <li class="mb-2">123, phương Linh Trung, Tp. Thủ Đức, Tp. Hồ Chí Minh</li>
                                     <li class="mb-2">35 Đinh Tiên Hoàng, phường 5, quận 5, Tp. Hồ Chí Minh</li>
-                                    <li class="mb-2">info@eshop.com</li>
+                                    <li class="mb-2">info@lachemicals.com</li>
                                     <li>0983 803 100</li>
                                 </ul>
                             </div>
@@ -408,7 +452,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="left">
-                                <p class="text-white">© 2022 - Bản quyền thuộc về Eshop - Đã đăng ký bản quyền.</p>
+                                <p class="text-white">© 2022 - Bản quyền thuộc về Lab Chemicals - Đã đăng ký bản quyền.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">

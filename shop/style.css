@@ -243,7 +243,7 @@ a:focus {
 /* [ Header Middle ]
 --------------------------------------- */
 .header .header-middle {
-  padding: 20px 0;
+  padding: 10px 0;
   background: white;
   border-top: 1px solid #eee;
 }
@@ -330,6 +330,11 @@ a:focus {
 
 /* [Searchbar ]
 --------------------------------------- */
+div:has(>.search-bar-top),
+div:has(>.right-bar) {
+    margin-top: 12px;
+}
+
 .header .search-bar-top {
   margin-top: 10px;
 }
@@ -662,7 +667,7 @@ a:focus {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 510px;
+  height: 515px;
 }
 
 .hero-slider .hero-text {
@@ -674,7 +679,8 @@ a:focus {
   line-height: 50px;
   font-size: 47px;
   font-weight: 700;
-  color: yellow;
+  color: white;
+  text-transform: uppercase;
   margin-bottom: 20px;
 }
 
@@ -1187,6 +1193,11 @@ a:focus {
 
 .footer {
   background: #222;
+}
+
+.footer .single-footer .logo img {
+    width: 60%;
+    height: auto;
 }
 
 .footer .single-footer h4 {
@@ -2606,20 +2617,21 @@ a:focus {
 
 .header-account .title-left {
   text-align: start;
-  margin-top: 22px;
+  margin-top: 15px;
 }
 
 .header-account .title-left img {
   margin-right: 20px;
   display: inline-block;
-  vertical-align: bottom;
+  width: 24%;
+  height: auto;
 }
 
 .header-account .title-left span {
   font-size: 24px;
   font-weight: 400;
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 .header-account .title-right {
