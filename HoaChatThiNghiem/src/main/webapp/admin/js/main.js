@@ -25,22 +25,22 @@
     $("[data-toggle='tooltip']").tooltip()
 
     // Time
-    window.onload = function time() {
-        Number.prototype.pad = function () {
-            let s = String(this)
-            while (s.length < 2) { s = '0' + s }
-            return s
-        }
-
-        var today = new Date()
-        var dayOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
-
-        var nowDate = `${dayOfWeek[today.getDay()]}, ${today.getDate().pad()}/${(today.getMonth() + 1).pad()}/${today.getFullYear()}`;
-        var nowTime = `${today.getHours()} giờ ${today.getMinutes().pad()} phút ${today.getSeconds().pad()} giây`;
-
-        $('#clock').html(`<span>${nowDate} - ${nowTime}</span>`)
-        setTimeout(function () { time() }, 1000);
-    }
+    // window.onload = function time() {
+    //     Number.prototype.pad = function () {
+    //         let s = String(this)
+    //         while (s.length < 2) { s = '0' + s }
+    //         return s
+    //     }
+    //
+    //     var today = new Date()
+    //     var dayOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
+    //
+    //     var nowDate = `${dayOfWeek[today.getDay()]}, ${today.getDate().pad()}/${(today.getMonth() + 1).pad()}/${today.getFullYear()}`;
+    //     var nowTime = `${today.getHours()} giờ ${today.getMinutes().pad()} phút ${today.getSeconds().pad()} giây`;
+    //
+    //     $('#clock').html(`<span>${nowDate} - ${nowTime}</span>`)
+    //     setTimeout(function () { time() }, 1000);
+    // }
 
     // Check all
     $('#all').click(function () {

@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,25 +15,25 @@
 </head>
 
 <body>
-<!-- ===== HEADER ===== -->
-<header class="header-account">
-    <div class="container">
-        <div class="row py-3">
-            <div class="col-lg-7 col-md-7 col-12">
-                <div class="title-left d-flex justify-content-start h-100 align-items-center">
-                    <a class="w-25 mr-4" href="index.jsp"><img src="images/labchemicals-logo.png" alt=""/></a>
-                    <span class="d-inline-block">Đăng Nhập</span>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-account">
+        <div class="container">
+            <div class="row py-3">
+                <div class="col-lg-7 col-md-7 col-12">
+                    <div class="title-left d-flex justify-content-start h-100 align-items-center">
+                        <a class="w-25 mr-4"  href="index.jsp"><img src="images/labchemicals-logo.png" alt="" /></a>
+                        <span class="d-inline-block">Đăng Nhập</span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-5 col-md-5 col-12">
-                <div class="title-right d-flex h-100 justify-content-end align-items-center">
-                    <a href="/admin/login.html" style="color:rgb(13, 58, 236);">Đăng nhập với tài khoản admin</a>
+                <div class="col-lg-5 col-md-5 col-12">
+                    <div class="title-right d-flex h-100 justify-content-end align-items-center">
+                        <a href="<c:url value='/admin/login.jsp'/>" style="color:rgb(13, 58, 236);">Đăng nhập với tài khoản admin</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
-
+    </header>
 <!-- ===== BREADCRUMBS ===== -->
 <div class="breadcrumbs py-4">
     <div class="container text-left">
