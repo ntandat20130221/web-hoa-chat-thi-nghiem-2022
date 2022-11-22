@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="model.Product" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -107,28 +109,34 @@
                     </div>
                 </div>
                 <div class="row">
+                    <% List<Product> products = (List<Product>) request.getAttribute("PRODUCTS");
+                        for (Product p : products) { %>
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="single-product">
                             <div class="product-img">
                                 <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg" alt="#"/>
+                                    <img class="default-img" src="<%=p.getImgPath()%>" alt="#"/>
                                 </a>
                             </div>
                             <div class="product-content">
-                                <a href="product-details.jsp">Acid Acetic 97 - 99%</a>
+                                <a href="product-details.jsp"><%=p.getName()%>
+                                </a>
                                 <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                    <% int stars = p.getStar();
+                                        for (int i = 0; i < 5; i++) { %>
+                                    <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i> <% } %>
                                 </div>
                                 <div class="product-price">
-                                    <span>2,900,000đ</span>
+                                    <% double oldPrice = p.getOldPrice();
+                                        if (oldPrice != 0) { %>
+                                    <span class="old"><%=oldPrice%></span> <% } %>
+                                    <span><%=p.getNewPrice()%></span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <% } %>
+
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="single-product">
                             <div class="product-img">

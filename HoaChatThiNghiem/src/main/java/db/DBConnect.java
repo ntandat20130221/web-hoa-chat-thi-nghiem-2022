@@ -1,9 +1,8 @@
-package dao;
+package db;
 
 import java.sql.*;
 
 public class DBConnect {
-
     static final String url = "jdbc:mysql://localhost:3306/hoa_chat_thi_nghiem";
     static final String user = "root";
     static final String pass = "";
@@ -25,7 +24,6 @@ public class DBConnect {
     }
 
     public void unInstall() {
-
         try {
             connect.close();
             install = null;
@@ -36,7 +34,6 @@ public class DBConnect {
 
     // thường dùng để thực thi các câu lệnh sql không có tham số
     public Statement getStatement() {
-
         if (connect == null) return null;
         try {
             return connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
