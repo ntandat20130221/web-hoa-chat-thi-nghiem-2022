@@ -7,8 +7,10 @@
 
 package model;
 
-public class Product {
-    private String idProduct;
+import java.io.Serializable;
+
+public class Product implements Serializable {
+    private int idProduct;
     private String imgPath;
     private String name;
     private int star;
@@ -18,7 +20,7 @@ public class Product {
 
     public Product() {}
 
-    public Product(String idProduct, String imgPath, String name, int star, String status, double oldPrice, double newPrice) {
+    public Product(int idProduct, String imgPath, String name, int star, String status, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
@@ -30,11 +32,11 @@ public class Product {
 
     // Getters and Setters
 
-    public String getIdProduct() {
+    public int getIdProduct() {
         return idProduct;
     }
 
-    public void setIdProduct(String idProduct) {
+    public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
     }
 

@@ -1,6 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.Product" %>
+<%@ page import="controller.ProductsServlet" %>
+<%@ page import="utils.PriceFormat" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,13 +112,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <% List<Product> products = (List<Product>) request.getAttribute("PRODUCTS");
+                    <% List<Product> products = (List<Product>) request.getAttribute(ProductsServlet.ATTR_PRODUCTS);
                         for (Product p : products) { %>
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="single-product">
                             <div class="product-img">
                                 <a href="product-details.jsp">
                                     <img class="default-img" src="<%=p.getImgPath()%>" alt="#"/>
+                                    <% if (p.getStatus() != null) { %>
+                                    <span class="new"><%=p.getStatus()%></span> <% } %>
                                 </a>
                             </div>
                             <div class="product-content">
@@ -128,197 +133,198 @@
                                 </div>
                                 <div class="product-price">
                                     <% double oldPrice = p.getOldPrice();
+                                        double newPrice = p.getNewPrice();
                                         if (oldPrice != 0) { %>
-                                    <span class="old"><%=oldPrice%></span> <% } %>
-                                    <span><%=p.getNewPrice()%></span>
+                                    <span class="old"><%=PriceFormat.format(oldPrice)%>đ</span> <% } %>
+                                    <span><%=PriceFormat.format(newPrice)%>đ</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <% } %>
 
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acid-huu-co-1.jpg" alt="#"/>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Bazo nguyên chất 100%</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span>3,600,000đ/ống</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="#"/>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Acid Sulfuic 100%</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span>3,300,000đ/lọ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt="#"/>
-                                    <span class="new">Mới</span>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Dung dịch đệm</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span>135,000đ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/chi_thi/550x750/chi-thi-1.jpg" alt="#"/>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Chất chỉ thị đo độ acid</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span>1,500,000đ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg"
-                                         alt="#"/>
-                                    <span class="price-dec">Giảm 30%</span>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Kính hiển vi điện tử</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span>2,000,000,000đ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/dung_moi/dung_moi_may_gc/550x750/dung-moi-gc-1.jpg" alt="#"/>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Dung môi dùng cho máy GC</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span>2,900,000đ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/chi_thi/550x750/chi-thi-2.jpg" alt="#"/>
-                                    <span class="hot">Nóng</span>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Chất chỉ thị màu</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span class="old">600,000đ</span>
-                                    <span>490,000đ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="product-details.jsp">
-                                    <img class="default-img" src="../images/hoa_chat/hoa_chat_moi_truong/550x750/hoa-chat-moi-truong-1.jpg" alt="#"/>
-                                    <span class="new">Mới</span>
-                                </a>
-                            </div>
-                            <div class="product-content">
-                                <a href="product-details.jsp">Hóa chất môi trường</a>
-                                <div class="rating">
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="yellow fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                                <div class="product-price">
-                                    <span>290,000đ</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acid-huu-co-1.jpg" alt="#"/>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Bazo nguyên chất 100%</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span>3,600,000đ/ống</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="#"/>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Acid Sulfuic 100%</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span>3,300,000đ/lọ</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt="#"/>--%>
+                        <%--                                    <span class="new">Mới</span>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Dung dịch đệm</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span>135,000đ</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/hoa_chat/chi_thi/550x750/chi-thi-1.jpg" alt="#"/>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Chất chỉ thị đo độ acid</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span>1,500,000đ</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg"--%>
+                        <%--                                         alt="#"/>--%>
+                        <%--                                    <span class="price-dec">Giảm 30%</span>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Kính hiển vi điện tử</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span>2,000,000,000đ</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/hoa_chat/dung_moi/dung_moi_may_gc/550x750/dung-moi-gc-1.jpg" alt="#"/>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Dung môi dùng cho máy GC</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span>2,900,000đ</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/hoa_chat/chi_thi/550x750/chi-thi-2.jpg" alt="#"/>--%>
+                        <%--                                    <span class="hot">Nóng</span>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Chất chỉ thị màu</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span class="old">600,000đ</span>--%>
+                        <%--                                    <span>490,000đ</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+                        <%--                    <div class="col-lg-4 col-md-6 col-12">--%>
+                        <%--                        <div class="single-product">--%>
+                        <%--                            <div class="product-img">--%>
+                        <%--                                <a href="product-details.jsp">--%>
+                        <%--                                    <img class="default-img" src="../images/hoa_chat/hoa_chat_moi_truong/550x750/hoa-chat-moi-truong-1.jpg" alt="#"/>--%>
+                        <%--                                    <span class="new">Mới</span>--%>
+                        <%--                                </a>--%>
+                        <%--                            </div>--%>
+                        <%--                            <div class="product-content">--%>
+                        <%--                                <a href="product-details.jsp">Hóa chất môi trường</a>--%>
+                        <%--                                <div class="rating">--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="yellow fa fa-star"></i>--%>
+                        <%--                                    <i class="fa fa-star"></i>--%>
+                        <%--                                </div>--%>
+                        <%--                                <div class="product-price">--%>
+                        <%--                                    <span>290,000đ</span>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
                 </div>
 
                 <!-- Pagination -->
