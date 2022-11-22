@@ -13,28 +13,6 @@
         });
     })
 
-    // Login
-    $(function () {
-        $('#btn-login').click(function () {
-            var username = $('#field-username').val()
-            var password = $('#field-password').val()
-
-            if (username == 'admin' && password == '12345') {
-                window.location = 'index.jsp'
-                return true
-            } else {
-                swal({
-                    title: 'Sai thông tin đăng nhập',
-                    text: 'Vui lòng đăng nhập lại',
-                    icon: 'error',
-                    close: true,
-                    button: 'Thử lại'
-                })
-                return false
-            }
-        })
-    })
-
     // Forgot password
     $(function () {
         $('#btn-forgot').click(function () {
