@@ -1,10 +1,6 @@
 package db;
 
-import model.Product;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DBConnect {
     static final String url = "jdbc:mysql://localhost:3306/hoa_chat_thi_nghiem";

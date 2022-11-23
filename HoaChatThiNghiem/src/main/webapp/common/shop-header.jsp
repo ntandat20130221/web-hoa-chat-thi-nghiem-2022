@@ -121,7 +121,7 @@
                 <div class="navbar-collapse">
                     <ul class="nav menu navbar-nav">
                         <li class="position-relative mr-2">
-                            <a href="products.jsp">Hóa chất<i class="ti-angle-down"></i></a>
+                            <a href="products">Hóa chất<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
                                 <li><a href="">ACID</a></li>
                                 <li><a href="">BAZO</a></li>
@@ -136,7 +136,7 @@
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="products.jsp">Dụng cụ<i class="ti-angle-down"></i></a>
+                            <a href="products">Dụng cụ<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
                                 <li><a href="">BÌNH THÍ NGHIỆM</a></li>
                                 <li><a href="">BỘ CHÀY CỐI</a></li>
@@ -151,7 +151,7 @@
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="products.jsp">Thiết bị<i class="ti-angle-down"></i></a>
+                            <a href="products">Thiết bị<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
                                 <li><a href="">CÂN PHÒNG THÍ NGHIỆM</a></li>
                                 <li><a href="">KÍNH HIỂN VI</a></li>
