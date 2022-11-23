@@ -1,6 +1,6 @@
 package service;
 
-import db.DBConnect;
+import db.DbConnection;
 import model.Admin;
 
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ public class AdminService {
 
     public static Admin checkLogin(String username, String passAD) {
         List<Admin> admins = new ArrayList<>();
-        DBConnect connectDB = DBConnect.getInstall();
+        DbConnection connectDB = DbConnection.getInstall();
         String sql = "select username,passwordAD,id_role_admin,id_status_acc,fullname from account_admin where username = ?";
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
         try {

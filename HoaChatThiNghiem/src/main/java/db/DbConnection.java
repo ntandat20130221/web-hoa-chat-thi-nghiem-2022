@@ -2,14 +2,14 @@ package db;
 
 import java.sql.*;
 
-public class DBConnect {
+public class DbConnection {
     static final String url = "jdbc:mysql://localhost:3306/hoa_chat_thi_nghiem";
     static final String user = "root";
     static final String pass = "";
-    static DBConnect install;
+    static DbConnection install;
     Connection connect;
 
-    private DBConnect() {
+    private DbConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection(url, user, pass);
@@ -18,8 +18,8 @@ public class DBConnect {
         }
     }
 
-    public static DBConnect getInstall() {
-        if (install == null) install = new DBConnect();
+    public static DbConnection getInstall() {
+        if (install == null) install = new DbConnection();
         return install;
     }
 
@@ -45,7 +45,6 @@ public class DBConnect {
 
     // thường dùng để thực thi các câu lệnh sql có tham số truyền vào
     public PreparedStatement getPreparedStatement(String sql) {
-
         if (connect == null) return null;
         try {
             return connect.prepareStatement(sql);

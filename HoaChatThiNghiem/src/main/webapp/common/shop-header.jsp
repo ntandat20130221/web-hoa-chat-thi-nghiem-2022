@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+
 <header class="header shop">
     <div class="topbar">
         <div class="container">
@@ -15,10 +19,10 @@
                     <div class="text-right">
                         <ul>
                             <li>
-                                <a href="login.jsp"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
+                                <a href="${context}/shop/login.jsp"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
                             </li>
                             <li>
-                                <a href="register.jsp"><i class="bi bi-person-plus"></i>Đăng ký</a>
+                                <a href="${context}/shop/register.jsp"><i class="bi bi-person-plus"></i>Đăng ký</a>
                             </li>
                         </ul>
                     </div>
@@ -34,7 +38,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.jsp"><img src="images/labchemicals-logo.png" alt="logo"/></a>
+                        <a href="${context}/shop/index.jsp"><img src="${context}/shop/images/labchemicals-logo.png" alt="logo"/></a>
                     </div>
                     <!-- Search Mobile -->
                     <div class="mobile-search">
@@ -66,15 +70,15 @@
                     <div class="right-bar">
                         <!-- Search Form -->
                         <div class="right-bar-item d-inline-block mr-4">
-                            <a href="profile.jsp" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                            <a href="${context}/shop/profile.jsp" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
                         </div>
                         <div class="right-bar-item shopping d-inline-block">
-                            <a href="cart.jsp" class="single-icon"><i class="fa fa-shopping-cart"></i><span class="total-count">2</span></a>
+                            <a href="${context}/shop/cart.jsp" class="single-icon"><i class="fa fa-shopping-cart"></i><span class="total-count">2</span></a>
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
                                     <span>2 Sản phẩm</span>
-                                    <a class="float-right" href="cart.jsp">Xem giỏ hàng</a>
+                                    <a class="float-right" href="${context}/shop/cart.jsp">Xem giỏ hàng</a>
                                 </div>
                                 <ul class="shopping-list">
                                     <!-- Cart Item -->
@@ -104,7 +108,7 @@
                                         <span>Tổng cộng</span>
                                         <span class="total-amount">2,000,000đ</span>
                                     </div>
-                                    <a href="checkout.jsp" class="btn">Thanh toán</a>
+                                    <a href="${context}/shop/checkout.jsp" class="btn">Thanh toán</a>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +125,7 @@
                 <div class="navbar-collapse">
                     <ul class="nav menu navbar-nav">
                         <li class="position-relative mr-2">
-                            <a href="products">Hóa chất<i class="ti-angle-down"></i></a>
+                            <a href="${context}/shop/products">Hóa chất<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
                                 <li><a href="">ACID</a></li>
                                 <li><a href="">BAZO</a></li>
@@ -136,7 +140,7 @@
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="products">Dụng cụ<i class="ti-angle-down"></i></a>
+                            <a href="${context}/shop/products">Dụng cụ<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
                                 <li><a href="">BÌNH THÍ NGHIỆM</a></li>
                                 <li><a href="">BỘ CHÀY CỐI</a></li>
@@ -151,7 +155,7 @@
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="products">Thiết bị<i class="ti-angle-down"></i></a>
+                            <a href="${context}/shop/products">Thiết bị<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
                                 <li><a href="">CÂN PHÒNG THÍ NGHIỆM</a></li>
                                 <li><a href="">KÍNH HIỂN VI</a></li>
@@ -169,10 +173,10 @@
                         </li>
 
                         <li class="position-relative mr-2">
-                            <a href="blog.jsp">Tin tức</a>
+                            <a href="${context}/shop/blog.jsp">Tin tức</a>
                         </li>
                         <li class="position-relative">
-                            <a href="contact.jsp">Liên hệ</a>
+                            <a href="${context}/shop/contact.jsp">Liên hệ</a>
                         </li>
                     </ul>
                 </div>

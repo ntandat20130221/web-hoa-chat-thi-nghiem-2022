@@ -1,11 +1,15 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.Product" %>
 <%@ page import="controller.ProductsServlet" %>
 <%@ page import="utils.PriceFormat" %>
 <%@ page import="static controller.ProductDetailServlet.PARAM_ID" %>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="static controller.ProductsServlet.PARAM_SORT" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isELIgnored="false" %>
+
+<%-- Global variables declaration --%>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+<c:set var="p_sort" value="sort" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,9 +26,6 @@
 </head>
 
 <body>
-<%-- Variable Declaration --%>
-<c:set var="context" value="${pageContext.request.contextPath}"/>
-
 <!-- ===== PRELOADER ===== -->
 <div class="preloader">
     <div class="preloader-inner">
@@ -108,10 +109,11 @@
                     <div class="shop-shorter float-left">
                         <div class="single-shorter d-inline-block">
                             <label for="sl">Sắp xếp theo: </label>
-                            <select id="sl">
-                                <option selected="selected">Tên</option>
-                                <option>Giá</option>
-                                <option>Kích thước</option>
+                            <c:set var="val" value="${param[p_sort]}" />
+                            <select id="sl" onchange="selectChange()">
+                                <option <c:if test="${val == 'name'}">selected</c:if> value="name">Tên</option>
+                                <option <c:if test="${val == 'price-up'}">selected</c:if> value="price-up">Giá: Thấp đến Cao</option>
+                                <option <c:if test="${val == 'price-down'}">selected</c:if> value="price-down">Giá: Cao đến Thấp</option>
                             </select>
                         </div>
                     </div>
@@ -175,6 +177,13 @@
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/shop-js.jsp"/>
 
+<script>
+    function selectChange() {
+        let select = document.getElementById('sl')
+        let selected = select.options[select.selectedIndex].value
+        window.location.href = '${context}/shop/products?<%=PARAM_SORT%>=' + selected
+    }
+</script>
 </body>
 
 </html>
