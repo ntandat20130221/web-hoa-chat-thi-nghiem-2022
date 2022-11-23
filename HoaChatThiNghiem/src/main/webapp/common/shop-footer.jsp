@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+
 <footer class="footer">
     <!-- Footer Top -->
     <div class="footer-top pt-5 pb-5">
@@ -7,7 +11,7 @@
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="single-footer about pr-5">
                         <div class="logo mb-4">
-                            <a href="index.jsp"><img src="images/labchemicals-logo-non-bg.png" alt="#"/></a>
+                            <a href="${context}/shop/index.jsp"><img src="${context}/shop/images/labchemicals-logo-non-bg.png" alt="#"/></a>
                         </div>
                         <p class="text">
                             Lab Chemicals là trang web mua sắm trực tuyến với sản phẩm chính là
@@ -96,7 +100,7 @@
                     </div>
                     <div class="col-lg-6 col-12">
                         <div class="float-right">
-                            <img src="images/payments.png" alt="#"/>
+                            <img src="${context}/shop/images/payments.png" alt="#"/>
                         </div>
                     </div>
                 </div>

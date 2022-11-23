@@ -55,7 +55,7 @@
                 <div class="h-100 d-flex align-items-center">
                     <form class="m-0 p-5 text-center" action="confirm-pass.jsp">
                         <h5 class="mb-4">Quên Mật Khẩu</h5>
-                        <input class="w-100 mb-4" type="username" placeholder="Email"/>
+                        <input class="w-100 mb-4" type="text" placeholder="Email"/>
                         <button type="submit" class="next w-100 mb-3">Xác nhận</button>
                         <span class="shotcut">
                                 <a class="mr-3" href="login.jsp">Đăng nhập?</a>

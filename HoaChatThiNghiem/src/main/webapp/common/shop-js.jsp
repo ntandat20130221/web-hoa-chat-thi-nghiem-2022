@@ -1,21 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.0.js"></script>
-<script src="js/jquery-ui.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/slicknav.min.js"></script>
-<script src="js/owl-carousel.js"></script>
-<script src="js/magnific-popup.js"></script>
-<script src="js/facnybox.min.js"></script>
-<script src="js/waypoints.min.js"></script>
-<script src="js/finalcountdown.min.js"></script>
-<script src="js/nicesellect.js"></script>
-<script src="js/ytplayer.min.js"></script>
-<script src="js/flex-slider.js"></script>
-<script src="js/scrollup.js"></script>
-<script src="js/onepage-nav.min.js"></script>
-<script src="js/easing.js"></script>
-<script src="js/gmap.min.js"></script>
-<script src="js/map-script.js"></script>
-<script src="js/active.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+
+<script src="${context}/shop/js/jquery.min.js"></script>
+<script src="${context}/shop/js/jquery-migrate-3.0.0.js"></script>
+<script src="${context}/shop/js/jquery-ui.min.js"></script>
+<script src="${context}/shop/js/popper.min.js"></script>
+<script src="${context}/shop/js/bootstrap.min.js"></script>
+<script src="${context}/shop/js/slicknav.min.js"></script>
+<script src="${context}/shop/js/owl-carousel.js"></script>
+<script src="${context}/shop/js/magnific-popup.js"></script>
+<script src="${context}/shop/js/facnybox.min.js"></script>
+<script src="${context}/shop/js/waypoints.min.js"></script>
+<script src="${context}/shop/js/finalcountdown.min.js"></script>
+<script src="${context}/shop/js/nicesellect.js"></script>
+<script src="${context}/shop/js/ytplayer.min.js"></script>
+<script src="${context}/shop/js/flex-slider.js"></script>
+<script src="${context}/shop/js/scrollup.js"></script>
+<script src="${context}/shop/js/onepage-nav.min.js"></script>
+<script src="${context}/shop/js/easing.js"></script>
+<script src="${context}/shop/js/gmap.min.js"></script>
+<script src="${context}/shop/js/map-script.js"></script>
+<script src="${context}/shop/js/active.js"></script>

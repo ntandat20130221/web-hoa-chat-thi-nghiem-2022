@@ -1,4 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="model.Product" %>
+<%@ page import="controller.ProductDetailServlet" %>
+<%@ page import="utils.PriceFormat" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%-- Global variables declaration --%>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +47,7 @@
 
 <!-- ===== PRODUCT DETAIL ===== -->
 <section class="product-detail">
+    <% Product p = (Product) request.getAttribute(ProductDetailServlet.ATTR_DETAILS); %>
     <div class="row no-gutters">
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="product-slider-active">
@@ -53,22 +61,21 @@
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="product-content p-5">
-                <h2>Axit sunfuric loãng</h2>
+                <h2><%=p.getName()%>
+                </h2>
                 <div class="product-rating d-flex">
                     <div class="rating">
-                        <i class="yellow fa fa-star"></i>
-                        <i class="yellow fa fa-star"></i>
-                        <i class="yellow fa fa-star"></i>
-                        <i class="yellow fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                        <% int stars = p.getStar();
+                            for (int i = 0; i < 5; i++) { %>
+                        <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i> <% } %>
                     </div>
                     <a href="#"> (33 Đánh giá)</a>
                 </div>
-                <h3><span>1,490,000đ</span> 1,000,000đ</h3>
+                <h3><% if (p.getOldPrice() != 0) { %><span><%=PriceFormat.format(p.getOldPrice())%></span> <% } %><%=PriceFormat.format(p.getNewPrice())%>
+                </h3>
                 <div class="product-peragraph">
                     <p>
-                        Axit sunfuric - H2SO4 là một axit vô cơ mạnh, hóa chất này có đầy đủ các
-                        tính chất hóa học chung của một axit.
+                        <%=p.getDesc()%>
                     </p>
                 </div>
                 <div class="quantity d-inline-block mr-3">
@@ -90,7 +97,7 @@
                     <a href="#" class="btn">Thêm vào giỏ hàng</a>
                 </div>
                 <div class="product-stock">
-                    <span>22 sản phẩm có sẵn</span>
+                    <span><%=p.getQuantity()%> sản phẩm có sẵn</span>
                 </div>
                 <div class="default-social mt-3">
                     <h4 class="share-now">Chia sẻ:</h4>
