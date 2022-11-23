@@ -11,7 +11,6 @@ import java.util.List;
 
 public class AdminService {
 
-
     public static Admin checkLogin(String username, String passAD) {
         List<Admin> admins = new ArrayList<>();
         DBConnect connectDB = DBConnect.getInstall();

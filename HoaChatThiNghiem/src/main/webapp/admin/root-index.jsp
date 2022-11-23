@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +25,9 @@
 
 <jsp:include page="../common/admin-header.jsp"/>
 <jsp:include page="../common/admin-root-sidebar-menu.jsp"/>
+
+
+
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">

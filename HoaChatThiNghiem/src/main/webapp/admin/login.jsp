@@ -17,6 +17,8 @@
 </head>
 
 <body>
+<% String error = (String) request.getAttribute("error"); %>
+
 <section class="container-login d-flex justify-content-center align-items-center p-3">
     <div class="wrap-login">
         <div class="login-pic">
@@ -24,7 +26,16 @@
         </div>
         <div class="login-form">
             <span class="login-form-title text-center d-block mb-4">ĐĂNG NHẬP HỆ THỐNG</span>
-            <form action="/doLoginAdmin" method="post">
+            <form action="/HoaChatThiNghiem_war/admin/doLoginAdmin" method="post">
+                <%
+                    if (error != null) {
+                %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+                <%
+                    }
+                %>
                 <div class="wrap-input">
                     <input class="input"
                            type="text"
