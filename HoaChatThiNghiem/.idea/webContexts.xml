@@ -4,8 +4,12 @@
     <option name="state">
       <map>
 <<<<<<< HEAD
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/form-add-product.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin" />
+=======
+<<<<<<< HEAD
         <entry key="file://$PROJECT_DIR$/src/main/webapp/common/shop-header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/common" />
 =======
+>>>>>>> 886d6cc9ba32f57ca954afedd96d1db435e96f8b
         <entry key="file://$PROJECT_DIR$/src/main/webapp/admin/settings.jsp" value="file://$PROJECT_DIR$/src/main/webapp/admin" />
 >>>>>>> 9fb4498693701b5ea79ed7dbe36797a2080eaf8b
         <entry key="file://$PROJECT_DIR$/src/main/webapp/shop/css" value="file://$PROJECT_DIR$/src/main/webapp" />

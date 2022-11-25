@@ -19,6 +19,10 @@
         <span class="app-menu-label">Quản lý admin</span></a>
     </li>
     <li>
+      <a class="app-menu-item" href="root-manager-customer.jsp"><i class='bx bx-id-card'></i>
+        <span class="app-menu-label">Quản lý khách hàng</span></a>
+    </li>
+    <li>
       <a class="app-menu-item" href="root-settings.jsp"><i class='bx bx-cog'></i>
         <span class="app-menu-label">Đổi mật khẩu</span></a>
     </li>
