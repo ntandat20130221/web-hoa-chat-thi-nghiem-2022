@@ -111,7 +111,7 @@ a:focus {
     width: 100px;
     height: 100px;
     display: inline-block;
-    padding: 0px;
+    padding: 0;
 }
 
 .preloader-icon span {
@@ -176,7 +176,7 @@ a:focus {
     transition: all 500ms ease;
     display: block;
     color: white;
-    box-shadow: 0px 4px 19px #00000038;
+    box-shadow: 0 4px 19px #00000038;
 }
 
 #scrollUp i:hover {
@@ -191,7 +191,7 @@ a:focus {
 --------------------------------------- */
 .header .topbar {
     background-color: var(--color-top-bar);
-    padding: 8px 0px;
+    padding: 8px 0;
 }
 
 .header .topbar li {
@@ -262,7 +262,7 @@ a:focus {
     transition: all 0.5s ease;
     background: white;
     transform: scaleY(0);
-    box-shadow: 0px 4px 7px #0000003b;
+    box-shadow: 0 4px 7px #0000003b;
     border-radius: 5px;
 }
 
@@ -406,9 +406,9 @@ a:focus {
     -webkit-transform: translateY(10px);
     -moz-transform: translateY(10px);
     transform: translateY(10px);
-    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     opacity: 0;
     visibility: hidden;
     z-index: 99;
@@ -573,9 +573,9 @@ a:focus {
     top: 110%;
     left: 0;
     z-index: 999;
-    -webkit-box-shadow: 0px 3px 5px #3333334d;
-    -moz-box-shadow: 0px 3px 5px #3333334d;
-    box-shadow: 0px 3px 5px #3333334d;
+    -webkit-box-shadow: 0 3px 5px #3333334d;
+    -moz-box-shadow: 0 3px 5px #3333334d;
+    box-shadow: 0 3px 5px #3333334d;
     transform-origin: 0 0 0;
     transform: scaleY(0.2);
     -webkit-transition: all 0.3s ease 0s;
@@ -627,9 +627,9 @@ a:focus {
     left: 0;
     background: white;
     animation: fadeInDown 1s both 0.2s;
-    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     z-index: 999;
 }
 
@@ -729,8 +729,8 @@ a:focus {
 --------------------------------------- */
 .single-product {
     margin-top: 50px;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
-        rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
+        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -809,11 +809,10 @@ a:focus {
 /* [ Slider Nav ]
 --------------------------------------- */
 .newest-products .owl-nav {
-    margin: 0;
     position: absolute;
     top: 50%;
     width: 100%;
-    margin-top: -25px;
+    margin: -25px 0 0;
 }
 
 .newest-products .owl-carousel .owl-nav div {
@@ -830,7 +829,7 @@ a:focus {
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    box-shadow: 0px 0px 10px #3333331c;
+    box-shadow: 0 0 10px #3333331c;
 }
 
 .newest-products .owl-carousel .owl-nav div:hover {
@@ -869,7 +868,6 @@ a:focus {
     margin-right: 5px;
     font-weight: 500;
     background: white;
-    color: #333;
     padding: 3px 14px;
     border-radius: 3px;
     font-size: 13px;
@@ -1085,7 +1083,7 @@ a:focus {
 }
 
 .shop-blog .shop-single-blog:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 
 .shop-blog .shop-single-blog img {
@@ -1129,9 +1127,9 @@ a:focus {
 .shop-services {
     background: #f2f4fa;
     padding: 60px 0 40px 0;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-        rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-        rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px, rgba(0, 0, 0, 0.07) 0 2px 4px,
+        rgba(0, 0, 0, 0.07) 0 4px 8px, rgba(0, 0, 0, 0.07) 0 8px 16px,
+        rgba(0, 0, 0, 0.07) 0 16px 32px, rgba(0, 0, 0, 0.07) 0 32px 64px;
 }
 
 .shop-services .single-service {
@@ -1245,7 +1243,7 @@ a:focus {
     background: #f6f7fb;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
 }
 
 .products .shop-sidebar .single-widget .title {
@@ -1275,51 +1273,39 @@ a:focus {
 
 /* [ Price Filter ]
 --------------------------------------- */
-.products .shop-sidebar .range #slider-range {
-    box-shadow: none;
-    border: none;
-    height: 4px;
-    background: var(--main-color);
-    color: var(--main-color);
-    border-radius: 0;
-}
-
-.products .shop-sidebar .range #slider-range .ui-slider-range {
-    box-shadow: none;
-    background: #333;
-    border-radius: 0;
-    border: none;
-}
-
-.products .shop-sidebar .range .ui-slider-handle.ui-state-default.ui-corner-all {
-    width: 14px;
-    height: 14px;
-    line-height: 10px;
-    background: var(--main-color);
-    border: none;
-    outline: unset;
-    border-radius: 100%;
-    top: -5px;
-}
-
-.products .range .ui-slider-handle.ui-state-default.ui-corner-all {
-    background: var(--main-color);
-    color: var(--main-color);
-    cursor: pointer;
-}
-
 .products .shop-sidebar .range .label-input span {
     margin-right: 5px;
     color: #282828;
 }
 
 .products .shop-sidebar .range .label-input input {
+    border: 1px solid #b9b9b9;
+    border-radius: 2px;
+    padding: 5px 5px 4px 5px;
+    color: #696969;
+}
+
+.products .shop-sidebar .range .label-input input,
+.products .shop-sidebar .range .label-input input::placeholder {
+    color: #858585;
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.products .shop-sidebar .range .label-input .divider-dash > div {
+    width: 12px;
+    height: 1px;
+    background-color: #b9b9b9;
+}
+
+.products .shop-sidebar .label-input .btn-apply {
     border: none;
     outline: unset;
-    font-weight: 600;
-    font-size: 14px;
-    color: #222;
-    background: transparent;
+    background: var(--main-color);
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .products .shop-sidebar .range .check-box-list li label {
@@ -1348,7 +1334,7 @@ a:focus {
     background: #f6f7fb;
     padding: 18px 20px 45px 20px;
     border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
 }
 
 .products .single-shorter label {
@@ -1377,7 +1363,7 @@ a:focus {
 
 .products .nice-select .list li {
     color: #666;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .products .nice-select .list li:hover {
@@ -1402,7 +1388,7 @@ a:focus {
 }
 
 .pagination a.control:hover {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
 }
 
 .pagination a.active {
@@ -1506,7 +1492,7 @@ a:focus {
     width: 44px;
     height: 47px;
     line-height: 50px;
-    border-radius: 0px;
+    border-radius: 0;
     background: transparent;
     color: #282828;
     border: none;
@@ -1525,7 +1511,7 @@ a:focus {
     height: 47px;
     border-radius: 0;
     overflow: hidden;
-    padding: 0px 45px;
+    padding: 0 45px;
 }
 
 .shopping-summery tbody .action a:hover {
@@ -1560,7 +1546,7 @@ a:focus {
 }
 
 .shopping-cart .total-amount .btn:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
 .shopping-cart .total-amount .cont {
@@ -1791,7 +1777,6 @@ a:focus {
 
 .shop-list .list-content .btn {
     margin-top: 22px;
-    height: 42px;
     line-height: 15px;
     color: #333;
     background: transparent;
@@ -1799,7 +1784,6 @@ a:focus {
     font-size: 13px;
     border-radius: 30px;
     height: auto;
-    line-height: a;
     padding: 13px 32px;
 }
 
@@ -1896,7 +1880,7 @@ a:focus {
 }
 
 .main-sidebar .category-list li:last-child {
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .main-sidebar .category-list li a {
@@ -1912,7 +1896,7 @@ a:focus {
 
 .main-sidebar .category-list li a i {
     display: inline-block;
-    margin-right: 0px;
+    margin-right: 0;
     font-size: 9px;
     transform: translateY(-1px);
     opacity: 0;
@@ -2038,7 +2022,7 @@ a:focus {
 .blog-single .blog-meta .author a {
     font-size: 13px;
     border-right: 1px solid #ddd;
-    padding: 0px 15px;
+    padding: 0 15px;
 }
 
 .blog-single .blog-meta span {
@@ -2065,8 +2049,6 @@ a:focus {
     position: relative;
     font-size: 13px;
     font-weight: 400;
-    padding-left: 20px;
-    padding: 10px 20px;
     background: #f6f6f6;
     padding: 30px 40px 30px 70px;
     color: #555;
@@ -2160,22 +2142,19 @@ a:focus {
 }
 
 .blog-single .single-comment .content h4 span {
-    display: inline-block;
     font-size: 13px;
     color: #8d8d8d;
-    margin: 0;
     font-weight: 400;
     text-transform: capitalize;
     display: block;
-    margin-top: 5px;
+    margin: 5px 0 0;
 }
 
 .blog-single .single-comment .content p {
     color: #666;
     font-weight: 400;
     display: block;
-    margin: 0;
-    margin-bottom: 20px;
+    margin: 0 0 20px;
     line-height: 22px;
 }
 
@@ -2268,8 +2247,7 @@ a:focus {
 }
 
 .contact-us .form-main {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
     padding: 50px;
     border-radius: 6px;
 }
@@ -2305,7 +2283,7 @@ a:focus {
     line-height: 48px;
     width: 100%;
     border: 1px solid #e6e2f5;
-    padding: 0px 20px;
+    padding: 0 20px;
     color: #333;
     border-radius: 3px;
     font-weight: 400;
@@ -2315,8 +2293,7 @@ a:focus {
 .contact-us .form .form-group input:focus,
 .contact-us .form .form-group textarea:focus {
     border: 1px solid rgb(81, 155, 245);
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-        rgba(0, 128, 255, 0.1) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(0, 128, 255, 0.1) 0 0 0 1px;
 }
 
 .contact-us .form .form-group label {
@@ -2349,14 +2326,12 @@ a:focus {
 
 .contact-us .form .button .btn:hover {
     background-color: #333;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-        rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0 13px 27px -5px, rgba(0, 0, 0, 0.3) 0 8px 16px -8px;
 }
 
 .contact-us .single-head {
     padding: 50px;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-        rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
     height: 100%;
     border-radius: 6px;
 }
@@ -2371,7 +2346,6 @@ a:focus {
 .contact-us .single-info i {
     color: white;
     font-size: 18px;
-    display: inline-block;
     margin-bottom: 15px;
     height: 40px;
     width: 40px;
@@ -2465,7 +2439,7 @@ a:focus {
     width: 35px;
     height: 45px;
     line-height: 4px;
-    border-radius: 0px;
+    border-radius: 0;
     background: transparent;
     color: #282828;
     font-size: 12px;
@@ -2484,7 +2458,7 @@ a:focus {
     height: 45px;
     border-radius: 3px;
     overflow: hidden;
-    padding: 0px 38px;
+    padding: 0 38px;
 }
 
 .product-content .add-to-cart .btn {
@@ -2592,7 +2566,7 @@ a:focus {
 .form-input form {
     height: fit-content;
     border-radius: .4rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
 
 .form-input form h5 {
@@ -2608,7 +2582,7 @@ a:focus {
 }
 
 .form-input form input:focus {
-    box-shadow: rgba(0, 0, 0, 0.01) 0px 1px 3px 0px, rgba(27, 31, 35, 0.1) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.01) 0 1px 3px 0, rgba(27, 31, 35, 0.1) 0 0 0 1px;
 }
 
 .form-input form .next {
@@ -2623,7 +2597,7 @@ a:focus {
 }
 
 .form-input form .next:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
     background-color: rgba(13, 58, 236, 0.9);
 }
 

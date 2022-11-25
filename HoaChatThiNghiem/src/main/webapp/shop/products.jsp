@@ -1,15 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.Product" %>
-<%@ page import="controller.shop.ProductsServlet" %>
 <%@ page import="utils.PriceFormat" %>
-<%@ page import="static controller.ProductDetailServlet.PARAM_ID" %>
-<%@ page import="static controller.ProductsServlet.PARAM_SORT" %>
+<%@ page import="static controller.shop.ProductDetailServlet.PARAM_ID" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%-- Global variables declaration --%>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
-<c:set var="p_sort" value="sort" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,16 +69,13 @@
                     <!-- Price Filter -->
                     <div class="single-widget range mt-4">
                         <h3 class="title">Lọc theo giá</h3>
-                        <div class="price-filter d-block">
-                            <div class="price-filter-inner">
-                                <div id="slider-range"></div>
-                                <div class="price_slider_amount">
-                                    <div class="label-input mt-3">
-                                        <span>Khoảng:</span>
-                                        <input type="text" id="amount" name="price" placeholder="Nhập giá"/>
-                                    </div>
-                                </div>
+                        <div class="label-input mt-3">
+                            <div class="d-flex justify-content-around">
+                                <input class="from w-100 bg-white" type="text" placeholder="TỪ" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                <div class="divider-dash mx-2 d-flex align-items-center"><div></div></div>
+                                <input class="to w-100 bg-white" type="text" placeholder="ĐẾN" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                             </div>
+                            <button class="btn-apply py-2 text-white w-100" onclick="filterPrice()">Áp dụng</button>
                         </div>
                         <ul class="check-box-list mt-3">
                             <li class="mb-1">
@@ -109,7 +103,7 @@
                     <div class="shop-shorter float-left">
                         <div class="single-shorter d-inline-block">
                             <label for="sl">Sắp xếp theo: </label>
-                            <c:set var="val" value="${param[p_sort]}" />
+                            <c:set var="val" value="${param['sort']}" />
                             <select id="sl" onchange="selectChange()">
                                 <option <c:if test="${val == 'name'}">selected</c:if> value="name">Tên</option>
                                 <option <c:if test="${val == 'price-up'}">selected</c:if> value="price-up">Giá: Thấp đến Cao</option>
@@ -120,12 +114,12 @@
                 </div>
                 <div class="row">
                     <% @SuppressWarnings("unchecked")
-                    List<Product> products = (List<Product>) request.getAttribute(ProductsServlet.ATTR_PRODUCTS);
+                    List<Product> products = (List<Product>) request.getAttribute("products");
                         for (Product p : products) { %>
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="single-product">
                             <div class="product-img">
-                                <a href="${context}/shop/product-details?<%=PARAM_ID + "=" + p.getIdProduct()%>">
+                                <a href="${context}/shop/product-details?<%=PARAM_ID + "product_id=" + p.getIdProduct()%>">
                                     <img class="default-img" src="<%=p.getImgPath()%>" alt="#"/>
                                     <% if (p.getStatus() != null) { %>
                                     <span class="new"><%=p.getStatus()%></span> <% } %>
@@ -181,7 +175,11 @@
     function selectChange() {
         let select = document.getElementById('sl')
         let selected = select.options[select.selectedIndex].value
-        window.location.href = '${context}/shop/products?<%=PARAM_SORT%>=' + selected
+        window.location.href = '${context}/shop/products?sort=' + selected
+    }
+
+    function filterPrice() {
+        window.location.href = '${context}/shop/products?minPrice=' + $('.from').val() + '&maxPrice=' + $('.to').val()
     }
 </script>
 </body>
