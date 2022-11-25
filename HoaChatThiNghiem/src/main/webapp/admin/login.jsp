@@ -26,7 +26,7 @@
         </div>
         <div class="login-form">
             <span class="login-form-title text-center d-block mb-4">ĐĂNG NHẬP HỆ THỐNG</span>
-            <form action="/HoaChatThiNghiem_war/admin/doLoginAdmin" method="post">
+            <form name="form-login" onsubmit="return validateFormLogin()" action="/HoaChatThiNghiem_war/admin/DoLoginAdmin" method="post">
                 <%
                     if (error != null) {
                 %>
@@ -71,6 +71,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
 
 
 </body>

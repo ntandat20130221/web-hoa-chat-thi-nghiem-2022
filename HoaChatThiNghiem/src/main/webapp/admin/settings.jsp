@@ -1,3 +1,4 @@
+<%@ page import="model.Admin" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +24,8 @@
 <jsp:include page="../common/admin-header.jsp"/>
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
 <% String error = (String) request.getAttribute("error");
-   String noti = (String) request.getAttribute("notification"); %>
+    String noti = (String) request.getAttribute("notification");
+    Admin admin = (Admin) session.getAttribute("auth");%>
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
@@ -45,19 +47,20 @@
         </div>
         <div class="col-lg-8">
             <div class="right pb-4">
-                <form action="/HoaChatThiNghiem_war/admin/doChangePass" method="post">
+                <form action="/HoaChatThiNghiem_war/admin/DoChangePass" method="post" name="form-change-pass"
+                      onsubmit="return validateFormChangePass()">
                     <label class="d-block" for="name">Tên <span>*</span></label>
-                    <input type="text" id="name">
-                    <h4 class="position-relative mt-3 mb-4">Đổi mật khẩu</h6>
-                        <label class="d-block mt-3" for="old">Mật khẩu cũ <span>*</span></label>
-                        <input type="text" id="old" name="old-pass">
-                        <label class="d-block mt-3" for="new">Mật khẩu mới</label>
-                        <input type="text" id="new" name="new-pass">
-                        <label class="d-block mt-3" for="confirm">Xác nhận mật khẩu mới</label>
-                        <input type="text" id="confirm">
-                        <button type="submit">Lưu thay đổi</button>
-                        <div class="error" style="color: #ff4c3b"><%= error != null ? error : ""%>
-                        </div>
+                    <input type="text" id="name" value="<%=admin.getFullname()%>">
+                    <h4 class=" position-relative mt-3 mb-4">Đổi mật khẩu</h6>
+                    <label class="d-block mt-3" for="old">Mật khẩu cũ <span>*</span></label>
+                    <input type="text" id="old" name="old-pass">
+                    <label class="d-block mt-3" for="new">Mật khẩu mới</label>
+                    <input type="text" id="new" name="new-pass">
+                    <label class="d-block mt-3" for="confirm">Xác nhận mật khẩu mới</label>
+                    <input type="text" id="confirm" name="retype-new-pass">
+                    <button type="submit">Lưu thay đổi</button>
+                    <div class="error" style="color: #ff4c3b"><%= error != null ? error : ""%>
+                    </div>
                     </h4>
                 </form>
             </div>
@@ -80,7 +83,7 @@
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="vendor/bootstrap/js/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
+<script type="text/javascript" charset="UTF-8" src="js/main.js"></script>
 </body>
 
 </html>

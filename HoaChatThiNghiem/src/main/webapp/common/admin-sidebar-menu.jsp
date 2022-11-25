@@ -14,10 +14,6 @@
                 <span class="app-menu-label">Trang chủ</span></a>
         </li>
         <li>
-            <a class="app-menu-item" href="customer-manager.jsp"><i class='bx bx-id-card'></i>
-                <span class="app-menu-label">Quản lý khách hàng</span></a>
-        </li>
-        <li>
             <a class="app-menu-item" href="product-manager.jsp"><i class='bx bx-purchase-tag-alt'></i>
                 <span class="app-menu-label">Quản lý sản phẩm</span></a>
         </li>
@@ -31,7 +27,7 @@
         </li>
         <li>
             <a class="app-menu-item" href="settings.jsp"><i class='bx bx-cog'></i>
-                <span class="app-menu-label">Cài đặt hệ thống</span></a>
+                <span class="app-menu-label">Đổi mật khẩu</span></a>
         </li>
     </ul>
 </aside>

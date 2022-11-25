@@ -24,24 +24,6 @@
     // Activate bootstrip tooltips
     $("[data-toggle='tooltip']").tooltip()
 
-    // Time
-    // window.onload = function time() {
-    //     Number.prototype.pad = function () {
-    //         let s = String(this)
-    //         while (s.length < 2) { s = '0' + s }
-    //         return s
-    //     }
-    //
-    //     var today = new Date()
-    //     var dayOfWeek = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy']
-    //
-    //     var nowDate = `${dayOfWeek[today.getDay()]}, ${today.getDate().pad()}/${(today.getMonth() + 1).pad()}/${today.getFullYear()}`;
-    //     var nowTime = `${today.getHours()} giờ ${today.getMinutes().pad()} phút ${today.getSeconds().pad()} giây`;
-    //
-    //     $('#clock').html(`<span>${nowDate} - ${nowTime}</span>`)
-    //     setTimeout(function () { time() }, 1000);
-    // }
-
     // Check all
     $('#all').click(function () {
         $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
@@ -83,3 +65,24 @@
     });
 
 })();
+
+function validateFormChangePass() {
+    var x = document.forms["form-change-pass"]["old-pass"].value;
+    var y = document.forms["form-change-pass"]["new-pass"].value;
+    var z = document.forms["form-change-pass"]["retype-new-pass"].value;
+    if (x == "" || y == "" || z == "") {
+        alert("Hay nhap day du thong tin ^.^");
+        return false;
+    }
+}
+
+function validateFormLogin() {
+
+    var x = document.forms["form-login"]["username"].value;
+    var y = document.forms["form-login"]["password"].value;
+    if (x == "" || y == "") {
+        alert("Hay nhap day du thong tin ^.^");
+        return false;
+    }
+
+}

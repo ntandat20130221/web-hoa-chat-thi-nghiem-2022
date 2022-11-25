@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ChangePassAdmin", value = "/admin/doChangePass")
+@WebServlet(name = "ChangePassAdmin", value = "/admin/DoChangePass")
 public class DoChangePassServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,6 +29,7 @@ public class DoChangePassServlet extends HttpServlet {
             if (checkUpdate == true) {
 
                 response.sendRedirect("login.jsp");
+
 
             } else {
 
