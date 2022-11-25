@@ -72,16 +72,13 @@
                     <!-- Price Filter -->
                     <div class="single-widget range mt-4">
                         <h3 class="title">Lọc theo giá</h3>
-                        <div class="price-filter d-block">
-                            <div class="price-filter-inner">
-                                <div id="slider-range"></div>
-                                <div class="price_slider_amount">
-                                    <div class="label-input mt-3">
-                                        <span>Khoảng:</span>
-                                        <input type="text" id="amount" name="price" placeholder="Nhập giá"/>
-                                    </div>
-                                </div>
+                        <div class="label-input mt-3">
+                            <div class="d-flex justify-content-around">
+                                <input class="from w-100 bg-white" type="text" placeholder="TỪ">
+                                <div class="divider-dash mx-2 d-flex align-items-center"><div></div></div>
+                                <input class="to w-100 bg-white" type="text" placeholder="ĐẾN">
                             </div>
+                            <button>Áp dụng</button>
                         </div>
                         <ul class="check-box-list mt-3">
                             <li class="mb-1">
