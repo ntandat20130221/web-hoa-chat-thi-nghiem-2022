@@ -11,6 +11,28 @@ import java.util.List;
 
 public class AdminService {
 
+
+    public static boolean updatePassword(String username, String new_pass) {
+
+        DBConnect connectDB = DBConnect.getInstall();
+        String sql = "update account_admin set passwordAD = ?, time_change_pass = current_timestamp() where username = ?";
+        PreparedStatement preState = connectDB.getPreparedStatement(sql);
+        try {
+            preState.setString(1, new_pass);
+            preState.setString(2, username);
+            int update = preState.executeUpdate();
+            if (update > 0) {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            connectDB.unInstall();
+        }
+
+        return false;
+    }
+
     public static Admin checkLogin(String username, String passAD) {
         List<Admin> admins = new ArrayList<>();
         DbConnection connectDB = DbConnection.getInstall();
@@ -45,6 +67,7 @@ public class AdminService {
 //    public static void main(String[] args) {
 //
 //        System.out.println(AdminService.checkLogin("tuyen","20130459"));
+//        System.out.println(AdminService.updatePassword("tuyen","20130459"));
 //    }
 
 }

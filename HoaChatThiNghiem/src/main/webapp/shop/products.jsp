@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.Product" %>
-<%@ page import="controller.ProductsServlet" %>
+<%@ page import="controller.shop.ProductsServlet" %>
 <%@ page import="utils.PriceFormat" %>
 <%@ page import="static controller.ProductDetailServlet.PARAM_ID" %>
 <%@ page import="static controller.ProductsServlet.PARAM_SORT" %>
