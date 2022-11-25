@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="model.Product" %>
-<%@ page import="controller.ProductDetailServlet" %>
+<%@ page import="controller.shop.ProductDetailServlet" %>
 <%@ page import="utils.PriceFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

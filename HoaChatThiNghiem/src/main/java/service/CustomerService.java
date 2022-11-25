@@ -1,6 +1,6 @@
 package service;
 
-import db.DBConnect;
+import db.DbConnection;
 import model.Customer;
 
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.util.List;
 public class CustomerService {
     public static Customer checkLogin(String email, String password){
         List<Customer> customers = new ArrayList<>();
-        DBConnect connectDB = DBConnect.getInstall();
+        DbConnection connectDB = DbConnection.getInstall();
         String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname " +
                 "from account_customer where username = ?";
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
