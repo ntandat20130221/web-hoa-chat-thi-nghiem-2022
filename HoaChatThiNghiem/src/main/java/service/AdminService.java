@@ -14,7 +14,7 @@ public class AdminService {
 
     public static boolean updatePassword(String username, String new_pass) {
 
-        DBConnect connectDB = DBConnect.getInstall();
+        DbConnection connectDB = DbConnection.getInstall();
         String sql = "update account_admin set passwordAD = ?, time_change_pass = current_timestamp() where username = ?";
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
         try {
