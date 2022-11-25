@@ -38,16 +38,18 @@
         /* [ Slider Range ]
         -------------------------------------------- */
         $(function () {
-            $("#slider-range").slider({
+            let slider = $('#slider-range')
+            slider.slider({
                 range: true,
                 min: 0,
                 max: 5000000,
-                values: [500000, 1000000],
+                values: [0, 1000000],
                 slide: function (_event, ui) {
-                    $("#amount").val(ui.values[0] + "đ" + " - " + ui.values[1] + "đ");
+                    $('.from').val(ui.values[0])
+                    $('.to').val(ui.values[1])
                 }
             });
-            $("#amount").val($("#slider-range").slider("values", 0) + "đ" + " - " + $("#slider-range").slider("values", 1) + "đ");
+            $('#amount').val(slider.slider("values", 0) + "đ" + " - " + slider.slider("values", 1) + "đ");
         });
 
         /* [ Home Slider ]

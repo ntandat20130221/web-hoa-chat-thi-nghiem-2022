@@ -1,7 +1,11 @@
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="model.Product" %>
 <%@ page import="controller.ProductDetailServlet" %>
 <%@ page import="utils.PriceFormat" %>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%-- Global variables declaration --%>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
