@@ -14,14 +14,17 @@ import java.util.List;
 
 @WebServlet(name = "products", urlPatterns = "/shop/products")
 public class ProductsServlet extends HttpServlet {
-    public static final String ATTR_PRODUCTS = "products";
-    public static final String PARAM_SORT = "sort";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Product> products = ProductService.getProducts();
 
-        String param = req.getParameter(PARAM_SORT);
+        String minPrice = req.getParameter("minPrice");
+        String maxPrice = req.getParameter("maxPrice");
+        double min = Double.parseDouble(minPrice);
+        double max = Double.parseDouble(maxPrice);
+
+        String param = req.getParameter("sort");
         if (param != null) {
             switch (param) {
                 case "name":
@@ -38,7 +41,7 @@ public class ProductsServlet extends HttpServlet {
             products.sort(Comparator.comparing(Product::getName));
         }
 
-        req.setAttribute(ATTR_PRODUCTS, products);
+        req.setAttribute("products", products);
         req.getRequestDispatcher("products.jsp").forward(req, resp);
     }
 }

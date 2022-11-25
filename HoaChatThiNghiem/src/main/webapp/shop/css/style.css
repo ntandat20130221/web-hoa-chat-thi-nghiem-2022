@@ -1298,6 +1298,16 @@ a:focus {
     background-color: #b9b9b9;
 }
 
+.products .shop-sidebar .label-input .btn-apply {
+    border: none;
+    outline: unset;
+    background: var(--main-color);
+    border-radius: 2px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
 .products .shop-sidebar .range .check-box-list li label {
     font-size: 14px;
     font-weight: 400;
