@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="model.Customer" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+
 <header class="header shop">
     <div class="topbar">
         <div class="container">
@@ -26,7 +28,6 @@
             </div>
         </div>
     </div>
-
     <!-- ===== HEADER MIDDLE ====== -->
     <div class="header-middle py-4">
         <div class="container">
@@ -66,10 +67,19 @@
                     <div class="right-bar">
                         <!-- Search Form -->
                         <div class="right-bar-item d-inline-block mr-4">
-                            <a href="profile.jsp" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                            <%Customer customer = (Customer) session.getAttribute("auth_customer");%>
+                            <a href="profile.jsp" class="single-icon">
+                                <%if(customer == null){%>
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                <%} else {%>
+                                    <p><%=customer.getFullname()%></p>
+                                <%}%>
+                            </a>
                         </div>
                         <div class="right-bar-item shopping d-inline-block">
-                            <a href="cart.jsp" class="single-icon"><i class="fa fa-shopping-cart"></i><span class="total-count">2</span></a>
+                            <a href="cart.jsp" class="single-icon">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="total-count">2</span></a>
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">

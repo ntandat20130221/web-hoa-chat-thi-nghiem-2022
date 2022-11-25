@@ -15,7 +15,7 @@
 </head>
 
 <body>
-
+    <%String error = (String) request.getAttribute("error");%>
     <!-- ===== HEADER ===== -->
     <header class="header-account">
         <div class="container">
@@ -54,11 +54,17 @@
             </div>
             <div class="col-lg-5 col-md-5 col-12">
                 <div class="h-100 d-flex align-items-center">
-                    <form class="m-0 p-5 text-center">
+                    <form class="m-0 p-5 text-center" action="/HoaChatThiNghiem_war/shop/DoLoginCustomer" method="post">
                         <h5 class="mb-4">Đăng Nhập</h5>
-                        <input class="w-100 mb-3" type="email" placeholder="Email"/>
-                        <input class="w-100 mb-4" type="password" placeholder="Mật khẩu"/>
-                        <button class="next w-100">Đăng nhập</button>
+                            <%if(error != null){%>
+                                <div class="w-100 mb-3 alert alert-danger" role="alert">
+                                    <%=error%>
+                                </div>
+                            <%}%>
+                            <input class="w-100 mb-3" type="email" placeholder="Email" name = "email"
+                                value="<%=request.getParameter("email") != null ? request.getParameter("email"):""%>"/>
+                            <input class="w-100 mb-4" type="password" placeholder="Mật khẩu" name = "password"/>
+                            <button class="next w-100">Đăng nhập</button>
                         <span class="or d-inline-block text-uppercase my-4 position-relative">Hoặc</span>
                         <a class="google d-flex justify-content-center w-100 mb-3"><img width="25px" class="mr-2" src="images/logo-google.png"
                                                                                         alt=""/>Google</a>
