@@ -1,6 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <script src="${context}/shop/js/jquery.min.js"></script>
@@ -14,7 +12,7 @@
 <script src="${context}/shop/js/facnybox.min.js"></script>
 <script src="${context}/shop/js/waypoints.min.js"></script>
 <script src="${context}/shop/js/finalcountdown.min.js"></script>
-<script src="${context}/shop/js/nicesellect.js"></script>
+<script src="${context}/shop/js/nice-select.min.js"></script>
 <script src="${context}/shop/js/ytplayer.min.js"></script>
 <script src="${context}/shop/js/flex-slider.js"></script>
 <script src="${context}/shop/js/scrollup.js"></script>

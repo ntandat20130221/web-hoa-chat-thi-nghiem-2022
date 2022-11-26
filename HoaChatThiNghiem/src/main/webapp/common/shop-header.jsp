@@ -1,5 +1,5 @@
 <%@ page import="model.Customer" %>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="context" value="${pageContext.request.contextPath}"/>
@@ -72,10 +72,11 @@
                         <div class="right-bar-item d-inline-block mr-4">
                             <%Customer customer = (Customer) session.getAttribute("auth_customer");%>
                             <a href="${context}/shop/profile.jsp" class="single-icon">
-                                <%if(customer == null){%>
+                                <%if (customer == null) {%>
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                 <%} else {%>
-                                    <p><%=customer.getFullname()%></p>
+                                <p><%=customer.getFullname()%>
+                                </p>
                                 <%}%>
                             </a>
                         </div>

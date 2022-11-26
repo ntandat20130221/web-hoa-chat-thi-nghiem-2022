@@ -17,12 +17,13 @@ public class Product implements Serializable {
     private String status;
     private String desc;
     private int quantity;
+    private String type;
     private double oldPrice;
     private double newPrice;
 
     public Product() {}
 
-    public Product(int idProduct, String imgPath, String name, int star, String status, String desc, int quantity, double oldPrice, double newPrice) {
+    public Product(int idProduct, String imgPath, String name, int star, String status, String desc, int quantity, String type, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
@@ -30,6 +31,7 @@ public class Product implements Serializable {
         this.status = status;
         this.desc = desc;
         this.quantity = quantity;
+        this.type = type;
         this.oldPrice = oldPrice;
         this.newPrice = newPrice;
     }
@@ -90,6 +92,14 @@ public class Product implements Serializable {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getOldPrice() {

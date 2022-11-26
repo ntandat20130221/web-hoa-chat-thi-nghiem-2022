@@ -730,7 +730,7 @@ a:focus {
 .single-product {
     margin-top: 50px;
     box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
-        rgba(9, 30, 66, 0.13) 0 0 1px 1px;
+    rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -1128,8 +1128,8 @@ a:focus {
     background: #f2f4fa;
     padding: 60px 0 40px 0;
     box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px, rgba(0, 0, 0, 0.07) 0 2px 4px,
-        rgba(0, 0, 0, 0.07) 0 4px 8px, rgba(0, 0, 0, 0.07) 0 8px 16px,
-        rgba(0, 0, 0, 0.07) 0 16px 32px, rgba(0, 0, 0, 0.07) 0 32px 64px;
+    rgba(0, 0, 0, 0.07) 0 4px 8px, rgba(0, 0, 0, 0.07) 0 8px 16px,
+    rgba(0, 0, 0, 0.07) 0 16px 32px, rgba(0, 0, 0, 0.07) 0 32px 64px;
 }
 
 .shop-services .single-service {
@@ -1267,7 +1267,8 @@ a:focus {
     text-transform: capitalize;
 }
 
-.products .shop-sidebar .category-list a:hover {
+.products .shop-sidebar .category-list a:hover,
+.products .shop-sidebar .category-list a.click-active{
     color: var(--main-color);
 }
 
@@ -1330,31 +1331,33 @@ a:focus {
 /* [ Shop Top ]
 --------------------------------------- */
 .products .shop-top {
-    clear: both;
+    height: 66px;
     background: #f6f7fb;
-    padding: 18px 20px 45px 20px;
+    padding: 0 20px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
 }
 
-.products .single-shorter label {
-    display: block;
-    float: left;
-    margin-right: 10px;
-    font-weight: 500;
+.products .shop-top label {
+    color: #414141;
+    font-size: .96em;
+    margin-top: 23px;
+    margin-right: 16px;
 }
 
 .products .nice-select {
     clear: initial;
     display: inline-block;
-    margin: 0;
+    margin: 13px 0 0;
     border: 1px solid #e6e6e6;
     height: auto;
     border-radius: 3px;
 }
 
 .products .nice-select::after {
-    top: 45%;
+    top: 47%;
+    width: 7px;
+    height: 7px;
 }
 
 .products .nice-select .list {
@@ -1369,6 +1372,14 @@ a:focus {
 .products .nice-select .list li:hover {
     background: var(--main-color);
     color: white;
+}
+
+.products .nice-select:hover {
+    border-color: #dbdbdb;
+}
+
+.products .nice-select:focus {
+    border-color: var(--main-color);
 }
 
 /* [ Pagination ]
@@ -2407,7 +2418,7 @@ a:focus {
     margin-right: 8px;
 }
 
-.product-content .product-peragraph p {
+.product-content .product-paragraph p {
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;

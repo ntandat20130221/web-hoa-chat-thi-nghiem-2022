@@ -20,42 +20,44 @@ public class ProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Product> products = ProductService.getProducts();
 
-        String minPrice = req.getParameter("minPrice");
-        String maxPrice = req.getParameter("maxPrice");
-        double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
-        if (minPrice != null) {
-            min = Double.parseDouble(minPrice);
+        // categorizing
+        String category = req.getParameter("category");
+        List<Product> categoryProducts = new ArrayList<>();
+        if (category != null) {
+            for (Product p : products) {
+                if (p.getType().equals(category)) {
+                    categoryProducts.add(p);
+                }
+            }
         }
 
-        if (maxPrice != null) {
-            max = Double.parseDouble(maxPrice);
-        }
+        // filtering
+        String minPrice = req.getParameter("minPrice"), maxPrice = req.getParameter("maxPrice");
+        double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
+        if (minPrice != null) min = Double.parseDouble(minPrice);
+        if (maxPrice != null) max = Double.parseDouble(maxPrice);
 
         List<Product> filteredProducts = new ArrayList<>();
-        for (Product product : products) {
+        for (Product product : categoryProducts) {
             if (product.getNewPrice() >= min && product.getNewPrice() <= max) {
                 filteredProducts.add(product);
             }
         }
 
+        // sorting
         String param = req.getParameter("sort");
-        if (param != null) {
-            switch (param) {
-                case "name":
-                    filteredProducts.sort(Comparator.comparing(Product::getName));
-                    break;
-                case "price-up":
-                    filteredProducts.sort(Comparator.comparing(Product::getNewPrice));
-                    break;
-                case "price-down":
-                    filteredProducts.sort((o1, o2) -> (int) (o2.getNewPrice() - o1.getNewPrice()));
-                    break;
-            }
-        } else {
-            filteredProducts.sort(Comparator.comparing(Product::getName));
+        switch (param) {
+            case "price_up":
+                filteredProducts.sort(Comparator.comparing(Product::getNewPrice));
+                break;
+            case "price_down":
+                filteredProducts.sort((o1, o2) -> (int) (o2.getNewPrice() - o1.getNewPrice()));
+                break;
+            default:
+                filteredProducts.sort(Comparator.comparing(Product::getName));
         }
 
         req.setAttribute("products", filteredProducts);
-        req.getRequestDispatcher("products.jsp").forward(req, resp);
+        req.getRequestDispatcher("/shop/products.jsp").forward(req, resp);
     }
 }

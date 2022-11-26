@@ -1,8 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.List" %>
-<%@ page import="model.Product" %>
-<%@ page import="utils.PriceFormat" %>
-<%@ page import="static controller.shop.ProductDetailServlet.PARAM_ID" %>
+<%@ page import="java.util.List,model.Product,utils.PriceFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%-- Global variables declaration --%>
@@ -56,13 +53,25 @@
                     <div class="single-widget category">
                         <h3 class="title">Phân loại</h3>
                         <ul class="category-list">
-                            <li class="mb-2"><a href="#">Acid và Bazo</a></li>
-                            <li class="mb-2"><a href="#">Oxit</a></li>
-                            <li class="mb-2"><a href="#">Thuốc thử</a></li>
-                            <li class="mb-2"><a href="#">Chất chỉ thị</a></li>
-                            <li class="mb-2"><a href="#">Giấy lọc</a></li>
-                            <li class="mb-2"><a href="#">Kim loại</a></li>
-                            <li><a href="#">Khí hiếm</a></li>
+                            <li class="mb-2"><a
+                                    <c:if test="${param['category'] == 'acid_bazo'}">class="click-active"</c:if> href="#" id="acid_bazo">Acid và
+                                Bazo</a></li>
+                            <li class="mb-2"><a
+                                    <c:if test="${param['category'] == 'oxit'}">class="click-active"</c:if> href="#" id="oxit">Oxit</a></li>
+                            <li class="mb-2"><a
+                                    <c:if test="${param['category'] == 'reagent'}">class="click-active"</c:if> href="#" id="reagent">Thuốc thử</a>
+                            </li>
+                            <li class="mb-2"><a
+                                    <c:if test="${param['category'] == 'indicator'}">class="click-active"</c:if> href="#" id="indicator">Chất chỉ
+                                thị</a></li>
+                            <li class="mb-2"><a
+                                    <c:if test="${param['category'] == 'filter_paper'}">class="click-active"</c:if> href="#" id="filter_paper">Giấy
+                                lọc</a></li>
+                            <li class="mb-2"><a
+                                    <c:if test="${param['category'] == 'metal'}">class="click-active"</c:if> href="#" id="metal">Kim loại</a></li>
+                            <li><a
+                                    <c:if test="${param['category'] == 'rare_gas'}">class="click-active" </c:if> href="#" id="rare_gas">Khí hiếm</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -71,26 +80,36 @@
                         <h3 class="title">Lọc theo giá</h3>
                         <div class="label-input mt-3">
                             <div class="d-flex justify-content-around">
-                                <input class="from w-100 bg-white" type="text" placeholder="TỪ" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
-                                <div class="divider-dash mx-2 d-flex align-items-center"><div></div></div>
-                                <input class="to w-100 bg-white" type="text" placeholder="ĐẾN" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                <% String from = request.getParameter("minPrice"), to = request.getParameter("maxPrice"); %>
+                                <input class="from w-100 bg-white" type="text" placeholder="TỪ"
+                                    <% if (from != null) { %> value="<%=from%>" <% } %>
+                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                <div class="divider-dash mx-2 d-flex align-items-center">
+                                    <div></div>
+                                </div>
+                                <input class="to w-100 bg-white" type="text" placeholder="ĐẾN"
+                                    <% if (to != null) { %> value="<%=to%>" <% } %>
+                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
                             </div>
                             <button class="btn-apply py-2 text-white w-100" onclick="filterPrice()">Áp dụng</button>
                         </div>
                         <ul class="check-box-list mt-3">
                             <li class="mb-1">
-                                <label for="1">
-                                    <input id="1" type="checkbox"/>200,000đ - 500,000đ<span class="count">(13)</span>
+                                <label for="i1">
+                                    <input id="i1" type="checkbox" value="200000-500000" <c:if test="${param['check'] == 'i1'}">checked</c:if>/>200,000đ
+                                    - 500,000đ<span class="count">(13)</span>
                                 </label>
                             </li>
                             <li class="mb-1">
-                                <label for="2">
-                                    <input id="2" type="checkbox"/>500,000đ - 1,000,000đ<span class="count">(5)</span>
+                                <label for="i2">
+                                    <input id="i2" type="checkbox" value="500000-1000000" <c:if test="${param['check'] == 'i2'}">checked</c:if>/>500,000đ
+                                    - 1,000,000đ<span class="count">(5)</span>
                                 </label>
                             </li>
                             <li>
-                                <label for="3">
-                                    <input id="3" type="checkbox"/>1,000,000đ - 2,500,000đ<span class="count">(8)</span>
+                                <label for="i3">
+                                    <input id="i3" type="checkbox" value="1000000-2500000" <c:if test="${param['check'] == 'i3'}">checked</c:if>/>1,000,000đ
+                                    - 2,500,000đ<span class="count">(8)</span>
                                 </label>
                             </li>
                         </ul>
@@ -99,46 +118,49 @@
             </div>
             <div class="col-lg-9 col-md-8 col-12">
                 <!-- Shop Top -->
-                <div class="shop-top">
-                    <div class="shop-shorter float-left">
-                        <div class="single-shorter d-inline-block">
-                            <label for="sl">Sắp xếp theo: </label>
-                            <c:set var="val" value="${param['sort']}" />
-                            <select id="sl" onchange="selectChange()">
-                                <option <c:if test="${val == 'name'}">selected</c:if> value="name">Tên</option>
-                                <option <c:if test="${val == 'price-up'}">selected</c:if> value="price-up">Giá: Thấp đến Cao</option>
-                                <option <c:if test="${val == 'price-down'}">selected</c:if> value="price-down">Giá: Cao đến Thấp</option>
-                            </select>
-                        </div>
+                <div class="shop-top d-flex justify-content-start">
+                    <div class="single-shorter">
+                        <label class="float-left" for="sl">Sắp xếp theo</label>
+                        <select id="sl" onchange="sendRequest()">
+                            <option
+                                    <c:if test="${param['sort'] == 'name' || param['sort'] == ''}">selected</c:if> value="name">Tên
+                            </option>
+                            <option
+                                    <c:if test="${param['sort'] == 'price_up'}">selected</c:if> value="price_up">Giá: Thấp đến Cao
+                            </option>
+                            <option
+                                    <c:if test="${param['sort'] == 'price_down'}">selected</c:if> value="price_down">Giá: Cao đến Thấp
+                            </option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
-                    <% @SuppressWarnings("unchecked")
-                    List<Product> products = (List<Product>) request.getAttribute("products");
+                    <% @SuppressWarnings("unchecked") List<Product> products = (List<Product>) request.getAttribute("products");
                         for (Product p : products) { %>
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="single-product">
                             <div class="product-img">
-                                <a href="${context}/shop/product-details?<%=PARAM_ID + "product_id=" + p.getIdProduct()%>">
+                                <a href="${context}/shop/product-details?product_id=<%=p.getIdProduct()%>">
                                     <img class="default-img" src="<%=p.getImgPath()%>" alt="#"/>
                                     <% if (p.getStatus() != null) { %>
                                     <span class="new"><%=p.getStatus()%></span> <% } %>
                                 </a>
                             </div>
                             <div class="product-content">
-                                <a href="${context}/shop/product-details?<%=PARAM_ID + "=" + p.getIdProduct()%>"><%=p.getName()%>
+                                <a href="${context}/shop/product-details?product_id=<%=p.getIdProduct()%>">
+                                    <%=p.getName()%>
                                 </a>
                                 <div class="rating">
-                                    <% int stars = p.getStar();
-                                        for (int i = 0; i < 5; i++) { %>
-                                    <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i> <% } %>
+                                    <% int stars = p.getStar(); %>
+                                    <c:forEach begin="1" end="5">
+                                        <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i>
+                                    </c:forEach>
                                 </div>
                                 <div class="product-price">
-                                    <% double oldPrice = p.getOldPrice();
-                                        double newPrice = p.getNewPrice();
-                                        if (oldPrice != 0) { %>
-                                    <span class="old"><%=PriceFormat.format(oldPrice)%>đ</span> <% } %>
-                                    <span><%=PriceFormat.format(newPrice)%>đ</span>
+                                    <% String op = PriceFormat.format(p.getOldPrice()), np = PriceFormat.format(p.getNewPrice());
+                                        if (!op.equals("0")) { %>
+                                    <span class="old"><%=op%>đ</span> <% } %>
+                                    <span><%=np%>đ</span>
                                 </div>
                             </div>
                         </div>
@@ -172,15 +194,42 @@
 <jsp:include page="../common/shop-js.jsp"/>
 
 <script>
-    function selectChange() {
-        let select = document.getElementById('sl')
-        let selected = select.options[select.selectedIndex].value
-        window.location.href = '${context}/shop/products?sort=' + selected
+    function filterPrice() {
+        $('.check-box-list').find('input:checked').attr('checked', false)
+        let from = Number($('.from').val()), to = Number($('.to').val());
+        if (from > to) alert(from + "Vui lòng điền khoảng giá phù hợp" + to)
+        else sendRequest()
     }
 
-    function filterPrice() {
-        window.location.href = '${context}/shop/products?minPrice=' + $('.from').val() + '&maxPrice=' + $('.to').val()
+    function sendRequest(category) {
+        let sort = $('#sl').find(':selected').val();
+        let minPrice = $('.from').val(), maxPrice = $('.to').val()
+        let query = "${context}/shop/products?" + "sort=" + sort + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice
+
+        let id = $('.check-box-list').find('input:checked').attr('id')
+        if (id !== undefined) {
+            query = query + "&check=" + id
+        }
+
+        if (category != null) {
+            query = query + "&category=" + category
+        }
+
+        window.location.href = query
     }
+
+    $('.check-box-list input[type="checkbox"]').on('change', function () {
+        $('.check-box-list input[type="checkbox"]').not(this).prop('checked', false);
+        let value = $(this).val()
+        $('.from').val(value.split("-")[0])
+        $('.to').val(value.split("-")[1])
+        sendRequest()
+    });
+
+    $('.category-list a').on('click', function () {
+        sendRequest($(this).attr('id'))
+        return false;
+    })
 </script>
 </body>
 
