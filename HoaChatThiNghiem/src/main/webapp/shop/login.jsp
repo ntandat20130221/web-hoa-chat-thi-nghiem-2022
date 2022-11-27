@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
                     <div class="title-right d-flex h-100 justify-content-end align-items-center">
-                        <a href="<c:url value='/admin/login.jsp'/>" style="color:rgb(13, 58, 236);">Đăng nhập với tài khoản admin</a>
+                        <a href="/HoaChatThiNghiem_war/admin/dang-nhap" style="color:rgb(13, 58, 236);">Đăng nhập với tài khoản admin</a>
                     </div>
                 </div>
             </div>

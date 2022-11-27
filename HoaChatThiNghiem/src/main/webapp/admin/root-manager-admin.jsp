@@ -27,7 +27,7 @@
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item active"><a href="#"><b>Danh sách admin</b></a></li>
+            <li class="breadcrumb-item active"><a href="#"><b>Quản lý admin</b></a></li>
         </ul>
         <div id="clock"></div>
     </div>

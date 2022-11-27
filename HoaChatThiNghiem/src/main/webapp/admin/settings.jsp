@@ -29,7 +29,7 @@
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item"><a href="#"><b>Cài đặt hệ thống</b></a></li>
+            <li class="breadcrumb-item"><a href="#"><b>Đổi mật khẩu</b></a></li>
         </ul>
         <div id="clock"></div>
     </div>
@@ -47,7 +47,7 @@
         </div>
         <div class="col-lg-8">
             <div class="right pb-4">
-                <form action="/HoaChatThiNghiem_war/admin/DoChangePass" method="post" name="form-change-pass"
+                <form method="post" name="form-change-pass"
                       onsubmit="return validateFormChangePass()">
                     <label class="d-block" for="name">Tên <span>*</span></label>
                     <input type="text" id="name" value="<%=admin.getFullname()%>">

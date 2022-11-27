@@ -3,6 +3,7 @@ package controller.admin;
 import model.Admin;
 import service.AdminService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,10 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ChangePassAdmin", value = "/admin/DoChangePass")
-public class DoChangePassServlet extends HttpServlet {
+@WebServlet(name = "AdminChangePass", value = "/admin/doi-mat-khau")
+public class AdminChangePassServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/settings.jsp");
+        dispatcher.forward(request, response);
 
     }
 
@@ -25,33 +29,22 @@ public class DoChangePassServlet extends HttpServlet {
         Admin admin = (Admin) request.getSession().getAttribute("auth");
         if (old_pass.equals(admin.getPassAD())) {
 
-            boolean checkUpdate = AdminService.updatePassword(admin.getUsername(), new_pass);
+            boolean checkUpdate = AdminService.updatePassword(admin.getUsername(), new_pass); // call service
             if (checkUpdate == true) {
 
-                response.sendRedirect("login.jsp");
-
+                response.sendRedirect("/HoaChatThiNghiem_war/admin/dang-nhap");
 
             } else {
 
                 request.setAttribute("notification", "Cập nhật không thành công ^.^");
+                request.getRequestDispatcher("/admin/settings.jsp").forward(request, response);
 
-                int id_role_admin = admin.getId_role_admin();
-                if (id_role_admin == 1) {
-                    request.getRequestDispatcher("root-settings.jsp").forward(request, response);
-                } else if (id_role_admin == 2) {
-                    request.getRequestDispatcher("settings.jsp").forward(request, response);
-                }
             }
 
         } else {
 
             request.setAttribute("error", "Hãy nhập lại mật khẩu cũ");
-            int id_role_admin = admin.getId_role_admin();
-            if (id_role_admin == 1) {
-                request.getRequestDispatcher("root-settings.jsp").forward(request, response);
-            } else if (id_role_admin == 2) {
-                request.getRequestDispatcher("settings.jsp").forward(request, response);
-            }
+            request.getRequestDispatcher("/admin/settings.jsp").forward(request, response);
 
         }
     }

@@ -26,7 +26,7 @@
         </div>
         <div class="login-form">
             <span class="login-form-title text-center d-block mb-4">ĐĂNG NHẬP HỆ THỐNG</span>
-            <form name="form-login" onsubmit="return validateFormLogin()" action="/HoaChatThiNghiem_war/admin/DoLoginAdmin" method="post">
+            <form name="form-login" onsubmit="return validateFormLogin()" method="post">
                 <%
                     if (error != null) {
                 %>
@@ -61,7 +61,6 @@
             <b>
                 Phần mềm quản lý bán hàng <i class="bx bx-copyright"></i>
                 <script>document.write(new Date().getFullYear())</script>
-                <a href="https://www.facebook.com/truongvo.vd1503/"> Code bởi Trường </a>
             </b>
         </div>
     </div>

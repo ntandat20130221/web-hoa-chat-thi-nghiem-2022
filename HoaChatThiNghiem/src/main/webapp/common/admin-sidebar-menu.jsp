@@ -10,23 +10,23 @@
     <hr>
     <ul class="app-menu">
         <li>
-            <a class="app-menu-item haha" href="index.jsp"><i class='bx bx-tachometer'></i>
+            <a class="app-menu-item haha" href="/HoaChatThiNghiem_war/admin/trang-chu"><i class='bx bx-tachometer'></i>
                 <span class="app-menu-label">Trang chủ</span></a>
         </li>
         <li>
-            <a class="app-menu-item" href="product-manager.jsp"><i class='bx bx-purchase-tag-alt'></i>
+            <a class="app-menu-item" href="/HoaChatThiNghiem_war/admin/quan-ly-san-pham"><i class='bx bx-purchase-tag-alt'></i>
                 <span class="app-menu-label">Quản lý sản phẩm</span></a>
         </li>
         <li>
-            <a class="app-menu-item" href="order-manager.jsp"><i class='bx bx-task'></i>
+            <a class="app-menu-item" href="/HoaChatThiNghiem_war/admin/quan-ly-don-hang"><i class='bx bx-task'></i>
                 <span class="app-menu-label">Quản lý đơn hàng</span></a>
         </li>
         <li>
-            <a class="app-menu-item" href="sales-report.jsp"><i class='bx bx-pie-chart-alt-2'></i>
+            <a class="app-menu-item" href="/HoaChatThiNghiem_war/admin/bao-cao-doanh-thu"><i class='bx bx-pie-chart-alt-2'></i>
                 <span class="app-menu-label">Báo cáo doanh thu</span></a>
         </li>
         <li>
-            <a class="app-menu-item" href="settings.jsp"><i class='bx bx-cog'></i>
+            <a class="app-menu-item" href="/HoaChatThiNghiem_war/admin/doi-mat-khau"><i class='bx bx-cog'></i>
                 <span class="app-menu-label">Đổi mật khẩu</span></a>
         </li>
     </ul>
