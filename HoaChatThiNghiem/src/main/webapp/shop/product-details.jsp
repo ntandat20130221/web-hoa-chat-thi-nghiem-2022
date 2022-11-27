@@ -1,7 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="model.Product" %>
-<%@ page import="controller.shop.ProductDetailServlet" %>
-<%@ page import="utils.PriceFormat" %>
+<%@ page import="model.Product,utils.PriceFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%-- Global variables declaration --%>
@@ -47,7 +45,7 @@
 
 <!-- ===== PRODUCT DETAIL ===== -->
 <section class="product-detail">
-    <% Product p = (Product) request.getAttribute(ProductDetailServlet.ATTR_DETAILS); %>
+    <% Product p = (Product) request.getAttribute("product_details"); %>
     <div class="row no-gutters">
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <div class="product-slider-active">
@@ -65,15 +63,16 @@
                 </h2>
                 <div class="product-rating d-flex">
                     <div class="rating">
-                        <% int stars = p.getStar();
-                            for (int i = 0; i < 5; i++) { %>
-                        <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i> <% } %>
+                        <% int stars = p.getStar(); %>
+                        <c:forEach begin="1" end="5">
+                            <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i>
+                        </c:forEach>
                     </div>
                     <a href="#"> (33 Đánh giá)</a>
                 </div>
-                <h3><% if (p.getOldPrice() != 0) { %><span><%=PriceFormat.format(p.getOldPrice())%></span> <% } %><%=PriceFormat.format(p.getNewPrice())%>
-                </h3>
-                <div class="product-peragraph">
+                <% String op = PriceFormat.format(p.getOldPrice()), np = PriceFormat.format(p.getNewPrice()); %>
+                <h3><% if (!op.equals("0")) { %><span><%=op%>đ</span> <% } %><%=np%>đ</h3>
+                <div class="product-paragraph">
                     <p>
                         <%=p.getDesc()%>
                     </p>

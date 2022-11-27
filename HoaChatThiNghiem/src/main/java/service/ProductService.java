@@ -13,9 +13,10 @@ import java.util.List;
 public class ProductService {
     private static final String QUERY_PRODUCTS = "SELECT p.id_product, p.name_product, p.description_product, " +
             "p.url_img_product, p.star_review, sp.name_status_product, p.quantity_product," +
-            "pp.listed_price, pp.current_price FROM products p " +
+            "pp.listed_price, pp.current_price, tp.name_type_product FROM products p " +
             "JOIN price_product pp ON p.id_product = pp.id_product " +
-            "JOIN status_product sp on p.id_status_product = sp.id_status_product";
+            "JOIN status_product sp on p.id_status_product = sp.id_status_product " +
+            "JOIN type_product tp on p.id_type_product = tp.id_type_product";
 
     public static List<Product> getProducts() {
         List<Product> products;
@@ -52,7 +53,8 @@ public class ProductService {
             int quantity = rs.getInt("quantity_product");
             double oldPrice = rs.getInt("listed_price");
             double newPrice = rs.getInt("current_price");
-            Product product = new Product(id, imgPath, name, stars, status, desc, quantity, oldPrice, newPrice);
+            String type = rs.getString("name_type_product");
+            Product product = new Product(id, imgPath, name, stars, status, desc, quantity, type, oldPrice, newPrice);
             products.add(product);
         }
         return products;
