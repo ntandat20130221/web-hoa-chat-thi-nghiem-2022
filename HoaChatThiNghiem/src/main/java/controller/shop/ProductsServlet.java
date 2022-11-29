@@ -24,9 +24,11 @@ public class ProductsServlet extends HttpServlet {
         String category = req.getParameter("category");
         List<Product> categoryProducts = new ArrayList<>();
         if (category != null) {
-            for (Product p : products) {
-                if (p.getType().equals(category)) {
-                    categoryProducts.add(p);
+            if (!category.isEmpty()) {
+                for (Product p : products) {
+                    if (p.getType().equals(category)) {
+                        categoryProducts.add(p);
+                    }
                 }
             }
         }
@@ -34,11 +36,25 @@ public class ProductsServlet extends HttpServlet {
         // filtering
         String minPrice = req.getParameter("minPrice"), maxPrice = req.getParameter("maxPrice");
         double min = Double.MIN_VALUE, max = Double.MAX_VALUE;
-        if (minPrice != null) min = Double.parseDouble(minPrice);
-        if (maxPrice != null) max = Double.parseDouble(maxPrice);
+        if (minPrice != null) {
+            if (!minPrice.isEmpty()) {
+                min = Double.parseDouble(minPrice);
+            }
+        }
+        if (maxPrice != null) {
+            if (!maxPrice.isEmpty()) {
+                max = Double.parseDouble(maxPrice);
+            }
+        }
 
+        List<Product> nextProduct;
+        if (categoryProducts.size() > 0) {
+            nextProduct = categoryProducts;
+        } else {
+            nextProduct = products;
+        }
         List<Product> filteredProducts = new ArrayList<>();
-        for (Product product : categoryProducts) {
+        for (Product product : nextProduct) {
             if (product.getNewPrice() >= min && product.getNewPrice() <= max) {
                 filteredProducts.add(product);
             }
@@ -46,7 +62,7 @@ public class ProductsServlet extends HttpServlet {
 
         // sorting
         String param = req.getParameter("sort");
-        switch (param) {
+        switch (param == null ? "" : param) {
             case "price_up":
                 filteredProducts.sort(Comparator.comparing(Product::getNewPrice));
                 break;
@@ -56,6 +72,7 @@ public class ProductsServlet extends HttpServlet {
             default:
                 filteredProducts.sort(Comparator.comparing(Product::getName));
         }
+
 
         req.setAttribute("products", filteredProducts);
         req.getRequestDispatcher("/shop/products.jsp").forward(req, resp);
