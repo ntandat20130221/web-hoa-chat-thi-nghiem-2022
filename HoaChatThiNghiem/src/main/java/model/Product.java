@@ -21,7 +21,28 @@ public class Product implements Serializable {
     private double oldPrice;
     private double newPrice;
 
-    public Product() {}
+    private int listed_price;
+    private int current_price;
+    private int type_product;
+    private int status_product;
+    private int supplier;
+
+    public Product() {
+    }
+
+    public Product(String imgPath, String name, String desc, int quantity, int listed_price, int current_price, int type_product, int status_product, int supplier) {
+        this.imgPath = imgPath;
+        this.name = name;
+        this.desc = desc;
+        this.quantity = quantity;
+        this.listed_price = listed_price;
+        this.current_price = current_price;
+        this.type_product = type_product;
+        this.status_product = status_product;
+        this.supplier = supplier;
+
+        // author : Minh Tuyên
+    }
 
     public Product(int idProduct, String imgPath, String name, int star, String status, String desc, int quantity, String type, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
@@ -116,5 +137,25 @@ public class Product implements Serializable {
 
     public void setNewPrice(double newPrice) {
         this.newPrice = newPrice;
+    }
+
+    public int getListed_price() {
+        return listed_price;
+    }
+
+    public int getCurrent_price() {
+        return current_price;
+    }
+
+    public int getType_product() {
+        return type_product;
+    }
+
+    public int getStatus_product() {
+        return status_product;
+    }
+
+    public int getSupplier() {
+        return supplier;
     }
 }

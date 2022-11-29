@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
     <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
 </head>
@@ -25,8 +24,6 @@
 
 <jsp:include page="../common/admin-header.jsp"/>
 <jsp:include page="../common/admin-root-sidebar-menu.jsp"/>
-
-
 
 <main class="app-content">
     <div class="app-title">
@@ -192,7 +189,7 @@
         <p>
             <b>Copyright
                 <script>document.write(new Date().getFullYear())</script>
-                Phần mềm quản lý bán hàng | Dev By Trường
+                Phần mềm quản lý bán hàng
             </b>
         </p>
     </div>
@@ -200,7 +197,6 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="vendor/bootstrap/js/popper.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
