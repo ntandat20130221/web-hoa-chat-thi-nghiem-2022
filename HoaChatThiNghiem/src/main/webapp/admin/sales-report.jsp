@@ -22,6 +22,7 @@
 <body class="app sidebar-mini rtl">
 <jsp:include page="../common/admin-header.jsp"/>
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
+
     <main class="app-content">
         <div class="app-title">
             <ul class="app-breadcrumb breadcrumb">
@@ -104,7 +105,7 @@
                         <h3 class="tile-title">SẢN PHẨM BÁN CHẠY</h3>
                     </div>
                     <div class="tile-body">
-                        <table class="table table-hover table-bordered" id="sampleTable">
+                        <table class="table table-hover table-bordered" id="sampleTable0">
                             <thead>
                                 <tr>
                                     <th>Mã sản phẩm</th>
@@ -157,7 +158,7 @@
                         <h3 class="tile-title">TỔNG ĐƠN HÀNG</h3>
                     </div>
                     <div class="tile-body">
-                        <table class="table table-hover table-bordered" id="sampleTable">
+                        <table class="table table-hover table-bordered" id="sampleTable1">
                             <thead>
                                 <tr>
                                     <th>ID đơn hàng</th>
@@ -227,7 +228,7 @@
                         <h3 class="tile-title">SẢN PHẨM ĐÃ HẾT</h3>
                     </div>
                     <div class="tile-body">
-                        <table class="table table-hover table-bordered" id="sampleTable">
+                        <table class="table table-hover table-bordered" id="sampleTable2">
                             <thead>
                                 <tr>
                                     <th>Mã sản phẩm</th>
@@ -262,7 +263,7 @@
                         <h3 class="tile-title">NHÂN VIÊN MỚI</h3>
                     </div>
                     <div class="tile-body">
-                        <table class="table table-hover table-bordered" id="sampleTable">
+                        <table class="table table-hover table-bordered" id="sampleTable3">
                             <thead>
                                 <tr>
                                     <th>Họ và tên</th>
@@ -322,9 +323,8 @@
                 </div>
             </div>
         </div>
-
         <div class="text-right" style="font-size: 12px">
-            <p><b>Hệ thống quản lý V2.0 | Code by Trường</b></p>
+            <p><b>Hệ thống quản lý</b></p>
         </div>
     </main>
 
@@ -338,6 +338,7 @@
     <script src="vendor/plugins/chart.js"></script>
     <script src="js/main.js"></script>
     <!-- ================================================================================================== -->
+
     <script>
         var data = {
             labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"],
@@ -366,7 +367,6 @@
         var lineChart = new Chart($("#line-chart").get(0).getContext("2d")).Line(data);
         var barChart = new Chart($("#bar-chart").get(0).getContext("2d")).Bar(data);
     </script>
-
     <!-- Google analytics script-->
     <script>
         if (document.location.hostname == 'pratikborsadiya.in') {
@@ -385,6 +385,7 @@
             ga('send', 'pageview');
         }
     </script>
+
 </body>
 
 </html>

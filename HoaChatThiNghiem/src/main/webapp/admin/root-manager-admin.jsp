@@ -57,7 +57,7 @@
                             <!-- <span class="status">Hiện <span class="quantity">10</span> tài khoản</span> -->
                         </div>
                         <div class="search-wrap">
-                            <label class="font-weight-bold m-0" for="search">Tìm kiếm: </label>
+                            <label class="font-weight-bold m-0" for="search">Tìm kiếm : </label>
                             <input type="text" placeholder="" id="search">
                             <label for="by" class="font-weight-bold m-0 ml-3">Theo: </label>
                             <select id="by">
@@ -72,7 +72,6 @@
                         <thead>
                         <tr>
                             <th>Tài khoản</th>
-                            <th>Mật khẩu</th>
                             <th>Quyền</th>
                             <th>Sửa</th>
                         </tr>
@@ -80,81 +79,8 @@
                         <tbody>
                         <tr>
                             <td>tranminhtuyen1@gmail.com</td>
-                            <td>Tuyen123a</td>
                             <td>Quản lí admin</td>
                             <td>
-
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal" data-target="#modal-up"><i
-                                        class="fas fa-edit"></i></button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>tranminhtuyen2@gmail.com</td>
-                            <td>Tuyen123b</td>
-                            <td>Quản lí khách hàng, Quản lí sản phẩm, Quản lí đơn hàng, Báo cáo doanh thu</td>
-                            <td>
-
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal" data-target="#modal-up"><i
-                                        class="fas fa-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>tranminhtuyen3@gmail.com</td>
-                            <td>Tuyen123c</td>
-                            <td>Quản lí khách hàng, Quản lí sản phẩm, Quản lí đơn hàng, Báo cáo doanh thu</td>
-                            <td>
-
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal" data-target="#modal-up"><i
-                                        class="fas fa-edit"></i></button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>tranminhtuyen4@gmail.com</td>
-                            <td>Tuyen123d</td>
-                            <td>Quản lí khách hàng, Quản lí sản phẩm, Quản lí đơn hàng, Báo cáo doanh thu</td>
-                            <td>
-
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal" data-target="#modal-up"><i
-                                        class="fas fa-edit"></i></button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>tranminhtuyen5@gmail.com</td>
-                            <td>Tuyen123e</td>
-                            <td>Quản lí khách hàng, Quản lí sản phẩm, Quản lí đơn hàng, Báo cáo doanh thu</td>
-                            <td>
-
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal" data-target="#modal-up"><i
-                                        class="fas fa-edit"></i></button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>tranminhtuyen6@gmail.com</td>
-                            <td>Tuyen123f</td>
-                            <td>Quản lí khách hàng, Quản lí sản phẩm, Quản lí đơn hàng, Báo cáo doanh thu</td>
-                            <td>
-
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal" data-target="#modal-up"><i
-                                        class="fas fa-edit"></i></button>
-                            </td>
-
-                        </tr>
-                        <tr>
-                            <td>tranminhtuyen7@gmail.com</td>
-                            <td>Tuyen123g</td>
-                            <td>Quản lí khách hàng, Quản lí sản phẩm, Quản lí đơn hàng, Báo cáo doanh thu</td>
-                            <td>
-
                                 <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
                                         data-toggle="modal" data-target="#modal-up"><i
                                         class="fas fa-edit"></i></button>
@@ -180,30 +106,9 @@
                             </span>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Mã sản phẩm </label>
-                        <input class="form-control" type="number" value="71309005">
-                    </div> -->
-                <!-- <div class="form-group col-md-6">
-                    <label class="control-label">Tên sản phẩm</label>
-                    <input class="form-control" type="text" required value="Bàn ăn gỗ Theresa">
-                </div> -->
-                <!-- <div class="form-group  col-md-6">
-                    <label class="control-label">Số lượng</label>
-                    <input class="form-control" type="number" required value="20">
-                </div> -->
-                <!-- <div class="form-group col-md-6 ">
-                    <label for="exampleSelect1" class="control-label">Quyền</label>
-                    <select class="form-control" id="exampleSelect1">
-                        <option>Còn hàng</option>
-                        <option>Hết hàng</option>
-                        <option>Đang nhập hàng</option>
-                    </select>
-                </div> -->
                 <div class="form-group col-md-6">
                     <label class="control-label">Mật khẩu</label>
-                    <input class="form-control" type="text" value="T123@">
+                    <input class="form-control" type="text" placeholder="it_nlu_2022">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="exampleSelect1" class="control-label">Quyền</label>

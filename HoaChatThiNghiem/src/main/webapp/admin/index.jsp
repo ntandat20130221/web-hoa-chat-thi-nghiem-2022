@@ -30,8 +30,6 @@
 <!-- Sidebar Menu -->
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
 
-
-
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
@@ -196,7 +194,7 @@
         <p>
             <b>Copyright
                 <script>document.write(new Date().getFullYear())</script>
-                Phần mềm quản lý bán hàng | Dev By Trường
+                Phần mềm quản lý bán hàng
             </b>
         </p>
     </div>

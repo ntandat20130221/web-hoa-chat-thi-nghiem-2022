@@ -1,5 +1,6 @@
 package service;
 
+import dao.ProductDAO;
 import db.DbConnection;
 import model.Product;
 
@@ -59,4 +60,37 @@ public class ProductService {
         }
         return products;
     }
+
+    public static boolean addNewProduct(Product p) {
+        /*
+        b1: thêm tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp vào bảng products
+
+        b2: lấy id của sản phẩm vừa được thêm vào bảng products dựa trên tên,hình ảnh,mã loại,mã trạng thái,mã nhà cung cấp
+
+        b3: thêm giá niêm yết và giá bán thực tế của sản phẩm vào bảng price_product dựa trên id
+
+        Author : Minh Tuyên
+         */
+
+        DbConnection connectDB = DbConnection.getInstall();
+        ProductDAO dao = new ProductDAO();
+        boolean checkInsertProduct = dao.insertProduct(connectDB, p);
+        if (checkInsertProduct == true) {
+
+            int idProduct = dao.getIdProduct(connectDB,p);
+
+            p.setIdProduct(idProduct);
+            boolean checkInsertPrice = dao.insertPriceProduct(connectDB, p);
+
+            if (checkInsertPrice == true) {
+                // do nothing
+            }
+
+            return true;
+        }
+        connectDB.unInstall();
+        return false;
+    }
+
+
 }

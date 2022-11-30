@@ -27,6 +27,7 @@
 <% String error = (String) request.getAttribute("error");
     String noti = (String) request.getAttribute("notification");
     Admin admin = (Admin) session.getAttribute("auth");%>
+
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
@@ -75,7 +76,7 @@
         <p>
             <b>Copyright
                 <script>document.write(new Date().getFullYear())</script>
-                Phần mềm quản lý bán hàng | Dev By Trường
+                Phần mềm quản lý bán hàng
             </b>
         </p>
     </div>

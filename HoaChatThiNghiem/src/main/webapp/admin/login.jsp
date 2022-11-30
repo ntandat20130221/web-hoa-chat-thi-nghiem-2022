@@ -53,7 +53,6 @@
                     <input type="submit" value="Đăng nhập" id="btn-login"/>
                 </div>
                 <div class="text-center pt-3">
-                    <%--<a href="forgot.jsp">Bạn quên mật khẩu?</a>--%>
                 </div>
             </form>
         </div>

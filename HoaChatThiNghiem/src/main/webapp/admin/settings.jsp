@@ -71,7 +71,7 @@
         <p>
             <b>Copyright
                 <script>document.write(new Date().getFullYear())</script>
-                Phần mềm quản lý bán hàng | Dev By Trường
+                Phần mềm quản lý bán hàng
             </b>
         </p>
     </div>
