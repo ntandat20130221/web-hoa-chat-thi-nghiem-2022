@@ -2,6 +2,7 @@ package service;
 
 import dao.ProductDAO;
 import db.DbConnection;
+import model.Admin;
 import model.Product;
 
 import java.sql.PreparedStatement;
@@ -61,9 +62,9 @@ public class ProductService {
         return products;
     }
 
-    public static boolean addNewProduct(Product p) {
+    public static boolean addNewProduct(Product p, Admin admin) {
         /*
-        b1: thêm tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp vào bảng products
+        b1: thêm tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp, tên admin vào bảng products
 
         b2: lấy id của sản phẩm vừa được thêm vào bảng products dựa trên tên,hình ảnh,mã loại,mã trạng thái,mã nhà cung cấp
 
@@ -74,19 +75,18 @@ public class ProductService {
 
         DbConnection connectDB = DbConnection.getInstall();
         ProductDAO dao = new ProductDAO();
-        boolean checkInsertProduct = dao.insertProduct(connectDB, p);
+        boolean checkInsertProduct = dao.insertProduct(connectDB, p,admin.getUsername()); // b1
         if (checkInsertProduct == true) {
 
-            int idProduct = dao.getIdProduct(connectDB,p);
-
+            int idProduct = dao.getIdProduct(connectDB,p); // b2
             p.setIdProduct(idProduct);
-            boolean checkInsertPrice = dao.insertPriceProduct(connectDB, p);
+            boolean checkInsertPrice = dao.insertPriceProduct(connectDB, p,admin.getUsername()); //b3
 
             if (checkInsertPrice == true) {
                 // do nothing
             }
-
             return true;
+
         }
         connectDB.unInstall();
         return false;

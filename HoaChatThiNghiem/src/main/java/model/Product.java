@@ -41,7 +41,7 @@ public class Product implements Serializable {
         this.status_product = status_product;
         this.supplier = supplier;
 
-        // author : Minh Tuyên
+        // Author : Minh Tuyên
     }
 
     public Product(int idProduct, String imgPath, String name, int star, String status, String desc, int quantity, String type, double oldPrice, double newPrice) {
