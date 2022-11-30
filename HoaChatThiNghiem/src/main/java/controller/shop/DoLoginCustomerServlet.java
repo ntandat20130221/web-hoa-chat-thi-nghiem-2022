@@ -1,4 +1,4 @@
-package controller;
+package controller.shop;
 
 import model.Customer;
 import service.CustomerService;
@@ -24,14 +24,12 @@ public class DoLoginCustomerServlet extends HttpServlet {
             if(customer.getId_status_acc() == 1) {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("auth_customer", customer);
-//                response.getWriter().println(session);
                 response.sendRedirect("index.jsp");
-
             }else if(customer.getId_status_acc() == 2){
-                request.setAttribute("temporarily_ban", "Tài khoản tạm khóa");
+                request.setAttribute("error", "Tài khoản tạm khóa");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }else{
-                request.setAttribute("ban", "Tài khoản đã bị khóa vĩnh viễn");
+                request.setAttribute("error", "Tài khoản đã bị khóa vĩnh viễn");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }else{
