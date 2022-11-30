@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="context" value="${pageContext.request.contextPath}"/>
-
+<%Customer customer = (Customer) session.getAttribute("auth_customer");%>
 <header class="header shop">
     <div class="topbar">
         <div class="container">
@@ -18,6 +18,7 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
                     <div class="text-right">
+                        <%if (customer == null){%>
                         <ul>
                             <li>
                                 <a href="${context}/shop/login.jsp"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
@@ -26,6 +27,20 @@
                                 <a href="${context}/shop/register.jsp"><i class="bi bi-person-plus"></i>Đăng ký</a>
                             </li>
                         </ul>
+                        <%} else{%>
+                        <ul>
+                            <li>
+                                <a href="${context}/shop/register.jsp">
+                                    <i class="bi bi-person-plus"></i>Xin chào <%=customer.getFullname()%>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="${context}/shop/login.jsp">
+                                    <i class="bi bi-box-arrow-in-right"></i>Đăng xuất
+                                </a>
+                            </li>
+                        </ul>
+                        <%}%>
                     </div>
                 </div>
             </div>
@@ -69,18 +84,7 @@
                 <div class="col-lg-2 col-md-3 col-12">
                     <div class="right-bar">
                         <!-- Search Form -->
-                        <div class="right-bar-item d-inline-block mr-4">
-                            <%Customer customer = (Customer) session.getAttribute("auth_customer");%>
-                            <a href="${context}/shop/profile.jsp" class="single-icon">
-                                <%if (customer == null) {%>
-                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                <%} else {%>
-                                <p><%=customer.getFullname()%>
-                                </p>
-                                <%}%>
-                            </a>
-                        </div>
-                        <div class="right-bar-item shopping d-inline-block">
+                        <div class="right-bar-item shopping d-inline-block mr-4">
                             <a href="${context}/shop/cart.jsp" class="single-icon">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="total-count">2</span></a>
@@ -121,6 +125,13 @@
                                     <a href="${context}/shop/checkout.jsp" class="btn">Thanh toán</a>
                                 </div>
                             </div>
+                        </div>
+                        <div class="right-bar-item d-inline-block ">
+                            <a href="${context}/shop/profile.jsp" class="single-icon">
+                                <%if (customer != null) {%>
+                                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                <%} %>
+                            </a>
                         </div>
                     </div>
                 </div>
