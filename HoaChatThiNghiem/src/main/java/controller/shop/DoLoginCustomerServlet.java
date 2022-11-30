@@ -26,10 +26,10 @@ public class DoLoginCustomerServlet extends HttpServlet {
                 session.setAttribute("auth_customer", customer);
                 response.sendRedirect("index.jsp");
             }else if(customer.getId_status_acc() == 2){
-                request.setAttribute("temporarily_ban", "Tài khoản tạm khóa");
+                request.setAttribute("error", "Tài khoản tạm khóa");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }else{
-                request.setAttribute("ban", "Tài khoản đã bị khóa vĩnh viễn");
+                request.setAttribute("error", "Tài khoản đã bị khóa vĩnh viễn");
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
         }else{
