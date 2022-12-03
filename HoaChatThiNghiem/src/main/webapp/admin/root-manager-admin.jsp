@@ -9,14 +9,7 @@
     <title>Quản lý admin | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"/>
-
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css"/>
+    <jsp:include page="../common/admin-css.jsp"></jsp:include>
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -136,15 +129,7 @@
 </div>
 
 <!-- ===== JAVASCRIPT ===== -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendor/bootstrap/js/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/plugins/pace.min.js"></script>
-<script src="js/main.js"></script>
+<jsp:include page="../common/admin-js.jsp"></jsp:include>
 <!-- ================================================================================================== -->
 <script>
     // In dữ liệu
@@ -157,23 +142,6 @@
             win.print();
         };
     })();
-
-    // Sao chép dữ liệu
-    // var copyTextareaBtn = document.querySelector('.js-textareacopybtn');
-
-    // copyTextareaBtn.addEventListener('click', function (event) {
-    //     var copyTextarea = document.querySelector('.js-copytextarea');
-    //     copyTextarea.focus();
-    //     copyTextarea.select();
-
-    //     try {
-    //         var successful = document.execCommand('copy');
-    //         var msg = successful ? 'successful' : 'unsuccessful';
-    //         console.log('Copying text command was ' + msg);
-    //     } catch (err) {
-    //         console.log('Oops, unable to copy');
-    //     }
-    // });
 </script>
 </body>
 

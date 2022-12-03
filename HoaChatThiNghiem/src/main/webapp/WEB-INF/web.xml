@@ -13,5 +13,6 @@
         <url-pattern>/shop/profile.jsp</url-pattern>
         <url-pattern>/shop/cart.jsp</url-pattern>
     </filter-mapping>
+
 </web-app>
 

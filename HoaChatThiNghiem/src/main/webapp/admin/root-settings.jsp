@@ -1,4 +1,5 @@
 <%@ page import="model.Admin" %>
+<%@ page import="utils.CommonString" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,14 +11,7 @@
     <title>Đổi mật khẩu | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <jsp:include page="../common/admin-css.jsp"></jsp:include>
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -26,7 +20,7 @@
 <jsp:include page="../common/admin-root-sidebar-menu.jsp"/>
 <% String error = (String) request.getAttribute("error");
     String noti = (String) request.getAttribute("notification");
-    Admin admin = (Admin) session.getAttribute("auth");%>
+    Admin admin = (Admin) session.getAttribute(CommonString.ADMIN_SESSION);%>
 
 <main class="app-content">
     <div class="app-title">
@@ -83,12 +77,7 @@
 </main>
 
 <!-- ===== JAVASCRIPT ===== -->
-<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendor/bootstrap/js/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" charset="UTF-8" src="js/main.js" charset="UTF-8"></script>
+<jsp:include page="../common/admin-js.jsp"></jsp:include>
 </body>
 
 </html>

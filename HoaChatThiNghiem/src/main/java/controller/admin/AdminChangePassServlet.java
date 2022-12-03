@@ -2,6 +2,7 @@ package controller.admin;
 
 import model.Admin;
 import service.AdminService;
+import utils.CommonString;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ public class AdminChangePassServlet extends HttpServlet {
 
         String old_pass = request.getParameter("old-pass");
         String new_pass = request.getParameter("new-pass");
-        Admin admin = (Admin) request.getSession().getAttribute("auth");
+        Admin admin = (Admin) request.getSession().getAttribute(CommonString.ADMIN_SESSION);
         if (old_pass.equals(admin.getPassAD())) {
 
             boolean checkUpdate = AdminService.updatePassword(admin.getUsername(), new_pass); // call service

@@ -2,6 +2,7 @@ package controller.admin;
 
 import model.Admin;
 import service.AdminService;
+import utils.CommonString;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +38,7 @@ public class AdminLoginServlet extends HttpServlet {
         } else {
 
             HttpSession session = request.getSession(true);
-            session.setAttribute("auth", admin);
+            session.setAttribute(CommonString.ADMIN_SESSION, admin);
             int role_admin = admin.getId_role_admin();
             if (role_admin == 1) {
 

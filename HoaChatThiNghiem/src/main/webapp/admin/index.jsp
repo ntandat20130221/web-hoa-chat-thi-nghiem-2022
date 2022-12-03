@@ -12,14 +12,8 @@
     <title>Danh sách nhân viên | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <jsp:include page="../common/admin-css.jsp"></jsp:include>
 
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -201,14 +195,7 @@
 </main>
 
 <!-- ===== JAVASCRIPT ===== -->
-<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
-
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<script src="vendor/bootstrap/js/popper.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="vendor/plugins/pace.min.js"></script>
-<script src="vendor/plugins/chart.js"></script>
-<script src="js/main.js"></script>
+<jsp:include page="../common/admin-js.jsp"></jsp:include>
 <!-- ================================================================================================== -->
 <script>
     // Initialize Chart

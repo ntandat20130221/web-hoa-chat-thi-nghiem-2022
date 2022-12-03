@@ -1,6 +1,7 @@
 <%@ page import="model.Admin" %>
+<%@ page import="utils.CommonString" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Admin admin = (Admin) session.getAttribute("auth");%>
+<% Admin admin = (Admin) session.getAttribute(CommonString.ADMIN_SESSION);%>
 <!-- Sidebar Menu -->
 <div class="app-sidebar-overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">

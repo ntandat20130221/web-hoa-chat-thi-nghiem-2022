@@ -1,6 +1,7 @@
 <%@ page import="model.Admin" %>
+<%@ page import="utils.CommonString" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Admin admin = (Admin) session.getAttribute("auth");%>
+<% Admin admin = (Admin) session.getAttribute(CommonString.ADMIN_SESSION);%>
 <div class="app-sidebar-overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
     <div class="app-sidebar-user"><img class="admin-avatar" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="User Image">

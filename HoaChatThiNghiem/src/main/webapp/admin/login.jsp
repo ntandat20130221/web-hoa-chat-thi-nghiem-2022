@@ -11,7 +11,6 @@
 
     <!-- ===== STYLESHEET ===== -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
     <link rel="stylesheet" href="<c:url value='vendor/bootstrap/css/bootstrap.min.css'/> ">
     <link rel="stylesheet" href="<c:url value="css/login.css" />">
 </head>
@@ -70,7 +69,6 @@
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-
 
 </body>
 
