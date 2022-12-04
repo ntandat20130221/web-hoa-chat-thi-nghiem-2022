@@ -158,4 +158,24 @@ public class Product implements Serializable {
     public int getSupplier() {
         return supplier;
     }
+
+    public void setListed_price(int listed_price) {
+        this.listed_price = listed_price;
+    }
+
+    public void setCurrent_price(int current_price) {
+        this.current_price = current_price;
+    }
+
+    public void setType_product(int type_product) {
+        this.type_product = type_product;
+    }
+
+    public void setStatus_product(int status_product) {
+        this.status_product = status_product;
+    }
+
+    public void setSupplier(int supplier) {
+        this.supplier = supplier;
+    }
 }

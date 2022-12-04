@@ -2,8 +2,7 @@ package service;
 
 import dao.ProductDAO;
 import db.DbConnection;
-import model.Admin;
-import model.Product;
+import model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -85,6 +84,24 @@ public class ProductService {
         }
         connectDB.unInstall();
         return false;
+    }
+
+    public static List<Object> getTypeAndStatusAndSupplierForProduct() {
+        DbConnection connectDB = DbConnection.getInstall();
+        ProductDAO dao = new ProductDAO();
+        List<Object> result = new ArrayList<>();
+
+        List<TypeProduct> typeProducts = dao.getTypeProducts(connectDB);
+        List<StatusProduct> statusProducts = dao.getStatusProducts(connectDB);
+        List<Supplier> suppliers = dao.getSuppliers(connectDB);
+
+        result.add(typeProducts);
+        result.add(statusProducts);
+        result.add(suppliers);
+
+        connectDB.unInstall();
+        return result;
+
     }
 
 
