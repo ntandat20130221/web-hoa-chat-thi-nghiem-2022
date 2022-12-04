@@ -97,7 +97,7 @@ public class AdminAddProductServlet extends HttpServlet {
 
         try {
             Admin admin = (Admin) request.getSession().getAttribute(CommonString.ADMIN_SESSION);
-            boolean checkAddProduct = ProductService.addNewProduct(p, admin);
+            boolean checkAddProduct = ProductService.addNewProduct(p,admin);
             if (checkAddProduct) {
 
                 response.sendRedirect("/HoaChatThiNghiem_war/admin/them-san-pham");

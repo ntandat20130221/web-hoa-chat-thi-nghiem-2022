@@ -60,7 +60,7 @@ public class ProductService {
         /*
         b1: thêm tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp, tên admin vào bảng products
 
-        b2: lấy id của sản phẩm vừa được thêm vào bảng products dựa trên tên,hình ảnh,mã loại,mã trạng thái,mã nhà cung cấp
+        b2: lấy id của sản phẩm vừa được thêm vào bảng products dựa trên tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp
 
         b3: thêm giá niêm yết và giá bán thực tế của sản phẩm vào bảng price_product dựa trên id
 

@@ -28,8 +28,8 @@ public class TestProductService {
     public static void main(String[] args) {
 
         TestProductService test_service = new TestProductService();
-        // test_service.Test_AddNewProduct();
-        test_service.Test_GetTypeAndStatusAndSupplierForProduct();
+         test_service.Test_AddNewProduct();
+      //  test_service.Test_GetTypeAndStatusAndSupplierForProduct();
 
     }
 }
