@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +59,10 @@
                             </li>
                             <li>
                                 <a href="change-pass.jsp"><i class="bi bi-lock"></i> Đổi mật khẩu</a>
+                            </li>
+                            <li>
+                                <a href="${context}/shop/DoLogoutCustomer">
+                                    <i class="bi bi-box-arrow-in-right"></i> Đăng xuất</a>
                             </li>
                         </ul>
                     </div>

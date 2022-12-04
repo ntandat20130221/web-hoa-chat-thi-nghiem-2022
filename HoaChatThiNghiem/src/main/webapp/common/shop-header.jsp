@@ -21,7 +21,7 @@
                         <%if (customer == null){%>
                         <ul>
                             <li>
-                                <a href="${context}/shop/login.jsp"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
+                                <a href="${context}/shop/login"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
                             </li>
                             <li>
                                 <a href="${context}/shop/register.jsp"><i class="bi bi-person-plus"></i>Đăng ký</a>
@@ -35,7 +35,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="${context}/shop/login.jsp">
+                                <a href="${context}/shop/DoLogoutCustomer">
                                     <i class="bi bi-box-arrow-in-right"></i>Đăng xuất
                                 </a>
                             </li>

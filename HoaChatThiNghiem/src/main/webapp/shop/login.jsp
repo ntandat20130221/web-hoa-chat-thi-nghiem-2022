@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <%String error = (String) request.getAttribute("error");%>
+<%String error = (String) request.getAttribute("error");%>;
     <!-- ===== HEADER ===== -->
     <header class="header-account">
         <div class="container">
@@ -54,7 +54,7 @@
             </div>
             <div class="col-lg-5 col-md-5 col-12">
                 <div class="h-100 d-flex align-items-center">
-                    <form class="m-0 p-5 text-center" action="/HoaChatThiNghiem_war/shop/DoLoginCustomer" method="post">
+                    <form class="m-0 p-5 text-center" action="/HoaChatThiNghiem_war/shop/login" method="post">
                         <h5 class="mb-4">Đăng Nhập</h5>
                             <%if(error != null){%>
                                 <div class="w-100 mb-3 alert alert-danger" role="alert">

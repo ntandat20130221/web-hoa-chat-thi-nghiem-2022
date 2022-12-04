@@ -5,14 +5,22 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <display-name>Archetype Created Web Application</display-name>
     <filter>
-        <filter-name>PreventAccess</filter-name>
-        <filter-class>filter.PreventAccess</filter-class>
+        <filter-name>PreventAccessShop</filter-name>
+        <filter-class>filter.PreventAccessShop</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>PreventAccess</filter-name>
+        <filter-name>PreventAccessShop</filter-name>
         <url-pattern>/shop/profile.jsp</url-pattern>
         <url-pattern>/shop/cart.jsp</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>PreventAccessAdmin</filter-name>
+        <filter-class>filter.PreventAccessAdmin</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>PreventAccessAdmin</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
 </web-app>
 
