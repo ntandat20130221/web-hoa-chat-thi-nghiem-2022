@@ -1,7 +1,10 @@
+<%@ page import="model.TypeProduct" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.StatusProduct" %>
+<%@ page import="model.Supplier" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,14 +12,7 @@
     <title>Thêm sản phẩm | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <jsp:include page="../common/admin-css.jsp"></jsp:include>
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -90,11 +86,18 @@
         margin-top: -2px;
     }
 </style>
+
 <%--    Header--%>
 <jsp:include page="../common/admin-header.jsp"/>
 
 <!-- Sidebar Menu -->
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
+
+<%
+    List<TypeProduct> typeProductList = (List<TypeProduct>) request.getAttribute("ds-loai-san-pham");
+    List<StatusProduct> statusProductList = (List<StatusProduct>) request.getAttribute("ds-trang-thai-san-pham");
+    List<Supplier> supplierList = (List<Supplier>) request.getAttribute("ds-nha-cung-cap");
+%>
 
 <main class="app-content">
     <div class="row">
@@ -122,34 +125,28 @@
                         <div class="form-group col-md-3">
                             <label for="typeProduct" class="control-label">Loại sản phẩm</label>
                             <select class="form-control" id="typeProduct" name="LoaiSP">
-                                <option>-- Chọn loại sản phẩm --</option>
-                                <option>Bàn ăn</option>
-                                <option>Bàn thông minh</option>
-                                <option>Tủ</option>
-                                <option>Ghế gỗ</option>
-                                <option>Ghế sắt</option>
-                                <option>Giường người lớn</option>
-                                <option>Giường trẻ em</option>
-                                <option>Bàn trang điểm</option>
-                                <option>Giá đỡ</option>
+                                <%for (TypeProduct tp : typeProductList) { %>
+                                <option value="<%=tp.getId_type()%>"><%=tp.getName_type()%>
+                                </option>
+                                <% } %>
                             </select>
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="statusProduct" class="control-label">Tình trạng</label>
                             <select class="form-control" id="statusProduct" name="TrangThaiSP">
-                                <option>-- Chọn tình trạng --</option>
-                                <option>Còn hàng</option>
-                                <option>Hết hàng</option>
+                                <% for (StatusProduct sp : statusProductList) { %>
+                                <option value="<%=sp.getId_status()%>"><%=sp.getName_status()%>
+                                </option>
+                                <% } %>
                             </select>
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="supplier" class="control-label">Nhà cung cấp</label>
                             <select class="form-control" id="supplier" name="NhaCungCap">
-                                <option>-- Chọn nhà cung cấp --</option>
-                                <option>Phong vũ</option>
-                                <option>Thế giới di động</option>
-                                <option>FPT</option>
-                                <option>Admin</option>
+                                <%for (Supplier sl : supplierList) {%>
+                                <option value="<%=sl.getId_supplier()%>"><%=sl.getName_supplier()%>
+                                </option>
+                                <%}%>
                             </select>
                         </div>
                         <div class="form-group col-md-12">
@@ -176,5 +173,4 @@
 <jsp:include page="../common/admin-js.jsp"></jsp:include>
 <!-- ================================================================================================== -->
 </body>
-
 </html>

@@ -2,8 +2,7 @@ package service;
 
 import dao.ProductDAO;
 import db.DbConnection;
-import model.Admin;
-import model.Product;
+import model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -75,7 +74,7 @@ public class ProductService {
         /*
         b1: thêm tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp, tên admin vào bảng products
 
-        b2: lấy id của sản phẩm vừa được thêm vào bảng products dựa trên tên,hình ảnh,mã loại,mã trạng thái,mã nhà cung cấp
+        b2: lấy id của sản phẩm vừa được thêm vào bảng products dựa trên tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp
 
         b3: thêm giá niêm yết và giá bán thực tế của sản phẩm vào bảng price_product dựa trên id
 
@@ -99,6 +98,24 @@ public class ProductService {
         }
         connectDB.unInstall();
         return false;
+    }
+
+    public static List<Object> getTypeAndStatusAndSupplierForProduct() {
+        DbConnection connectDB = DbConnection.getInstall();
+        ProductDAO dao = new ProductDAO();
+        List<Object> result = new ArrayList<>();
+
+        List<TypeProduct> typeProducts = dao.getTypeProducts(connectDB);
+        List<StatusProduct> statusProducts = dao.getStatusProducts(connectDB);
+        List<Supplier> suppliers = dao.getSuppliers(connectDB);
+
+        result.add(typeProducts);
+        result.add(statusProducts);
+        result.add(suppliers);
+
+        connectDB.unInstall();
+        return result;
+
     }
 
 
