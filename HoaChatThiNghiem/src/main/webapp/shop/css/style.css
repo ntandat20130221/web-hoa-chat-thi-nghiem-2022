@@ -725,14 +725,19 @@ a:focus {
     margin-left: -25px;
 }
 
-/* [ Sinlge Product ]
+/* [ Single Product ]
 --------------------------------------- */
 .single-product {
+    position: relative;
     margin-top: 50px;
     box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
     rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 8px;
     overflow: hidden;
+}
+
+.single-product .product-img {
+    position: relative;
 }
 
 .single-product .product-img a {
@@ -766,6 +771,45 @@ a:focus {
 
 .single-product .product-img a span.hot {
     background-color: #ed1b24;
+}
+
+.cart-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    opacity: 0;
+    padding: 0 36px;
+    transition: all ease .3s;
+    z-index: 9;
+}
+
+.single-product .product-img:hover .cart-container {
+    bottom: 12px;
+    opacity: 100%;
+}
+
+.single-product .product-img .btn-cart {
+    width: 100%;
+    padding: 10px 0 8px 0;
+    color: white;
+    border: none;
+    outline: unset;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bolder;
+    border-radius: 4px;
+    background: #bb271a;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+
+.single-product .product-img .btn-cart:hover {
+    background: #333;
+}
+
+.single-product .product-img .btn-cart i {
+    font-size: 16px;
 }
 
 .single-product .product-content {

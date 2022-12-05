@@ -70,6 +70,9 @@
                         <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="#"/>
                         <span class="hot">Hot</span>
                     </a>
+                    <div class="cart-container">
+                        <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                    </div>
                 </div>
                 <div class="product-content">
                     <a href="product-details.jsp">Acetic Acid 95%</a>
@@ -92,6 +95,9 @@
                     <a href="product-details.jsp">
                         <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="#"/>
                     </a>
+                    <div class="cart-container">
+                        <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                    </div>
                 </div>
                 <div class="product-content">
                     <a href="product-details.jsp">Acid Sulfuric 95-98%</a>
@@ -114,6 +120,9 @@
                         <img class="default-img" src="../images/hoa_chat/chi_thi/550x750/chi-thi-1.jpg" alt="#"/>
                         <span class="new">New</span>
                     </a>
+                    <div class="cart-container">
+                        <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                    </div>
                 </div>
                 <div class="product-content">
                     <a href="product-details.jsp">Chất chỉ thị màu FS500</a>
@@ -135,6 +144,9 @@
                     <a href="product-details.jsp">
                         <img src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt="#"/>
                     </a>
+                    <div class="cart-container">
+                        <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                    </div>
                 </div>
                 <div class="product-content">
                     <a href="product-details.jsp">Dung dịch đệm</a>
@@ -190,6 +202,9 @@
                                                     <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/hydrochloric.jpg"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Acid Hydrochloric 89% - HCl</a>
@@ -213,6 +228,9 @@
                                                     <img class="default-img" src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Acid Acetic 97%</a>
@@ -235,6 +253,9 @@
                                                 <a href="product-details.jsp">
                                                     <img class="default-img" src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Dung dịch đệm</a>
@@ -258,6 +279,9 @@
                                                     <img class="default-img"
                                                          src="../images/hoa_chat/dung_moi/dung_moi_may_gc/550x750/dung-moi-gc-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Dung môi dùng cho máy GC</a>
@@ -280,6 +304,9 @@
                                                 <a href="product-details.jsp">
                                                     <img class="default-img" src="../images/hoa_chat/hidrocacbon/550x750/hidrocacbon-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Hydrocacbon</a>
@@ -303,6 +330,9 @@
                                                     <img class="default-img" src="../images/hoa_chat/muoi/muoi_huu_co/550x750/muoi-huu-co-1.jpg"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Muối hữu cơ</a>
@@ -326,6 +356,9 @@
                                                     <img class="default-img" src="../images/hoa_chat/muoi/muoi_vo_co/550x750/muoi-vo-co-1.jpg"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Muối vô cơ</a>
@@ -350,6 +383,9 @@
                                                          alt="#"/>
                                                     <span class="price-dec">30% Off</span>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Hóa chất hóa sinh</a>
@@ -382,6 +418,9 @@
                                                     <img class="default-img" src="../images/dung_cu/binh_thi_nghiem/550x750/binh-thi-nghiem-1.png"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Bình thí nghiệm</a>
@@ -406,6 +445,9 @@
                                                          src="../images/dung_cu/giay_loc_mang_loc/dinh_tinh/550x750/giay-loc-dinh-tinh-1.png"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Màng lọc định tính</a>
@@ -428,6 +470,9 @@
                                                 <a href="product-details.jsp">
                                                     <img class="default-img" src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Ống nghiệm 200ml</a>
@@ -450,6 +495,9 @@
                                                 <a href="product-details.jsp">
                                                     <img class="default-img" src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-2.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Ống nghiệm 100ml</a>
@@ -474,6 +522,9 @@
                                                          src="../images/dung_cu/giay_loc_mang_loc/dinh_luong/550x750/giay-loc-dinh-luong-1.png"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Giấy lọc định lượng</a>
@@ -497,6 +548,9 @@
                                                     <img class="default-img" src="../images/dung_cu/binh_thi_nghiem/550x750/binh-thi-nghiem-1.png"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Bình thí nghiệm 150ml</a>
@@ -519,6 +573,9 @@
                                                 <a href="product-details.jsp">
                                                     <img class="default-img" src="../images/dung_cu/ong_nghiem/550x750/ong-nghiem-2.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Ống nghiệm 50ml</a>
@@ -544,6 +601,9 @@
                                                          alt="#"/>
                                                     <span class="price-dec">30% Off</span>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Giấy lọc định tính</a>
@@ -576,6 +636,9 @@
                                                     <img class="default-img"
                                                          src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Kính hiển vi điện tử</a>
@@ -599,6 +662,9 @@
                                                     <img class="default-img"
                                                          src="../images/thiet_bi/kinh_hien_vi/sinh_hoc/550x750/kinh-hien-vi-sinh-hoc-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Kính hiển vi sinh học</a>
@@ -622,6 +688,9 @@
                                                     <img class="default-img"
                                                          src="../images/thiet_bi/lo_nung/duoi_1000_do/550x750/lo-nung-duoi-1000-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Lò nung dưới 1000 độ C</a>
@@ -645,6 +714,9 @@
                                                     <img class="default-img"
                                                          src="../images/thiet_bi/lo_nung/tren_1000_do/550x750/lo-nung-tren-1000-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Lò nung trên 1000 độ C</a>
@@ -668,6 +740,9 @@
                                                     <img class="default-img" src="../images/thiet_bi/may_cat_nuoc/550x750/may-cat-nuoc-1.jpg"
                                                          alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Máy cắt nước</a>
@@ -691,6 +766,9 @@
                                                     <img class="default-img"
                                                          src="../images/thiet_bi/kinh_hien_vi/noi_soi/550x750/kinh-noi-soi-noi-1.png" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Kính hiển vi nội soi</a>
@@ -714,6 +792,9 @@
                                                     <img class="default-img"
                                                          src="../images/thiet_bi/kinh_hien_vi/huynh_quang/550x750/kinh-huynh-quang-1.jpg" alt="#"/>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Kính hiển vi Đức</a>
@@ -738,6 +819,9 @@
                                                          src="../images/thiet_bi/lo_nung/duoi_1000_do/550x750/lo-nung-duoi-1000-1.jpg" alt="#"/>
                                                     <span class="price-dec">30% Off</span>
                                                 </a>
+                                                <div class="cart-container">
+                                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                </div>
                                             </div>
                                             <div class="product-content">
                                                 <a href="product-details.jsp">Lò nung nhiệt độ cao</a>

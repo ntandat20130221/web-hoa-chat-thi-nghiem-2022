@@ -155,6 +155,9 @@
                                     <% if (p.getStatus() != null) { %>
                                     <span class="new"><%=p.getStatus()%></span> <% } %>
                                 </a>
+                                <div class="cart-container">
+                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                </div>
                             </div>
                             <div class="product-content">
                                 <a href="${context}/shop/product-details?product_id=<%=p.getIdProduct()%>">
