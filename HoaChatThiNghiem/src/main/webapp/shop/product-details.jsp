@@ -45,67 +45,71 @@
 
 <!-- ===== PRODUCT DETAIL ===== -->
 <section class="product-detail">
-    <% Product p = (Product) request.getAttribute("product_details"); %>
-    <div class="row no-gutters">
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <div class="product-slider-active">
-                <div class="single-slider">
-                    <img src="../images/hoa_chat/acid_bazo/acid_acetic/acid_acetic_01.png" alt="#"/>
-                </div>
-                <div class="single-slider">
-                    <img src="../images/hoa_chat/acid_bazo/acid_citric/acid_citric.jpg" alt="#"/>
+    <% Product p = (Product) request.getAttribute("product"); %>
+    <div class="container">
+        <div class="row no-gutters main-detail p-5">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-slider">
+                    <div class="product-image">
+                        <img class="active" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="">
+                    </div>
+                    <ul class="image-list">
+                        <li><img src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt=""></li>
+                        <li><img src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg" alt=""></li>
+                        <li><img src="../images/hoa_chat/dung_moi/dung_moi_may_gc/550x750/dung-moi-gc-1.jpg" alt=""></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-            <div class="product-content p-5">
-                <h2><%=p.getName()%>
-                </h2>
-                <div class="product-rating d-flex">
-                    <div class="rating">
-                        <% int stars = p.getStar(); %>
-                        <c:forEach begin="1" end="5">
-                            <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i>
-                        </c:forEach>
-                    </div>
-                    <a href="#"> (33 Đánh giá)</a>
-                </div>
-                <% String op = PriceFormat.format(p.getOldPrice()), np = PriceFormat.format(p.getNewPrice()); %>
-                <h3><% if (!op.equals("0")) { %><span><%=op%>đ</span> <% } %><%=np%>đ</h3>
-                <div class="product-paragraph">
-                    <p>
-                        <%=p.getDesc()%>
-                    </p>
-                </div>
-                <div class="quantity d-inline-block mr-3">
-                    <div class="input-group">
-                        <div class="button minus">
-                            <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant">
-                                <i class="ti-minus"></i>
-                            </button>
+            <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
+                <div class="product-content pl-5">
+                    <span class="supplier">Nhà cung cấp: Merk - Đức</span>
+                    <h2><%=p.getName()%>
+                    </h2>
+                    <div class="product-rating d-flex">
+                        <div class="rating">
+                            <% int stars = p.getStar(); %>
+                            <c:forEach begin="1" end="5">
+                                <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i>
+                            </c:forEach>
                         </div>
-                        <input type="text" name="quant" class="input-number" data-min="1" data-max="1000" value="1"/>
-                        <div class="button plus">
-                            <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant">
-                                <i class="ti-plus"></i>
-                            </button>
+                        <a href="#"> (33 Đánh giá)</a>
+                    </div>
+                    <% String op = PriceFormat.format(p.getOldPrice()), np = PriceFormat.format(p.getNewPrice()); %>
+                    <div class="ps d-flex justify-content-between align-items-center">
+                        <h3><%=np%>đ<% if (!op.equals("0")) { %><span><%=op%>đ</span> <% } %></h3>
+                        <span class="label label-in-stock">Còn hàng</span>
+                    </div>
+                    <div class="product-paragraph">
+                        <p>
+                            <%=p.getDesc()%>
+                        </p>
+                    </div>
+                    <div class="quantity d-inline-block mr-3">
+                        <div class="input-group mt-3">
+                            <div class="button minus">
+                                <button type="button" class="btn btn-primary btn-number"><i class="ti-minus"></i></button>
+                            </div>
+                            <input type="text" class="input-number" value="1"/>
+                            <div class="button plus">
+                                <button type="button" class="btn btn-primary btn-number"><i class="ti-plus"></i></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="add-to-cart d-inline-block">
-                    <a href="#" class="btn">Thêm vào giỏ hàng</a>
-                </div>
-                <div class="product-stock">
-                    <span><%=p.getQuantity()%> sản phẩm có sẵn</span>
-                </div>
-                <div class="default-social mt-3">
-                    <h4 class="share-now">Chia sẻ:</h4>
-                    <ul class="d-inline-block">
-                        <li class="d-inline-block mr-3"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="d-inline-block mr-3"><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="d-inline-block mr-3"><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                        <li class="d-inline-block"><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
-                    </ul>
+                    <div class="add-to-cart d-inline-block mt-3">
+                        <a href="#" class="btn"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</a>
+                    </div>
+                    <div class="product-stock">
+                        <span><%=p.getQuantity()%> sản phẩm có sẵn</span>
+                    </div>
+                    <div class="default-social mt-3">
+                        <h4 class="share-now">Chia sẻ:</h4>
+                        <ul class="d-inline-block">
+                            <li class="mr-1"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="mr-1"><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="mr-1"><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li class=""><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,6 +122,22 @@
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/shop-js.jsp"/>
 
+<script>
+    $('.image-list img').on('mouseover', function () {
+        $('.product-image .active').attr('src', $(this).attr('src'))
+    })
+
+    $('.minus').on('click', function () {
+        const input = $('.input-number')
+        if (input.val() > 1)
+            input.val(input.val() - 1)
+    })
+
+    $('.plus').on('click', function () {
+        const input = $('.input-number')
+        input.val(Number(input.val()) + 1)
+    })
+</script>
 </body>
 
 </html>

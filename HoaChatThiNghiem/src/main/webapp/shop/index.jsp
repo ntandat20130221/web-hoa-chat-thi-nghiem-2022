@@ -57,7 +57,7 @@
     </div>
 </section>
 
-<!-- ===== LASTEST PRODUCTS ===== -->
+<!-- ===== LATEST PRODUCTS ===== -->
 <section class="newest-products">
     <div class="container">
         <div class="section-title">

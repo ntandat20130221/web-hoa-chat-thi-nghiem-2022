@@ -19,7 +19,7 @@ public class ProductDetailServlet extends HttpServlet {
         if (id != null) {
             Product product = ProductService.getProductById(id);
             if (product != null) {
-                req.setAttribute("product_details", product);
+                req.setAttribute("product", product);
                 req.getRequestDispatcher("product-details.jsp").forward(req, resp);
             }
         }
