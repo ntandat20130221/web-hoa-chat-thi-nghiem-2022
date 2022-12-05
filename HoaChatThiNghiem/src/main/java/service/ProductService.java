@@ -13,13 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService {
-    private static final String QUERY_PRODUCTS = "SELECT p.id_product, p.name_product, p.description_product, " + "p.url_img_product, p.star_review, sp.name_status_product, p.quantity_product," + "pp.listed_price, pp.current_price, tp.name_type_product FROM products p " + "JOIN price_product pp ON p.id_product = pp.id_product " + "JOIN status_product sp on p.id_status_product = sp.id_status_product " + "JOIN type_product tp on p.id_type_product = tp.id_type_product";
+    private static final String QUERY_PRODUCTS = "SELECT p.id_product, p.name_product, p.description_product, " +
+            "p.url_img_product, p.star_review, sp.name_status_product, p.quantity_product," +
+            "pp.listed_price, pp.current_price, tp.name_type_product FROM products p " +
+            "JOIN price_product pp ON p.id_product = pp.id_product " +
+            "JOIN status_product sp on p.id_status_product = sp.id_status_product " +
+            "JOIN type_product tp on p.id_type_product = tp.id_type_product";
 
     public static List<Product> getProducts() {
         List<Product> products;
         try (Statement st = DbConnection.getInstall().getStatement()) {
-            ResultSet rs = st.executeQuery(QUERY_PRODUCTS);
-            products = getProducts(rs);
+            products = getProducts(st.executeQuery(QUERY_PRODUCTS));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -30,12 +34,22 @@ public class ProductService {
         Product product;
         try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_PRODUCTS + " WHERE p.id_product=?")) {
             ps.setString(1, id);
-            ResultSet rs = ps.executeQuery();
-            product = getProducts(rs).get(0);
+            product = getProducts(ps.executeQuery()).get(0);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return product;
+    }
+
+    public static List<Product> getProductsByType(int typeId) {
+        List<Product> products;
+        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_PRODUCTS + " WHERE p.id_type_product=?")) {
+            ps.setInt(1, typeId);
+            products = getProducts(ps.executeQuery());
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+        return products;
     }
 
     private static List<Product> getProducts(ResultSet rs) throws SQLException {

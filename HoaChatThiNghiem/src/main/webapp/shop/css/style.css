@@ -1234,6 +1234,9 @@ a:focus {
 /* ============================================
     SIDEBAR - PRODUCTS PAGE
 ============================================ */
+.hidden {
+    display: none;
+}
 
 .products {
     margin: 100px 0;
@@ -1241,7 +1244,7 @@ a:focus {
 
 .products .shop-sidebar .single-widget {
     background: #f6f7fb;
-    padding: 30px;
+    padding: 25px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
 }
@@ -1259,16 +1262,27 @@ a:focus {
 
 /* [ Category List ]
 --------------------------------------- */
+.products .shop-sidebar .category-list li i {
+    visibility: hidden;
+    transition: ease-in .2s;
+}
+
 .products .shop-sidebar .category-list li a {
     display: inline-block;
-    color: #666;
+    color: #333;
     font-weight: 400;
     font-size: 14px;
     text-transform: capitalize;
+    cursor: pointer;
 }
 
-.products .shop-sidebar .category-list a:hover,
-.products .shop-sidebar .category-list a.click-active{
+.products .shop-sidebar .category-list li:hover a,
+.products .shop-sidebar .category-list li.click-active a {
+    color: var(--main-color);
+}
+
+.products .shop-sidebar .category-list li.click-active i {
+    visibility: visible;
     color: var(--main-color);
 }
 
@@ -1390,6 +1404,7 @@ a:focus {
     border-radius: 6px;
     font-family: "Inter", "sans-serif";
     transition: all ease 0.3s;
+    cursor: pointer;
 }
 
 .pagination a.control {
@@ -1399,6 +1414,7 @@ a:focus {
 }
 
 .pagination a.control:hover {
+    color: white;
     box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
 }
 
@@ -1410,6 +1426,28 @@ a:focus {
 .pagination a:not(.control):hover {
     color: var(--main-color);
     text-decoration: underline;
+}
+
+/* [ No Data ]
+--------------------------------------- */
+.no-data img {
+    width: 30%;
+    height: auto;
+}
+
+.no-data p {
+    font-size: 18px;
+    color: #4b4b4b;
+}
+
+.no-data button {
+    color: white;
+    padding: 5px 12px;
+    border: none;
+    outline: unset;
+    border-radius: 3px;
+    background: var(--main-color);
+    cursor: pointer;
 }
 
 /* ============================================
