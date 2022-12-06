@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.List,model.Product,utils.PriceFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="pf" uri="https://com.labchemicals.functions" %>
 
 <%-- Global variables declaration --%>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
@@ -44,7 +44,6 @@
 </div>
 
 <!-- ===== PRODUCTS ===== -->
-<% @SuppressWarnings("unchecked") List<Product> products = (List<Product>) request.getAttribute("products"); %>
 <section class="products">
     <div class="container">
         <div class="row">
@@ -55,7 +54,7 @@
                         <h3 class="title">Phân loại</h3>
                         <ul class="category-list">
                             <li class="mb-2 <c:if test="${param['type'] == '1'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                     data-query="1">Acid và Bazo</a></li>
+                                    data-query="1">Acid và Bazo</a></li>
                             <li class="mb-2 <c:if test="${param['type'] == '2'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
                                     data-query="2">Oxit</a></li>
                             <li class="mb-2 <c:if test="${param['type'] == '3'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
@@ -78,27 +77,25 @@
                             <div class="d-flex justify-content-around">
                                 <c:set var="from" value="${param['minPrice']}"/>
                                 <c:set var="to" value="${param['maxPrice']}"/>
-                                <input class="from w-100 bg-white" type="text" placeholder="TỪ" value="${from}"
-                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                <input class="from w-100 bg-white" type="text" placeholder="TỪ" value="${from}">
                                 <div class="divider-dash mx-2 d-flex align-items-center">
                                     <div></div>
                                 </div>
-                                <input class="to w-100 bg-white" type="text" placeholder="ĐẾN" value="${to}"
-                                       oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');">
+                                <input class="to w-100 bg-white" type="text" placeholder="ĐẾN" value="${to}">
                             </div>
+                            <span class="label-invalid">Vui lòng điền khoảng giá phù hợp</span>
                             <button class="btn-apply py-2 text-white w-100">Áp dụng</button>
                         </div>
                         <ul class="check-box-list mt-3">
-                            <c:set var="allProducts" value="${requestScope.all_products}"/>
                             <c:set var="p1" value="${0}"/><c:set var="p2" value="${0}"/><c:set var="p3" value="${0}"/>
-                            <c:forEach var="ap" items="${allProducts}">
-                                <c:if test="${ap.newPrice >= 200000 && ap.newPrice < 500000}">
+                            <c:forEach var="p" items="${requestScope.all_products}">
+                                <c:if test="${p.newPrice >= 200000 && p.newPrice < 500000}">
                                     <c:set var="p1" value="${p1 + 1}"/>
                                 </c:if>
-                                <c:if test="${ap.newPrice >= 500000 && ap.newPrice < 1000000}">
+                                <c:if test="${p.newPrice >= 500000 && p.newPrice < 1000000}">
                                     <c:set var="p2" value="${p2 + 1}"/>
                                 </c:if>
-                                <c:if test="${ap.newPrice >= 1000000 && ap.newPrice < 2500000}">
+                                <c:if test="${p.newPrice >= 1000000 && p.newPrice < 2500000}">
                                     <c:set var="p3" value="${p3 + 1}"/>
                                 </c:if>
                             </c:forEach>
@@ -146,39 +143,35 @@
                     </div>
                 </div>
                 <div class="row" id="products-container">
-                    <% for (Product p : products) { %>
-                    <div class="col-lg-4 col-md-6 col-12">
-                        <div class="single-product">
-                            <div class="product-img">
-                                <a href="${context}/shop/product-details?product_id=<%=p.getIdProduct()%>">
-                                    <img class="default-img" src="<%=p.getImgPath()%>" alt="#"/>
-                                    <% if (p.getStatus() != null) { %>
-                                    <span class="new"><%=p.getStatus()%></span> <% } %>
-                                </a>
-                                <div class="cart-container">
-                                    <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                    <c:forEach var="p" items="${requestScope.products}">
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <a href="${context}/shop/product-details?product_id=${p.idProduct}">
+                                        <img class="default-img" src="${p.imgPath}" alt="#"/>
+                                        <span class="new">${p.status}</span>
+                                    </a>
+                                    <div class="cart-container">
+                                        <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-content">
-                                <a href="${context}/shop/product-details?product_id=<%=p.getIdProduct()%>">
-                                    <%=p.getName()%>
-                                </a>
-                                <div class="rating">
-                                    <% int stars = p.getStar(); %>
-                                    <c:forEach begin="1" end="5">
-                                        <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i>
-                                    </c:forEach>
-                                </div>
-                                <div class="product-price">
-                                    <% String op = PriceFormat.format(p.getOldPrice()), np = PriceFormat.format(p.getNewPrice());
-                                        if (!op.equals("0")) { %>
-                                    <span class="old"><%=op%>đ</span> <% } %>
-                                    <span><%=np%>đ</span>
+                                <div class="product-content">
+                                    <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
+                                    <div class="rating">
+                                        <c:forEach begin="1" end="5" varStatus="i">
+                                            <i class="fa fa-star <c:if test="${i.index <= p.star}">yellow</c:if>"></i>
+                                        </c:forEach>
+                                    </div>
+                                    <div class="product-price">
+                                        <c:if test="${p.oldPrice != 0}">
+                                            <span class="old">${pf:format(p.oldPrice)}đ</span>
+                                        </c:if>
+                                        <span>${pf:format(p.newPrice)}đ</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <% } %>
+                    </c:forEach>
                 </div>
 
                 <!-- Pagination -->
@@ -188,7 +181,7 @@
                         <a class="control ml-3" id="control-next"><i class="bi-chevron-right"></i></a>
                     </div>
                 </div>
-                
+
                 <!-- No Data -->
                 <div class="no-data hidden text-center">
                     <img src="${context}/shop/images/no_data.png" alt="No data">
@@ -219,10 +212,17 @@
         query()
     })
 
+    $('.label-input input').on('input', function () {
+        $(this).val($(this).val().replace(/[^0-9]/g, '').replace(/(\..*?)\..*/g, '$1'))
+        const v1 = Number($('.label-input input:first-child').val()), v2 = Number($('.label-input input:last-child').val())
+        if (v1 && v2 && v1 <= v2) $('.label-invalid').css('display', 'none');
+    })
+
     $('.label-input > button').on('click', function () {
         const minPrice = $('.from').val(), maxPrice = $('.to').val();
-        if (Number(minPrice) > Number(maxPrice)) alert("Vui lòng điền khoảng giá phù hợp")
-        else {
+        if (Number(minPrice) > Number(maxPrice)) {
+            $('.label-invalid').css('display', 'inline-block')
+        } else {
             queryMap.set('minPrice', minPrice)
             queryMap.set('maxPrice', maxPrice)
             query()

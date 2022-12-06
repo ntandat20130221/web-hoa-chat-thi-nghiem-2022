@@ -1332,11 +1332,6 @@ a:focus {
 
 /* [ Price Filter ]
 --------------------------------------- */
-.products .shop-sidebar .range .label-input span {
-    margin-right: 5px;
-    color: #282828;
-}
-
 .products .shop-sidebar .range .label-input input {
     border: 1px solid #b9b9b9;
     border-radius: 2px;
@@ -1355,6 +1350,15 @@ a:focus {
     width: 12px;
     height: 1px;
     background-color: #b9b9b9;
+}
+
+.label-input .label-invalid {
+    width: 100%;
+    margin-top: 16px;
+    text-align: center;
+    font-size: .8rem;
+    color: red;
+    display: none;
 }
 
 .products .shop-sidebar .label-input .btn-apply {
@@ -2507,6 +2511,10 @@ a:focus {
 .product-content .supplier {
     font-size: 15px;
     color: #565656;
+}
+
+.product-content .supplier i {
+    color: #008500;
 }
 
 .product-content .label {

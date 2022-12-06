@@ -18,6 +18,7 @@ public class Product implements Serializable {
     private String desc;
     private int quantity;
     private String type;
+    private String supply;
     private double oldPrice;
     private double newPrice;
 
@@ -44,7 +45,8 @@ public class Product implements Serializable {
         // Author : Minh Tuyên
     }
 
-    public Product(int idProduct, String imgPath, String name, int star, String status, String desc, int quantity, String type, double oldPrice, double newPrice) {
+    public Product(int idProduct, String imgPath, String name, int star,
+                   String status, String desc, int quantity, String type, String supply, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
@@ -53,6 +55,7 @@ public class Product implements Serializable {
         this.desc = desc;
         this.quantity = quantity;
         this.type = type;
+        this.supply = supply;
         this.oldPrice = oldPrice;
         this.newPrice = newPrice;
     }
@@ -121,6 +124,14 @@ public class Product implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSupply() {
+        return supply;
+    }
+
+    public void setSupply(String supply) {
+        this.supply = supply;
     }
 
     public double getOldPrice() {

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="model.Product,utils.PriceFormat" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="pf" uri="https://com.labchemicals.functions" %>
 
 <%-- Global variables declaration --%>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
@@ -45,7 +45,7 @@
 
 <!-- ===== PRODUCT DETAIL ===== -->
 <section class="product-detail">
-    <% Product p = (Product) request.getAttribute("product"); %>
+    <c:set var="p" value="${requestScope['product']}"/>
     <div class="container">
         <div class="row no-gutters main-detail p-5">
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
@@ -62,27 +62,32 @@
             </div>
             <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-content pl-5">
-                    <span class="supplier">Nhà cung cấp: Merk - Đức</span>
-                    <h2><%=p.getName()%>
-                    </h2>
+                    <span class="supplier"><i class="bi bi-patch-check-fill"></i> Nhà cung cấp: ${p.supply}</span>
+                    <h2>${p.name}</h2>
                     <div class="product-rating d-flex">
                         <div class="rating">
-                            <% int stars = p.getStar(); %>
-                            <c:forEach begin="1" end="5">
-                                <i class="<% if (stars > 0) { %>yellow <% } stars--; %> fa fa-star"></i>
+                            <c:forEach begin="1" end="5" varStatus="i">
+                                <i class="fa fa-star <c:if test="${i.index <= p.star}">yellow</c:if>"></i>
                             </c:forEach>
                         </div>
                         <a href="#"> (33 Đánh giá)</a>
                     </div>
-                    <% String op = PriceFormat.format(p.getOldPrice()), np = PriceFormat.format(p.getNewPrice()); %>
                     <div class="ps d-flex justify-content-between align-items-center">
-                        <h3><%=np%>đ<% if (!op.equals("0")) { %><span><%=op%>đ</span> <% } %></h3>
-                        <span class="label label-in-stock">Còn hàng</span>
+                        <h3>${pf:format(p.newPrice)}đ<c:if test="${p.oldPrice != 0}"><span>${pf:format(p.oldPrice)}đ</span></c:if></h3>
+                        <c:choose>
+                            <c:when test="${p.quantity > 0}">
+                                <span class="label label-in-stock">Còn hàng</span>
+                            </c:when>
+                            <c:when test="${p.quantity == 0}">
+                                <span class="label label-out-stock">Hết hàng</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span class="label label-forbidden">Cấm bán</span>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="product-paragraph">
-                        <p>
-                            <%=p.getDesc()%>
-                        </p>
+                        <p>${p.desc}</p>
                     </div>
                     <div class="quantity d-inline-block mr-3">
                         <div class="input-group mt-3">
@@ -99,7 +104,7 @@
                         <a href="#" class="btn"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</a>
                     </div>
                     <div class="product-stock">
-                        <span><%=p.getQuantity()%> sản phẩm có sẵn</span>
+                        <span>${p.quantity} sản phẩm có sẵn</span>
                     </div>
                     <div class="default-social mt-3">
                         <h4 class="share-now">Chia sẻ:</h4>
@@ -115,6 +120,47 @@
         </div>
     </div>
 </section>
+
+<!-- ===== LATEST PRODUCTS ===== -->
+<section class="newest-products mb-5">
+    <div class="container">
+        <div class="section-title">
+            <h2>Sản Phẩm Liên Quan</h2>
+        </div>
+        <div class="owl-carousel newest-slider">
+            <c:forEach var="p" items="${requestScope.related_products}">
+                <div class="single-product mt-0 mb-0 mr-3 ml-3">
+                    <div class="product-img">
+                        <a href="${context}/shop/product-details?product_id=${p.idProduct}">
+                            <img class="default-img" src="${p.imgPath}" alt="#"/>
+                            <span class="hot">${p.status}</span>
+                        </a>
+                        <div class="cart-container">
+                            <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
+                        <div class="rating">
+                            <c:forEach begin="1" end="5" varStatus="i">
+                                <i class="fa fa-star <c:if test="${i.index <= p.star}">yellow</c:if>"></i>
+                            </c:forEach>
+                        </div>
+                        <div class="product-price">
+                            <c:if test="${p.oldPrice != 0}">
+                                <span class="old">${pf:format(p.oldPrice)}đ</span>
+                            </c:if>
+                            <span>${pf:format(p.newPrice)}đ</span>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SHOP SERVICES -->
+<jsp:include page="../common/shop-services.jsp"/>
 
 <!-- ===== FOOTER ===== -->
 <jsp:include page="../common/shop-footer.jsp"/>
