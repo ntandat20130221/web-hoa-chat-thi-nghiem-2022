@@ -22,6 +22,7 @@ public class Product implements Serializable {
     private String supply;
     private int sold;
     private Date date;
+    private int views;
     private double oldPrice;
     private double newPrice;
 
@@ -50,7 +51,7 @@ public class Product implements Serializable {
 
     public Product(int idProduct, String imgPath, String name, int star,
                    String status, String desc, int quantity, String type,
-                   String supply, int sold, Date date, double oldPrice, double newPrice) {
+                   String supply, int sold, Date date, int views, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
@@ -62,6 +63,7 @@ public class Product implements Serializable {
         this.supply = supply;
         this.sold = sold;
         this.date = date;
+        this.views = views;
         this.oldPrice = oldPrice;
         this.newPrice = newPrice;
     }
@@ -154,6 +156,14 @@ public class Product implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
 
     public double getOldPrice() {

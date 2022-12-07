@@ -37,7 +37,7 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="index.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
             <li class="d-inline-block text-capitalize"><a href="product-details.jsp">Chi tiết sản phẩm</a></li>
         </ul>
     </div>
@@ -72,6 +72,7 @@
                         </div>
                         <a href="#"> (33 Đánh Giá)</a>
                         <span>${p.sold} Đã Bán</span>
+                        <span>${p.views} Đã Xem</span>
                     </div>
                     <div class="ps d-flex justify-content-between align-items-center">
                         <h3 class="the-price">${pu:format(p.newPrice)}đ<c:if test="${p.oldPrice != p.newPrice}">
@@ -110,13 +111,25 @@
                     <div class="product-stock">
                         <span>${p.quantity} sản phẩm có sẵn</span>
                     </div>
-                    <div class="default-social mt-3">
-                        <h4 class="share-now">Chia sẻ:</h4>
-                        <ul class="d-inline-block">
-                            <li class="mr-1"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li class="mr-1"><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li class="mr-1"><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                            <li class=""><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                    <div class="share-social mt-3">
+                        <span class="label-share">Chia sẻ</span>
+                        <ul class="wrapper">
+                            <li class="icon facebook">
+                                <span class="tooltip">Facebook</span>
+                                <span><i class="fa fa-facebook-f"></i></span>
+                            </li>
+                            <li class="icon twitter">
+                                <span class="tooltip">Twitter</span>
+                                <span><i class="fa fa-twitter"></i></span>
+                            </li>
+                            <li class="icon instagram">
+                                <span class="tooltip">Instagram</span>
+                                <span><i class="fa fa-instagram"></i></span>
+                            </li>
+                            <li class="icon youtube">
+                                <span class="tooltip">Youtube</span>
+                                <span><i class="fa fa-youtube-play"></i></span>
+                            </li>
                         </ul>
                     </div>
                 </div>

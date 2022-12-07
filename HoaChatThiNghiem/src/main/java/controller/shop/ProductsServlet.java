@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +23,8 @@ public class ProductsServlet extends HttpServlet {
         List<Product> products = category != null ?
                 ProductService.getProductsByType(Integer.parseInt(category)) :
                 ProductService.getProducts();
-        req.setAttribute("all_products", products);
+
+        setPriceRange(req, products);
 
         // filtering
         String minPrice = req.getParameter("minPrice"), maxPrice = req.getParameter("maxPrice");
@@ -53,5 +53,17 @@ public class ProductsServlet extends HttpServlet {
         req.setAttribute("new_products", newProducts);
 
         req.getRequestDispatcher("/shop/products.jsp").forward(req, resp);
+    }
+
+    private void setPriceRange(HttpServletRequest req, List<Product> products) {
+        int r1 = 0, r2 = 0, r3 = 0;
+        for (Product product : products) {
+            if (product.getNewPrice() >= 200000 && product.getNewPrice() < 500000) r1++;
+            if (product.getNewPrice() >= 500000 && product.getNewPrice() < 1000000) r2++;
+            if (product.getNewPrice() >= 1000000 && product.getNewPrice() < 2500000) r3++;
+        }
+        req.setAttribute("r1", r1);
+        req.setAttribute("r2", r2);
+        req.setAttribute("r3", r3);
     }
 }

@@ -13,7 +13,7 @@ public class ProductService {
     private static final String QUERY_PRODUCTS =
             "SELECT p.id_product, p.url_img_product, p.name_product, p.star_review, p.description_product, " +
                     "p.quantity_product, p.date_inserted, sp.name_status_product, tp.name_type_product, s.name_supplier, " +
-                    "sp2.quantity_sold, pp.current_price, pp.listed_price " +
+                    "sp2.quantity_sold, p.views, pp.current_price, pp.listed_price " +
                     "FROM products p JOIN price_product pp ON p.id_product = pp.id_product " +
                     "JOIN status_product sp on p.id_status_product = sp.id_status_product " +
                     "JOIN type_product tp on p.id_type_product = tp.id_type_product " +
@@ -26,7 +26,18 @@ public class ProductService {
                     "WHERE DATE(time_order) > (NOW() - INTERVAL 7 DAY) " +
                     "GROUP BY id_product ORDER BY quantities DESC";
 
+    private static final String QUERY_SELLING_PRODUCT_ID =
+            "SELECT id_product, SUM(quantity) quantities " +
+                    "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
+                    "WHERE DATE(time_order) > (NOW() - INTERVAL 30 DAY) " +
+                    "GROUP BY id_product ORDER BY quantities DESC";
+
     private static final String QUERY_NEW_PRODUCT_ID = "SELECT id_product FROM products p WHERE DATE(date_inserted) > (NOW() - INTERVAL 7 DAY)";
+
+    private static final String QUERY_TODAY_DISCOUNT =
+            "SELECT p.id_product " +
+            "FROM products p JOIN price_product pp on p.id_product = pp.id_product " +
+            "WHERE DATE(pp.date) = CURDATE()";
 
     public static List<Product> getProducts() {
         List<Product> products;
@@ -76,7 +87,8 @@ public class ProductService {
             String supply = rs.getString("name_supplier");
             int sold = rs.getInt("quantity_sold");
             Date date = rs.getDate("date_inserted");
-            Product product = new Product(id, imgPath, name, stars, status, desc, quantity, type, supply, sold, date, oldPrice, newPrice);
+            int views = rs.getInt("views");
+            Product product = new Product(id, imgPath, name, stars, status, desc, quantity, type, supply, sold, date, views, oldPrice, newPrice);
             products.add(product);
         }
         return products;
@@ -96,9 +108,37 @@ public class ProductService {
         return products;
     }
 
+    public static List<Product> getSellingProducts() {
+        List<Product> products = new ArrayList<>();
+        try (ResultSet rs = DbConnection.getInstall().getStatement().executeQuery(QUERY_SELLING_PRODUCT_ID)) {
+            while (rs.next()) {
+                int id = rs.getInt("id_product");
+                Product product = getProductById(String.valueOf(id));
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return products;
+    }
+
     public static List<Product> getNewProducts() {
         List<Product> products = new ArrayList<>();
         try (ResultSet rs = DbConnection.getInstall().getStatement().executeQuery(QUERY_NEW_PRODUCT_ID)) {
+            while (rs.next()) {
+                int id = rs.getInt("id_product");
+                Product product = getProductById(String.valueOf(id));
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return products;
+    }
+
+    public static List<Product> getTodayDiscountProducts() {
+        List<Product> products = new ArrayList<>();
+        try (ResultSet rs = DbConnection.getInstall().getStatement().executeQuery(QUERY_TODAY_DISCOUNT)) {
             while (rs.next()) {
                 int id = rs.getInt("id_product");
                 Product product = getProductById(String.valueOf(id));

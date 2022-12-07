@@ -21,7 +21,7 @@
         <div class="row py-3">
             <div class="col-lg-7 col-md-7 col-12">
                 <div class="title-left d-flex justify-content-start h-100 align-items-center">
-                    <a class="w-25 mr-4" href="index.jsp"><img src="images/labchemicals-logo.png" alt=""/></a>
+                    <a class="w-25 mr-4" href="home.jsp"><img src="images/labchemicals-logo.png" alt=""/></a>
                     <span class="d-inline-block">Đổi Mật Khẩu</span>
                 </div>
             </div>
@@ -38,7 +38,7 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="index.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
             <li class="d-inline-block text-capitalize"><a href="fogot-pass.jsp">Đổi mật khẩu</a></li>
         </ul>
     </div>

@@ -1,5 +1,4 @@
 <%@ page import="model.Product" %>
-<%@ page import="utils.DateUtil" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -90,37 +89,25 @@
                             <button class="btn-apply py-2 text-white w-100">Áp dụng</button>
                         </div>
                         <ul class="check-box-list mt-3">
-                            <c:set var="p1" value="${0}"/><c:set var="p2" value="${0}"/><c:set var="p3" value="${0}"/>
-                            <c:forEach var="p" items="${requestScope.all_products}">
-                                <c:if test="${p.newPrice >= 200000 && p.newPrice < 500000}">
-                                    <c:set var="p1" value="${p1 + 1}"/>
-                                </c:if>
-                                <c:if test="${p.newPrice >= 500000 && p.newPrice < 1000000}">
-                                    <c:set var="p2" value="${p2 + 1}"/>
-                                </c:if>
-                                <c:if test="${p.newPrice >= 1000000 && p.newPrice < 2500000}">
-                                    <c:set var="p3" value="${p3 + 1}"/>
-                                </c:if>
-                            </c:forEach>
                             <li class="mb-1">
                                 <label for="i1">
                                     <input id="i1" type="checkbox" value="200000-500000"
                                            <c:if test="${param['minPrice'] == 200000 && param['maxPrice'] == 500000}">checked</c:if>/>200,000đ
-                                    - 500,000đ<span class="count">(${p1})</span>
+                                    - 500,000đ<span class="count">(${requestScope['r1']})</span>
                                 </label>
                             </li>
                             <li class="mb-1">
                                 <label for="i2">
                                     <input id="i2" type="checkbox" value="500000-1000000"
                                            <c:if test="${param['minPrice'] == 500000 && param['maxPrice'] == 1000000}">checked</c:if>/>500,000đ
-                                    - 1,000,000đ<span class="count">(${p2})</span>
+                                    - 1,000,000đ<span class="count">(${requestScope['r2']})</span>
                                 </label>
                             </li>
                             <li>
                                 <label for="i3">
                                     <input id="i3" type="checkbox" value="1000000-2500000"
                                            <c:if test="${param['minPrice'] == 1000000 && param['maxPrice'] == 2500000}">checked</c:if>/>1,000,000đ
-                                    - 2,500,000đ<span class="count">(${p3})</span>
+                                    - 2,500,000đ<span class="count">(${requestScope['r3']})</span>
                                 </label>
                             </li>
                         </ul>
@@ -153,8 +140,8 @@
                                     <a href="${context}/shop/product-details?product_id=${p.idProduct}">
                                         <img class="default-img" src="${p.imgPath}" alt="#"/>
                                         <% Product product = (Product) pageContext.getAttribute("p");
-                                            List<Product> newProducts = (List<Product>) request.getAttribute("new_products");
-                                            List<Product> hotProducts = (List<Product>) request.getAttribute("hot_products");
+                                            @SuppressWarnings("unchecked") List<Product> newProducts = (List<Product>) request.getAttribute("new_products");
+                                            @SuppressWarnings("unchecked") List<Product> hotProducts = (List<Product>) request.getAttribute("hot_products");
                                             for (Product np : newProducts) {
                                                 if (np.getIdProduct() == product.getIdProduct()) {
                                                     pageContext.setAttribute(String.valueOf(product.getIdProduct()), "new");
@@ -168,6 +155,7 @@
                                                 }
                                             }
                                         %>
+
                                         <c:choose>
                                             <c:when test="${pageContext.getAttribute(p.idProduct) eq 'new'}">
                                                 <span class="new">Mới</span>

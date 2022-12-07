@@ -1,5 +1,6 @@
 package controller.shop;
 
+import dao.ProductDAO;
 import model.Product;
 import service.ProductService;
 
@@ -21,6 +22,11 @@ public class ProductDetailServlet extends HttpServlet {
         if (id != null) {
             Product product = ProductService.getProductById(id);
             if (product != null) {
+                // update views
+                product.setViews(product.getViews() + 1);
+                ProductDAO dao = new ProductDAO();
+                dao.updateProduct(product);
+
                 List<Product> relatedProducts = ProductService.getProducts().stream()
                         .filter(p -> p.getType().equals(product.getType()) && p.getSupply().equals(product.getSupply()))
                         .limit(6).collect(Collectors.toList());
