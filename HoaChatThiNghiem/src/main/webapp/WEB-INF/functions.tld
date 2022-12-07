@@ -11,7 +11,13 @@
 
     <function>
         <name>format</name>
-        <function-class>utils.PriceFormat</function-class>
+        <function-class>utils.PriceUtil</function-class>
         <function-signature>java.lang.String format(double)</function-signature>
+    </function>
+
+    <function>
+        <name>discount</name>
+        <function-class>utils.PriceUtil</function-class>
+        <function-signature>int percentDiscount(double,double)</function-signature>
     </function>
 </taglib>

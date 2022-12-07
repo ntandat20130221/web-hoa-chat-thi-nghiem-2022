@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="pf" uri="https://com.labchemicals.functions" %>
+<%@ taglib prefix="pu" uri="https://com.labchemicals.functions" %>
 
 <%-- Global variables declaration --%>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
@@ -70,10 +70,14 @@
                                 <i class="fa fa-star <c:if test="${i.index <= p.star}">yellow</c:if>"></i>
                             </c:forEach>
                         </div>
-                        <a href="#"> (33 Đánh giá)</a>
+                        <a href="#"> (33 Đánh Giá)</a>
+                        <span>${p.sold} Đã Bán</span>
                     </div>
                     <div class="ps d-flex justify-content-between align-items-center">
-                        <h3>${pf:format(p.newPrice)}đ<c:if test="${p.oldPrice != 0}"><span>${pf:format(p.oldPrice)}đ</span></c:if></h3>
+                        <h3 class="the-price">${pu:format(p.newPrice)}đ<c:if test="${p.oldPrice != p.newPrice}">
+                            <span class="dp">${pu:format(p.oldPrice)}đ</span>
+                            <span class="percent">-${pu:discount(p.oldPrice, p.newPrice)}%</span></c:if>
+                        </h3>
                         <c:choose>
                             <c:when test="${p.quantity > 0}">
                                 <span class="label label-in-stock">Còn hàng</span>
@@ -121,7 +125,7 @@
     </div>
 </section>
 
-<!-- ===== LATEST PRODUCTS ===== -->
+<!-- ===== RELATED PRODUCTS ===== -->
 <section class="newest-products mb-5">
     <div class="container">
         <div class="section-title">
@@ -147,10 +151,10 @@
                             </c:forEach>
                         </div>
                         <div class="product-price">
-                            <c:if test="${p.oldPrice != 0}">
-                                <span class="old">${pf:format(p.oldPrice)}đ</span>
+                            <c:if test="${p.oldPrice != p.newPrice}">
+                                <span class="old">${pu:format(p.oldPrice)}đ</span>
                             </c:if>
-                            <span>${pf:format(p.newPrice)}đ</span>
+                            <span>${pu:format(p.newPrice)}đ</span>
                         </div>
                     </div>
                 </div>

@@ -761,16 +761,16 @@ a:focus {
     line-height: 25px;
 }
 
-.single-product .product-img a span.price-dec {
-    background-color: #f6931d;
+.single-product .product-img a span.dis {
+    background-color: #ed1b24;
 }
 
 .single-product .product-img a span.new {
-    background-color: #8493ca;
+    background-color: #119d35;
 }
 
 .single-product .product-img a span.hot {
-    background-color: #ed1b24;
+    background-color: #f6931d;
 }
 
 .cart-container {
@@ -2514,7 +2514,7 @@ a:focus {
 }
 
 .product-content .supplier i {
-    color: #008500;
+    color: #22813a;
 }
 
 .product-content .label {
@@ -2547,32 +2547,55 @@ a:focus {
     color: var(--color-star);
 }
 
-.product-content .product-rating a {
-    color: #262626;
+.product-content .product-rating a,
+.product-content .product-rating span{
+    color: #333;
     font-size: 14px;
     margin-left: 10px;
     margin-top: 3px;
 }
 
+.product-content .product-rating span {
+    position: relative;
+    margin-left: 24px;
+}
+
+.product-content .product-rating span:before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    width: .01rem;
+    height: 20px;
+    background: #afafaf;
+}
+
 .product-content .ps {
-    margin: 10px 0 16px 0;
+    margin: 16px 0;
     padding-bottom: 6px;
     border-bottom: 1px solid #c4c4c4;
 }
 
-.product-content h3 {
+.product-content .the-price {
     margin: 0;
     font-size: 28px;
     font-weight: 600;
     color: var(--color-price);
 }
 
-.product-content h3 span {
+.product-content .the-price .dp {
     color: rgb(106, 106, 106);
     font-weight: 500;
     text-decoration: line-through;
     font-size: 16px;
     margin-left: 8px;
+}
+
+.product-content .the-price .percent {
+    font-family: "Inter", "sans-serif";
+    font-weight: bold;
+    font-size: 16px;
+    margin-left: 6px;
+    color: #ee4545;
 }
 
 .product-content .product-paragraph p {

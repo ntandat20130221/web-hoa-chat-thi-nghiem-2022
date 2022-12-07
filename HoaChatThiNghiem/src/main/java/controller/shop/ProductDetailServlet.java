@@ -22,7 +22,7 @@ public class ProductDetailServlet extends HttpServlet {
             Product product = ProductService.getProductById(id);
             if (product != null) {
                 List<Product> relatedProducts = ProductService.getProducts().stream()
-                        .filter(p -> p.getType().equals(product.getType()))
+                        .filter(p -> p.getType().equals(product.getType()) && p.getSupply().equals(product.getSupply()))
                         .limit(6).collect(Collectors.toList());
                 req.setAttribute("related_products", relatedProducts);
                 req.setAttribute("product", product);

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +37,7 @@ public class ProductsServlet extends HttpServlet {
 
         // sorting
         String param = req.getParameter("sortBy");
-        if (param == null)
+        if (param == null || param.equals("name"))
             products.sort(Comparator.comparing(Product::getName));
         else if (param.equals("price_up"))
             products.sort(Comparator.comparing(Product::getNewPrice));
@@ -44,6 +45,13 @@ public class ProductsServlet extends HttpServlet {
             products.sort((o1, o2) -> (int) (o2.getNewPrice() - o1.getNewPrice()));
 
         req.setAttribute("products", products);
+
+        List<Product> hotProducts = ProductService.getHotProducts();
+        req.setAttribute("hot_products", hotProducts);
+
+        List<Product> newProducts = ProductService.getNewProducts();
+        req.setAttribute("new_products", newProducts);
+
         req.getRequestDispatcher("/shop/products.jsp").forward(req, resp);
     }
 }

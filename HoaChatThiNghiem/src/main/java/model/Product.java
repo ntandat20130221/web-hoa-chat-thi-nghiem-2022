@@ -8,6 +8,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Product implements Serializable {
     private int idProduct;
@@ -19,6 +20,8 @@ public class Product implements Serializable {
     private int quantity;
     private String type;
     private String supply;
+    private int sold;
+    private Date date;
     private double oldPrice;
     private double newPrice;
 
@@ -46,7 +49,8 @@ public class Product implements Serializable {
     }
 
     public Product(int idProduct, String imgPath, String name, int star,
-                   String status, String desc, int quantity, String type, String supply, double oldPrice, double newPrice) {
+                   String status, String desc, int quantity, String type,
+                   String supply, int sold, Date date, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
@@ -56,6 +60,8 @@ public class Product implements Serializable {
         this.quantity = quantity;
         this.type = type;
         this.supply = supply;
+        this.sold = sold;
+        this.date = date;
         this.oldPrice = oldPrice;
         this.newPrice = newPrice;
     }
@@ -132,6 +138,22 @@ public class Product implements Serializable {
 
     public void setSupply(String supply) {
         this.supply = supply;
+    }
+
+    public int getSold() {
+        return sold;
+    }
+
+    public void setSold(int sold) {
+        this.sold = sold;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public double getOldPrice() {

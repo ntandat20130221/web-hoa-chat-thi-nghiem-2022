@@ -1,6 +1,9 @@
+<%@ page import="model.Product" %>
+<%@ page import="utils.DateUtil" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="pf" uri="https://com.labchemicals.functions" %>
+<%@ taglib prefix="pu" uri="https://com.labchemicals.functions" %>
 
 <%-- Global variables declaration --%>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
@@ -149,7 +152,33 @@
                                 <div class="product-img">
                                     <a href="${context}/shop/product-details?product_id=${p.idProduct}">
                                         <img class="default-img" src="${p.imgPath}" alt="#"/>
-                                        <span class="new">${p.status}</span>
+                                        <% Product product = (Product) pageContext.getAttribute("p");
+                                            List<Product> newProducts = (List<Product>) request.getAttribute("new_products");
+                                            List<Product> hotProducts = (List<Product>) request.getAttribute("hot_products");
+                                            for (Product np : newProducts) {
+                                                if (np.getIdProduct() == product.getIdProduct()) {
+                                                    pageContext.setAttribute(String.valueOf(product.getIdProduct()), "new");
+                                                    break;
+                                                }
+                                            }
+                                            for (Product hp : hotProducts) {
+                                                if (hp.getIdProduct() == product.getIdProduct()) {
+                                                    pageContext.setAttribute(String.valueOf(product.getIdProduct()), "hot");
+                                                    break;
+                                                }
+                                            }
+                                        %>
+                                        <c:choose>
+                                            <c:when test="${pageContext.getAttribute(p.idProduct) eq 'new'}">
+                                                <span class="new">Mới</span>
+                                            </c:when>
+                                            <c:when test="${pageContext.getAttribute(p.idProduct) eq 'hot'}">
+                                                <span class="hot">Hot</span>
+                                            </c:when>
+                                            <c:when test="${p.oldPrice != p.newPrice}">
+                                                <span class="dis">-${pu:discount(p.oldPrice, p.newPrice)}%</span>
+                                            </c:when>
+                                        </c:choose>
                                     </a>
                                     <div class="cart-container">
                                         <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
@@ -163,10 +192,10 @@
                                         </c:forEach>
                                     </div>
                                     <div class="product-price">
-                                        <c:if test="${p.oldPrice != 0}">
-                                            <span class="old">${pf:format(p.oldPrice)}đ</span>
+                                        <c:if test="${p.oldPrice != p.newPrice}">
+                                            <span class="old">${pu:format(p.oldPrice)}đ</span>
                                         </c:if>
-                                        <span>${pf:format(p.newPrice)}đ</span>
+                                        <span>${pu:format(p.newPrice)}đ</span>
                                     </div>
                                 </div>
                             </div>
