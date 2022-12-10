@@ -51,12 +51,12 @@
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-slider">
                     <div class="product-image">
-                        <img class="active" src="../images/hoa_chat/acid_bazo/acid_vo_co/550x750/axit-sunfuric.jpg" alt="">
+                        <img class="active" src="../images/hoa_chat/axit/axit_acetic.jpg" alt="">
                     </div>
                     <ul class="image-list">
-                        <li><img src="../images/hoa_chat/dd_dem/550x750/dung-dich-dem-1.png" alt=""></li>
-                        <li><img src="../images/hoa_chat/acid_bazo/acid_huu_co/550x750/acetic-acid.jpg" alt=""></li>
-                        <li><img src="../images/hoa_chat/dung_moi/dung_moi_may_gc/550x750/dung-moi-gc-1.jpg" alt=""></li>
+                        <li><img src="../images/hoa_chat/axit/axit_acetic.jpg" alt=""></li>
+                        <li><img src="../images/hoa_chat/axit/axit_acetic.jpg" alt=""></li>
+                        <li><img src="../images/hoa_chat/axit/axit_acetic.jpg" alt=""></li>
                     </ul>
                 </div>
             </div>

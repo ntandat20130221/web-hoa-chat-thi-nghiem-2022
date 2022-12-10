@@ -226,32 +226,34 @@
 </section>
 
 <!-- ===== COUNTDOWN ===== -->
-<section class="countdown">
-    <div class="container-fluid p-0 h-100">
-        <div class="row h-100">
-            <c:set var="tp" value="${requestScope['today_discount_product']}"/>
-            <div class="col-lg-6 col-12 h-100">
-                <div class="image h-100">
-                    <img src="${tp.imgPath}" alt="#"/>
+<c:set var="tp" value="${requestScope['today_discount_product']}"/>
+<c:if test="${tp != null}">
+    <section class="countdown">
+        <div class="container-fluid p-0 h-100">
+            <div class="row h-100 m-0">
+                <div class="col-lg-5 col-12 h-100 m-0 p-0">
+                    <div class="image h-100">
+                        <img src="${tp.imgPath}" alt="#"/>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-12 h-100">
-                <div class="content">
-                    <div class="heading-block">
-                        <p class="small-title">Giảm giá trong ngày</p>
-                        <h3 class="title"><a href="${context}/shop/product-details?product_id=${tp.idProduct}">${tp.name}</a></h3>
-                        <p class="p-desc">
-                            ${tp.desc}
-                        </p>
-                        <h1 class="price">${pu:format(tp.newPrice)}đ <s>${pu:format(tp.oldPrice)}đ</s></h1>
-                        <div class="clearfix" data-countdown="2021/02/30"></div>
-                        <button class="get-now">MUA NGAY</button>
+                <div class="col-lg-7 col-12 h-100 m-0 p-0">
+                    <div class="content">
+                        <div class="heading-block">
+                            <p class="small-title">Giảm giá trong ngày</p>
+                            <h3 class="title"><a href="${context}/shop/product-details?product_id=${tp.idProduct}">${tp.name}</a></h3>
+                            <p class="p-desc">
+                                    ${tp.desc}
+                            </p>
+                            <h1 class="price">${pu:format(tp.newPrice)}đ <s>${pu:format(tp.oldPrice)}đ</s></h1>
+                            <div class="clearfix" data-countdown="2021/02/30"></div>
+                            <button class="get-now">MUA NGAY</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</c:if>
 
 <!-- ===== SHOP BLOG =====  -->
 <section class="shop-blog">

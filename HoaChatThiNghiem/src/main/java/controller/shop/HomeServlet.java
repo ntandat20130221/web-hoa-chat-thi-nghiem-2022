@@ -43,10 +43,13 @@ public class HomeServlet extends HttpServlet {
                 .collect(Collectors.toList());
         req.setAttribute("view_products", viewProducts);
 
-        Product todayDiscountProduct = ProductService.getTodayDiscountProducts().stream()
-                .sorted((p1, p2) -> PriceUtil.percentDiscount(p2.getOldPrice(), p2.getNewPrice()) -
-                        PriceUtil.percentDiscount(p1.getOldPrice(), p1.getNewPrice()))
-                .collect(Collectors.toList()).get(0);
+        Product todayDiscountProduct = null;
+        try {
+            todayDiscountProduct = ProductService.getTodayDiscountProducts().stream()
+                    .sorted((p1, p2) -> PriceUtil.percentDiscount(p2.getOldPrice(), p2.getNewPrice()) -
+                            PriceUtil.percentDiscount(p1.getOldPrice(), p1.getNewPrice()))
+                    .collect(Collectors.toList()).get(0);
+        } catch (IndexOutOfBoundsException ignored) { }
         req.setAttribute("today_discount_product", todayDiscountProduct);
 
         getServletContext().getRequestDispatcher("/shop/home.jsp").forward(req, resp);
