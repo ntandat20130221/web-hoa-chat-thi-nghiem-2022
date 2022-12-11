@@ -43,6 +43,15 @@ public class DbConnection {
         }
     }
 
+    public Statement getUpdatableStatement() {
+        if (connect == null) return null;
+        try {
+             return connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+
     // thường dùng để thực thi các câu lệnh sql có tham số truyền vào
     public PreparedStatement getPreparedStatement(String sql) {
         if (connect == null) return null;

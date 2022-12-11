@@ -13,7 +13,6 @@
 <script src="${context}/shop/js/waypoints.min.js"></script>
 <script src="${context}/shop/js/finalcountdown.min.js"></script>
 <script src="${context}/shop/js/nice-select.min.js"></script>
-<script src="${context}/shop/js/ytplayer.min.js"></script>
 <script src="${context}/shop/js/flex-slider.js"></script>
 <script src="${context}/shop/js/scrollup.js"></script>
 <script src="${context}/shop/js/onepage-nav.min.js"></script>
@@ -22,3 +21,5 @@
 <script src="${context}/shop/js/map-script.js"></script>
 <script src="${context}/shop/js/active.js"></script>
 <script src="${context}/shop/js/main.js"></script>
+
+

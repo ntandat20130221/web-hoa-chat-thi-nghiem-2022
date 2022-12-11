@@ -8,6 +8,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Product implements Serializable {
     private int idProduct;
@@ -18,6 +19,10 @@ public class Product implements Serializable {
     private String desc;
     private int quantity;
     private String type;
+    private String supply;
+    private int sold;
+    private Date date;
+    private int views;
     private double oldPrice;
     private double newPrice;
 
@@ -44,7 +49,9 @@ public class Product implements Serializable {
         // Author : Minh Tuyên
     }
 
-    public Product(int idProduct, String imgPath, String name, int star, String status, String desc, int quantity, String type, double oldPrice, double newPrice) {
+    public Product(int idProduct, String imgPath, String name, int star,
+                   String status, String desc, int quantity, String type,
+                   String supply, int sold, Date date, int views, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
@@ -53,6 +60,10 @@ public class Product implements Serializable {
         this.desc = desc;
         this.quantity = quantity;
         this.type = type;
+        this.supply = supply;
+        this.sold = sold;
+        this.date = date;
+        this.views = views;
         this.oldPrice = oldPrice;
         this.newPrice = newPrice;
     }
@@ -123,6 +134,38 @@ public class Product implements Serializable {
         this.type = type;
     }
 
+    public String getSupply() {
+        return supply;
+    }
+
+    public void setSupply(String supply) {
+        this.supply = supply;
+    }
+
+    public int getSold() {
+        return sold;
+    }
+
+    public void setSold(int sold) {
+        this.sold = sold;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
     public double getOldPrice() {
         return oldPrice;
     }
@@ -157,5 +200,25 @@ public class Product implements Serializable {
 
     public int getSupplier() {
         return supplier;
+    }
+
+    public void setListed_price(int listed_price) {
+        this.listed_price = listed_price;
+    }
+
+    public void setCurrent_price(int current_price) {
+        this.current_price = current_price;
+    }
+
+    public void setType_product(int type_product) {
+        this.type_product = type_product;
+    }
+
+    public void setStatus_product(int status_product) {
+        this.status_product = status_product;
+    }
+
+    public void setSupplier(int supplier) {
+        this.supplier = supplier;
     }
 }

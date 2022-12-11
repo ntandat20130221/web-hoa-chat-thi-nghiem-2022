@@ -32,7 +32,7 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="index.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
             <li class="d-inline-block text-capitalize"><a href="profile.jsp">Hồ sơ của tôi<i class="ti-arrow-right mx-2"></i></a></li>
             <li class="d-inline-block text-capitalize"><a href="purchase-history.jsp">Lịch sử mua hàng</a></li>
         </ul>
