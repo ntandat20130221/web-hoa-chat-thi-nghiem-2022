@@ -21,3 +21,4 @@
 <script src="${context}/shop/js/gmap.min.js"></script>
 <script src="${context}/shop/js/map-script.js"></script>
 <script src="${context}/shop/js/active.js"></script>
+<script src="${context}/shop/js/main.js"></script>

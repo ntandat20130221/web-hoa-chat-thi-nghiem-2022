@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +46,7 @@
 </div>
 
 <!-- ===== FORM INPUT ===== -->
+<%String text = (String) request.getAttribute("text_register");%>
 <section class="form-input py-5">
     <div class="container">
         <div class="row">
@@ -53,11 +55,16 @@
             </div>
             <div class="col-lg-5 col-md-5 col-12">
                 <div class="h-100 d-flex align-items-center">
-                    <form class="m-0 p-5 text-center">
+                    <form class="m-0 p-5 text-center" action="${context}/shop/register" method="post">
                         <h5 class="mb-4">Đăng Ký</h5>
-                        <input class="w-100 mb-3" type="text" placeholder="Email"/>
-                        <input class="w-100 mb-3" type="password" placeholder="Mật khẩu"/>
-                        <input class="w-100 mb-4" type="password" placeholder="Nhập lại mật khẩu"/>
+                        <%if(text != null){%>
+                        <div class="w-100 mb-3 alert alert-danger notification" role="alert">
+                            <%=text%>
+                        </div>
+                        <%}%>
+                        <input class="w-100 mb-3" type="text" placeholder="Email" name="email"/>
+                        <input class="w-100 mb-3" type="password" placeholder="Mật khẩu" name="password"/>
+                        <input class="w-100 mb-4" type="password" placeholder="Nhập lại mật khẩu" name="confirm-pass"/>
                         <button class="next w-100 mb-3">Tiếp theo</button>
                         <span class="shotcut">Bạn đã có tài khoản? <a href="login.jsp">Đăng nhập</a></span>
                     </form>

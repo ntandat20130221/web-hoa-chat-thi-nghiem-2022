@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,6 +46,8 @@
 </div>
 
 <!-- ===== FORM INPUT ===== -->
+<%String text = (String) request.getAttribute("text");%>
+<%String success = (String) request.getAttribute("success");%>
 <section class="form-input py-5">
     <div class="container">
         <div class="row">
@@ -53,12 +56,21 @@
             </div>
             <div class="col-lg-5 col-md-5 col-12">
                 <div class="h-100 d-flex align-items-center">
-                    <form class="m-0 p-5 text-center">
+                    <form class="m-0 p-5 text-center" action="${context}/shop/change-password" method="post">
                         <h5 class="mb-4">Đổi Mật Khẩu</h5>
-                        <input class="w-100 mb-3" type="password" placeholder="Mật khẩu cũ"/>
-                        <input class="w-100 mb-3" type="password" placeholder="Mật khẩu mới"/>
-                        <input class="w-100 mb-4" type="password" placeholder="Xác nhận lại mật khẩu mới"/>
-                        <button class="next w-100 mb-3">Xác nhận</button>
+                        <%if(success != null){%>
+                        <div class="w-100 mb-3 alert alert-success notification" role="alert">
+                            <%=success%>
+                        </div>
+                        <%} else if(text != null){%>
+                        <div class="w-100 mb-3 alert alert-danger notification" role="alert">
+                            <%=text%>
+                        </div>
+                        <%}%>
+                        <input class="w-100 mb-3 insert" type="password" placeholder="Mật khẩu cũ" name="old-pass"/>
+                        <input class="w-100 mb-3 insert" type="password" placeholder="Mật khẩu mới" name="new-pass"/>
+                        <input class="w-100 mb-4 insert" type="password" placeholder="Xác nhận lại mật khẩu mới" name="confirm-pass"/>
+                        <button class="next w-100 mb-3" id="confirm-change">Xác nhận</button>
                         <span class="shotcut">
                                 <a class="mr-3" href="login.jsp">Đăng nhập?</a>
                                 <a href="register.jsp">Đăng ký?</a></span>
@@ -67,6 +79,7 @@
             </div>
         </div>
     </div>
+    <div id="result"></div>
 </section>
 
 <!-- ===== SHOP SERVICES ===== -->
@@ -77,7 +90,6 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/shop-js.jsp"/>
-
 </body>
 
 </html>

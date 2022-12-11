@@ -58,7 +58,7 @@
                                 <a href="purchase-history.jsp"><i class="bi bi-receipt"></i> Lịch sử mua hàng</a>
                             </li>
                             <li>
-                                <a href="change-pass.jsp"><i class="bi bi-lock"></i> Đổi mật khẩu</a>
+                                <a href="${context}/shop/change-password"><i class="bi bi-lock"></i> Đổi mật khẩu</a>
                             </li>
                             <li>
                                 <a href="${context}/shop/DoLogoutCustomer">

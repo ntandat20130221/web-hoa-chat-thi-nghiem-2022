@@ -24,13 +24,13 @@
                                 <a href="${context}/shop/login"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
                             </li>
                             <li>
-                                <a href="${context}/shop/register.jsp"><i class="bi bi-person-plus"></i>Đăng ký</a>
+                                <a href="${context}/shop/register"><i class="bi bi-person-plus"></i>Đăng ký</a>
                             </li>
                         </ul>
                         <%} else{%>
                         <ul>
                             <li>
-                                <a href="${context}/shop/register.jsp">
+                                <a href="${context}/shop/profile.jsp">
                                     <i class="bi bi-person-plus"></i>Xin chào <%=customer.getFullname()%>
                                 </a>
                             </li>
@@ -53,7 +53,7 @@
                 <div class="col-lg-2 col-md-2 col-12">
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="${context}/shop/index.jsp"><img src="${context}/shop/images/labchemicals-logo.png" alt="logo"/></a>
+                        <a href="${context}/shop/home"><img src="${context}/shop/images/labchemicals-logo.png" alt="logo"/></a>
                     </div>
                     <!-- Search Mobile -->
                     <div class="mobile-search">
