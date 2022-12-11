@@ -49,7 +49,8 @@ public class HomeServlet extends HttpServlet {
                     .sorted((p1, p2) -> PriceUtil.percentDiscount(p2.getOldPrice(), p2.getNewPrice()) -
                             PriceUtil.percentDiscount(p1.getOldPrice(), p1.getNewPrice()))
                     .collect(Collectors.toList()).get(0);
-        } catch (IndexOutOfBoundsException ignored) { }
+        } catch (IndexOutOfBoundsException | NullPointerException e) {
+        }
         req.setAttribute("today_discount_product", todayDiscountProduct);
 
         getServletContext().getRequestDispatcher("/shop/home.jsp").forward(req, resp);

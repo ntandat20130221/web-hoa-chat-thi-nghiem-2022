@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
                     <div class="text-right">
-                        <%if (customer == null){%>
+                        <%if (customer == null) {%>
                         <ul>
                             <li>
                                 <a href="${context}/shop/login"><i class="bi bi-box-arrow-in-right"></i>Đăng nhập</a>
@@ -27,7 +27,7 @@
                                 <a href="${context}/shop/register"><i class="bi bi-person-plus"></i>Đăng ký</a>
                             </li>
                         </ul>
-                        <%} else{%>
+                        <%} else {%>
                         <ul>
                             <li>
                                 <a href="${context}/shop/profile.jsp">
@@ -98,23 +98,17 @@
                                     <!-- Cart Item -->
                                     <li>
                                         <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="#"><img src="../images/hoa_chat/acid_bazo/acid_citric/acid_citric_70x70.jpg"
-                                                                          alt="#"/></a>
+                                        <a class="cart-img" href="#"><img src="../images/products/hoa_chat/axit/axit_acetic.jpg" alt="#"/></a>
                                         <h4><a href="#">Sulfuric acid 95%</a></h4>
-                                        <p class="quantity">
-                                            1x - <span class="amount">1,000,000đ</span>
-                                        </p>
+                                        <p class="quantity">1x - <span class="amount">1,000,000đ</span></p>
                                     </li>
 
                                     <!-- Cart Item -->
                                     <li>
                                         <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="#"><img src="../images/hoa_chat/acid_bazo/acid_sulfuric/acid_sulfuric_01_70x70.jpg"
-                                                                          alt="#"/></a>
+                                        <a class="cart-img" href="#"><img src="../images/products/hoa_chat/axit/axit_acetic.jpg" alt="#"/></a>
                                         <h4><a href="#">Methanol GR Merck</a></h4>
-                                        <p class="quantity">
-                                            1x - <span class="amount">1,000,000đ</span>
-                                        </p>
+                                        <p class="quantity">1x - <span class="amount">1,000,000đ</span></p>
                                     </li>
                                 </ul>
                                 <div class="bottom text-center">
@@ -146,50 +140,35 @@
                 <div class="navbar-collapse">
                     <ul class="nav menu navbar-nav">
                         <li class="position-relative mr-2">
-                            <a href="${context}/shop/products">Hóa chất<i class="ti-angle-down"></i></a>
+                            <a href="${context}/shop/products" data-category-type="hoa_chat">Hóa chất<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
-                                <li><a href="">ACID</a></li>
-                                <li><a href="">BAZO</a></li>
-                                <li><a href="">DUNG MÔI</a></li>
-                                <li><a href="">ESTE</a></li>
-                                <li><a href="">HÓA CHẤT CƠ BẢN</a></li>
-                                <li><a href="">HỢP CHẤT TẠP CHỨC, POLIME</a></li>
-                                <li><a href="">KIM LOẠI</a></li>
-                                <li><a href="">MUỐI</a></li>
-                                <li><a href="">OXIT</a></li>
-                                <li><a href="">THUỐC THỬ</a></li>
+                                <li><a href="${context}/shop/products?type=1">AXIT</a></li>
+                                <li><a href="${context}/shop/products?type=2">BAZO</a></li>
+                                <li><a href="${context}/shop/products?type=3">MUỐI</a></li>
+                                <li><a href="${context}/shop/products?type=4">KIM LOẠI</a></li>
+                                <li><a href="${context}/shop/products?type=5">CHẤT CHỈ THỊ</a></li>
+                                <li><a href="${context}/shop/products?type=6">DUNG MÔI</a></li>
+                                <li><a href="${context}/shop/products?type=7">THUỐC THỬ</a></li>
+                                <li><a href="${context}/shop/products?type=8">HỢP CHẤT HỮU CƠ</a></li>
+                                <li><a href="${context}/shop/products?type=9">OXIT</a></li>
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="${context}/shop/products">Dụng cụ<i class="ti-angle-down"></i></a>
+                            <a href="${context}/shop/products" data-category-type="dung_cu">Dụng cụ<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
-                                <li><a href="">BÌNH THÍ NGHIỆM</a></li>
-                                <li><a href="">BỘ CHÀY CỐI</a></li>
-                                <li><a href="">BỘ LỌC HÚT CHÂN KHÔNG</a></li>
-                                <li><a href="">CỐC CHÉN ĐĨA CHO LAB</a></li>
-                                <li><a href="">ĐÈN CỒN</a></li>
-                                <li><a href="">ĐO NHIỆT ĐỘ, TỶ TRỌNG, ÁP SUẤT</a></li>
-                                <li><a href="">GIẤY LỌC, MÀNG LỌC</a></li>
-                                <li><a href="">ỐNG ĐONG</a></li>
-                                <li><a href="">ỐNG NGHIỆM</a></li>
-                                <li><a href="">PHỄU</a></li>
+                                <li><a href="${context}/shop/products?type=10">GIÁ ĐỠ ỐNG NGHIỆM</a></li>
+                                <li><a href="${context}/shop/products?type=11">KẸP GỖ</a></li>
+                                <li><a href="${context}/shop/products?type=12">ỐNG NGHIỆM</a></li>
+                                <li><a href="${context}/shop/products?type=13">ỐNG HÚT NHỎ GIỌT</a></li>
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="${context}/shop/products">Thiết bị<i class="ti-angle-down"></i></a>
+                            <a href="${context}/shop/products" data-category-type="thiet_bi">Thiết bị<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
-                                <li><a href="">CÂN PHÒNG THÍ NGHIỆM</a></li>
-                                <li><a href="">KÍNH HIỂN VI</a></li>
-                                <li><a href="">LÒ NUNG</a></li>
-                                <li><a href="">MÁY CẤT NƯỚC</a></li>
-                                <li>
-                                    <a href="">MÁY ĐO CÁC CHỈ TIÊU TRONG DUNG DỊCH</a>
-                                </li>
-                                <li><a href="">MÁY LẮC</a></li>
-                                <li><a href="">MÁY LY TÂM</a></li>
-                                <li><a href="">NỒI HẤP TIỆT TRÙNG</a></li>
-                                <li><a href="">TỦ ẤM</a></li>
-                                <li><a href="">TỦ BẢO QUẢN MẪU VÀ TỦ LẠNH</a></li>
+                                <li><a href="${context}/shop/products?type=14">CÂN ĐIỆN TỬ</a></li>
+                                <li><a href="${context}/shop/products?type=15">MÁY KHUẤY</a></li>
+                                <li><a href="${context}/shop/products?type=16">MÁY NGHIỀN</a></li>
+                                <li><a href="${context}/shop/products?type=17">TỦ CHÂN KHÔNG</a></li>
                             </ul>
                         </li>
 

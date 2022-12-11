@@ -18,6 +18,11 @@ public class ProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        String categoryType = req.getParameter("category_type");
+//        if (categoryType != null) {
+//            req.setAttribute("category_type", categoryType);
+//        }
+
         // categorizing
         String category = req.getParameter("type");
         List<Product> products = category != null ?

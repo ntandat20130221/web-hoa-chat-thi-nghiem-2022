@@ -56,19 +56,23 @@
                         <h3 class="title">Phân loại</h3>
                         <ul class="category-list">
                             <li class="mb-2 <c:if test="${param['type'] == '1'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="1">Acid và Bazo</a></li>
+                                    data-query="1">Axit</a></li>
                             <li class="mb-2 <c:if test="${param['type'] == '2'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="2">Oxit</a></li>
+                                    data-query="2">Bazo</a></li>
                             <li class="mb-2 <c:if test="${param['type'] == '3'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="3">Thuốc thử</a></li>
+                                    data-query="3">Muối</a></li>
                             <li class="mb-2 <c:if test="${param['type'] == '4'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="4">Chất chỉ thị</a></li>
+                                    data-query="4">Kim Loại</a></li>
                             <li class="mb-2 <c:if test="${param['type'] == '5'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="5">Giấy lọc</a></li>
+                                    data-query="5">Chất Chỉ Thị</a></li>
                             <li class="mb-2 <c:if test="${param['type'] == '6'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="6">Kim loại</a></li>
-                            <li class="<c:if test="${param['type'] == '7'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="7">Khí hiếm</a></li>
+                                    data-query="6">Dung Môi</a></li>
+                            <li class="mb-2 <c:if test="${param['type'] == '7'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
+                                    data-query="7">Thuốc Thử</a></li>
+                            <li class="mb-2 <c:if test="${param['type'] == '8'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
+                                    data-query="8">Hợp Chất Hữu Cơ</a></li>
+                            <li class="<c:if test="${param['type'] == '9'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
+                                    data-query="9">Oxit</a></li>
                         </ul>
                     </div>
 

@@ -51,12 +51,13 @@
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-slider">
                     <div class="product-image">
-                        <img class="active" src="../images/hoa_chat/axit/axit_acetic.jpg" alt="">
+                        <img class="active" src="${p.imgPath}" alt="">
                     </div>
                     <ul class="image-list">
-                        <li><img src="../images/hoa_chat/axit/axit_acetic.jpg" alt=""></li>
-                        <li><img src="../images/hoa_chat/axit/axit_acetic.jpg" alt=""></li>
-                        <li><img src="../images/hoa_chat/axit/axit_acetic.jpg" alt=""></li>
+                        <li><img src="${p.imgPath}" alt=""></li>
+                        <li><img src="${p.imgPath}" alt=""></li>
+                        <li><img src="${p.imgPath}" alt=""></li>
+                        <li><img src="${p.imgPath}" alt=""></li>
                     </ul>
                 </div>
             </div>

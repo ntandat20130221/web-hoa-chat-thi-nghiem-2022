@@ -32,12 +32,13 @@ public class ProductService {
                     "WHERE DATE(time_order) > (NOW() - INTERVAL 30 DAY) " +
                     "GROUP BY id_product ORDER BY quantities DESC";
 
-    private static final String QUERY_NEW_PRODUCT_ID = "SELECT id_product FROM products p WHERE DATE(date_inserted) > (NOW() - INTERVAL 7 DAY)";
+    private static final String QUERY_NEW_PRODUCT_ID =
+            "SELECT id_product FROM products p WHERE DATE(date_inserted) > (NOW() - INTERVAL 7 DAY)";
 
     private static final String QUERY_TODAY_DISCOUNT =
             "SELECT p.id_product " +
-            "FROM products p JOIN price_product pp on p.id_product = pp.id_product " +
-            "WHERE DATE(pp.date) = CURDATE()";
+                    "FROM products p JOIN price_product pp on p.id_product = pp.id_product " +
+                    "WHERE DATE(pp.date) = CURDATE()";
 
     public static List<Product> getProducts() {
         List<Product> products;
@@ -49,13 +50,13 @@ public class ProductService {
         return products;
     }
 
-    public static Product getProductById(String id) {
+    public static Product getProductById(int id) {
         Product product;
         try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_PRODUCTS + " WHERE p.id_product=?")) {
-            ps.setString(1, id);
+            ps.setInt(1, id);
             product = getProducts(ps.executeQuery()).get(0);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        } catch (SQLException | IndexOutOfBoundsException e) {
+            return null;
         }
         return product;
     }
@@ -99,7 +100,7 @@ public class ProductService {
         try (ResultSet rs = DbConnection.getInstall().getStatement().executeQuery(QUERY_HOT_PRODUCT_ID)) {
             while (rs.next()) {
                 int id = rs.getInt("id_product");
-                Product product = getProductById(String.valueOf(id));
+                Product product = getProductById(id);
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -113,7 +114,7 @@ public class ProductService {
         try (ResultSet rs = DbConnection.getInstall().getStatement().executeQuery(QUERY_SELLING_PRODUCT_ID)) {
             while (rs.next()) {
                 int id = rs.getInt("id_product");
-                Product product = getProductById(String.valueOf(id));
+                Product product = getProductById(id);
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -127,7 +128,7 @@ public class ProductService {
         try (ResultSet rs = DbConnection.getInstall().getStatement().executeQuery(QUERY_NEW_PRODUCT_ID)) {
             while (rs.next()) {
                 int id = rs.getInt("id_product");
-                Product product = getProductById(String.valueOf(id));
+                Product product = getProductById(id);
                 products.add(product);
             }
         } catch (SQLException e) {
@@ -141,7 +142,7 @@ public class ProductService {
         try (ResultSet rs = DbConnection.getInstall().getStatement().executeQuery(QUERY_TODAY_DISCOUNT)) {
             while (rs.next()) {
                 int id = rs.getInt("id_product");
-                Product product = getProductById(String.valueOf(id));
+                Product product = getProductById(id);
                 products.add(product);
             }
         } catch (SQLException e) {

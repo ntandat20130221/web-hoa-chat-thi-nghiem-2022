@@ -20,7 +20,7 @@ public class ProductDetailServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("product_id");
         if (id != null) {
-            Product product = ProductService.getProductById(id);
+            Product product = ProductService.getProductById(Integer.parseInt(id));
             if (product != null) {
                 // update views
                 product.setViews(product.getViews() + 1);

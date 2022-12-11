@@ -1,13 +1,6 @@
-/* ====================================================
-    - Template Name: Eshop
-    - Author Name:   Naimur Rahman
-    - Author URI:    http://www.wpthemesgrid.com/
-    - Description:   Eshop - eCommerce HTML5 Template.
-    - Version:       1.0
-======================================================= */
-
 (function ($) {
     'use strict';
+
     $(document).on('ready', function () {
 
         /* [ Mobile Menu ]
@@ -153,7 +146,7 @@
         /* [ Countdown ]
         -------------------------------------------- */
         $('[data-countdown]').each(function () {
-            var $this = $(this),
+            const $this = $(this),
                 finalDate = $(this).data('countdown');
             $this.countdown(finalDate, function (event) {
                 $this.html(event.strftime(
@@ -178,14 +171,15 @@
         CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
         CartPlusMinus.append('<div class="inc qtybutton">+</div>');
         $(".qtybutton").on("click", function () {
+            let newVal;
             const $button = $(this);
             const oldValue = $button.parent().find("input").val();
             if ($button.text() === "+") {
-                var newVal = parseFloat(oldValue) + 1;
+                newVal = parseFloat(oldValue) + 1;
             } else {
                 // Don't allow decrementing below zero
                 if (oldValue > 0)
-                    var newVal = parseFloat(oldValue) - 1;
+                    newVal = parseFloat(oldValue) - 1;
                 else
                     newVal = 1;
             }
@@ -195,7 +189,7 @@
         /* [ Extra Scroll ]
         -------------------------------------------- */
         $('.scroll').on("click", function (e) {
-            var anchor = $(this);
+            const anchor = $(this);
             $('html, body').stop().animate({
                 scrollTop: $(anchor.attr('href')).offset().top - 0
             }, 900);
@@ -214,14 +208,14 @@
         /* [ Product Page Quantity Counter ]
         -------------------------------------------- */
         $('.qty-box .quantity-right-plus').on('click', function () {
-            var $qty = $('.qty-box .input-number');
-            var currentVal = parseInt($qty.val(), 10);
+            const $qty = $('.qty-box .input-number');
+            const currentVal = parseInt($qty.val(), 10);
             if (!isNaN(currentVal))
                 $qty.val(currentVal + 1);
         });
         $('.qty-box .quantity-left-minus').on('click', function () {
-            var $qty = $('.qty-box .input-number');
-            var currentVal = parseInt($qty.val(), 10);
+            const $qty = $('.qty-box .input-number');
+            const currentVal = parseInt($qty.val(), 10);
             if (!isNaN(currentVal) && currentVal > 1)
                 $qty.val(currentVal - 1);
         });
@@ -252,7 +246,8 @@
     /* [ Others ]
     -------------------------------------------- */
     $(function () {
-        $("#slider-range").slider({
+        const slider = $('#slider-range')
+        slider.slider({
             range: true,
             min: 0,
             max: 500,
@@ -261,16 +256,21 @@
                 $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
             }
         });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+        $("#amount").val("$" + slider.slider("values", 0) + " - $" + slider.slider("values", 1));
     });
 
     /* [ Preloader ]
     -------------------------------------------- */
-    // After ?s preloader is fade-out
     $('.preloader').delay(0).fadeOut('slow');
     setTimeout(function () {
         // After 2s, the no-scroll class of the body will be removed
         $('body').removeClass('no-scroll');
     }, 0);
+
+    // $('.header-menu .nav a[data-category-type]').on('click', function () {
+    //     const type = $(this).attr('data-category-type')
+    //     window.location.href = 'products?category_type=' + type
+    //     return false
+    // })
 
 })(jQuery);
