@@ -1,1 +1,1 @@
-Đây là project làm về web bán hóa chất thí nghiệm  
+Đây là SQL về web bán hóa chất thí nghiệm  
