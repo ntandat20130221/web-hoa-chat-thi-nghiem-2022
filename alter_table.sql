@@ -1,18 +1,14 @@
 -- ACCOUNT_ADMIN
-alter table account_admin
-			add column fullname varchar(255)
+ALTER TABLE account_admin ADD COLUMN fullname VARCHAR(255);
 			
 -- PRODUCTS
-ALTER TABLE products 
-			DROP COLUMN country;
-			
-ALTER TABLE products
-			ADD COLUMN nameAdmin VARCHAR(50);
+ALTER TABLE products DROP COLUMN country;
+ALTER TABLE products ADD COLUMN nameAdmin VARCHAR(50);
+ALTER TABLE products ADD COLUMN views INT DEFAULT 0;
+
+-- SOLD_PRODUCT
+ALTER TABLE sold_product MODIFY COLUMN datetime TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
 
 -- PRICE_PRODUCT
-ALTER TABLE price_product
-			MODIFY COLUMN date TIMESTAMP DEFAULT(CURRENT_TIMESTAMP);
-		
-ALTER TABLE price_product
-			ADD COLUMN nameAdmin VARCHAR(50);
-			
+ALTER TABLE price_product MODIFY COLUMN date TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE price_product ADD COLUMN nameAdmin VARCHAR(50);
