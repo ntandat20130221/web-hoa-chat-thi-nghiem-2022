@@ -39,8 +39,25 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="${context}/shop">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="${context}/shop/products">Danh sách sản phẩm</a></li>
+            <li class="d-inline-block text-capitalize">
+                <a href="${context}/shop/home">Trang chủ</a>
+                <i class="ti-arrow-right mx-2"></i>
+            </li>
+            <li class="d-inline-block text-capitalize">
+                <a href="${context}/shop/products">Danh sách sản phẩm</a>
+                <c:if test="${requestScope.bc_t != null}"><i class="ti-arrow-right mx-2"></i></c:if>
+            </li>
+            <c:if test="${requestScope.bc_t != null}">
+                <li class="d-inline-block text-capitalize">
+                    <a href="${context}/shop/products">${requestScope.bc_t}</a>
+                    <c:if test="${requestScope.bc_st != null}"><i class="ti-arrow-right mx-2"></i></c:if>
+                </li>
+            </c:if>
+            <c:if test="${requestScope.bc_st != null}">
+                <li class="d-inline-block text-capitalize">
+                    <a href="">${requestScope.bc_st}</a>
+                </li>
+            </c:if>
         </ul>
     </div>
 </div>
@@ -55,24 +72,12 @@
                     <div class="single-widget category">
                         <h3 class="title">Phân loại</h3>
                         <ul class="category-list">
-                            <li class="mb-2 <c:if test="${param['type'] == '1'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="1">Axit</a></li>
-                            <li class="mb-2 <c:if test="${param['type'] == '2'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="2">Bazo</a></li>
-                            <li class="mb-2 <c:if test="${param['type'] == '3'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="3">Muối</a></li>
-                            <li class="mb-2 <c:if test="${param['type'] == '4'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="4">Kim Loại</a></li>
-                            <li class="mb-2 <c:if test="${param['type'] == '5'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="5">Chất Chỉ Thị</a></li>
-                            <li class="mb-2 <c:if test="${param['type'] == '6'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="6">Dung Môi</a></li>
-                            <li class="mb-2 <c:if test="${param['type'] == '7'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="7">Thuốc Thử</a></li>
-                            <li class="mb-2 <c:if test="${param['type'] == '8'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="8">Hợp Chất Hữu Cơ</a></li>
-                            <li class="<c:if test="${param['type'] == '9'}">click-active</c:if>"><i class="fa fa-caret-right mr-2"></i><a
-                                    data-query="9">Oxit</a></li>
+                            <c:forEach var="es" items="${requestScope.subtypes}">
+                                <li class="<c:if test="${param['subtype'] == es.key}">click-active</c:if>">
+                                    <i class="fa fa-caret-right mr-2"></i>
+                                    <a data-query="${es.key}">${es.value}</a>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
 
@@ -265,11 +270,11 @@
     })
 
     $('.category-list a').on('click', function () {
-        const type = queryMap.get('type')
+        const type = queryMap.get('subtype')
         if (type && type === $(this).attr('data-query'))
-            queryMap.delete('type')
+            queryMap.delete('subtype')
         else
-            queryMap.set('type', $(this).attr('data-query'))
+            queryMap.set('subtype', $(this).attr('data-query'))
         query()
         return false;
     })
@@ -284,6 +289,9 @@
 
         const type = queryMap.get('type')
         if (type) query = query.concat('&type=').concat(type)
+
+        const subtype = queryMap.get('subtype')
+        if (subtype) query = query.concat('&subtype=').concat(subtype)
 
         const sort = queryMap.get('sortBy')
         if (sort) query = query.concat('&sortBy=').concat(sort)
@@ -311,7 +319,10 @@
             $('.pagination-container').hide()
             $('.no-data').removeClass('hidden')
             $('.no-data .clear-filter').on('click', function () {
-                queryMap.clear()
+                queryMap.forEach((value, key) => {
+                    if (key !== "type" && key !== "subtype")
+                        queryMap.delete(key)
+                })
                 query()
             })
             return

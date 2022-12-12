@@ -81,7 +81,7 @@ a:focus {
     font-weight: 600;
 }
 
-.breadcrumbs ul li:hover a {
+.breadcrumbs ul li a:hover {
     color: var(--main-color);
 }
 
@@ -1133,6 +1133,35 @@ a:focus {
     text-transform: uppercase;
 }
 
+.countdown .time-block {
+    width: 80px;
+    background: #333;
+    padding: 10px 0;
+    color: white;
+    border-radius: 6px;
+}
+
+.countdown .time-container span {
+    display: block;
+}
+
+.countdown .time-block span:first-child {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.countdown .time-block span:last-child {
+    font-size: 12px;
+}
+
+.countdown .time-delim {
+    font-family: Inter, serif;
+    display: flex !important;
+    align-items: center;
+    font-size: 46px;
+    margin: 0 8px;
+}
+
 @font-face {
     font-family: 'Bebas Neue';
     font-style: normal;
@@ -1181,6 +1210,7 @@ a:focus {
 .get-now:hover::after {
     animation: 1s glitch;
     animation-timing-function: steps(2, end);
+    animation-iteration-count: infinite;
 }
 
 @keyframes glitch {
@@ -1428,6 +1458,10 @@ a:focus {
 
 /* [ Category List ]
 --------------------------------------- */
+.products .shop-sidebar .category-list li:not(:last-child) {
+    margin-bottom: 8px;
+}
+
 .products .shop-sidebar .category-list li i {
     visibility: hidden;
     transition: ease-in .2s;

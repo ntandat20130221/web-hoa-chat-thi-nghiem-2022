@@ -2,14 +2,14 @@ package controller.shop;
 
 import model.Product;
 import service.ProductService;
-import utils.DateUtil;
 import utils.PriceUtil;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +18,8 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getSession().removeAttribute("type");
+
         List<Product> newProducts = ProductService.getNewProducts();
         req.setAttribute("new_products", newProducts);
 
@@ -49,8 +51,7 @@ public class HomeServlet extends HttpServlet {
                     .sorted((p1, p2) -> PriceUtil.percentDiscount(p2.getOldPrice(), p2.getNewPrice()) -
                             PriceUtil.percentDiscount(p1.getOldPrice(), p1.getNewPrice()))
                     .collect(Collectors.toList()).get(0);
-        } catch (IndexOutOfBoundsException | NullPointerException e) {
-        }
+        } catch (IndexOutOfBoundsException | NullPointerException ignored) {}
         req.setAttribute("today_discount_product", todayDiscountProduct);
 
         getServletContext().getRequestDispatcher("/shop/home.jsp").forward(req, resp);

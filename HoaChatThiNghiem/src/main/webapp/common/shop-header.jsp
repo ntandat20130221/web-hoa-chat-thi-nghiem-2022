@@ -140,35 +140,35 @@
                 <div class="navbar-collapse">
                     <ul class="nav menu navbar-nav">
                         <li class="position-relative mr-2">
-                            <a href="${context}/shop/products" data-category-type="hoa_chat">Hóa chất<i class="ti-angle-down"></i></a>
+                            <a href="#" data-t="1">Hóa chất<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
-                                <li><a href="${context}/shop/products?type=1">AXIT</a></li>
-                                <li><a href="${context}/shop/products?type=2">BAZO</a></li>
-                                <li><a href="${context}/shop/products?type=3">MUỐI</a></li>
-                                <li><a href="${context}/shop/products?type=4">KIM LOẠI</a></li>
-                                <li><a href="${context}/shop/products?type=5">CHẤT CHỈ THỊ</a></li>
-                                <li><a href="${context}/shop/products?type=6">DUNG MÔI</a></li>
-                                <li><a href="${context}/shop/products?type=7">THUỐC THỬ</a></li>
-                                <li><a href="${context}/shop/products?type=8">HỢP CHẤT HỮU CƠ</a></li>
-                                <li><a href="${context}/shop/products?type=9">OXIT</a></li>
+                                <li><a href="#" data-st="1">AXIT</a></li>
+                                <li><a href="#" data-st="2">BAZO</a></li>
+                                <li><a href="#" data-st="3">MUỐI</a></li>
+                                <li><a href="#" data-st="4">KIM LOẠI</a></li>
+                                <li><a href="#" data-st="5">CHẤT CHỈ THỊ</a></li>
+                                <li><a href="#" data-st="6">DUNG MÔI</a></li>
+                                <li><a href="#" data-st="7">THUỐC THỬ</a></li>
+                                <li><a href="#" data-st="8">HỢP CHẤT HỮU CƠ</a></li>
+                                <li><a href="#" data-st="9">OXIT</a></li>
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="${context}/shop/products" data-category-type="dung_cu">Dụng cụ<i class="ti-angle-down"></i></a>
+                            <a href="#" data-t="2">Dụng cụ<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
-                                <li><a href="${context}/shop/products?type=10">GIÁ ĐỠ ỐNG NGHIỆM</a></li>
-                                <li><a href="${context}/shop/products?type=11">KẸP GỖ</a></li>
-                                <li><a href="${context}/shop/products?type=12">ỐNG NGHIỆM</a></li>
-                                <li><a href="${context}/shop/products?type=13">ỐNG HÚT NHỎ GIỌT</a></li>
+                                <li><a href="#" data-st="10">GIÁ ĐỠ ỐNG NGHIỆM</a></li>
+                                <li><a href="#" data-st="11">KẸP GỖ</a></li>
+                                <li><a href="#" data-st="12">ỐNG NGHIỆM</a></li>
+                                <li><a href="#" data-st="13">ỐNG HÚT NHỎ GIỌT</a></li>
                             </ul>
                         </li>
                         <li class="position-relative mr-2">
-                            <a href="${context}/shop/products" data-category-type="thiet_bi">Thiết bị<i class="ti-angle-down"></i></a>
+                            <a href="#" data-t="3">Thiết bị<i class="ti-angle-down"></i></a>
                             <ul class="dropdown">
-                                <li><a href="${context}/shop/products?type=14">CÂN ĐIỆN TỬ</a></li>
-                                <li><a href="${context}/shop/products?type=15">MÁY KHUẤY</a></li>
-                                <li><a href="${context}/shop/products?type=16">MÁY NGHIỀN</a></li>
-                                <li><a href="${context}/shop/products?type=17">TỦ CHÂN KHÔNG</a></li>
+                                <li><a href="#" data-st="14">CÂN ĐIỆN TỬ</a></li>
+                                <li><a href="#" data-st="15">MÁY KHUẤY</a></li>
+                                <li><a href="#" data-st="16">MÁY NGHIỀN</a></li>
+                                <li><a href="#" data-st="17">TỦ CHÂN KHÔNG</a></li>
                             </ul>
                         </li>
 

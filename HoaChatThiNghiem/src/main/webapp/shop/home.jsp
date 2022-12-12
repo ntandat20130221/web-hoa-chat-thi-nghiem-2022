@@ -213,7 +213,7 @@
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="content pt-5">
                                         <a class="pname" href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
-                                        <p class="price">${pu:format(p.newPrice)}</p>
+                                        <p class="price">${pu:format(p.newPrice)}đ</p>
                                     </div>
                                 </div>
                             </div>
@@ -245,7 +245,22 @@
                                     ${tp.desc}
                             </p>
                             <h1 class="price">${pu:format(tp.newPrice)}đ <s>${pu:format(tp.oldPrice)}đ</s></h1>
-                            <div class="clearfix" data-countdown="2021/02/30"></div>
+                            <div class="time-container my-4 d-flex justify-content-center">
+                                <div class="time-block">
+                                    <span class="time-hours"></span>
+                                    <span>HOURS</span>
+                                </div>
+                                <span class="time-delim">:</span>
+                                <div class="time-block">
+                                    <span class="time-minutes"></span>
+                                    <span>MINUTES</span>
+                                </div>
+                                <span class="time-delim">:</span>
+                                <div class="time-block">
+                                    <span class="time-seconds"></span>
+                                    <span>SECONDS</span>
+                                </div>
+                            </div>
                             <button class="get-now">MUA NGAY</button>
                         </div>
                     </div>

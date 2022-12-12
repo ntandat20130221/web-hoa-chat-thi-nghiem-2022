@@ -18,18 +18,28 @@ public class ProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        String categoryType = req.getParameter("category_type");
-//        if (categoryType != null) {
-//            req.setAttribute("category_type", categoryType);
-//        }
+        List<Product> products = ProductService.getProducts();
+
+        String type = req.getParameter("type");
+        if (type == null) type = String.valueOf(req.getSession().getAttribute("type"));
+
+        if (!type.equals("null")) {
+            req.getSession(true).setAttribute("type", type);
+            products = ProductService.getProductsByType(Integer.parseInt(type));
+            req.setAttribute("subtypes", ProductService.getSubtypesByType(Integer.parseInt(type)));
+        }
 
         // categorizing
-        String category = req.getParameter("type");
-        List<Product> products = category != null ?
-                ProductService.getProductsByType(Integer.parseInt(category)) :
-                ProductService.getProducts();
+        String subtype = req.getParameter("subtype");
+        if (subtype != null) {
+            type = String.valueOf(ProductService.getTypeBySubtypeId(Integer.parseInt(subtype)));
+            req.getSession(true).setAttribute("type", type);
+            products = ProductService.getProductsBySubtype(Integer.parseInt(subtype));
+            req.setAttribute("subtypes", ProductService.getSubtypesByType(Integer.parseInt(type)));
+        }
 
         setPriceRange(req, products);
+        setBreadCrumbs(type, subtype, req);
 
         // filtering
         String minPrice = req.getParameter("minPrice"), maxPrice = req.getParameter("maxPrice");
@@ -63,12 +73,21 @@ public class ProductsServlet extends HttpServlet {
     private void setPriceRange(HttpServletRequest req, List<Product> products) {
         int r1 = 0, r2 = 0, r3 = 0;
         for (Product product : products) {
-            if (product.getNewPrice() >= 200000 && product.getNewPrice() < 500000) r1++;
-            if (product.getNewPrice() >= 500000 && product.getNewPrice() < 1000000) r2++;
-            if (product.getNewPrice() >= 1000000 && product.getNewPrice() < 2500000) r3++;
+            if (product.getNewPrice() >= 200000 && product.getNewPrice() <= 500000) r1++;
+            if (product.getNewPrice() >= 500000 && product.getNewPrice() <= 1000000) r2++;
+            if (product.getNewPrice() >= 1000000 && product.getNewPrice() <= 2500000) r3++;
         }
         req.setAttribute("r1", r1);
         req.setAttribute("r2", r2);
         req.setAttribute("r3", r3);
+    }
+
+    private void setBreadCrumbs(String type, String subtype, HttpServletRequest req) {
+        if (subtype != null) {
+            req.setAttribute("bc_t", ProductService.getTypeName(Integer.parseInt(type)));
+            req.setAttribute("bc_st", ProductService.getSubtypesByType(Integer.parseInt(type)).get(Integer.parseInt(subtype)));
+        } else if (!type.equals("null")) {
+            req.setAttribute("bc_t", ProductService.getTypeName(Integer.parseInt(type)));
+        }
     }
 }

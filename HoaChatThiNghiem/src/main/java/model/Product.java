@@ -19,6 +19,7 @@ public class Product implements Serializable {
     private String desc;
     private int quantity;
     private String type;
+    private String subtype;
     private String supply;
     private int sold;
     private Date date;
@@ -50,7 +51,7 @@ public class Product implements Serializable {
     }
 
     public Product(int idProduct, String imgPath, String name, int star,
-                   String status, String desc, int quantity, String type,
+                   String status, String desc, int quantity, String type, String subtype,
                    String supply, int sold, Date date, int views, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
@@ -60,6 +61,7 @@ public class Product implements Serializable {
         this.desc = desc;
         this.quantity = quantity;
         this.type = type;
+        this.subtype = subtype;
         this.supply = supply;
         this.sold = sold;
         this.date = date;
@@ -132,6 +134,14 @@ public class Product implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSubtype() {
+        return subtype;
+    }
+
+    public void setSubtype(String subtype) {
+        this.subtype = subtype;
     }
 
     public String getSupply() {

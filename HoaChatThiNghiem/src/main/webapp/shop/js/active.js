@@ -145,15 +145,13 @@
 
         /* [ Countdown ]
         -------------------------------------------- */
-        $('[data-countdown]').each(function () {
-            const $this = $(this),
-                finalDate = $(this).data('countdown');
-            $this.countdown(finalDate, function (event) {
-                $this.html(event.strftime(
-                    '<div class="cdown"><span class="days"><strong>%-D</strong><p>Days.</p></span></div><div class="cdown"><span class="hour"><strong> %-H</strong><p>Hours.</p></span></div> <div class="cdown"><span class="minutes"><strong>%M</strong> <p>MINUTES.</p></span></div><div class="cdown"><span class="second"><strong> %S</strong><p>SECONDS.</p></span></div>'
-                ));
-            });
-        });
+        (function countdown() {
+            const now = new Date()
+            $('.time-hours').html(String(now.getHours()).padStart(2, '0'))
+            $('.time-minutes').html(String(now.getMinutes()).padStart(2, '0'))
+            $('.time-seconds').html(String(now.getSeconds()).padStart(2, '0'))
+            setInterval(countdown, 1000)
+        })();
 
         /* [ Flex Slider ]
         -------------------------------------------- */
@@ -267,10 +265,16 @@
         $('body').removeClass('no-scroll');
     }, 0);
 
-    // $('.header-menu .nav a[data-category-type]').on('click', function () {
-    //     const type = $(this).attr('data-category-type')
-    //     window.location.href = 'products?category_type=' + type
-    //     return false
-    // })
+    $('.header-menu .nav a[data-t]').on('click', function () {
+        const type = $(this).attr('data-t')
+        window.location.href = 'products?type=' + type
+        return false
+    })
+
+    $('.header-menu .dropdown a').on('click', function () {
+        const type = $(this).closest('.dropdown').prev('a').attr('data-t')
+        window.location.href = 'products?type=' + type + '&subtype=' + $(this).attr('data-st')
+        return false
+    })
 
 })(jQuery);
