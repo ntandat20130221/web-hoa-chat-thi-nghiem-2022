@@ -7,34 +7,77 @@ import model.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ProductService {
-    private static final String QUERY_PRODUCTS = "SELECT p.id_product, p.name_product, p.description_product, " + "p.url_img_product, p.star_review, sp.name_status_product, p.quantity_product," + "pp.listed_price, pp.current_price, tp.name_type_product FROM products p " + "JOIN price_product pp ON p.id_product = pp.id_product " + "JOIN status_product sp on p.id_status_product = sp.id_status_product " + "JOIN type_product tp on p.id_type_product = tp.id_type_product";
+    private static final String QUERY_PRODUCTS =
+            "SELECT p.id_product, p.url_img_product, p.name_product, p.star_review, p.description_product, " +
+                    "p.quantity_product, p.date_inserted, sp.name_status_product, tp.name_type_product, st.name_subtype, " +
+                    "s.name_supplier, sp2.quantity_sold, p.views, pp.current_price, pp.listed_price " +
+                    "FROM products p JOIN price_product pp ON p.id_product = pp.id_product " +
+                    "JOIN status_product sp ON p.id_status_product = sp.id_status_product " +
+                    "JOIN subtype_product st ON p.id_subtype = st.id_subtype " +
+                    "JOIN suppliers s ON p.id_supplier = s.id_supplier " +
+                    "JOIN sold_product sp2 ON p.id_product = sp2.id_product " +
+                    "JOIN type_product tp ON st.id_type_product = tp.id_type_product";
 
-    public static List<Product> getProducts() {
-        List<Product> products;
-        try (Statement st = DbConnection.getInstall().getStatement()) {
-            ResultSet rs = st.executeQuery(QUERY_PRODUCTS);
-            products = getProducts(rs);
+    private static final String QUERY_PRODUCTS_WHERE_TIME_ORDER =
+            QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT id_product " +
+                    "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
+                    "WHERE DATE(time_order) > (NOW() - INTERVAL ? DAY) " +
+                    "GROUP BY id_product ORDER BY SUM(quantity) DESC)";
+
+    private static final String QUERY_PRODUCTS_WHERE_DATE_INSERTED =
+            QUERY_PRODUCTS + " WHERE DATE(p.date_inserted) > (NOW() - INTERVAL ? DAY) " +
+                    "ORDER BY DATE(p.date_inserted) DESC";
+
+    private static final String QUERY_TODAY_DISCOUNT =
+            QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT p.id_product " +
+                    "FROM products p JOIN price_product pp on p.id_product = pp.id_product " +
+                    "WHERE DATE(pp.date) = CURDATE())";
+
+    private static final String QUERY_TYPE_ID = "SELECT id_type_product FROM subtype_product WHERE id_subtype=?";
+
+    public static List<Product> queryProducts(String query, Object... params) {
+        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+            for (int i = 0; i < params.length; i++)
+                ps.setObject(i + 1, params[i]);
+            return getProducts(ps.executeQuery());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            return new ArrayList<>();
         }
-        return products;
     }
 
-    public static Product getProductById(String id) {
-        Product product;
-        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_PRODUCTS + " WHERE p.id_product=?")) {
-            ps.setString(1, id);
-            ResultSet rs = ps.executeQuery();
-            product = getProducts(rs).get(0);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return product;
+    public static List<Product> getProducts() {
+        return queryProducts(QUERY_PRODUCTS);
+    }
+
+    public static Product getProductById(int id) {
+        return queryProducts(QUERY_PRODUCTS + " WHERE p.id_product=?", id).get(0);
+    }
+
+    public static List<Product> getProductsByType(int type) {
+        return queryProducts(QUERY_PRODUCTS + " WHERE tp.id_type_product=?", type);
+    }
+
+    public static List<Product> getProductsBySubtype(int subtypeId) {
+        return queryProducts(QUERY_PRODUCTS + " WHERE st.id_subtype=?", subtypeId);
+    }
+
+    public static List<Product> getHotProducts() {
+        return queryProducts(QUERY_PRODUCTS_WHERE_TIME_ORDER, 7);
+    }
+
+    public static List<Product> getSellingProducts() {
+        return queryProducts(QUERY_PRODUCTS_WHERE_TIME_ORDER, 30);
+    }
+
+    public static List<Product> getNewProducts() {
+        return queryProducts(QUERY_PRODUCTS_WHERE_DATE_INSERTED, 7);
+    }
+
+    public static List<Product> getTodayDiscountProducts() {
+        return queryProducts(QUERY_TODAY_DISCOUNT);
     }
 
     private static List<Product> getProducts(ResultSet rs) throws SQLException {
@@ -50,10 +93,57 @@ public class ProductService {
             double oldPrice = rs.getInt("listed_price");
             double newPrice = rs.getInt("current_price");
             String type = rs.getString("name_type_product");
-            Product product = new Product(id, imgPath, name, stars, status, desc, quantity, type, oldPrice, newPrice);
+            String subtype = rs.getString("name_subtype");
+            String supply = rs.getString("name_supplier");
+            int sold = rs.getInt("quantity_sold");
+            Date date = rs.getDate("date_inserted");
+            int views = rs.getInt("views");
+            Product product = new Product(id, imgPath, name, stars, status, desc, quantity, type, subtype,
+                    supply, sold, date, views, oldPrice, newPrice);
             products.add(product);
         }
         return products;
+    }
+
+    public static int getTypeBySubtypeId(int subtypeId) {
+        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_TYPE_ID)) {
+            ps.setInt(1, subtypeId);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt("id_type_product");
+        } catch (SQLException e) {
+            return -1;
+        }
+    }
+
+    public static Map<Integer, String> getSubtypesByType(int type) {
+        Map<Integer, String> map = new HashMap<>();
+        String query = "SELECT id_subtype, name_subtype FROM subtype_product WHERE id_type_product=?";
+        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+            ps.setInt(1, type);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_subtype");
+                String name = rs.getString("name_subtype");
+                map.put(id, name);
+            }
+        } catch (SQLException e) {
+            return new HashMap<>();
+        }
+        return map;
+    }
+
+    public static String getTypeName(int typeId) {
+        try (PreparedStatement ps = DbConnection
+                .getInstall()
+                .getPreparedStatement("SELECT name_type_product FROM type_product WHERE id_type_product=?")) {
+            ps.setInt(1, typeId);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getString("name_type_product");
+        } catch (SQLException e) {
+            return null;
+        }
     }
 
     public static boolean addNewProduct(Product p, Admin admin) {
@@ -103,6 +193,4 @@ public class ProductService {
         return result;
 
     }
-
-
 }

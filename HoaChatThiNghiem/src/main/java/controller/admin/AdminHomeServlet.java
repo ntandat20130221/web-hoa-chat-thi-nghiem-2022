@@ -14,6 +14,7 @@ public class AdminHomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/index.jsp");
+
         dispatcher.forward(request, response);
 
     }

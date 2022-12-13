@@ -8,6 +8,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Product implements Serializable {
     private int idProduct;
@@ -18,6 +19,11 @@ public class Product implements Serializable {
     private String desc;
     private int quantity;
     private String type;
+    private String subtype;
+    private String supply;
+    private int sold;
+    private Date date;
+    private int views;
     private double oldPrice;
     private double newPrice;
 
@@ -44,7 +50,9 @@ public class Product implements Serializable {
         // Author : Minh Tuyên
     }
 
-    public Product(int idProduct, String imgPath, String name, int star, String status, String desc, int quantity, String type, double oldPrice, double newPrice) {
+    public Product(int idProduct, String imgPath, String name, int star,
+                   String status, String desc, int quantity, String type, String subtype,
+                   String supply, int sold, Date date, int views, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
@@ -53,6 +61,11 @@ public class Product implements Serializable {
         this.desc = desc;
         this.quantity = quantity;
         this.type = type;
+        this.subtype = subtype;
+        this.supply = supply;
+        this.sold = sold;
+        this.date = date;
+        this.views = views;
         this.oldPrice = oldPrice;
         this.newPrice = newPrice;
     }
@@ -121,6 +134,46 @@ public class Product implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getSubtype() {
+        return subtype;
+    }
+
+    public void setSubtype(String subtype) {
+        this.subtype = subtype;
+    }
+
+    public String getSupply() {
+        return supply;
+    }
+
+    public void setSupply(String supply) {
+        this.supply = supply;
+    }
+
+    public int getSold() {
+        return sold;
+    }
+
+    public void setSold(int sold) {
+        this.sold = sold;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
 
     public double getOldPrice() {

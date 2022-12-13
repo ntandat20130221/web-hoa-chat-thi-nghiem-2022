@@ -32,7 +32,7 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="index.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
             <li class="d-inline-block text-capitalize"><a href="cart.jsp">Giỏ hàng</a></li>
         </ul>
     </div>
@@ -183,7 +183,7 @@
                     <p class="last">Tổng trị giá<span>3,000,000đ</span></p>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12">
-                    <a href="index.jsp" class="btn cont">Tiếp tục mua</a>
+                    <a href="home.jsp" class="btn cont">Tiếp tục mua</a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12">
                     <a href="checkout.jsp" class="btn buy">Mua hàng</a>

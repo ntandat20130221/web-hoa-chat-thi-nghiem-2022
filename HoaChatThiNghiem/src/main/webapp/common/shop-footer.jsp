@@ -10,7 +10,7 @@
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="single-footer about pr-5">
                         <div class="logo mb-4">
-                            <a href="${context}/shop/index.jsp"><img src="${context}/shop/images/labchemicals-logo-non-bg.png" alt="#"/></a>
+                            <a href="${context}/shop/home.jsp"><img src="${context}/shop/images/labchemicals-logo-non-bg.png" alt="#"/></a>
                         </div>
                         <p class="text">
                             Lab Chemicals là trang web mua sắm trực tuyến với sản phẩm chính là

@@ -11,6 +11,7 @@ public class RootHomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/root-index.jsp");
+
         dispatcher.forward(request,response);
 
 
