@@ -17,7 +17,7 @@ public class RootChangePassServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/root-settings.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/root-settings.jsp");
         dispatcher.forward(request, response);
     }
 

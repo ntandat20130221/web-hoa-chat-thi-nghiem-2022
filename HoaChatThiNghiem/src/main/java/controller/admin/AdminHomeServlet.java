@@ -13,7 +13,7 @@ public class AdminHomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/index.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/index.jsp");
         dispatcher.forward(request, response);
 
     }

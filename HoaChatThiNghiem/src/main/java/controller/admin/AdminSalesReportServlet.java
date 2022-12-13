@@ -10,7 +10,7 @@ public class AdminSalesReportServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/sales-report.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/sales-report.jsp");
         dispatcher.forward(request,response);
     }
 

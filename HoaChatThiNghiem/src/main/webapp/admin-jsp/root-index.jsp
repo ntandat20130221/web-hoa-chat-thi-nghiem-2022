@@ -1,28 +1,21 @@
-<%@ page import="model.Admin" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách nhân viên | Quản trị Admin</title>
+    <title>Trang chủ | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
     <jsp:include page="../common/admin-css.jsp"></jsp:include>
-
 </head>
 
 <body class="app sidebar-mini rtl">
 
-<%--    Header--%>
 <jsp:include page="../common/admin-header.jsp"/>
-
-<!-- Sidebar Menu -->
-<jsp:include page="../common/admin-sidebar-menu.jsp"/>
+<jsp:include page="../common/admin-root-sidebar-menu.jsp"/>
 
 <main class="app-content">
     <div class="app-title">
@@ -222,7 +215,6 @@
                 data: [48, 48, 49, 39, 86, 10]
             }]
     };
-
     var lineChart = new Chart($("#line-chart").get(0).getContext("2d")).Line(data);
     var barChart = new Chart($("#bar-chart").get(0).getContext("2d")).Bar(data);
 </script>

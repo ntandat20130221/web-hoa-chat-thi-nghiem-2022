@@ -10,7 +10,7 @@ public class RootAdminsManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/root-manager-admin.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/root-manager-admin.jsp");
         dispatcher.forward(request,response);
     }
 

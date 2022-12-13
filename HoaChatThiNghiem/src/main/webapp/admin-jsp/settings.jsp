@@ -73,5 +73,17 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/admin-js.jsp"></jsp:include>
+
+<script>
+    function validateFormChangePass() {
+        var x = document.forms["form-change-pass"]["old-pass"].value;
+        var y = document.forms["form-change-pass"]["new-pass"].value;
+        var z = document.forms["form-change-pass"]["retype-new-pass"].value;
+        if (x == "" || y == "" || z == "") {
+            alert("Hãy nhập đầy đủ thông tin ^.^");
+            return false;
+        }
+    }
+</script>
 </body>
 </html>

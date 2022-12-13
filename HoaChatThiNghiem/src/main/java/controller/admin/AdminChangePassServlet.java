@@ -17,7 +17,7 @@ public class AdminChangePassServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/settings.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/settings.jsp");
         dispatcher.forward(request, response);
 
     }

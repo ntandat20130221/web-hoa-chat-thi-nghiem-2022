@@ -4,7 +4,6 @@ import model.Admin;
 import service.AdminService;
 import utils.CommonString;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,12 +17,7 @@ public class AdminLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession();  // get session current
-        if (session != null) session.invalidate();  // cancel all session current
-
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/login.jsp");
-        dispatcher.forward(request, response);
-
+        request.getRequestDispatcher("/admin-jsp/login.jsp").forward(request,response);
     }
 
     @Override
@@ -31,10 +25,10 @@ public class AdminLoginServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String passAD = request.getParameter("password");
-        Admin admin = AdminService.checkLogin(username, passAD); // call model
+        Admin admin = AdminService.checkLogin(username, passAD); // call service
         if (admin == null) {
             request.setAttribute("error", "Tài khoản hoặc mật khẩu không đúng");
-            request.getRequestDispatcher("/admin/login.jsp").forward(request, response); // return view
+            request.getRequestDispatcher("/admin-jsp/login.jsp").forward(request, response); // return view
         } else {
 
             HttpSession session = request.getSession(true);
@@ -42,11 +36,11 @@ public class AdminLoginServlet extends HttpServlet {
             int role_admin = admin.getId_role_admin();
             if (role_admin == 1) {
 
-                response.sendRedirect("/HoaChatThiNghiem_war/admin/root-trang-chu");
+                response.sendRedirect(request.getContextPath()+"/admin/root-trang-chu");
 
             } else if (role_admin == 2) {
 
-                response.sendRedirect("/HoaChatThiNghiem_war/admin/trang-chu");
+                response.sendRedirect(request.getContextPath()+"/admin/trang-chu");
 
             }
 

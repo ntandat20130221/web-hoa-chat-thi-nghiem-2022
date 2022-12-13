@@ -1,6 +1,11 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+
 <%@ page import="model.Admin" %>
 <%@ page import="utils.CommonString" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <% Admin admin = (Admin) session.getAttribute(CommonString.ADMIN_SESSION);%>
 <!-- Sidebar Menu -->
 <div class="app-sidebar-overlay" data-toggle="sidebar"></div>
@@ -12,19 +17,19 @@
   <hr>
   <ul class="app-menu">
     <li>
-      <a class="app-menu-item haha" href="/HoaChatThiNghiem_war/admin/root-trang-chu"><i class='bx bx-tachometer'></i>
+      <a class="app-menu-item haha" href="${context}/admin/root-trang-chu"><i class='bx bx-tachometer'></i>
         <span class="app-menu-label">Trang chủ</span></a>
     </li>
     <li>
-      <a class="app-menu-item" href="/HoaChatThiNghiem_war/admin/root-quan-ly-admin"><i class='bx bx-id-card'></i>
+      <a class="app-menu-item" href="${context}/admin/root-quan-ly-admin"><i class='bx bx-id-card'></i>
         <span class="app-menu-label">Quản lý admin</span></a>
     </li>
     <li>
-      <a class="app-menu-item" href="/HoaChatThiNghiem_war/admin/root-quan-ly-khach-hang"><i class='bx bx-id-card'></i>
+      <a class="app-menu-item" href="${context}/admin/root-quan-ly-khach-hang"><i class='bx bx-id-card'></i>
         <span class="app-menu-label">Quản lý khách hàng</span></a>
     </li>
     <li>
-      <a class="app-menu-item" href="/HoaChatThiNghiem_war/admin/root-doi-mat-khau"><i class='bx bx-cog'></i>
+      <a class="app-menu-item" href="${context}/admin/root-doi-mat-khau"><i class='bx bx-cog'></i>
         <span class="app-menu-label">Đổi mật khẩu</span></a>
     </li>
   </ul>

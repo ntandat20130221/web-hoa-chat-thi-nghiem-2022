@@ -10,7 +10,7 @@ public class TestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("/admin/test.jsp").forward(request,response);
+        request.getRequestDispatcher("/admin-jsp/test.jsp").forward(request,response);
     }
 
     @Override

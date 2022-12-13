@@ -34,7 +34,7 @@ public class AdminAddProductServlet extends HttpServlet {
         request.setAttribute("ds-trang-thai-san-pham", statusProducts);
         request.setAttribute("ds-nha-cung-cap", suppliers);
 
-        request.getRequestDispatcher("/admin/form-add-product.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin-jsp/form-add-product.jsp").forward(request, response);
 
     }
 

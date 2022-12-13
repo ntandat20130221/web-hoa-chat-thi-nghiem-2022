@@ -42,7 +42,7 @@
         })
     })
 
-    // Remove row
+    Remove row
     $(function () {
         $('.trash').click(function () {
             swal({
@@ -65,23 +65,3 @@
     });
 })();
 
-function validateFormChangePass() {
-    var x = document.forms["form-change-pass"]["old-pass"].value;
-    var y = document.forms["form-change-pass"]["new-pass"].value;
-    var z = document.forms["form-change-pass"]["retype-new-pass"].value;
-    if (x == "" || y == "" || z == "") {
-        alert("Hay nhap day du thong tin ^.^");
-        return false;
-    }
-}
-
-function validateFormLogin() {
-
-    var x = document.forms["form-login"]["username"].value;
-    var y = document.forms["form-login"]["password"].value;
-    if (x == "" || y == "") {
-        alert("Hay nhap day du thong tin ^.^");
-        return false;
-    }
-
-}

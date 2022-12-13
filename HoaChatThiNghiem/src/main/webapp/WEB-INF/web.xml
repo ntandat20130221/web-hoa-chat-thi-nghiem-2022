@@ -13,8 +13,9 @@
         <url-pattern>/shop/profile.jsp</url-pattern>
         <url-pattern>/shop/cart.jsp</url-pattern>
     </filter-mapping>
-
     <filter>
+        <!-- tất cả tài nguyên của hệ thống bao gồm các file html,css,js,images hay là servlet
+             nếu có đường dẫn là /admin/... đều bị chặn lại -->
         <filter-name>PreventAccessAdmin</filter-name>
         <filter-class>filter.PreventAccessAdmin</filter-class>
     </filter>

@@ -10,7 +10,7 @@ public class RootCustomersManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin/root-manager-customer.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/root-manager-customer.jsp");
         dispatcher.forward(request,response);
     }
 
