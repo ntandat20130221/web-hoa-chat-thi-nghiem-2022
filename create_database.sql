@@ -176,6 +176,15 @@ CREATE TABLE `type_product` (
 	PRIMARY KEY (`id_type_product`) USING BTREE
 ) 	ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
+DROP TABLE iF EXISTS `subtype_product`;
+CREATE TABLE `subtype_product` (
+	`id_subtype` 		INT NOT NULL,
+	`name_subtype` 		VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+	`id_type_product` 	INT NOT NULL,
+	PRIMARY KEY (`id_subtype`) USING BTREE,
+	FOREIGN KEY (`id_type_product`) REFERENCES type_product(`id_type_product`)
+) 	ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+
 ALTER TABLE `account_admin` ADD CONSTRAINT `account_admin_ibfk_1` FOREIGN KEY (`id_status_acc`) REFERENCES `status_acc` (`id_status_acc`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `account_admin` ADD CONSTRAINT `account_admin_ibfk_2` FOREIGN KEY (`id_role_admin`) REFERENCES `role_admin` (`id_role_admin`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE `account_customer` ADD CONSTRAINT `account_customer_ibfk_1` FOREIGN KEY (`id_status_acc`) REFERENCES `status_acc` (`id_status_acc`) ON DELETE RESTRICT ON UPDATE RESTRICT;
