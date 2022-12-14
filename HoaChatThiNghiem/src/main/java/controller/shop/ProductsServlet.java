@@ -20,6 +20,19 @@ public class ProductsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Product> products = ProductService.getProducts();
 
+        if (req.getParameter("search") == null && req.getParameter("type") == null && req.getParameter("subtype") == null) {
+            req.getSession().removeAttribute("type");
+            req.getSession().setAttribute("all_products", ProductService.getTypes());
+        } else
+            req.getSession().removeAttribute("all_products");
+
+        // searching
+        String name = req.getParameter("search");
+        if (name != null) {
+            req.getSession().removeAttribute("type");
+            products = ProductService.searchProductsByName(name);
+        }
+
         String type = req.getParameter("type");
         if (type == null) type = String.valueOf(req.getSession().getAttribute("type"));
 

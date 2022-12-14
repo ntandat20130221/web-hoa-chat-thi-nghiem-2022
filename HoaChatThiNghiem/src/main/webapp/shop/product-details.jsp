@@ -37,8 +37,8 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="product-details.jsp">Chi tiết sản phẩm</a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/home">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/product-details">Chi tiết sản phẩm</a></li>
         </ul>
     </div>
 </div>
@@ -62,9 +62,9 @@
                 </div>
             </div>
             <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-                <div class="product-content pl-5">
+                <div class="product-d-content pl-5">
                     <span class="supplier"><i class="bi bi-patch-check-fill"></i> Nhà cung cấp: ${p.supply}</span>
-                    <h2>${p.name}</h2>
+                    <h2 class="pd-name">${p.name}</h2>
                     <div class="product-rating d-flex">
                         <div class="rating">
                             <c:forEach begin="1" end="5" varStatus="i">
@@ -123,13 +123,13 @@
                                 <span class="tooltip">Twitter</span>
                                 <span><i class="fa fa-twitter"></i></span>
                             </li>
-                            <li class="icon instagram">
-                                <span class="tooltip">Instagram</span>
-                                <span><i class="fa fa-instagram"></i></span>
-                            </li>
                             <li class="icon youtube">
                                 <span class="tooltip">Youtube</span>
                                 <span><i class="fa fa-youtube-play"></i></span>
+                            </li>
+                            <li class="icon instagram">
+                                <span class="tooltip">Instagram</span>
+                                <span><i class="fa fa-instagram"></i></span>
                             </li>
                         </ul>
                     </div>

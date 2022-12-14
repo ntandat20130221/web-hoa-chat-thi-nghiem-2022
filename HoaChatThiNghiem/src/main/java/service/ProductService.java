@@ -80,6 +80,10 @@ public class ProductService {
         return queryProducts(QUERY_TODAY_DISCOUNT);
     }
 
+    public static List<Product> searchProductsByName(String name) {
+        return queryProducts(QUERY_PRODUCTS + " WHERE LOWER(p.name_product) LIKE LOWER(CONCAT('%',?,'%'))", name);
+    }
+
     private static List<Product> getProducts(ResultSet rs) throws SQLException {
         List<Product> products = new ArrayList<>();
         while (rs.next()) {
@@ -133,6 +137,22 @@ public class ProductService {
         return map;
     }
 
+    public static Map<Integer, String> getTypes() {
+        Map<Integer, String> map = new HashMap<>();
+        String query = "SELECT id_type_product, name_type_product FROM type_product";
+        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_type_product");
+                String name = rs.getString("name_type_product");
+                map.put(id, name);
+            }
+        } catch (SQLException e) {
+            return new HashMap<>();
+        }
+        return map;
+    }
+
     public static String getTypeName(int typeId) {
         try (PreparedStatement ps = DbConnection
                 .getInstall()
@@ -160,13 +180,13 @@ public class ProductService {
         DbConnection connectDB = DbConnection.getInstall();
         ProductDAO dao = new ProductDAO();
         boolean checkInsertProduct = dao.insertProduct(connectDB, p, admin.getUsername()); // b1
-        if (checkInsertProduct == true) {
+        if (checkInsertProduct) {
 
             int idProduct = dao.getIdProduct(connectDB, p); // b2
             p.setIdProduct(idProduct);
             boolean checkInsertPrice = dao.insertPriceProduct(connectDB, p, admin.getUsername()); //b3
 
-            if (checkInsertPrice == true) {
+            if (checkInsertPrice) {
                 // do nothing
             }
             return true;

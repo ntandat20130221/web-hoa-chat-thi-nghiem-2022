@@ -241,9 +241,7 @@
                         <div class="heading-block">
                             <p class="small-title">Giảm giá trong ngày</p>
                             <h3 class="title"><a href="${context}/shop/product-details?product_id=${tp.idProduct}">${tp.name}</a></h3>
-                            <p class="p-desc">
-                                    ${tp.desc}
-                            </p>
+                            <p class="p-desc">${tp.desc}</p>
                             <h1 class="price">${pu:format(tp.newPrice)}đ <s>${pu:format(tp.oldPrice)}đ</s></h1>
                             <div class="time-container my-4 d-flex justify-content-center">
                                 <div class="time-block">

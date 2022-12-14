@@ -1,13 +1,17 @@
-/* ====================================================
-    - Template Name: Eshop
-    - Author Name:   Naimur Rahman
-    - Author URI:    http://www.wpthemesgrid.com/
-    - Description:   Eshop - eCommerce HTML5 Template.
-    - Version:       1.0
-======================================================= */
+@font-face {
+    font-family: Inter;
+    src: url('../fonts/Inter/Inter-Medium.ttf');
+}
 
-@import url("https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@font-face {
+    font-family: Poppins;
+    src: url('../fonts/Poppins/Poppins-Regular.ttf');
+}
+
+@font-face {
+    font-family: Heebo;
+    src: url('../fonts/Heebo/Heebo-Regular.ttf');
+}
 
 :root {
     --main-color: #167DCC;
@@ -328,12 +332,17 @@ a:focus {
     height: 48px;
     width: 690px;
     background: transparent;
-    color: rgb(85, 85, 85);
+    color: rgb(59, 59, 59);
     border: none;
-    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
     font-weight: 400;
-    padding: 0 20px 0 20px;
-    outline: unset;
+    padding: 1px 20px 0 20px;
+    outline: unset !important;
+}
+
+.header .search-bar input::placeholder {
+    font-family: Poppins, sans-serif;
 }
 
 .header .search-bar .btn-search {
@@ -353,6 +362,7 @@ a:focus {
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    outline: unset;
 }
 
 .header .search-bar .btn-search:hover {
@@ -729,7 +739,7 @@ a:focus {
 --------------------------------------- */
 .single-product {
     position: relative;
-    margin-top: 50px;
+    margin-bottom: 30px;
     box-shadow: rgba(9, 30, 66, 0.25) 0 1px 1px,
     rgba(9, 30, 66, 0.13) 0 0 1px 1px;
     border-radius: 8px;
@@ -824,9 +834,9 @@ a:focus {
 }
 
 .single-product .product-content a {
+    font-family: Inter, sans-serif;
     font-size: 16px;
-    color: #2b3a4d;
-    font-weight: 500;
+    color: #272d3a;
 }
 
 .single-product .product-content a:hover {
@@ -874,7 +884,7 @@ a:focus {
     color: #333;
     position: absolute;
     margin: 0;
-    border-radius: 0;
+    border-radius: 3px;
     font-size: 15px;
     text-align: center;
     -webkit-transition: all 0.4s ease;
@@ -1085,8 +1095,9 @@ a:focus {
 }
 
 .countdown .content .title {
+    font-family: Heebo, sans-serif;
     font-size: 25px;
-    font-weight: 600;
+    font-weight: bolder;
     margin-bottom: 20px;
     text-transform: capitalize;
 }
@@ -1435,7 +1446,7 @@ a:focus {
 }
 
 .products {
-    margin: 100px 0;
+    margin: 50px 0 100px 0;
 }
 
 .products .shop-sidebar .single-widget {
@@ -1550,10 +1561,19 @@ a:focus {
 --------------------------------------- */
 .products .shop-top {
     height: 66px;
+    margin-bottom: 30px;
     background: #f6f7fb;
     padding: 0 20px;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
+}
+
+.products .search-result {
+    color: #595a5b;
+}
+
+.products .search-result .key-word {
+    color: var(--main-color);
 }
 
 .products .shop-top label {
@@ -1606,7 +1626,7 @@ a:focus {
     display: inline-block;
     padding: 8px 14px;
     border-radius: 6px;
-    font-family: "Inter", "sans-serif";
+    font-family: Inter, "sans-serif";
     transition: all ease 0.3s;
     cursor: pointer;
 }
@@ -1639,8 +1659,13 @@ a:focus {
     height: auto;
 }
 
+.no-data .empty-search {
+    font-size: 20px !important;
+    color: black !important;
+}
+
 .no-data p {
-    font-size: 18px;
+    font-size: 16px;
     color: #4b4b4b;
 }
 
@@ -2669,16 +2694,22 @@ a:focus {
     opacity: 0.7;
 }
 
-.product-content .supplier {
+.product-d-content .supplier {
     font-size: 15px;
     color: #565656;
 }
 
-.product-content .supplier i {
+.product-d-content .supplier i {
     color: #22813a;
 }
 
-.product-content .label {
+.product-d-content .pd-name {
+    font-family: Heebo, sans-serif;
+    color: #39394b;
+    font-weight: 600;
+}
+
+.product-d-content .label {
     color: white;
     font-weight: bolder;
     font-size: 15px;
@@ -2687,41 +2718,41 @@ a:focus {
     border-radius: 24px;
 }
 
-.product-content .label-in-stock {
+.product-d-content .label-in-stock {
     background: #017920;
 }
 
-.product-content .label-out-stock {
+.product-d-content .label-out-stock {
     background: #eca101;
 }
 
-.product-content .label-forbidden {
+.product-d-content .label-forbidden {
     background: #d50000;
 }
 
-.product-content .product-rating i {
+.product-d-content .product-rating i {
     color: #d5d6d8;
     font-size: 14px;
 }
 
-.product-content .product-rating i.yellow {
+.product-d-content .product-rating i.yellow {
     color: var(--color-star);
 }
 
-.product-content .product-rating a,
-.product-content .product-rating span {
+.product-d-content .product-rating a,
+.product-d-content .product-rating span {
     color: #333;
     font-size: 14px;
     margin-left: 10px;
     margin-top: 3px;
 }
 
-.product-content .product-rating span {
+.product-d-content .product-rating span {
     position: relative;
     margin-left: 24px;
 }
 
-.product-content .product-rating span:before {
+.product-d-content .product-rating span:before {
     content: '';
     position: absolute;
     left: -10px;
@@ -2730,20 +2761,20 @@ a:focus {
     background: #afafaf;
 }
 
-.product-content .ps {
+.product-d-content .ps {
     margin: 16px 0;
     padding-bottom: 6px;
     border-bottom: 1px solid #c4c4c4;
 }
 
-.product-content .the-price {
+.product-d-content .the-price {
     margin: 0;
     font-size: 28px;
     font-weight: 600;
     color: var(--color-price);
 }
 
-.product-content .the-price .dp {
+.product-d-content .the-price .dp {
     color: rgb(106, 106, 106);
     font-weight: 500;
     text-decoration: line-through;
@@ -2751,42 +2782,42 @@ a:focus {
     margin-left: 8px;
 }
 
-.product-content .the-price .percent {
-    font-family: "Inter", "sans-serif";
+.product-d-content .the-price .percent {
+    font-family: Inter, "sans-serif";
     font-weight: bold;
     font-size: 16px;
     margin-left: 6px;
     color: #ee4545;
 }
 
-.product-content .product-paragraph p {
+.product-d-content .product-paragraph p {
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
     color: #333;
 }
 
-.product-content .quantity .input-group {
+.product-d-content .quantity .input-group {
     width: 150px;
     display: inline-block;
 }
 
-.product-content .quantity .button {
+.product-d-content .quantity .button {
     display: inline-block;
     position: absolute;
     top: 0;
     overflow: hidden;
 }
 
-.product-content .quantity .button.minus {
+.product-d-content .quantity .button.minus {
     left: 0;
 }
 
-.product-content .quantity .button.plus {
+.product-d-content .quantity .button.plus {
     right: 0;
 }
 
-.product-content .quantity .button .btn {
+.product-d-content .quantity .button .btn {
     padding: 0;
     width: 35px;
     height: 45px;
@@ -2799,11 +2830,11 @@ a:focus {
     cursor: pointer;
 }
 
-.product-content .quantity .button .btn:hover {
+.product-d-content .quantity .button .btn:hover {
     color: var(--main-color);
 }
 
-.product-content .quantity .input-number {
+.product-d-content .quantity .input-number {
     border: 1px solid #eceded;
     width: 100%;
     text-align: center;
@@ -2813,7 +2844,7 @@ a:focus {
     padding: 0 38px;
 }
 
-.product-content .add-to-cart i {
+.product-d-content .add-to-cart i {
     position: absolute;
     top: 12px;
     right: 155px;
@@ -2823,7 +2854,7 @@ a:focus {
     transition: all ease .3s;
 }
 
-.product-content .add-to-cart .btn {
+.product-d-content .add-to-cart .btn {
     position: relative;
     height: 45px;
     width: auto;
@@ -2839,36 +2870,35 @@ a:focus {
     font-weight: 500;
 }
 
-.product-content .add-to-cart .btn:hover {
+.product-d-content .add-to-cart .btn:hover {
     background: var(--main-color);
     padding-left: 68px;
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
 
-.product-content .add-to-cart .btn:hover i {
+.product-d-content .add-to-cart .btn:hover i {
     opacity: 100%;
     right: 190px;
 }
 
-.product-content .product-stock {
+.product-d-content .product-stock {
     margin-top: 25px;
     color: #757575;
 }
 
-.product-content .share-social .label-share {
+.product-d-content .share-social .label-share {
     color: #505050;
 }
 
-.product-content .share-social .wrapper {
+.product-d-content .share-social .wrapper {
     display: inline-flex;
     list-style: none;
 }
 
-.product-content .share-social .wrapper .icon {
+.product-d-content .share-social .wrapper .icon {
     position: relative;
     background: #ffffff;
     border-radius: 50%;
-    /*padding: 15px;*/
     margin: 6px;
     width: 36px;
     height: 36px;
@@ -2882,7 +2912,7 @@ a:focus {
     transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.product-content .share-social .wrapper .tooltip {
+.product-d-content .share-social .wrapper .tooltip {
     position: absolute;
     top: 0;
     font-size: 14px;
@@ -2896,7 +2926,7 @@ a:focus {
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.product-content .share-social .wrapper .tooltip::before {
+.product-d-content .share-social .wrapper .tooltip::before {
     position: absolute;
     content: "";
     height: 8px;
@@ -2908,42 +2938,42 @@ a:focus {
     transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.product-content .share-social .wrapper .icon:hover .tooltip {
+.product-d-content .share-social .wrapper .icon:hover .tooltip {
     top: -45px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
 }
 
-.product-content .share-social .wrapper .icon:hover span,
-.product-content .share-social .wrapper .icon:hover .tooltip {
+.product-d-content .share-social .wrapper .icon:hover span,
+.product-d-content .share-social .wrapper .icon:hover .tooltip {
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.product-content .share-social .wrapper .facebook:hover,
-.product-content .share-social .wrapper .facebook:hover .tooltip,
-.product-content .share-social .wrapper .facebook:hover .tooltip::before {
+.product-d-content .share-social .wrapper .facebook:hover,
+.product-d-content .share-social .wrapper .facebook:hover .tooltip,
+.product-d-content .share-social .wrapper .facebook:hover .tooltip::before {
     background: #1877F2;
     color: #ffffff;
 }
 
-.product-content .share-social .wrapper .twitter:hover,
-.product-content .share-social .wrapper .twitter:hover .tooltip,
-.product-content .share-social .wrapper .twitter:hover .tooltip::before {
+.product-d-content .share-social .wrapper .twitter:hover,
+.product-d-content .share-social .wrapper .twitter:hover .tooltip,
+.product-d-content .share-social .wrapper .twitter:hover .tooltip::before {
     background: #1DA1F2;
     color: #ffffff;
 }
 
-.product-content .share-social .wrapper .instagram:hover,
-.product-content .share-social .wrapper .instagram:hover .tooltip,
-.product-content .share-social .wrapper .instagram:hover .tooltip::before {
+.product-d-content .share-social .wrapper .instagram:hover,
+.product-d-content .share-social .wrapper .instagram:hover .tooltip,
+.product-d-content .share-social .wrapper .instagram:hover .tooltip::before {
     background: #E4405F;
     color: #ffffff;
 }
 
-.product-content .share-social .wrapper .youtube:hover,
-.product-content .share-social .wrapper .youtube:hover .tooltip,
-.product-content .share-social .wrapper .youtube:hover .tooltip::before {
+.product-d-content .share-social .wrapper .youtube:hover,
+.product-d-content .share-social .wrapper .youtube:hover .tooltip,
+.product-d-content .share-social .wrapper .youtube:hover .tooltip::before {
     background: #CD201F;
     color: #ffffff;
 }

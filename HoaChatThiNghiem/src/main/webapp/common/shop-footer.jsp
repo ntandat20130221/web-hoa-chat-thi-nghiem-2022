@@ -67,16 +67,16 @@
                         </div>
                         <ul class="icon mt-3">
                             <li class="d-inline-block mr-4">
-                                <a href="#"><i class="ti-facebook"></i></a>
+                                <a href="#"><i class="fa fa-facebook-f"></i></a>
                             </li>
                             <li class="d-inline-block mr-4">
-                                <a href="#"><i class="ti-twitter"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li class="d-inline-block mr-4">
-                                <a href="#"><i class="ti-youtube"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
                             </li>
                             <li class="d-inline-block">
-                                <a href="#"><i class="ti-instagram"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
                             </li>
                         </ul>
                     </div>

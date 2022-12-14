@@ -71,10 +71,10 @@
                 </div>
                 <div class="col-lg-8 col-md-7 col-12 pt-1">
                     <div class="search-bar-top">
-                        <div class="search-bar">
-                            <form>
-                                <input name="search" placeholder="Nhập tên sản phẩm....."/>
-                                <button class="btn-search">
+                        <div class="search-bar" tabindex="1">
+                            <form action="${context}/shop/products">
+                                <input name="search" placeholder="Nhập tên sản phẩm....." value="${param.search}"/>
+                                <button type="submit" class="btn-search">
                                     <i class="ti-search"></i>
                                 </button>
                             </form>
@@ -158,7 +158,7 @@
                             <ul class="dropdown">
                                 <li><a href="#" data-st="10">GIÁ ĐỠ ỐNG NGHIỆM</a></li>
                                 <li><a href="#" data-st="11">KẸP GỖ</a></li>
-                                <li><a href="#" data-st="12">ỐNG NGHIỆM</a></li>
+                                <li><a href="#" data-st="12">DỤNG CỤ THỦY TINH</a></li>
                                 <li><a href="#" data-st="13">ỐNG HÚT NHỎ GIỌT</a></li>
                             </ul>
                         </li>
@@ -167,8 +167,8 @@
                             <ul class="dropdown">
                                 <li><a href="#" data-st="14">CÂN ĐIỆN TỬ</a></li>
                                 <li><a href="#" data-st="15">MÁY KHUẤY</a></li>
-                                <li><a href="#" data-st="16">MÁY NGHIỀN</a></li>
-                                <li><a href="#" data-st="17">TỦ CHÂN KHÔNG</a></li>
+                                <li><a href="#" data-st="16">MÁY NGHIỀN MẪU</a></li>
+                                <li><a href="#" data-st="17">CÁC LOẠI TỦ</a></li>
                             </ul>
                         </li>
 

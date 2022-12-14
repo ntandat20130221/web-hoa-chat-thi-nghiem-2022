@@ -49,7 +49,7 @@
             </li>
             <c:if test="${requestScope.bc_t != null}">
                 <li class="d-inline-block text-capitalize">
-                    <a href="${context}/shop/products">${requestScope.bc_t}</a>
+                    <a href="${context}/shop/products?type=${param.type}">${requestScope.bc_t}</a>
                     <c:if test="${requestScope.bc_st != null}"><i class="ti-arrow-right mx-2"></i></c:if>
                 </li>
             </c:if>
@@ -68,21 +68,29 @@
         <div class="row">
             <div class="col-lg-3 col-md-4 col-12">
                 <div class="shop-sidebar">
-                    <!-- Category -->
-                    <div class="single-widget category">
-                        <h3 class="title">Phân loại</h3>
-                        <ul class="category-list">
-                            <c:forEach var="es" items="${requestScope.subtypes}">
-                                <li class="<c:if test="${param['subtype'] == es.key}">click-active</c:if>">
-                                    <i class="fa fa-caret-right mr-2"></i>
-                                    <a data-query="${es.key}">${es.value}</a>
-                                </li>
-                            </c:forEach>
-                        </ul>
-                    </div>
+                    <c:if test="${param.search == null}">
+                        <!-- Category -->
+                        <div class="single-widget category mb-4">
+                            <h3 class="title">Phân loại</h3>
+                            <ul class="category-list">
+                                <c:forEach var="es" items="${requestScope.subtypes}">
+                                    <li class="<c:if test="${param['subtype'] == es.key}">click-active</c:if>">
+                                        <i class="fa fa-caret-right mr-2"></i>
+                                        <a data-query="${es.key}">${es.value}</a>
+                                    </li>
+                                </c:forEach>
+                                <c:forEach var="es" items="${sessionScope.all_products}">
+                                    <li>
+                                        <i class="fa fa-caret-right mr-2"></i>
+                                        <a data-query="${es.key}">${es.value}</a>
+                                    </li>
+                                </c:forEach>
+                            </ul>
+                        </div>
+                    </c:if>
 
                     <!-- Price Filter -->
-                    <div class="single-widget range mt-4">
+                    <div class="single-widget range">
                         <h3 class="title">Lọc theo giá</h3>
                         <div class="label-input mt-3">
                             <div class="d-flex justify-content-around">
@@ -124,6 +132,11 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-8 col-12">
+                <c:if test="${param.search != null}">
+                    <div class="search-result mb-4"><i class="bi bi-search"></i> Kết quả tìm kiếm cho từ khóa '<span
+                            class="key-word">${param.search}</span>'
+                    </div>
+                </c:if>
                 <!-- Shop Top -->
                 <div class="shop-top d-flex justify-content-start">
                     <div class="single-shorter">
@@ -201,7 +214,7 @@
                 </div>
 
                 <!-- Pagination -->
-                <div class="pagination d-flex justify-content-center mt-5">
+                <div class="pagination d-flex justify-content-center mt-2">
                     <div class="pagination-container">
                         <a class="control mr-3" id="control-prev"><i class="bi-chevron-left"></i></a>
                         <a class="control ml-3" id="control-next"><i class="bi-chevron-right"></i></a>
@@ -211,8 +224,16 @@
                 <!-- No Data -->
                 <div class="no-data hidden text-center">
                     <img src="${context}/shop/images/no_data.png" alt="No data">
-                    <p>Oops! Không có sản phẩm nào. Điều chỉnh bộ lọc và thử lại nhé?</p>
-                    <button class="clear-filter">Xóa bộ lọc</button>
+                    <c:choose>
+                        <c:when test="${param.search != null && param.size() == 1}">
+                            <p class="empty-search">Không tìm thấy kết quả</p>
+                            <p>Chúng tôi không thể tìm thấy bất kỳ kết quả phù hợp cho cụm từ tìm kiếm của bạn.</p>
+                        </c:when>
+                        <c:otherwise>
+                            <p>Oops! Không có sản phẩm nào. Điều chỉnh bộ lọc và thử lại nhé?</p>
+                            <button class="clear-filter">Xóa bộ lọc</button>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -270,9 +291,12 @@
     })
 
     $('.category-list a').on('click', function () {
+        const contain = String(${sessionScope.containsKey("all_products")})
         const type = queryMap.get('subtype')
         if (type && type === $(this).attr('data-query'))
             queryMap.delete('subtype')
+        else if (contain === 'true')
+            queryMap.set('type', $(this).attr('data-query'))
         else
             queryMap.set('subtype', $(this).attr('data-query'))
         query()
@@ -286,6 +310,9 @@
         }
 
         let query = '${context}/shop/products?'
+
+        const search = queryMap.get('search')
+        if (search) query = query.concat('&search=').concat(search)
 
         const type = queryMap.get('type')
         if (type) query = query.concat('&type=').concat(type)
@@ -320,7 +347,7 @@
             $('.no-data').removeClass('hidden')
             $('.no-data .clear-filter').on('click', function () {
                 queryMap.forEach((value, key) => {
-                    if (key !== "type" && key !== "subtype")
+                    if (key !== "type" && key !== "subtype" && key !== "search")
                         queryMap.delete(key)
                 })
                 query()

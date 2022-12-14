@@ -147,9 +147,9 @@
         -------------------------------------------- */
         (function countdown() {
             const now = new Date()
-            $('.time-hours').html(String(now.getHours()).padStart(2, '0'))
-            $('.time-minutes').html(String(now.getMinutes()).padStart(2, '0'))
-            $('.time-seconds').html(String(now.getSeconds()).padStart(2, '0'))
+            $('.time-hours').html(String(24 - now.getHours()).padStart(2, '0'))
+            $('.time-minutes').html(String(60 - now.getMinutes()).padStart(2, '0'))
+            $('.time-seconds').html(String(60 - now.getSeconds()).padStart(2, '0'))
             setInterval(countdown, 1000)
         })();
 
@@ -277,4 +277,10 @@
         return false
     })
 
+    /* [ Sub Text ]
+    -------------------------------------------- */
+    const pdName = $('.pd-name, .product-paragraph p, .single-product .product-content a')
+    pdName.each(function () {
+        $(this).html($(this).html().replace(/(\d+)/g, '<sub>$1</sub>'))
+    })
 })(jQuery);
