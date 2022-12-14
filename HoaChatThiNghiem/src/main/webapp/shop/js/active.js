@@ -1,13 +1,6 @@
-/* ====================================================
-    - Template Name: Eshop
-    - Author Name:   Naimur Rahman
-    - Author URI:    http://www.wpthemesgrid.com/
-    - Description:   Eshop - eCommerce HTML5 Template.
-    - Version:       1.0
-======================================================= */
-
 (function ($) {
     'use strict';
+
     $(document).on('ready', function () {
 
         /* [ Mobile Menu ]
@@ -152,15 +145,13 @@
 
         /* [ Countdown ]
         -------------------------------------------- */
-        $('[data-countdown]').each(function () {
-            var $this = $(this),
-                finalDate = $(this).data('countdown');
-            $this.countdown(finalDate, function (event) {
-                $this.html(event.strftime(
-                    '<div class="cdown"><span class="days"><strong>%-D</strong><p>Days.</p></span></div><div class="cdown"><span class="hour"><strong> %-H</strong><p>Hours.</p></span></div> <div class="cdown"><span class="minutes"><strong>%M</strong> <p>MINUTES.</p></span></div><div class="cdown"><span class="second"><strong> %S</strong><p>SECONDS.</p></span></div>'
-                ));
-            });
-        });
+        (function countdown() {
+            const now = new Date()
+            $('.time-hours').html(String(24 - now.getHours()).padStart(2, '0'))
+            $('.time-minutes').html(String(60 - now.getMinutes()).padStart(2, '0'))
+            $('.time-seconds').html(String(60 - now.getSeconds()).padStart(2, '0'))
+            setInterval(countdown, 1000)
+        })();
 
         /* [ Flex Slider ]
         -------------------------------------------- */
@@ -174,18 +165,19 @@
 
         /* [ Cart Plus-Minus Button ]
         -------------------------------------------- */
-        var CartPlusMinus = $('.cart-plus-minus');
+        const CartPlusMinus = $('.cart-plus-minus');
         CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
         CartPlusMinus.append('<div class="inc qtybutton">+</div>');
         $(".qtybutton").on("click", function () {
-            var $button = $(this);
-            var oldValue = $button.parent().find("input").val();
+            let newVal;
+            const $button = $(this);
+            const oldValue = $button.parent().find("input").val();
             if ($button.text() === "+") {
-                var newVal = parseFloat(oldValue) + 1;
+                newVal = parseFloat(oldValue) + 1;
             } else {
                 // Don't allow decrementing below zero
                 if (oldValue > 0)
-                    var newVal = parseFloat(oldValue) - 1;
+                    newVal = parseFloat(oldValue) - 1;
                 else
                     newVal = 1;
             }
@@ -195,7 +187,7 @@
         /* [ Extra Scroll ]
         -------------------------------------------- */
         $('.scroll').on("click", function (e) {
-            var anchor = $(this);
+            const anchor = $(this);
             $('html, body').stop().animate({
                 scrollTop: $(anchor.attr('href')).offset().top - 0
             }, 900);
@@ -214,14 +206,14 @@
         /* [ Product Page Quantity Counter ]
         -------------------------------------------- */
         $('.qty-box .quantity-right-plus').on('click', function () {
-            var $qty = $('.qty-box .input-number');
-            var currentVal = parseInt($qty.val(), 10);
+            const $qty = $('.qty-box .input-number');
+            const currentVal = parseInt($qty.val(), 10);
             if (!isNaN(currentVal))
                 $qty.val(currentVal + 1);
         });
         $('.qty-box .quantity-left-minus').on('click', function () {
-            var $qty = $('.qty-box .input-number');
-            var currentVal = parseInt($qty.val(), 10);
+            const $qty = $('.qty-box .input-number');
+            const currentVal = parseInt($qty.val(), 10);
             if (!isNaN(currentVal) && currentVal > 1)
                 $qty.val(currentVal - 1);
         });
@@ -252,7 +244,8 @@
     /* [ Others ]
     -------------------------------------------- */
     $(function () {
-        $("#slider-range").slider({
+        const slider = $('#slider-range')
+        slider.slider({
             range: true,
             min: 0,
             max: 500,
@@ -261,16 +254,33 @@
                 $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
             }
         });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+        $("#amount").val("$" + slider.slider("values", 0) + " - $" + slider.slider("values", 1));
     });
 
     /* [ Preloader ]
     -------------------------------------------- */
-    // After ?s preloader is fade-out
     $('.preloader').delay(0).fadeOut('slow');
     setTimeout(function () {
         // After 2s, the no-scroll class of the body will be removed
         $('body').removeClass('no-scroll');
     }, 0);
 
+    $('.header-menu .nav a[data-t]').on('click', function () {
+        const type = $(this).attr('data-t')
+        window.location.href = 'products?type=' + type
+        return false
+    })
+
+    $('.header-menu .dropdown a').on('click', function () {
+        const type = $(this).closest('.dropdown').prev('a').attr('data-t')
+        window.location.href = 'products?type=' + type + '&subtype=' + $(this).attr('data-st')
+        return false
+    })
+
+    /* [ Sub Text ]
+    -------------------------------------------- */
+    const pdName = $('.pd-name, .product-paragraph p, .single-product .product-content a')
+    pdName.each(function () {
+        $(this).html($(this).html().replace(/(\d+)/g, '<sub>$1</sub>'))
+    })
 })(jQuery);

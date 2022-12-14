@@ -45,6 +45,24 @@ public class ProductDAO {
          */
     }
 
+    public void updateProduct(Product newProduct) {
+        String query = "SELECT * FROM products WHERE id_product=" + newProduct.getIdProduct();
+        Statement st = DbConnection.getInstall().getUpdatableStatement();
+        try {
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                int id = rs.getInt("id_product");
+                if (id == newProduct.getIdProduct()) {
+                    rs.updateInt("views", newProduct.getViews());
+                    rs.updateRow();
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public boolean insertPriceProduct(DbConnection connectDB, Product p, String nameAdmin) {
         String sql = "insert into price_product (id_product,listed_price,current_price,nameAdmin) values(?,?,?,?)";
         PreparedStatement preStatement = connectDB.getPreparedStatement(sql);

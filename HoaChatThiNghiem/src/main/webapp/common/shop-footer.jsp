@@ -10,7 +10,7 @@
                 <div class="col-lg-5 col-md-6 col-12">
                     <div class="single-footer about pr-5">
                         <div class="logo mb-4">
-                            <a href="${context}/shop/index.jsp"><img src="${context}/shop/images/labchemicals-logo-non-bg.png" alt="#"/></a>
+                            <a href="${context}/shop/home.jsp"><img src="${context}/shop/images/labchemicals-logo-non-bg.png" alt="#"/></a>
                         </div>
                         <p class="text">
                             Lab Chemicals là trang web mua sắm trực tuyến với sản phẩm chính là
@@ -67,16 +67,16 @@
                         </div>
                         <ul class="icon mt-3">
                             <li class="d-inline-block mr-4">
-                                <a href="#"><i class="ti-facebook"></i></a>
+                                <a href="#"><i class="fa fa-facebook-f"></i></a>
                             </li>
                             <li class="d-inline-block mr-4">
-                                <a href="#"><i class="ti-twitter"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
                             </li>
                             <li class="d-inline-block mr-4">
-                                <a href="#"><i class="ti-youtube"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
                             </li>
                             <li class="d-inline-block">
-                                <a href="#"><i class="ti-instagram"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
                             </li>
                         </ul>
                     </div>
