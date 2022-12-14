@@ -51,6 +51,15 @@ public class ProductsServlet extends HttpServlet {
             req.setAttribute("subtypes", ProductService.getSubtypesByType(Integer.parseInt(type)));
         }
 
+        // supplier
+        String supplier = req.getParameter("supplier");
+        if (supplier != null) {
+            String nameSupplier = ProductService.getSuppliers().get(Integer.parseInt(supplier));
+            products = products.stream()
+                    .filter(p -> p.getSupply().equals(nameSupplier))
+                    .collect(Collectors.toList());
+        }
+
         setPriceRange(req, products);
         setBreadCrumbs(type, subtype, req);
 
@@ -79,6 +88,8 @@ public class ProductsServlet extends HttpServlet {
 
         List<Product> newProducts = ProductService.getNewProducts();
         req.setAttribute("new_products", newProducts);
+
+        req.setAttribute("suppliers", ProductService.getSuppliers());
 
         req.getRequestDispatcher("/shop/products.jsp").forward(req, resp);
     }

@@ -166,6 +166,26 @@ public class ProductService {
         }
     }
 
+    public static Map<Integer, String> getSuppliers() {
+        Map<Integer, String> map = new HashMap<>();
+        String query = "SELECT id_supplier, name_supplier FROM suppliers";
+        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_supplier");
+                String name = rs.getString("name_supplier");
+                map.put(id, name);
+            }
+        } catch (SQLException e) {
+            return new HashMap<>();
+        }
+        return map;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getSuppliers());
+    }
+
     public static boolean addNewProduct(Product p, Admin admin) {
         /*
         b1: thêm tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp, tên admin vào bảng products

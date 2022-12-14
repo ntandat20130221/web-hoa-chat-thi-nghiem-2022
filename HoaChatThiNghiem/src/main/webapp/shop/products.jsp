@@ -76,18 +76,31 @@
                                 <c:forEach var="es" items="${requestScope.subtypes}">
                                     <li class="<c:if test="${param['subtype'] == es.key}">click-active</c:if>">
                                         <i class="fa fa-caret-right mr-2"></i>
-                                        <a data-query="${es.key}">${es.value}</a>
+                                        <a data-select="subtype" data-query="${es.key}">${es.value}</a>
                                     </li>
                                 </c:forEach>
                                 <c:forEach var="es" items="${sessionScope.all_products}">
                                     <li>
                                         <i class="fa fa-caret-right mr-2"></i>
-                                        <a data-query="${es.key}">${es.value}</a>
+                                        <a data-select="type" data-query="${es.key}">${es.value}</a>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </div>
                     </c:if>
+
+                    <!-- Supplier -->
+                    <div class="single-widget category mb-4">
+                        <h3 class="title">Nhà cung cấp</h3>
+                        <ul class="category-list">
+                            <c:forEach var="spl" items="${requestScope.suppliers}">
+                                <li class="<c:if test="${param['supplier'] == spl.key}">click-active</c:if>">
+                                    <i class="fa fa-caret-right mr-2"></i>
+                                    <a data-select="supplier" data-query="${spl.key}">${spl.value}</a>
+                                </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
 
                     <!-- Price Filter -->
                     <div class="single-widget range">
@@ -291,14 +304,11 @@
     })
 
     $('.category-list a').on('click', function () {
-        const contain = String(${sessionScope.containsKey("all_products")})
-        const type = queryMap.get('subtype')
+        const type = queryMap.get($(this).attr('data-select'));
         if (type && type === $(this).attr('data-query'))
-            queryMap.delete('subtype')
-        else if (contain === 'true')
-            queryMap.set('type', $(this).attr('data-query'))
+            queryMap.delete($(this).attr('data-select'))
         else
-            queryMap.set('subtype', $(this).attr('data-query'))
+            queryMap.set($(this).attr('data-select'), $(this).attr('data-query'))
         query()
         return false;
     })
@@ -319,6 +329,9 @@
 
         const subtype = queryMap.get('subtype')
         if (subtype) query = query.concat('&subtype=').concat(subtype)
+
+        const supplier = queryMap.get('supplier')
+        if (supplier) query = query.concat('&supplier=').concat(supplier)
 
         const sort = queryMap.get('sortBy')
         if (sort) query = query.concat('&sortBy=').concat(sort)
