@@ -33,19 +33,19 @@ public class AdminChangePassServlet extends HttpServlet {
             boolean checkUpdate = AdminService.updatePassword(admin.getUsername(), new_pass); // call service
             if (checkUpdate == true) {
 
-                response.sendRedirect("/HoaChatThiNghiem_war/admin/dang-nhap");
+                response.sendRedirect(request.getContextPath()+"/admin/dang-nhap");
 
             } else {
 
                 request.setAttribute("notification", "Cập nhật không thành công ^.^");
-                request.getRequestDispatcher("/admin/settings.jsp").forward(request, response);
+                request.getRequestDispatcher("/admin-jsp/settings.jsp").forward(request, response);
 
             }
 
         } else {
 
             request.setAttribute("error", "Hãy nhập lại mật khẩu cũ");
-            request.getRequestDispatcher("/admin/settings.jsp").forward(request, response);
+            request.getRequestDispatcher("/admin-jsp/settings.jsp").forward(request, response);
 
         }
     }

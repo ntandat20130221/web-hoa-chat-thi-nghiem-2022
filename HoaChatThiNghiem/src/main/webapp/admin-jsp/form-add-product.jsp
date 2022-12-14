@@ -2,7 +2,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="model.StatusProduct" %>
 <%@ page import="model.Supplier" %>
+<%@ page import="utils.CommonString" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,9 +96,30 @@
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
 
 <%
-    List<TypeProduct> typeProductList = (List<TypeProduct>) request.getAttribute("ds-loai-san-pham");
-    List<StatusProduct> statusProductList = (List<StatusProduct>) request.getAttribute("ds-trang-thai-san-pham");
-    List<Supplier> supplierList = (List<Supplier>) request.getAttribute("ds-nha-cung-cap");
+    List<TypeProduct> typeProductList = (List<TypeProduct>) session.getAttribute("ds-loai-san-pham");
+    List<StatusProduct> statusProductList = (List<StatusProduct>) session.getAttribute("ds-trang-thai-san-pham");
+    List<Supplier> supplierList = (List<Supplier>) session.getAttribute("ds-nha-cung-cap");
+
+    String NameProduct = request.getParameter("TenSP") != null ? request.getParameter("TenSP") : "";
+    String QuantityProduct = request.getParameter("SoLuongSP") != null ? request.getParameter("SoLuongSP") : "";
+    String ListedPrice = request.getParameter("GiaNiemYetSP") != null ? request.getParameter("GiaNiemYetSP") : "";
+    String CurrentPrice = request.getParameter("GiaThucTeSP") != null ? request.getParameter("GiaThucTeSP") : "";
+    String DescProduct = request.getParameter("MoTaSP") != null ? request.getParameter("MoTaSP") : "";
+    String TypeProduct = request.getParameter("LoaiSP") != null ? request.getParameter("LoaiSP") : "";
+    String StatusProduct = request.getParameter("TrangThaiSP") != null ? request.getParameter("TrangThaiSP") : "";
+    String Supplier = request.getParameter("NhaCungCap") != null ? request.getParameter("NhaCungCap") : "";
+
+
+    String ErrorNameProduct = (String) request.getAttribute(CommonString.NAME_PRODUCT_ERROR);
+    String ErrorQuantityProduct = (String) request.getAttribute(CommonString.QUANTITY_PRODUCT_ERROR);
+    String ErrorListedPrice = (String) request.getAttribute(CommonString.LISTED_PRICE_ERROR);
+    String ErrorCurrentPrice = (String) request.getAttribute(CommonString.CURRENT_PRICE_ERROR);
+    String ErrorTypeProduct = (String) request.getAttribute(CommonString.TYPE_PRODUCT_ERROR);
+    String ErrorStatusProduct = (String) request.getAttribute(CommonString.STATUS_PRODUCT_ERROR);
+    String ErrorSupplier = (String) request.getAttribute(CommonString.SUPPLIER_ERROR);
+    String ErrorUpload = (String) request.getAttribute(CommonString.UPLOAD_ERROR);
+    String ErrorDescProduct = (String) request.getAttribute(CommonString.DESC_PRODUCT_ERROR);
+
 %>
 
 <main class="app-content">
@@ -105,62 +128,104 @@
             <div class="tile">
                 <h3 class="tile-title">Tạo mới sản phẩm</h3>
                 <div class="tile-body">
-                    <form class="row" method="post" enctype="multipart/form-data">
+                    <form id="form-add-product" class="row" method="post" enctype="multipart/form-data">
                         <div class="form-group col-md-3">
                             <label class="control-label">Tên sản phẩm</label>
-                            <input class="form-control" type="text" name="TenSP">
+                            <input class="form-control" type="text" name="TenSP" value="<%=NameProduct%>">
+                            <c:set var="ErrorNameProduct" value="<%=ErrorNameProduct%>"/>
+                            <c:if test="${ErrorNameProduct!=null}">
+                                <div class="text-danger">${ErrorNameProduct.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group  col-md-3">
                             <label class="control-label">Số lượng</label>
-                            <input class="form-control" type="number" name="SoLuongSP">
+                            <input class="form-control" type="number" name="SoLuongSP" value="<%=QuantityProduct%>">
+                            <c:set var="ErrorQuantityProduct" value="<%=ErrorQuantityProduct%>"/>
+                            <c:if test="${ErrorQuantityProduct!=null}">
+                                <div class="text-danger">${ErrorQuantityProduct.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label">Giá niêm yết</label>
-                            <input class="form-control" type="number" name="GiaNiemYetSP" placeholder="VND">
+                            <input class="form-control" type="number" name="GiaNiemYetSP" placeholder="VND"
+                                   value="<%=ListedPrice%>">
+                            <c:set var="ErrorListedPrice" value="<%=ErrorListedPrice%>"/>
+                            <c:if test="${ErrorListedPrice!=null}">
+                                <div class="text-danger">${ErrorListedPrice.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label">Giá bán thực tế</label>
-                            <input class="form-control" type="number" name="GiaThucTeSP" placeholder="VND">
+                            <input class="form-control" type="number" name="GiaThucTeSP" placeholder="VND"
+                                   value="<%=CurrentPrice%>">
+                            <c:set var="ErrorCurrentPrice" value="<%=ErrorCurrentPrice%>"/>
+                            <c:if test="${ErrorCurrentPrice!=null}">
+                                <div class="text-danger">${ErrorCurrentPrice.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="typeProduct" class="control-label">Loại sản phẩm</label>
                             <select class="form-control" id="typeProduct" name="LoaiSP">
+
                                 <%for (TypeProduct tp : typeProductList) { %>
-                                <option value="<%=tp.getId_type()%>"><%=tp.getName_type()%>
+                                <option value="<%=tp.getId_type()%>"
+                                        <%=(tp.getId_type() + "").equals(TypeProduct) ? "selected" : ""%>><%=tp.getName_type()%>
                                 </option>
                                 <% } %>
                             </select>
+                            <c:set var="ErrorTypeProduct" value="<%=ErrorTypeProduct%>"/>
+                            <c:if test="${ErrorTypeProduct!=null}">
+                                <div class="text-danger">${ErrorTypeProduct.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="statusProduct" class="control-label">Tình trạng</label>
                             <select class="form-control" id="statusProduct" name="TrangThaiSP">
                                 <% for (StatusProduct sp : statusProductList) { %>
-                                <option value="<%=sp.getId_status()%>"><%=sp.getName_status()%>
+                                <option value="<%=sp.getId_status()%>"
+                                        <%=(sp.getId_status() + "").equals(StatusProduct) ? "selected" : ""%>><%=sp.getName_status()%>
                                 </option>
                                 <% } %>
                             </select>
+                            <c:set var="ErrorStatusProduct" value="<%=ErrorStatusProduct%>"/>
+                            <c:if test="${ErrorStatusProduct!=null}">
+                                <div class="text-danger">${ErrorStatusProduct.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group col-md-3 ">
                             <label for="supplier" class="control-label">Nhà cung cấp</label>
                             <select class="form-control" id="supplier" name="NhaCungCap">
                                 <%for (Supplier sl : supplierList) {%>
-                                <option value="<%=sl.getId_supplier()%>"><%=sl.getName_supplier()%>
+                                <option value="<%=sl.getId_supplier()%>"
+                                        <%=(sl.getId_supplier() + "").equals(Supplier) ? "selected" : ""%>><%=sl.getName_supplier()%>
                                 </option>
                                 <%}%>
                             </select>
+                            <c:set var="ErrorSupplier" value="<%=ErrorSupplier%>"/>
+                            <c:if test="${ErrorSupplier!=null}">
+                                <div class="text-danger">${ErrorSupplier.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group col-md-12">
                             <label class="control-label">Ảnh sản phẩm</label>
                             <div id="boxchoice">
                                 <input class="form-control" type="file" accept=".jpg,.png,.webp" name="AnhSP">
                             </div>
+                            <c:set var="ErrorUpload" value="<%=ErrorUpload%>"/>
+                            <c:if test="${ErrorUpload!=null}">
+                                <div class="text-danger">${ErrorUpload.toString()}</div>
+                            </c:if>
                         </div>
                         <div class="form-group col-md-12">
                             <label class="control-label">Mô tả sản phẩm</label>
-                            <textarea class="form-control" id="descProduct" name="MoTaSP"></textarea>
+                            <textarea class="form-control" id="descProduct" name="MoTaSP"><%=DescProduct%></textarea>
+                            <c:set var="ErrorDescProduct" value="<%=ErrorDescProduct%>"/>
+                            <c:if test="${ErrorDescProduct!=null}">
+                                <div class="text-danger">${ErrorDescProduct.toString()}</div>
+                            </c:if>
                         </div>
                         <button class="btn btn-save" type="submit">Lưu lại</button>
-                        <a class="btn btn-cancel" href="/HoaChatThiNghiem_war/admin/them-san-pham">Hủy bỏ</a>
+                        <a class="btn btn-cancel" href="<%=request.getContextPath()%>/admin/them-san-pham">Hủy bỏ</a>
                     </form>
                 </div>
 
@@ -171,6 +236,24 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/admin-js.jsp"></jsp:include>
+<!--Hiển thị thông báo dùng sweetalert-->
+<script>
+    <% HttpSession sessionAlert = request.getSession();
+        String ALERT = sessionAlert.getAttribute(CommonString.MESS_ALERT)!=null?(String) sessionAlert.getAttribute(CommonString.MESS_ALERT):"";
+    %>
+    <c:set var="Alert" value="<%=ALERT%>"/>
+    <c:if test="${Alert.equals('success')}">
+    $(document).ready(function () {
+        swal({
+            title: "Thông báo",
+            text: "Chúc mừng bạn đã thêm mới sản phẩm thành công ^.^",
+            type: "success"
+        });
+    });
+    </c:if>
+    <%request.getSession().removeAttribute(CommonString.MESS_ALERT);%>
+</script>
 <!-- ================================================================================================== -->
 </body>
 </html>
+
