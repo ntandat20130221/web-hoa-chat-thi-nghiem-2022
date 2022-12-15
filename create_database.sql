@@ -107,6 +107,19 @@ CREATE TABLE `news` (
 	PRIMARY KEY (`id_news`) USING BTREE
 ) 	ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
+CREATE TABLE `review_product`  (
+	`id_review` INT NOT NULL AUTO_INCREMENT,
+	`id_product` INT NOT NULL,
+	`stars` TINYINT NULL DEFAULT 0,
+	`content` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+	`fullname` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+	`phone` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+	`email` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+	PRIMARY KEY (`id_review`, `id_product`) USING BTREE,
+	INDEX `fk_review_product`(`id_product` ASC) USING BTREE,
+	CONSTRAINT `fk_review_product` FOREIGN KEY (`id_product`) REFERENCES `products` (`id_product`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) 	ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+
 CREATE TABLE `price_product` (
 	`id_product` 		INT NOT NULL,
 	`date` 				TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
