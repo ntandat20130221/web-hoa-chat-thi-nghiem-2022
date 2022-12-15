@@ -1,10 +1,7 @@
 package dao;
 
 import db.DbConnection;
-import model.Product;
-import model.StatusProduct;
-import model.Supplier;
-import model.TypeProduct;
+import model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -91,7 +88,7 @@ public class ProductDAO {
                 " AND id_type_product=? AND id_status_product= ? AND id_supplier= ?";
         PreparedStatement preStatement = connectDB.getPreparedStatement(sql);
         try {
-            preStatement.setString(1,p.getName());
+            preStatement.setString(1, p.getName());
             preStatement.setString(2, p.getDesc());
             preStatement.setString(3, p.getImgPath());
             preStatement.setInt(4, p.getQuantity());
@@ -164,4 +161,21 @@ public class ProductDAO {
         return result;
     }
 
+    public boolean addReview(Review review) {
+        try (Statement st = DbConnection.getInstall().getUpdatableStatement()) {
+            st.execute("ALTER TABLE review_product AUTO_INCREMENT = 0");
+            ResultSet rs = st.executeQuery("SELECT * FROM review_product");
+            rs.moveToInsertRow();
+            rs.updateInt("id_product", review.getProductId());
+            rs.updateInt("stars", review.getStars());
+            rs.updateString("content", review.getContent());
+            rs.updateString("fullname", review.getFullName());
+            rs.updateString("phone", review.getPhone());
+            rs.updateString("email", review.getEmail());
+            rs.insertRow();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
 }

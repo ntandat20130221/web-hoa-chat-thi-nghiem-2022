@@ -211,7 +211,7 @@
                                     <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
                                     <div class="rating">
                                         <c:forEach begin="1" end="5" varStatus="i">
-                                            <i class="fa fa-star <c:if test="${i.index <= p.star}">yellow</c:if>"></i>
+                                            <i class="fa fa-star <c:if test="${i.index <= p.review.average}">yellow</c:if>"></i>
                                         </c:forEach>
                                     </div>
                                     <div class="product-price">

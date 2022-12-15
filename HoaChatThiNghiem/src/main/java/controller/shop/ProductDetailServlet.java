@@ -2,6 +2,7 @@ package controller.shop;
 
 import dao.ProductDAO;
 import model.Product;
+import model.Review;
 import service.ProductService;
 
 import javax.servlet.ServletException;
@@ -15,12 +16,14 @@ import java.util.stream.Collectors;
 
 @WebServlet(name = "details", urlPatterns = "/shop/product-details")
 public class ProductDetailServlet extends HttpServlet {
+    private final ProductDAO dao = new ProductDAO();
+    private int productId = -1;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("product_id");
         if (id != null) {
-            Product product = ProductService.getProductById(Integer.parseInt(id));
+            Product product = ProductService.getProductById(productId = Integer.parseInt(id));
             if (product != null) {
                 // update views
                 product.setViews(product.getViews() + 1);
@@ -37,5 +40,20 @@ public class ProductDetailServlet extends HttpServlet {
                 req.getRequestDispatcher("product-details.jsp").forward(req, resp);
             }
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String fullName = req.getParameter("fullname");
+        String phone = req.getParameter("phone");
+        String email = req.getParameter("email");
+        String content = req.getParameter("content");
+        String stars = req.getParameter("stars");
+
+        if (productId != -1) {
+            Review review = new Review(productId, fullName, phone, email, content, Integer.parseInt(stars));
+            dao.addReview(review);
+        }
+        doGet(req, resp);
     }
 }

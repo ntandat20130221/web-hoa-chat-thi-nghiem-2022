@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -183,7 +185,7 @@
                     <p class="last">Tổng trị giá<span>3,000,000đ</span></p>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12">
-                    <a href="home.jsp" class="btn cont">Tiếp tục mua</a>
+                    <a href="${context}/shop/home" class="btn cont">Tiếp tục mua</a>
                 </div>
                 <div class="col-lg-3 col-md-4 col-12">
                     <a href="checkout.jsp" class="btn buy">Mua hàng</a>

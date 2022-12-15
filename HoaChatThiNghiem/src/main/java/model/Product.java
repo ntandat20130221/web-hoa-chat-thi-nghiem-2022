@@ -14,7 +14,7 @@ public class Product implements Serializable {
     private int idProduct;
     private String imgPath;
     private String name;
-    private int star;
+    private ProductReview review;
     private String status;
     private String desc;
     private int quantity;
@@ -50,13 +50,13 @@ public class Product implements Serializable {
         // Author : Minh Tuyên
     }
 
-    public Product(int idProduct, String imgPath, String name, int star,
+    public Product(int idProduct, String imgPath, String name, ProductReview review,
                    String status, String desc, int quantity, String type, String subtype,
                    String supply, int sold, Date date, int views, double oldPrice, double newPrice) {
         this.idProduct = idProduct;
         this.imgPath = imgPath;
         this.name = name;
-        this.star = star;
+        this.review = review;
         this.status = status;
         this.desc = desc;
         this.quantity = quantity;
@@ -96,12 +96,12 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public int getStar() {
-        return star;
+    public ProductReview getReview() {
+        return review;
     }
 
-    public void setStar(int star) {
-        this.star = star;
+    public void setReview(ProductReview review) {
+        this.review = review;
     }
 
     public String getStatus() {

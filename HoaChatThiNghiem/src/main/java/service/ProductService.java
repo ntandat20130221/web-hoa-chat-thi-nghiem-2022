@@ -38,6 +38,10 @@ public class ProductService {
 
     private static final String QUERY_TYPE_ID = "SELECT id_type_product FROM subtype_product WHERE id_subtype=?";
 
+    private static final String QUERY_STAR_REVIEW = "SELECT COUNT(*)" +
+            "FROM review_product " +
+            "WHERE id_product=? AND stars=?";
+
     public static List<Product> queryProducts(String query, Object... params) {
         try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
             for (int i = 0; i < params.length; i++)
@@ -91,7 +95,7 @@ public class ProductService {
             String name = rs.getString("name_product");
             String desc = rs.getString("description_product");
             String imgPath = rs.getString("url_img_product");
-            int stars = rs.getInt("star_review");
+            ProductReview review = getReviewByProductId(id);
             String status = rs.getString("name_status_product");
             int quantity = rs.getInt("quantity_product");
             double oldPrice = rs.getInt("listed_price");
@@ -102,7 +106,7 @@ public class ProductService {
             int sold = rs.getInt("quantity_sold");
             Date date = rs.getDate("date_inserted");
             int views = rs.getInt("views");
-            Product product = new Product(id, imgPath, name, stars, status, desc, quantity, type, subtype,
+            Product product = new Product(id, imgPath, name, review, status, desc, quantity, type, subtype,
                     supply, sold, date, views, oldPrice, newPrice);
             products.add(product);
         }
@@ -182,8 +186,36 @@ public class ProductService {
         return map;
     }
 
+    public static ProductReview getReviewByProductId(int id) {
+        ProductReview pr = new ProductReview();
+        pr.setProductId(id);
+
+        int[] stars = new int[5];
+
+        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_STAR_REVIEW)) {
+            for (int i = 0; i < 5; i++) {
+                ps.setInt(1, id);
+                ps.setInt(2, i + 1);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    stars[i] = rs.getInt(1);
+                }
+            }
+
+            pr.setOneStars(stars[0]);
+            pr.setTwoStars(stars[1]);
+            pr.setThreeStars(stars[2]);
+            pr.setFourStars(stars[3]);
+            pr.setFiveStars(stars[4]);
+            pr.setTotals(Arrays.stream(stars).sum());
+        } catch (SQLException e) {
+            return pr;
+        }
+        return pr;
+    }
+
     public static void main(String[] args) {
-        System.out.println(getSuppliers());
+        System.out.println(getProductById(1).getReview());
     }
 
     public static boolean addNewProduct(Product p, Admin admin) {

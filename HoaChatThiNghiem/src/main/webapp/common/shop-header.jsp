@@ -85,14 +85,14 @@
                     <div class="right-bar">
                         <!-- Search Form -->
                         <div class="right-bar-item shopping d-inline-block mr-4">
-                            <a href="${context}/shop/cart.jsp" class="single-icon">
+                            <a href="${context}/shop/cart" class="single-icon">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="total-count">2</span></a>
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
                                     <span>2 Sản phẩm</span>
-                                    <a class="float-right" href="${context}/shop/cart.jsp">Xem giỏ hàng</a>
+                                    <a class="float-right" href="${context}/shop/cart">Xem giỏ hàng</a>
                                 </div>
                                 <ul class="shopping-list">
                                     <!-- Cart Item -->

@@ -20,6 +20,7 @@
     --color-cart-items: #E63410;
     --color-bg-breadcrumbs: #F1F1F1;
     --color-star: #F7B832;
+    --color-star2: #FACA51;
     --color-price: #EE0000;
 }
 
@@ -65,6 +66,10 @@ a:focus {
 }
 
 .slicknav_menu {
+    display: none;
+}
+
+.hidden {
     display: none;
 }
 
@@ -1441,10 +1446,6 @@ a:focus {
 /* ============================================
     SIDEBAR - PRODUCTS PAGE
 ============================================ */
-.hidden {
-    display: none;
-}
-
 .products {
     margin: 50px 0 100px 0;
 }
@@ -2976,6 +2977,227 @@ a:focus {
 .product-d-content .share-social .wrapper .youtube:hover .tooltip::before {
     background: #CD201F;
     color: #ffffff;
+}
+
+/* [ Product Reviews ]
+--------------------------------------- */
+.product-reviews .container > .row {
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+    padding: 18px;
+}
+
+.rating-number {
+    font-family: Heebo, serif;
+    color: #333;
+    display: block;
+    font-size: 64px;
+}
+
+.rating-number span {
+    font-size: 32px;
+    color: rgb(151, 151, 151);
+}
+
+.rating-stars i {
+    font-size: 32px;
+}
+
+.num-ratings {
+    font-size: 13px;
+    color: rgb(103, 103, 103);
+}
+
+.rate-outer {
+    width: 75%;
+    height: 15px;
+    background: #e2e5ef;
+}
+
+.rate-inner {
+    width: 80%;
+    height: 100%;
+    background: var(--color-star2);
+}
+
+.product-reviews i {
+    color: #e2e5ef;
+}
+
+.product-reviews i.yellow {
+    color: var(--color-star2);
+}
+
+.rating-percent {
+    padding-left: 12px;
+    width: 30px;
+}
+
+.rating-percent,
+.rating-count {
+    font-size: 14px;
+    color: rgb(91, 91, 91);
+}
+
+.rating-divider {
+    height: 15px;
+    margin: 0 18px;
+    width: 1px;
+    background-color: rgb(158, 158, 158);
+}
+
+/* [ Review Modal ]
+--------------------------------------- */
+#rating-modal {
+    position: fixed;
+    z-index: 9999999;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #FEFEFE;
+    margin: auto;
+    padding: 24px;
+    width: 580px;
+    height: 620px;
+}
+
+.modal-content h5 {
+    padding: 0 0 20px 0;
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    color: rgb(108, 108, 108);
+}
+
+.content-comment {
+    display: block;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
+    border-radius: 6px;
+    padding: 5px 8px;
+}
+
+.content-comment:focus-within {
+    box-shadow: rgba(103, 121, 222, 0.2) 0 1px 3px 1px, rgb(62, 132, 212) 0 0 0 1px;
+}
+
+.modal-content textarea {
+    width: 100%;
+    font-family: Poppins, sans-serif;
+    resize: none;
+    outline: unset !important;
+    border: none !important;
+}
+
+.modal-content .error {
+    font-family: Poppins, sans-serif;
+    font-size: 13px;
+    color: red;
+    letter-spacing: .015em;
+}
+
+.star-wrapper {
+    direction: rtl;
+    display: flex;
+    justify-content: start;
+}
+
+.star-wrapper i {
+    font-size: 3em;
+    color: rgb(119, 123, 130);
+}
+
+.star-wrapper .star {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.star-wrapper .star span {
+    font-size: 13px;
+    color: rgb(122, 122, 122);
+}
+
+.star-wrapper .star:hover {
+    transform: scale(1.3);
+}
+
+.star-wrapper div:hover i,
+.star-wrapper div:hover ~ div i,
+.star-wrapper div.active i,
+.star-wrapper div.active ~ div i {
+    color: gold;
+}
+
+.feeling {
+    font-weight: bold;
+    margin: 0;
+}
+
+.rating-info input {
+    outline: unset !important;
+    border: none;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
+    border-radius: 1px;
+    padding: 6px 10px;
+    font-size: 15px;
+}
+
+.rating-info input:nth-child(2) {
+    width: 30%;
+}
+
+.rating-info input::placeholder {
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+}
+
+.modal-content input:focus {
+    box-shadow: rgba(103, 121, 222, 0.2) 0 1px 3px 1px, rgb(62, 132, 212) 0 0 0 1px;
+}
+
+.modal-content button[type=submit] {
+    display: block;
+    margin: auto auto 20px;
+    border: none;
+    outline: unset;
+    text-transform: uppercase;
+    padding: 12px 42px;
+    font-family: Poppins, sans-serif;
+    font-size: 18px;
+    color: white;
+    background-color: var(--main-color);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.modal-content .condition u {
+    font-size: 16px;
+    font-family: Inter, sans-serif;
+}
+
+.modal-content .condition {
+    font-family: Poppins, sans-serif;
+    font-size: 15px;
+}
+
+.modal-content .condition a {
+    transition: .1s;
+    color: var(--main-color);
+}
+
+.modal-content .condition a:hover {
+    color: rgb(227, 100, 100);
 }
 
 /* ============================================

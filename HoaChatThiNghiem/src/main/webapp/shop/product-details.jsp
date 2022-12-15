@@ -43,9 +43,9 @@
     </div>
 </div>
 
+<c:set var="p" value="${requestScope['product']}"/>
 <!-- ===== PRODUCT DETAIL ===== -->
 <section class="product-detail">
-    <c:set var="p" value="${requestScope['product']}"/>
     <div class="container">
         <div class="row no-gutters main-detail p-5">
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
@@ -68,10 +68,10 @@
                     <div class="product-rating d-flex">
                         <div class="rating">
                             <c:forEach begin="1" end="5" varStatus="i">
-                                <i class="fa fa-star <c:if test="${i.index <= p.star}">yellow</c:if>"></i>
+                                <i class="fa fa-star <c:if test="${i.index <= p.review.average}">yellow</c:if>"></i>
                             </c:forEach>
                         </div>
-                        <a href="#"> (33 Đánh Giá)</a>
+                        <a href="#"> (${p.review.totals} Đánh Giá)</a>
                         <span>${p.sold} Đã Bán</span>
                         <span>${p.views} Đã Xem</span>
                     </div>
@@ -139,6 +139,176 @@
     </div>
 </section>
 
+<!-- ===== REVIEW ===== -->
+<section class="product-reviews">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-3">
+                <div class="rating-left h-100 d-flex align-items-center">
+                    <div>
+                        <span class="rating-number">${p.review.average}<span>/5</span></span>
+                        <div class="rating-stars">
+                            <c:forEach begin="1" end="5" varStatus="i">
+                                <i class="fa fa-star <c:if test="${i.index <= p.review.average}">yellow</c:if>"></i>
+                            </c:forEach>
+                        </div>
+                        <span class="num-ratings">${p.review.totals} đánh giá</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="rating-right">
+                    <div class="rating-5 row p-1">
+                        <div class="col-lg-2">
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                        </div>
+                        <div class="col-lg-10 d-flex align-items-center pl-0">
+                            <div class="rate-outer">
+                                <div class="rate-inner" data-rate="${p.review.percent5}"></div>
+                            </div>
+                            <div class="rating-percent">${p.review.percent5}%</div>
+                            <div class="rating-divider"></div>
+                            <div class="rating-count">${p.review.fiveStars} đánh giá</div>
+                        </div>
+                    </div>
+                    <div class="rating-4 row p-1">
+                        <div class="col-lg-2">
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="col-lg-10 d-flex align-items-center pl-0 w-100">
+                            <div class="rate-outer">
+                                <div class="rate-inner" data-rate="${p.review.percent4}"></div>
+                            </div>
+                            <div class="rating-percent">${p.review.percent4}%</div>
+                            <div class="rating-divider"></div>
+                            <div class="rating-count">${p.review.fourStars} đánh giá</div>
+                        </div>
+                    </div>
+                    <div class="rating-3 row p-1">
+                        <div class="col-lg-2">
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="col-lg-10 d-flex align-items-center pl-0">
+                            <div class="rate-outer">
+                                <div class="rate-inner" data-rate="${p.review.percent3}"></div>
+                            </div>
+                            <div class="rating-percent">${p.review.percent3}%</div>
+                            <div class="rating-divider"></div>
+                            <div class="rating-count">${p.review.threeStars} đánh giá</div>
+                        </div>
+                    </div>
+                    <div class="rating-2 row p-1">
+                        <div class="col-lg-2">
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="col-lg-10 d-flex align-items-center pl-0">
+                            <div class="rate-outer">
+                                <div class="rate-inner" data-rate="${p.review.percent2}"></div>
+                            </div>
+                            <div class="rating-percent">${p.review.percent2}%</div>
+                            <div class="rating-divider"></div>
+                            <div class="rating-count">${p.review.twoStars} đánh giá</div>
+                        </div>
+                    </div>
+                    <div class="rating-1 row p-1">
+                        <div class="col-lg-2">
+                            <i class="fa fa-star yellow"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="col-lg-10 d-flex align-items-center pl-0">
+                            <div class="rate-outer">
+                                <div class="rate-inner" data-rate="${p.review.percent1}"></div>
+                            </div>
+                            <div class="rating-percent">${p.review.percent1}%</div>
+                            <div class="rating-divider"></div>
+                            <div class="rating-count">${p.review.oneStars} đánh giá</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn-rating">Đánh giá ngay</button>
+    </div>
+</section>
+
+<div id="rating-modal" class="hidden">
+    <div class="modal-content">
+        <form action="${context}/shop/product-details?product_id=${p.idProduct}" method="POST">
+            <h5>Đánh giá ${p.name}</h5>
+            <div class="content-comment">
+                <textarea name="content" id="rating-content" rows="7" placeholder="Mời bạn chia sẻ thêm một số cảm nhận..."></textarea>
+                <div class="error">Nội dung bình luận là bắt buộc!</div>
+            </div>
+            <div class="row no-gutters my-4 d-flex align-items-center">
+                <div class="col-lg-4">
+                    <p class="feeling">Bạn cảm thấy thế<br>nào về sản phẩm?<br>(Chọn sao)</p>
+                </div>
+                <div class="col-lg-8">
+                    <div class="star-wrapper">
+                        <input type="hidden" name="stars" value="5" id="input-stars">
+                        <div class="star active" data-star="5">
+                            <i class="fa fa-star"></i>
+                            <span>Tuyệt vời</span>
+                        </div>
+                        <div class="star" data-star="4">
+                            <i class="fa fa-star"></i>
+                            <span>Tốt</span>
+                        </div>
+                        <div class="star" data-star="3">
+                            <i class="fa fa-star"></i>
+                            <span>Trung bình</span>
+                        </div>
+                        <div class="star" data-star="2">
+                            <i class="fa fa-star"></i>
+                            <span>Không tệ</span>
+                        </div>
+                        <div class="star" data-star="1">
+                            <i class="fa fa-star"></i>
+                            <span>Rất tệ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rating-info d-flex justify-content-between mb-4">
+                <div class="w-100 mr-3">
+                    <input type="text" placeholder="Họ tên" name="fullname">
+                    <span class="error mt-2 d-inline-block">Tên là bắt buộc!</span>
+                </div>
+                <div class="w-100">
+                    <input type="text" placeholder="Số điện thoại" name="phone">
+                    <span class="error mt-2 d-inline-block">Số điện thoại là bắt buộc!</span>
+                </div>
+                <div class="w-100 ml-3">
+                    <input type="text" placeholder="Email" name="email">
+                </div>
+            </div>
+            <button type="submit">Gửi đánh giá</button>
+            <p class="d-block m-0 condition"><u>Lưu ý:</u> Để đánh giá được phê duyệt, vui lòng tham khảo
+                <a href="#">Điều khoản và Chính sách bảo mật</a>
+            </p>
+        </form>
+    </div>
+</div>
+
 <!-- ===== RELATED PRODUCTS ===== -->
 <section class="newest-products mb-5">
     <div class="container">
@@ -146,29 +316,29 @@
             <h2>Sản Phẩm Liên Quan</h2>
         </div>
         <div class="owl-carousel newest-slider">
-            <c:forEach var="p" items="${requestScope.related_products}">
+            <c:forEach var="pr" items="${requestScope.related_products}">
                 <div class="single-product mt-0 mb-0 mr-3 ml-3">
                     <div class="product-img">
-                        <a href="${context}/shop/product-details?product_id=${p.idProduct}">
-                            <img class="default-img" src="${p.imgPath}" alt="#"/>
-                            <span class="hot">${p.status}</span>
+                        <a href="${context}/shop/product-details?product_id=${pr.idProduct}">
+                            <img class="default-img" src="${pr.imgPath}" alt="#"/>
+                            <span class="hot">${pr.status}</span>
                         </a>
                         <div class="cart-container">
                             <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                     <div class="product-content">
-                        <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
+                        <a href="${context}/shop/product-details?product_id=${pr.idProduct}">${pr.name}</a>
                         <div class="rating">
                             <c:forEach begin="1" end="5" varStatus="i">
-                                <i class="fa fa-star <c:if test="${i.index <= p.star}">yellow</c:if>"></i>
+                                <i class="fa fa-star <c:if test="${i.index <= pr.review.average}">yellow</c:if>"></i>
                             </c:forEach>
                         </div>
                         <div class="product-price">
-                            <c:if test="${p.oldPrice != p.newPrice}">
-                                <span class="old">${pu:format(p.oldPrice)}đ</span>
+                            <c:if test="${pr.oldPrice != pr.newPrice}">
+                                <span class="old">${pu:format(pr.oldPrice)}đ</span>
                             </c:if>
-                            <span>${pu:format(p.newPrice)}đ</span>
+                            <span>${pu:format(pr.newPrice)}đ</span>
                         </div>
                     </div>
                 </div>
@@ -201,6 +371,39 @@
         const input = $('.input-number')
         input.val(Number(input.val()) + 1)
     })
+
+    $('.rate-inner').each(function () {
+        $(this).css('width', $(this).attr('data-rate').concat('%'))
+    })
+
+    $('.btn-rating').on('click', function () {
+        $('#rating-modal').removeClass('hidden')
+        $('body').css('overflow', 'hidden')
+    })
+
+    window.onclick = function (event) {
+        if (event.target === document.getElementById('rating-modal')) {
+            $('#rating-modal').addClass('hidden')
+            $('body').css('overflow', 'auto')
+        }
+    }
+
+    const starDiv = $('.star-wrapper .star');
+    let el = starDiv.first();
+    starDiv.on('click', function () {
+        $('#input-stars').val($(this).attr('data-star'))
+        toggleStar(el = $(this))
+    })
+
+    starDiv.mouseover(e => toggleStar($(e.target)))
+    starDiv.mouseout(e => toggleStar(el))
+
+    function toggleStar(e) {
+        starDiv.each(function () {
+            $(this).removeClass('active')
+        })
+        e.addClass('active')
+    }
 </script>
 </body>
 
