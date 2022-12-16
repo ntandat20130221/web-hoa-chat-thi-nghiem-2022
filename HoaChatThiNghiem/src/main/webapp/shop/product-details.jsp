@@ -45,7 +45,7 @@
 
 <c:set var="p" value="${requestScope['product']}"/>
 <!-- ===== PRODUCT DETAIL ===== -->
-<section class="product-detail">
+<section class="product-detail mt-5">
     <div class="container">
         <div class="row no-gutters main-detail p-5">
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
@@ -81,15 +81,9 @@
                             <span class="percent">-${pu:discount(p.oldPrice, p.newPrice)}%</span></c:if>
                         </h3>
                         <c:choose>
-                            <c:when test="${p.quantity > 0}">
-                                <span class="label label-in-stock">Còn hàng</span>
-                            </c:when>
-                            <c:when test="${p.quantity == 0}">
-                                <span class="label label-out-stock">Hết hàng</span>
-                            </c:when>
-                            <c:otherwise>
-                                <span class="label label-forbidden">Cấm bán</span>
-                            </c:otherwise>
+                            <c:when test="${p.quantity > 0}"><span class="label label-in-stock">Còn hàng</span></c:when>
+                            <c:when test="${p.quantity == 0}"><span class="label label-out-stock">Hết hàng</span></c:when>
+                            <c:otherwise><span class="label label-forbidden">Cấm bán</span></c:otherwise>
                         </c:choose>
                     </div>
                     <div class="product-paragraph">
@@ -115,22 +109,12 @@
                     <div class="share-social mt-3">
                         <span class="label-share">Chia sẻ</span>
                         <ul class="wrapper">
-                            <li class="icon facebook">
-                                <span class="tooltip">Facebook</span>
-                                <span><i class="fa fa-facebook-f"></i></span>
-                            </li>
-                            <li class="icon twitter">
-                                <span class="tooltip">Twitter</span>
-                                <span><i class="fa fa-twitter"></i></span>
-                            </li>
-                            <li class="icon youtube">
-                                <span class="tooltip">Youtube</span>
-                                <span><i class="fa fa-youtube-play"></i></span>
-                            </li>
-                            <li class="icon instagram">
-                                <span class="tooltip">Instagram</span>
-                                <span><i class="fa fa-instagram"></i></span>
-                            </li>
+                            <c:forTokens var="ss" items="facebook,twitter,youtube,instagram" delims="," varStatus="i">
+                                <li class="icon ${ss}">
+                                    <span class="tooltip">${ss}</span>
+                                    <span><i class="fa fa-${ss}<c:if test="${i.first}">-f</c:if><c:if test="${i.count eq 3}">-play</c:if>"></i></span>
+                                </li>
+                            </c:forTokens>
                         </ul>
                     </div>
                 </div>
@@ -140,9 +124,10 @@
 </section>
 
 <!-- ===== REVIEW ===== -->
-<section class="product-reviews">
+<section class="product-reviews m-5" id="product-reviews">
     <div class="container">
         <div class="row no-gutters">
+            <span class="rating-title">Đánh giá và nhận xét từ khách hàng về ${p.name}</span>
             <div class="col-lg-3">
                 <div class="rating-left h-100 d-flex align-items-center">
                     <div>
@@ -170,9 +155,7 @@
                             <div class="rate-outer">
                                 <div class="rate-inner" data-rate="${p.review.percent5}"></div>
                             </div>
-                            <div class="rating-percent">${p.review.percent5}%</div>
-                            <div class="rating-divider"></div>
-                            <div class="rating-count">${p.review.fiveStars} đánh giá</div>
+                            <div class="rating-count">${p.review.fiveStars}</div>
                         </div>
                     </div>
                     <div class="rating-4 row p-1">
@@ -187,9 +170,7 @@
                             <div class="rate-outer">
                                 <div class="rate-inner" data-rate="${p.review.percent4}"></div>
                             </div>
-                            <div class="rating-percent">${p.review.percent4}%</div>
-                            <div class="rating-divider"></div>
-                            <div class="rating-count">${p.review.fourStars} đánh giá</div>
+                            <div class="rating-count">${p.review.fourStars}</div>
                         </div>
                     </div>
                     <div class="rating-3 row p-1">
@@ -204,9 +185,7 @@
                             <div class="rate-outer">
                                 <div class="rate-inner" data-rate="${p.review.percent3}"></div>
                             </div>
-                            <div class="rating-percent">${p.review.percent3}%</div>
-                            <div class="rating-divider"></div>
-                            <div class="rating-count">${p.review.threeStars} đánh giá</div>
+                            <div class="rating-count">${p.review.threeStars}</div>
                         </div>
                     </div>
                     <div class="rating-2 row p-1">
@@ -221,9 +200,7 @@
                             <div class="rate-outer">
                                 <div class="rate-inner" data-rate="${p.review.percent2}"></div>
                             </div>
-                            <div class="rating-percent">${p.review.percent2}%</div>
-                            <div class="rating-divider"></div>
-                            <div class="rating-count">${p.review.twoStars} đánh giá</div>
+                            <div class="rating-count">${p.review.twoStars}</div>
                         </div>
                     </div>
                     <div class="rating-1 row p-1">
@@ -238,25 +215,25 @@
                             <div class="rate-outer">
                                 <div class="rate-inner" data-rate="${p.review.percent1}"></div>
                             </div>
-                            <div class="rating-percent">${p.review.percent1}%</div>
-                            <div class="rating-divider"></div>
-                            <div class="rating-count">${p.review.oneStars} đánh giá</div>
+                            <div class="rating-count">${p.review.oneStars}</div>
                         </div>
                     </div>
                 </div>
             </div>
+            <button class="btn-rating">Đánh giá ngay</button>
         </div>
-        <button class="btn-rating">Đánh giá ngay</button>
     </div>
 </section>
 
+<!-- ===== RATING MODAL ===== -->
 <div id="rating-modal" class="hidden">
     <div class="modal-content">
-        <form action="${context}/shop/product-details?product_id=${p.idProduct}" method="POST">
+        <span class="close"><i class="bi bi-x-lg"></i></span>
+        <form action="${context}/shop/product-details?product_id=${p.idProduct}" method="POST" id="rating-form" class="position-relative h-100">
             <h5>Đánh giá ${p.name}</h5>
             <div class="content-comment">
-                <textarea name="content" id="rating-content" rows="7" placeholder="Mời bạn chia sẻ thêm một số cảm nhận..."></textarea>
-                <div class="error">Nội dung bình luận là bắt buộc!</div>
+                <textarea name="content" id="rating-content" rows="6" placeholder="Mời bạn chia sẻ thêm một số cảm nhận..."></textarea>
+                <div class="error hidden">Nội dung bình luận là bắt buộc!</div>
             </div>
             <div class="row no-gutters my-4 d-flex align-items-center">
                 <div class="col-lg-4">
@@ -265,43 +242,29 @@
                 <div class="col-lg-8">
                     <div class="star-wrapper">
                         <input type="hidden" name="stars" value="5" id="input-stars">
-                        <div class="star active" data-star="5">
-                            <i class="fa fa-star"></i>
-                            <span>Tuyệt vời</span>
-                        </div>
-                        <div class="star" data-star="4">
-                            <i class="fa fa-star"></i>
-                            <span>Tốt</span>
-                        </div>
-                        <div class="star" data-star="3">
-                            <i class="fa fa-star"></i>
-                            <span>Trung bình</span>
-                        </div>
-                        <div class="star" data-star="2">
-                            <i class="fa fa-star"></i>
-                            <span>Không tệ</span>
-                        </div>
-                        <div class="star" data-star="1">
-                            <i class="fa fa-star"></i>
-                            <span>Rất tệ</span>
-                        </div>
+                        <c:forTokens var="span" items="Tuyệt vời,Tốt,Trung bình,Không tệ,Rất tệ" delims="," varStatus="i">
+                            <div class="star <c:if test="${i.first}">active</c:if>" data-star="${6 - i.count}">
+                                <i class="fa fa-star"></i>
+                                <span>${span}</span>
+                            </div>
+                        </c:forTokens>
                     </div>
                 </div>
             </div>
             <div class="rating-info d-flex justify-content-between mb-4">
                 <div class="w-100 mr-3">
-                    <input type="text" placeholder="Họ tên" name="fullname">
-                    <span class="error mt-2 d-inline-block">Tên là bắt buộc!</span>
+                    <input type="text" placeholder="Họ tên" name="fullname" id="rating-name">
+                    <span class="error hidden mt-2">Tên là bắt buộc!</span>
                 </div>
                 <div class="w-100">
-                    <input type="text" placeholder="Số điện thoại" name="phone">
-                    <span class="error mt-2 d-inline-block">Số điện thoại là bắt buộc!</span>
+                    <input type="text" placeholder="Số điện thoại" name="phone" id="rating-phone">
+                    <span class="error hidden mt-2">Số điện thoại là bắt buộc!</span>
                 </div>
                 <div class="w-100 ml-3">
-                    <input type="text" placeholder="Email" name="email">
+                    <input type="text" placeholder="Email" name="email" id="rating-email">
                 </div>
             </div>
-            <button type="submit">Gửi đánh giá</button>
+            <button type="button" id="btn-send-rating">Gửi đánh giá</button>
             <p class="d-block m-0 condition"><u>Lưu ý:</u> Để đánh giá được phê duyệt, vui lòng tham khảo
                 <a href="#">Điều khoản và Chính sách bảo mật</a>
             </p>
@@ -381,6 +344,24 @@
         $('body').css('overflow', 'hidden')
     })
 
+    $('span.close').on('click', () => {
+        const ratingMd = $('#rating-modal');
+        ratingMd.addClass('hidden')
+        ratingMd.animate({bottom: '1000px'})
+        $('body').css('overflow', 'auto')
+    })
+
+    window.onclick = function (event) {
+        close(event)
+    }
+
+    function close(event) {
+        if (event.target === document.getElementById('rating-modal')) {
+            $('#rating-modal').addClass('hidden')
+            $('body').css('overflow', 'auto')
+        }
+    }
+
     window.onclick = function (event) {
         if (event.target === document.getElementById('rating-modal')) {
             $('#rating-modal').addClass('hidden')
@@ -404,6 +385,37 @@
         })
         e.addClass('active')
     }
+
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+
+    $('#btn-send-rating').on('click', function () {
+        let isValid = true;
+        if ($('#rating-content').val() === "") {
+            $('.content-comment .error').removeClass('hidden')
+            isValid = false
+        }
+
+        if ($('#rating-name').val() === "") {
+            $('#rating-name ~ .error').removeClass('hidden')
+            isValid = false
+        }
+
+        if ($('#rating-phone').val() === "") {
+            $('#rating-phone ~ .error').removeClass('hidden')
+            isValid = false
+        }
+
+        if (!isValid) return false
+        else $('#rating-form').submit()
+    })
+
+    $('.product-rating a').click(function () {
+        $('html, body').animate({
+            scrollTop: $('#product-reviews').offset().top - 250
+        }, 1000);
+    });
 </script>
 </body>
 
