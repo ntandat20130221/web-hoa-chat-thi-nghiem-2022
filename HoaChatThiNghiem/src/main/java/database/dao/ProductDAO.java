@@ -1,6 +1,6 @@
-package dao;
+package database.dao;
 
-import db.DbConnection;
+import database.DbConnection;
 import model.*;
 
 import java.sql.PreparedStatement;
@@ -44,7 +44,7 @@ public class ProductDAO {
 
     public void updateProduct(Product newProduct) {
         String query = "SELECT * FROM products WHERE id_product=" + newProduct.getIdProduct();
-        Statement st = DbConnection.getInstall().getUpdatableStatement();
+        Statement st = DbConnection.getInstance().getUpdatableStatement();
         try {
             ResultSet rs = st.executeQuery(query);
             while (rs.next()) {
@@ -162,7 +162,7 @@ public class ProductDAO {
     }
 
     public boolean addReview(Review review) {
-        try (Statement st = DbConnection.getInstall().getUpdatableStatement()) {
+        try (Statement st = DbConnection.getInstance().getUpdatableStatement()) {
             st.execute("ALTER TABLE review_product AUTO_INCREMENT = 0");
             ResultSet rs = st.executeQuery("SELECT * FROM review_product");
             rs.moveToInsertRow();

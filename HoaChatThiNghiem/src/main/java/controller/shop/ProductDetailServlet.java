@@ -1,6 +1,6 @@
 package controller.shop;
 
-import dao.ProductDAO;
+import database.dao.ProductDAO;
 import model.Product;
 import model.Review;
 import service.ProductService;

@@ -1,6 +1,6 @@
 package service;
 
-import db.DbConnection;
+import database.DbConnection;
 import model.Customer;
 
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import java.util.List;
 public class CustomerService {
     public static Customer checkLogin(String email, String password){
         List<Customer> customers = new ArrayList<>();
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname " +
                 "from account_customer where username = ?";
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
@@ -41,13 +41,13 @@ public class CustomerService {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }finally {
-            connectDB.unInstall();
+            connectDB.close();
         }
         return null;
     }
 
     public static boolean changePass(String newPass, String email){
-        DbConnection connectDb = DbConnection.getInstall();
+        DbConnection connectDb = DbConnection.getInstance();
         String sql = "UPDATE account_customer " +
                 "SET pass = ?, time_change_pass = current_timestamp()" +
                 " WHERE username = ?";
@@ -62,13 +62,13 @@ public class CustomerService {
         }catch (Exception e){
             throw new RuntimeException(e);
         }finally {
-            connectDb.unInstall();
+            connectDb.close();
         }
         return false;
     }
 
     public static boolean checkExist(String email){
-        DbConnection connectDb = DbConnection.getInstall();
+        DbConnection connectDb = DbConnection.getInstance();
         List<Customer> customers = new ArrayList<>();
         String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname " +
                 "from account_customer where username = ?";
@@ -93,13 +93,13 @@ public class CustomerService {
         }catch (Exception e){
             throw new RuntimeException();
         }finally {
-            connectDb.unInstall();
+            connectDb.close();
         }
         return false;
     }
 
     public static void signUp(String email, String password){
-        DbConnection connectDb = DbConnection.getInstall();
+        DbConnection connectDb = DbConnection.getInstance();
         String sql = "INSERT INTO account_customer(username, pass, id_status_acc, id_city) " +
                 "VALUES(?, ?, 1, 1)";
         PreparedStatement preState = connectDb.getPreparedStatement(sql);
@@ -111,7 +111,7 @@ public class CustomerService {
         }catch (Exception e){
             throw new RuntimeException();
         }finally {
-            connectDb.unInstall();
+            connectDb.close();
         }
     }
     public static void main(String[] args) {

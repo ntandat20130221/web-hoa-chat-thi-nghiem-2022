@@ -63,7 +63,7 @@
             </div>
             <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-d-content pl-5">
-                    <span class="supplier"><i class="bi bi-patch-check-fill"></i> Nhà cung cấp: ${p.supply}</span>
+                    <span class="supplier d-inline-block mb-1"><i class="bi bi-patch-check-fill"></i> Nhà cung cấp: ${p.supply}</span>
                     <h2 class="pd-name">${p.name}</h2>
                     <div class="product-rating d-flex">
                         <div class="rating">

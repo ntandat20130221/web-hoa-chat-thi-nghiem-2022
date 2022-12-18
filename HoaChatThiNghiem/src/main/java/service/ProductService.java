@@ -1,7 +1,7 @@
 package service;
 
-import dao.ProductDAO;
-import db.DbConnection;
+import database.dao.ProductDAO;
+import database.DbConnection;
 import model.*;
 
 import java.sql.PreparedStatement;
@@ -43,7 +43,7 @@ public class ProductService {
             "WHERE id_product=? AND stars=?";
 
     public static List<Product> queryProducts(String query, Object... params) {
-        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
             for (int i = 0; i < params.length; i++)
                 ps.setObject(i + 1, params[i]);
             return getProducts(ps.executeQuery());
@@ -114,7 +114,7 @@ public class ProductService {
     }
 
     public static int getTypeBySubtypeId(int subtypeId) {
-        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_TYPE_ID)) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(QUERY_TYPE_ID)) {
             ps.setInt(1, subtypeId);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -127,7 +127,7 @@ public class ProductService {
     public static Map<Integer, String> getSubtypesByType(int type) {
         Map<Integer, String> map = new HashMap<>();
         String query = "SELECT id_subtype, name_subtype FROM subtype_product WHERE id_type_product=?";
-        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
             ps.setInt(1, type);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -144,7 +144,7 @@ public class ProductService {
     public static Map<Integer, String> getTypes() {
         Map<Integer, String> map = new HashMap<>();
         String query = "SELECT id_type_product, name_type_product FROM type_product";
-        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_type_product");
@@ -159,7 +159,7 @@ public class ProductService {
 
     public static String getTypeName(int typeId) {
         try (PreparedStatement ps = DbConnection
-                .getInstall()
+                .getInstance()
                 .getPreparedStatement("SELECT name_type_product FROM type_product WHERE id_type_product=?")) {
             ps.setInt(1, typeId);
             ResultSet rs = ps.executeQuery();
@@ -173,7 +173,7 @@ public class ProductService {
     public static Map<Integer, String> getSuppliers() {
         Map<Integer, String> map = new HashMap<>();
         String query = "SELECT id_supplier, name_supplier FROM suppliers";
-        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(query)) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_supplier");
@@ -192,7 +192,7 @@ public class ProductService {
 
         int[] stars = new int[5];
 
-        try (PreparedStatement ps = DbConnection.getInstall().getPreparedStatement(QUERY_STAR_REVIEW)) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(QUERY_STAR_REVIEW)) {
             for (int i = 0; i < 5; i++) {
                 ps.setInt(1, id);
                 ps.setInt(2, i + 1);
@@ -229,7 +229,7 @@ public class ProductService {
         Author : Minh Tuyên
          */
 
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         boolean checkInsertProduct = dao.insertProduct(connectDB, p, admin.getUsername()); // b1
         if (checkInsertProduct) {
@@ -244,12 +244,12 @@ public class ProductService {
             return true;
 
         }
-        connectDB.unInstall();
+        connectDB.close();
         return false;
     }
 
     public static List<Object> getTypeAndStatusAndSupplierForProduct() {
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         List<Object> result = new ArrayList<>();
 
@@ -261,7 +261,7 @@ public class ProductService {
         result.add(statusProducts);
         result.add(suppliers);
 
-        connectDB.unInstall();
+        connectDB.close();
         return result;
 
     }

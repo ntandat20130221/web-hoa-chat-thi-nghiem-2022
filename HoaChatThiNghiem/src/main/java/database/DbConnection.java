@@ -1,32 +1,30 @@
-package db;
+package database;
 
 import java.sql.*;
 
 public class DbConnection {
-    static final String url = "jdbc:mysql://localhost:3306/hoa_chat_thi_nghiem";
-    static final String user = "root";
-    static final String pass = "";
-    static DbConnection install;
-    Connection connect;
+    private static final String url = "jdbc:mysql://" + DbProperties.host() + ":" + DbProperties.port() + "/" + DbProperties.dbName();
+    private static DbConnection INSTANCE = null;
+    private final Connection conn;
 
     private DbConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connect = DriverManager.getConnection(url, user, pass);
+            conn = DriverManager.getConnection(url, DbProperties.user(), DbProperties.pass());
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static DbConnection getInstall() {
-        if (install == null) install = new DbConnection();
-        return install;
+    public static DbConnection getInstance() {
+        if (INSTANCE == null) INSTANCE = new DbConnection();
+        return INSTANCE;
     }
 
-    public void unInstall() {
+    public void close() {
         try {
-            connect.close();
-            install = null;
+            conn.close();
+            INSTANCE = null;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -34,9 +32,9 @@ public class DbConnection {
 
     // thường dùng để thực thi các câu lệnh sql không có tham số
     public Statement getStatement() {
-        if (connect == null) return null;
+        if (conn == null) return null;
         try {
-            return connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            return conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         } catch (SQLException e) {
             // throw new RuntimeException(e);
             return null;
@@ -44,9 +42,9 @@ public class DbConnection {
     }
 
     public Statement getUpdatableStatement() {
-        if (connect == null) return null;
+        if (conn == null) return null;
         try {
-             return connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            return conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
         } catch (SQLException e) {
             return null;
         }
@@ -54,9 +52,9 @@ public class DbConnection {
 
     // thường dùng để thực thi các câu lệnh sql có tham số truyền vào
     public PreparedStatement getPreparedStatement(String sql) {
-        if (connect == null) return null;
+        if (conn == null) return null;
         try {
-            return connect.prepareStatement(sql);
+            return conn.prepareStatement(sql);
         } catch (SQLException e) {
             // throw new RuntimeException(e);
             return null;

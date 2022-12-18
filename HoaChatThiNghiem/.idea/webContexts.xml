@@ -13,6 +13,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/common/admin-sidebar-menu.jsp" value="file://$PROJECT_DIR$/src/main/webapp/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/common/shop-header.jsp" value="file://$PROJECT_DIR$/src/main/webapp/common" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/shop/css" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/shop/home.jsp" value="file://$PROJECT_DIR$/src/main/webapp/shop" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/shop/products.jsp" value="file://$PROJECT_DIR$/src/main/webapp/shop" />
       </map>
     </option>

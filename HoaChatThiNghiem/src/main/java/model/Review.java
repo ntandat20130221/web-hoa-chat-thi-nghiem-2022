@@ -1,6 +1,8 @@
 package model;
 
-public class Review {
+import java.io.Serializable;
+
+public class Review implements Serializable {
     private int id;
     private int productId;
     private String fullName;

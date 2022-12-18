@@ -110,32 +110,24 @@
         <div class="row">
             <div class="col-12">
                 <div class="product-info">
-                    <div class="nav-main">
+                    <div class="nav-main mb-5">
                         <!-- Tab Nav -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <c:set var="nav_hc" value="hoa-chat"/><c:set var="nav_dc" value="dung-cu"/><c:set var="nav_tb" value="thiet-bi"/>
-                            <li class="nav-item d-inline-block">
-                                <a class="nav-link active" data-toggle="tab" href="#${nav_hc}" role="tab">Hóa chất</a>
-                            </li>
-                            <li class="nav-item d-inline-block">
-                                <a class="nav-link" data-toggle="tab" href="#${nav_dc}" role="tab">Dụng cụ</a>
-                            </li>
-                            <li class="nav-item d-inline-block">
-                                <a class="nav-link" data-toggle="tab" href="#${nav_tb}" role="tab">Thiết bị</a>
-                            </li>
+                            <c:forTokens var="tab" items="Hóa chất,Dụng cụ,Thiết bị" delims="," varStatus="i">
+                                <li class="nav-item d-inline-block">
+                                    <a class="nav-link <c:if test="${i.first}">active</c:if>" data-toggle="tab"
+                                        <%--suppress ELSpecValidationInJSP--%>
+                                       href="#${requestScope['product_map'].keySet().toArray()[i.index]}" role="tab">${tab}</a>
+                                </li>
+                            </c:forTokens>
                         </ul>
                     </div>
                     <div class="tab-content">
-                        <c:forEach begin="1" end="3" varStatus="i">
-                            <c:choose>
-                                <c:when test="${i.count == 1}"><c:set var="tab_id" value="${nav_hc}"/></c:when>
-                                <c:when test="${i.count == 2}"><c:set var="tab_id" value="${nav_dc}"/></c:when>
-                                <c:when test="${i.count == 3}"><c:set var="tab_id" value="${nav_tb}"/></c:when>
-                            </c:choose>
-                            <div class="tab-pane fade <c:if test="${i.count == 1}">show active</c:if>" id="${tab_id}" role="tabpanel">
+                        <c:forEach var="tpr" items="${requestScope.product_map}" varStatus="i">
+                            <div class="tab-pane fade <c:if test="${i.first}">show active</c:if>" id="${tpr.key}" role="tabpanel">
                                 <div class="tab-single">
                                     <div class="row">
-                                        <c:forEach var="p" begin="0" end="7" items="${requestScope.typical_products}">
+                                        <c:forEach var="p" begin="0" end="7" items="${tpr.value}">
                                             <div class="col-xl-3 col-lg-4 col-md-4 col-12">
                                                 <div class="single-product">
                                                     <div class="product-img">
@@ -244,20 +236,13 @@
                             <p class="p-desc">${tp.desc}</p>
                             <h1 class="price">${pu:format(tp.newPrice)}đ <s>${pu:format(tp.oldPrice)}đ</s></h1>
                             <div class="time-container my-4 d-flex justify-content-center">
-                                <div class="time-block">
-                                    <span class="time-hours"></span>
-                                    <span>HOURS</span>
-                                </div>
-                                <span class="time-delim">:</span>
-                                <div class="time-block">
-                                    <span class="time-minutes"></span>
-                                    <span>MINUTES</span>
-                                </div>
-                                <span class="time-delim">:</span>
-                                <div class="time-block">
-                                    <span class="time-seconds"></span>
-                                    <span>SECONDS</span>
-                                </div>
+                                <c:forTokens var="time" items="hours,minutes,seconds" delims="," varStatus="i">
+                                    <div class="time-block">
+                                        <span class="time-${time}"></span>
+                                        <span>${time}</span>
+                                    </div>
+                                    <c:if test="${!i.last}"><span class="time-delim">:</span></c:if>
+                                </c:forTokens>
                             </div>
                             <button class="get-now">MUA NGAY</button>
                         </div>

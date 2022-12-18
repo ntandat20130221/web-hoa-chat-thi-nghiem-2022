@@ -1,7 +1,7 @@
 package test.dao;
 
-import dao.ProductDAO;
-import db.DbConnection;
+import database.dao.ProductDAO;
+import database.DbConnection;
 import model.Product;
 
 public class TestProductDAO {
@@ -22,7 +22,7 @@ public class TestProductDAO {
 
     public void Test_InsertProduct() {
 
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         Product p = new Product("img_1", "tranminhtuyen", "tuyen_kun", 10, 200000, 100000, 1, 1, 1);
         ProductDAO dao = new ProductDAO();
         System.out.println(dao.insertProduct(connectDB, p, "tuyentran"));
@@ -31,7 +31,7 @@ public class TestProductDAO {
 
     public void Test_InsertPriceProduct() {
 
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         Product p = new Product("img_1", "tranminhtuyen", "tuyen_kun", 10, 200000, 100000, 1, 1, 1);
         p.setIdProduct(6);
         ProductDAO dao = new ProductDAO();
@@ -40,19 +40,19 @@ public class TestProductDAO {
     }
 
     public void Test_GetTypeProducts() {
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         System.out.println(dao.getTypeProducts(connectDB));
     }
 
     public void Test_GetStatusProduct(){
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         System.out.println(dao.getStatusProducts(connectDB));
     }
 
     public void Test_GetSuppliers(){
-        DbConnection connectDB = DbConnection.getInstall();
+        DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         System.out.println(dao.getSuppliers(connectDB));
     }

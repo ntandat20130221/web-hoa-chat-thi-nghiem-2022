@@ -1,6 +1,6 @@
 <%@ page import="model.Admin" %>
 <%@ page import="utils.CommonString" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +11,7 @@
     <title>Đổi mật khẩu</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <jsp:include page="../common/admin-css.jsp"></jsp:include>
+    <jsp:include page="../common/admin-css.jsp"/>
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -45,17 +45,16 @@
                       onsubmit="return validateFormChangePass()">
                     <label class="d-block" for="name">Tên <span>*</span></label>
                     <input type="text" id="name" value="<%=admin.getFullname()%>">
-                    <h4 class=" position-relative mt-3 mb-4">Đổi mật khẩu</h6>
-                        <label class="d-block mt-3" for="old">Mật khẩu cũ <span>*</span></label>
-                        <input type="text" id="old" name="old-pass">
-                        <label class="d-block mt-3" for="new">Mật khẩu mới</label>
-                        <input type="text" id="new" name="new-pass">
-                        <label class="d-block mt-3" for="confirm">Xác nhận mật khẩu mới</label>
-                        <input type="text" id="confirm" name="retype-new-pass">
-                        <button type="submit">Lưu thay đổi</button>
-                        <div class="error" style="color: #ff4c3b"><%= error != null ? error : ""%>
-                        </div>
-                    </h4>
+                    <h4 class=" position-relative mt-3 mb-4">Đổi mật khẩu</h4>
+                    <label class="d-block mt-3" for="old">Mật khẩu cũ <span>*</span></label>
+                    <input type="text" id="old" name="old-pass">
+                    <label class="d-block mt-3" for="new">Mật khẩu mới</label>
+                    <input type="text" id="new" name="new-pass">
+                    <label class="d-block mt-3" for="confirm">Xác nhận mật khẩu mới</label>
+                    <input type="text" id="confirm" name="retype-new-pass">
+                    <button type="submit">Lưu thay đổi</button>
+                    <div class="error" style="color: #ff4c3b"><%= error != null ? error : ""%>
+                    </div>
                 </form>
             </div>
         </div>
@@ -72,14 +71,14 @@
 </main>
 
 <!-- ===== JAVASCRIPT ===== -->
-<jsp:include page="../common/admin-js.jsp"></jsp:include>
+<jsp:include page="../common/admin-js.jsp"/>
 
 <script>
     function validateFormChangePass() {
         var x = document.forms["form-change-pass"]["old-pass"].value;
         var y = document.forms["form-change-pass"]["new-pass"].value;
         var z = document.forms["form-change-pass"]["retype-new-pass"].value;
-        if (x == "" || y == "" || z == "") {
+        if (x === "" || y === "" || z === "") {
             alert("Hãy nhập đầy đủ thông tin ^.^");
             return false;
         }

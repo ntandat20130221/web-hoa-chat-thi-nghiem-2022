@@ -1168,6 +1168,7 @@ a:focus {
 
 .countdown .time-block span:last-child {
     font-size: 12px;
+    text-transform: uppercase;
 }
 
 .countdown .time-delim {

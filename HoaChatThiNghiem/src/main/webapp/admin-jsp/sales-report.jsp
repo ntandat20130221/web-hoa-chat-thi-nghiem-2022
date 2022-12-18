@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +9,7 @@
     <title>Danh sách nhân viên | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <jsp:include page="../common/admin-css.jsp"></jsp:include>
+    <jsp:include page="../common/admin-css.jsp"/>
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -322,7 +322,7 @@
 </main>
 
 <!-- ===== JAVASCRIPT ===== -->
-<jsp:include page="../common/admin-js.jsp"></jsp:include>
+<jsp:include page="../common/admin-js.jsp"/>
 <!-- ================================================================================================== -->
 <script>
     var data = {

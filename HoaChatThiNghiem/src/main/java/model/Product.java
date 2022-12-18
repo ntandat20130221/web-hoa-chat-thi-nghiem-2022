@@ -33,8 +33,7 @@ public class Product implements Serializable {
     private int status_product;
     private int supplier;
 
-    public Product() {
-    }
+    public Product() {}
 
     public Product(String imgPath, String name, String desc, int quantity, int listed_price, int current_price, int type_product, int status_product, int supplier) {
         this.imgPath = imgPath;

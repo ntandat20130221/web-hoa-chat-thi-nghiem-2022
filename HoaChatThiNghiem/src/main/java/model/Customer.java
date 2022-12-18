@@ -9,6 +9,9 @@ public class Customer implements Serializable {
     private int id_status_acc;
     private int id_city;
     private String fullname;
+    private String status;
+
+    public Customer() {}
 
     public Customer(int id, String email, String password, int id_status_acc, int id_city, String fullname) {
         this.id = id;
@@ -36,6 +39,38 @@ public class Customer implements Serializable {
     }
     public String getFullname() {
         return fullname;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setId_status_acc(int id_status_acc) {
+        this.id_status_acc = id_status_acc;
+    }
+
+    public void setId_city(int id_city) {
+        this.id_city = id_city;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

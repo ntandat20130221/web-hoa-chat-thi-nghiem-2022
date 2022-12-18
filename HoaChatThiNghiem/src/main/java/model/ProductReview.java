@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 
-public class ProductReview {
+public class ProductReview implements Serializable {
     private int productId;
     private int fiveStars;
     private int fourStars;
