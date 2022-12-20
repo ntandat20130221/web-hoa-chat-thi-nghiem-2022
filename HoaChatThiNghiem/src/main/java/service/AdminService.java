@@ -4,6 +4,7 @@ import database.DbConnection;
 import model.Admin;
 import model.Bill;
 import model.Customer;
+import model.Product;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,6 +68,85 @@ public class AdminService {
         return null;
     }
 
+    private static int getQuantityByBillId(int id) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT SUM(bd.quantity) FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill WHERE b.id_bill = ? GROUP BY b.id_bill")) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
+
+    public static List<Bill> getBillsIn(int month) {
+        List<Bill> bills = new ArrayList<>();
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT b.id_bill, s.name_status_bill, " +
+                "b.fullname_customer, b.total_price FROM bills b " +
+                "JOIN status_bill s ON b.id_status_bill = s.id_status_bill " +
+                "WHERE MONTH(time_order) = ? AND YEAR(time_order) = YEAR(CURRENT_DATE)")) {
+            ps.setInt(1, month);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id_bill");
+                List<Product> products = ProductService.getProductsByBillId(id);
+                String status = rs.getString("name_status_bill");
+                String customerName = rs.getString("fullname_customer");
+                int quantity = getQuantityByBillId(id);
+                double totalPrice = rs.getDouble("total_price");
+                Bill bill = new Bill(id, products, status, customerName, quantity, totalPrice);
+                bills.add(bill);
+            }
+        } catch (SQLException e) {
+            return new ArrayList<>();
+        }
+        return bills;
+    }
+
+    public static int getTotalCancelOrders() {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT COUNT(*) FROM bills WHERE id_status_bill = ?")) {
+            ps.setInt(1, 3);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
+
+    public static double getTotalRevenue() {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT SUM(total_price) FROM bills")) {
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
+
+    public static int getTotalBills() {
+        return getTotalOf("bills");
+    }
+
+    public static int getTotalProducts() {
+        return getTotalOf("products");
+    }
+
+    public static int getTotalCustomers() {
+        return getTotalOf("account_customer");
+    }
+
+    private static int getTotalOf(String table) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT COUNT(*) FROM " + table)) {
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
+
     public static int getTotalCustomerIn(int month) {
         try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT COUNT(*) FROM account_customer " +
                 "WHERE MONTH(time_created) = ? AND YEAR(time_created) = YEAR(CURRENT_DATE)")) {
@@ -80,15 +160,7 @@ public class AdminService {
     }
 
     public static int getTotalBillIn(int month) {
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT COUNT(*) FROM bills " +
-                "WHERE MONTH(time_order) = ? AND YEAR(time_order) = YEAR(CURRENT_DATE)")) {
-            ps.setInt(1, month);
-            ResultSet rs = ps.executeQuery();
-            rs.next();
-            return rs.getInt(1);
-        } catch (SQLException e) {
-            return 0;
-        }
+        return getBillsIn(month).size();
     }
 
     public static double getTotalSalesIn(int month) {
@@ -110,7 +182,7 @@ public class AdminService {
                 "name_status_acc FROM account_customer a " +
                 "JOIN status_acc s ON s.id_status_acc = a.id_status_acc " +
                 "WHERE DATE(time_created) > (NOW() - INTERVAL ? DAY) ORDER BY time_created DESC LIMIT 0, 4;")) {
-            ps.setInt(1, 4);
+            ps.setInt(1, 7);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String name = rs.getString("fullname");
@@ -130,17 +202,20 @@ public class AdminService {
 
     public static List<Bill> getRecentBills() {
         List<Bill> bills = new ArrayList<>();
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT * FROM bills b " +
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT b.id_bill, s.name_status_bill, " +
+                "b.fullname_customer, b.total_price FROM bills b " +
                 "JOIN status_bill s ON b.id_status_bill = s.id_status_bill " +
                 "WHERE DATE(time_order) > (NOW() - INTERVAL ? DAY) ORDER BY time_order DESC LIMIT 0,4")) {
-            ps.setInt(1, 4);
+            ps.setInt(1, 7);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_bill");
+                List<Product> products = ProductService.getProductsByBillId(id);
                 String status = rs.getString("name_status_bill");
                 String customerName = rs.getString("fullname_customer");
+                int quantity = getQuantityByBillId(id);
                 double totalPrice = rs.getDouble("total_price");
-                Bill bill = new Bill(id, status, customerName, totalPrice);
+                Bill bill = new Bill(id, products, status, customerName, quantity, totalPrice);
                 bills.add(bill);
             }
         } catch (SQLException e) {
@@ -182,6 +257,6 @@ public class AdminService {
     }
 
     public static void main(String[] args) {
-        System.out.println(getTotalCustomerIn(7));
+        System.out.println(getBillsIn(7));
     }
 }

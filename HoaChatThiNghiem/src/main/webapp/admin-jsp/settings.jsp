@@ -1,6 +1,8 @@
 <%@ page import="model.Admin" %>
 <%@ page import="utils.CommonString" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +34,7 @@
             <div class="left text-left">
                 <span class="d-inline-block mb-3"><b>Hình ảnh hồ sơ</b></span>
                 <div class="img-container">
-                    <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                         alt="">
+                    <img src="${context}/admin-assets/images/admin.jpg" alt="">
                     <button><i class="bx bx-pencil"></i> Sửa</button>
                 </div>
                 <p class="text-center"><b>Admin</b></p>

@@ -29,8 +29,7 @@ public class AdminHomeServlet extends HttpServlet {
         req.setAttribute("recent_customers", recentCustomers);
 
         double[] sales = new double[12];
-        int[] cus_created = new int[12];
-        int[] bill_created = new int[12];
+        int[] cus_created = new int[12], bill_created = new int[12];
         for (int i = 1, j = 0; i < 13 && j < 12; i++, j++) {
             sales[j] = AdminService.getTotalSalesIn(i);
             cus_created[j] = AdminService.getTotalCustomerIn(i);
@@ -43,5 +42,4 @@ public class AdminHomeServlet extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/index.jsp");
         dispatcher.forward(req, resp);
     }
-
 }

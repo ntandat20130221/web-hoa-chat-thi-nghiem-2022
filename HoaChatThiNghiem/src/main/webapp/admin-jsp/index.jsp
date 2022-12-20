@@ -110,8 +110,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Tên khách hàng</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Trạng thái</th>
                                 </tr>
                                 </thead>
                                 <tbody>

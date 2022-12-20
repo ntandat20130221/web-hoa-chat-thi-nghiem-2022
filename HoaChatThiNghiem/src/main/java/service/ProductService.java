@@ -1,7 +1,7 @@
 package service;
 
-import database.dao.ProductDAO;
 import database.DbConnection;
+import database.dao.ProductDAO;
 import model.*;
 
 import java.sql.PreparedStatement;
@@ -21,10 +21,15 @@ public class ProductService {
                     "JOIN sold_product sp2 ON p.id_product = sp2.id_product " +
                     "JOIN type_product tp ON st.id_type_product = tp.id_type_product";
 
-    private static final String QUERY_PRODUCTS_WHERE_TIME_ORDER =
+    private static final String QUERY_SELLING_BY_TIME_ORDER =
             QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT id_product " +
                     "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
                     "WHERE DATE(time_order) > (NOW() - INTERVAL ? DAY) " +
+                    "GROUP BY id_product ORDER BY SUM(quantity) DESC)";
+
+    private static final String QUERY_SELLING =
+            QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT id_product " +
+                    "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
                     "GROUP BY id_product ORDER BY SUM(quantity) DESC)";
 
     private static final String QUERY_PRODUCTS_WHERE_DATE_INSERTED =
@@ -69,11 +74,12 @@ public class ProductService {
     }
 
     public static List<Product> getHotProducts() {
-        return queryProducts(QUERY_PRODUCTS_WHERE_TIME_ORDER, 7);
+        return queryProducts(QUERY_SELLING_BY_TIME_ORDER, 7);
     }
 
-    public static List<Product> getSellingProducts() {
-        return queryProducts(QUERY_PRODUCTS_WHERE_TIME_ORDER, 30);
+    public static List<Product> getSellingProducts(boolean time) {
+        if (time) return queryProducts(QUERY_SELLING_BY_TIME_ORDER, 30);
+        else return queryProducts(QUERY_SELLING);
     }
 
     public static List<Product> getNewProducts() {
@@ -84,8 +90,59 @@ public class ProductService {
         return queryProducts(QUERY_TODAY_DISCOUNT);
     }
 
+    public static List<Product> getProhibitedProducts() {
+        return queryProducts(QUERY_PRODUCTS + " WHERE sp.id_status_product = ?", 3);
+    }
+
+    public static List<Product> getOutOfStockProducts() {
+        return queryProducts(QUERY_PRODUCTS + " WHERE p.quantity_product = ?", 0);
+    }
+
     public static List<Product> searchProductsByName(String name) {
         return queryProducts(QUERY_PRODUCTS + " WHERE LOWER(p.name_product) LIKE LOWER(CONCAT('%',?,'%'))", name);
+    }
+
+    public static List<Product> getAddedProductIn(int month) {
+        return queryProducts(QUERY_PRODUCTS + " WHERE MONTH(date_inserted) = ? AND YEAR(date_inserted) = YEAR(CURRENT_DATE)", month);
+    }
+
+    public static int getTotalSoldProducts() {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT SUM(quantity_sold) FROM sold_product")) {
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
+
+    public static int getTotalSoldIn(int month) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT b.id_bill, SUM(bd.quantity) quantity " +
+                        "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
+                        "WHERE MONTH(time_order) = ? AND YEAR(time_order) = YEAR(CURRENT_DATE) " +
+                        "GROUP BY b.id_bill")) {
+            ps.setInt(1, month);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(2);
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
+
+    public static List<Product> getProductsByBillId(int id) {
+        List<Product> products = new ArrayList<>();
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT id_product FROM bill_detail WHERE id_bill = ?")) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                products.add(getProductById(rs.getInt(1)));
+            }
+        } catch (SQLException e) {
+            return new ArrayList<>();
+        }
+        return products;
     }
 
     private static List<Product> getProducts(ResultSet rs) throws SQLException {
@@ -214,10 +271,6 @@ public class ProductService {
         return pr;
     }
 
-    public static void main(String[] args) {
-        System.out.println(getProductById(1).getReview());
-    }
-
     public static boolean addNewProduct(Product p, Admin admin) {
         /*
         b1: thêm tên,mô tả,hình ảnh,số lượng,mã loại,mã trạng thái,mã nhà cung cấp, tên admin vào bảng products
@@ -263,6 +316,9 @@ public class ProductService {
 
         connectDB.close();
         return result;
+    }
 
+    public static void main(String[] args) {
+        System.out.println(getAddedProductIn(12));
     }
 }

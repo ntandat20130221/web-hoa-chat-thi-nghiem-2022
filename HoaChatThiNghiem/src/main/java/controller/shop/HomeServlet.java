@@ -45,7 +45,7 @@ public class HomeServlet extends HttpServlet {
                 .collect(Collectors.toList());
         req.setAttribute("discount_products", discountProducts);
 
-        List<Product> sellingProducts = ProductService.getSellingProducts().stream()
+        List<Product> sellingProducts = ProductService.getSellingProducts(true).stream()
                 .sorted((p1, p2) -> p2.getViews() - p1.getViews())
                 .collect(Collectors.toList());
         req.setAttribute("selling_products", sellingProducts);

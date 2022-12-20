@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Customer implements Serializable {
     private int id;
@@ -8,8 +9,12 @@ public class Customer implements Serializable {
     private String password;
     private int id_status_acc;
     private int id_city;
+    private String sex;
+    private String phone;
     private String fullname;
+    private String address;
     private String status;
+    private Date timeCreated;
 
     public Customer() {}
 
@@ -25,18 +30,23 @@ public class Customer implements Serializable {
     public int getId() {
         return id;
     }
+
     public String getEmail() {
         return email;
     }
+
     public String getPassword() {
         return password;
     }
+
     public int getId_status_acc() {
         return id_status_acc;
     }
+
     public int getId_city() {
         return id_city;
     }
+
     public String getFullname() {
         return fullname;
     }
@@ -61,8 +71,32 @@ public class Customer implements Serializable {
         this.id_city = id_city;
     }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getStatus() {
@@ -71,6 +105,14 @@ public class Customer implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getTimeCreated() {
+        return timeCreated;
+    }
+
+    public void setTimeCreated(Date timeCreated) {
+        this.timeCreated = timeCreated;
     }
 
     @Override
@@ -82,6 +124,8 @@ public class Customer implements Serializable {
                 ", id_status_acc=" + id_status_acc +
                 ", id_city=" + id_city +
                 ", fullname='" + fullname + '\'' +
+                ", address='" + address + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
