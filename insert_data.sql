@@ -28,23 +28,23 @@ insert into role_admin values (1,"root");
 insert into role_admin values (2,"member");
 
 -- ACCOUNT_ADMIN
-insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("tranminhtuyen",1,1,"20130459");
-insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("nguyenphutai",2,1,"20130390");
-insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("nguyentandat",2,1,"20130221");
+insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("tranminhtuyen",1,1,"123456");
+insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("nguyenphutai",2,1,"123456");
+insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("nguyentandat",2,1,"123456");
 
 -- UPDATE TABLE ACCOUNT_ADMIN
 UPDATE account_admin
 SET fullname = "Trần Minh Tuyên"
-where username ="tuyen";
+where username ="tranminhtuyen";
 
 
 UPDATE account_admin
 SET fullname = "Nguyễn Phú Tài"
-where username ="tai";
+where username ="nguyenphutai";
 
 UPDATE account_admin
 SET fullname = "Nguyễn Tấn Đạt"
-where username ="dat";
+where username ="nguyentandat";
 
 -- ----------------------------
 -- STATUS PRODUCT
