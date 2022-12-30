@@ -4,24 +4,23 @@ import model.*;
 import service.ProductService;
 import utils.CommonString;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.Map;
 
-@WebServlet(name = "AdminAddProduct", value = "/admin/them-san-pham")
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10,      // 10 MB
+/*
+@MultipartConfig
+        (maxFileSize = 1024 * 1024 * 10,      // 10 MB
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
+*/
+
+@WebServlet(name = "AdminAddProduct", value = "/admin/them-san-pham")
+
 public class AdminAddProductServlet extends HttpServlet {
 
     @Override
@@ -42,27 +41,6 @@ public class AdminAddProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        /*   Receive file upload to the Servlet from the HTML5 form  */
-        Part part = request.getPart("AnhSP");
-        String url_img_in_database = null;
-
-        try {
-
-            String realPath = request.getServletContext().getRealPath("/DATA");   //  absolute => A:\apache-tomcat-9.0.68\webapps\HoaChatThiNghiem_war\DATA
-            String fileNameUpload = part.getSubmittedFileName();
-            Path path = Path.of(realPath);
-            if (!Files.exists(path)) Files.createDirectory(path);
-
-            String path_of_file_upload = realPath + "/" + fileNameUpload;
-            part.write(path_of_file_upload); // --> ghi file ảnh vào đường dẫn tuyệt đối trên máy chủ
-
-            url_img_in_database = CommonString.URL_STORE_DATA + fileNameUpload;
-
-        } catch (IOException io) {
-
-            url_img_in_database = "";
-        }
 
         Product p = new Product();
 
@@ -99,15 +77,6 @@ public class AdminAddProductServlet extends HttpServlet {
                     , "Mô tả của sản phẩm không được để trống và phải lớn hơn 20 kí tự !!!");
             validateDesc = false;
         } else p.setDesc(description);
-
-        if (url_img_in_database.isEmpty()) {
-
-            request.setAttribute(CommonString.UPLOAD_ERROR
-                    , "Hãy chọn ảnh cho sản phẩm !!!");
-            validateUrlImg = false;
-
-        } else p.setImgPath(url_img_in_database);
-
 
         try {
             int quantity = Integer.parseInt(quantityProduct);
@@ -234,9 +203,9 @@ public class AdminAddProductServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/admin/them-san-pham");
 
                   /*
-                    * RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin/them-san-pham");
-                    * dispatcher.forward(request,response);
-                    * => chuyển tiếp đến một servlet khác
+                   * RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin/them-san-pham");
+                   * dispatcher.forward(request,response);
+                   * => chuyển tiếp đến một servlet khác
                   */
 
                 } else {
@@ -249,13 +218,38 @@ public class AdminAddProductServlet extends HttpServlet {
             }
         } else {
 
-            request.setAttribute(CommonString.UPLOAD_ERROR, "Hãy chọn ảnh cho sản phẩm !!!");
             request.getRequestDispatcher("/admin-jsp/form-add-product.jsp").forward(request, response);
+
         }
 
         /*
             Author : Minh Tuyên
          */
     }
+
+
+      /*
+        Part part = request.getPart("AnhSP");
+        String url_img_in_database = null;
+
+        try {
+
+            String realPath = request.getServletContext().getRealPath("/DATA");   //  absolute => A:\apache-tomcat-9.0.68\webapps\HoaChatThiNghiem_war\DATA
+            String fileNameUpload = part.getSubmittedFileName();
+            Path path = Path.of(realPath);
+            if (!Files.exists(path)) Files.createDirectory(path);
+
+            String path_of_file_upload = realPath + "/" + fileNameUpload;
+            part.write(path_of_file_upload); // --> ghi file ảnh vào đường dẫn tuyệt đối trên máy chủ
+
+            url_img_in_database = CommonString.URL_STORE_DATA + fileNameUpload;
+
+        } catch (IOException io) {
+
+            url_img_in_database = "";
+
+        }
+        Receive file upload to the Servlet from the HTML5 form
+        */
 
 }
