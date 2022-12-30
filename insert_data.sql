@@ -63,23 +63,23 @@ INSERT INTO type_product VALUES (3, 'Thiết Bị');
 -- ----------------------------
 -- SUBTYPE PRODUCT
 -- ----------------------------
-INSERT INTO subtype_product VALUES (1,'Acid', 1);
-INSERT INTO subtype_product VALUES (2, 'Bazo', 1);
-INSERT INTO subtype_product VALUES (3, 'Muối', 1);
-INSERT INTO subtype_product VALUES (4, 'Kim Loại', 1);
-INSERT INTO subtype_product VALUES (5, 'Chất Chỉ Thị', 1);
-INSERT INTO subtype_product VALUES (6, 'Dung Môi', 1);
-INSERT INTO subtype_product VALUES (7, 'Thuốc Thử', 1);
-INSERT INTO subtype_product VALUES (8, 'Hợp Chất Hữu Cơ', 1);
-INSERT INTO subtype_product VALUES (9, 'Oxit', 1);
-INSERT INTO subtype_product VALUES (10, 'Giá Đỡ Ống Nghiệm', 2);
-INSERT INTO subtype_product VALUES (11, 'Kẹp Gỗ', 2);
-INSERT INTO subtype_product VALUES (12, 'Dụng Cụ Thủy Tinh', 2);
-INSERT INTO subtype_product VALUES (13, 'Ống Hút Nhỏ Giọt', 2);
-INSERT INTO subtype_product VALUES (14, 'Cân Điện Tử', 3);
-INSERT INTO subtype_product VALUES (15, 'Máy Khuấy', 3);
-INSERT INTO subtype_product VALUES (16, 'Máy Nghiền Mẫu', 3);
-INSERT INTO subtype_product VALUES (17, 'Các Loại Tủ', 3);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (1,'Acid', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (2, 'Bazo', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (3, 'Muối', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (4, 'Kim Loại', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (5, 'Chất Chỉ Thị', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (6, 'Dung Môi', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (7, 'Thuốc Thử', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (8, 'Hợp Chất Hữu Cơ', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (9, 'Oxit', 1);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (10, 'Giá Đỡ Ống Nghiệm', 2);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (11, 'Kẹp Gỗ', 2);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (12, 'Dụng Cụ Thủy Tinh', 2);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (13, 'Ống Hút Nhỏ Giọt', 2);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (14, 'Cân Điện Tử', 3);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (15, 'Máy Khuấy', 3);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (16, 'Máy Nghiền Mẫu', 3);
+INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (17, 'Các Loại Tủ', 3);
 
 -- ----------------------------
 -- SUPPLIERS
