@@ -658,7 +658,7 @@ a:focus {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 515px;
+    height: 520px;
 }
 
 .hero-slider .hero-text {
@@ -1671,7 +1671,8 @@ a:focus {
     color: #4b4b4b;
 }
 
-.no-data button {
+.no-data button,
+.no-data #btn-cart-buy {
     color: white;
     padding: 5px 12px;
     border: none;
@@ -1679,6 +1680,11 @@ a:focus {
     border-radius: 3px;
     background: var(--main-color);
     cursor: pointer;
+}
+
+.no-data #btn-cart-buy {
+    display: inline-block;
+    padding: 8px 24px;
 }
 
 /* ============================================
@@ -1723,13 +1729,14 @@ a:focus {
     border: none;
 }
 
-.shopping-summery tbody .product-name a {
+.shopping-summery tbody .product-name {
     font-weight: 600;
     color: #282828;
     font-size: 17px;
+    margin-bottom: 8px;
 }
 
-.shopping-summery tbody .product-name a:hover {
+.shopping-summery tbody .product-name:hover {
     color: var(--main-color);
 }
 

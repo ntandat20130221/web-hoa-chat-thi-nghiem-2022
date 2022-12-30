@@ -87,38 +87,10 @@
                         <div class="right-bar-item shopping d-inline-block mr-4">
                             <a href="${context}/shop/cart" class="single-icon">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span class="total-count">2</span></a>
-                            <!-- Shopping Item -->
-                            <div class="shopping-item">
-                                <div class="dropdown-cart-header">
-                                    <span>2 Sản phẩm</span>
-                                    <a class="float-right" href="${context}/shop/cart">Xem giỏ hàng</a>
-                                </div>
-                                <ul class="shopping-list">
-                                    <!-- Cart Item -->
-                                    <li>
-                                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="#"><img src="../images/products/hoa_chat/axit/axit_acetic.jpg" alt="#"/></a>
-                                        <h4><a href="#">Sulfuric acid 95%</a></h4>
-                                        <p class="quantity">1x - <span class="amount">1,000,000đ</span></p>
-                                    </li>
-
-                                    <!-- Cart Item -->
-                                    <li>
-                                        <a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-                                        <a class="cart-img" href="#"><img src="../images/products/hoa_chat/axit/axit_acetic.jpg" alt="#"/></a>
-                                        <h4><a href="#">Methanol GR Merck</a></h4>
-                                        <p class="quantity">1x - <span class="amount">1,000,000đ</span></p>
-                                    </li>
-                                </ul>
-                                <div class="bottom text-center">
-                                    <div class="total">
-                                        <span>Tổng cộng</span>
-                                        <span class="total-amount">2,000,000đ</span>
-                                    </div>
-                                    <a href="${context}/shop/checkout.jsp" class="btn">Thanh toán</a>
-                                </div>
-                            </div>
+                                <c:set var="cartItems" value="${sessionScope.cart.count}"/>
+                                <c:if test="${cartItems > 0}">
+                                    <span class="total-count">${cartItems}</span></a>
+                                </c:if>
                         </div>
                         <div class="right-bar-item d-inline-block ">
                             <a href="${context}/shop/profile.jsp" class="single-icon">

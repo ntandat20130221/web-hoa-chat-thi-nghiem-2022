@@ -204,7 +204,7 @@
                                         </c:choose>
                                     </a>
                                     <div class="cart-container">
-                                        <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                        <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                                     </div>
                                 </div>
                                 <div class="product-content">
@@ -408,6 +408,11 @@
             else $(value).addClass('hidden')
         })
     }
+
+    $('.btn-cart').on('click', function () {
+        const pId = $(this).attr('data-product-id')
+        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId
+    })
 </script>
 </body>
 

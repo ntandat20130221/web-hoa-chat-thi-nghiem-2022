@@ -62,9 +62,7 @@
                     <img src="https://via.placeholder.com/100x100" alt="#"/>
                 </td>
                 <td class="product-des" data-title="Description">
-                    <p class="product-name">
-                        <a href="product-details.jsp">Axit Sunfuric loãng</a>
-                    </p>
+                    <a class="product-name" href="product-details.jsp">Axit Sunfuric loãng</a>
                     <p class="product-des">
                         Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
                         tính chất hóa học chung của axit.
@@ -101,9 +99,7 @@
                     <img src="https://via.placeholder.com/100x100" alt="#"/>
                 </td>
                 <td class="product-des" data-title="Description">
-                    <p class="product-name">
-                        <a href="product-details.jsp">Axit Sunfuric loãng</a>
-                    </p>
+                    <a class="product-name" href="product-details.jsp">Axit Sunfuric loãng</a>
                     <p class="product-des">
                         Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
                         tính chất hóa học chung của axit.

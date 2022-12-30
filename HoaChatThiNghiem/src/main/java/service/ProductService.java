@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-public class ProductService {
+public final class ProductService {
     private static final String QUERY_PRODUCTS =
             "SELECT p.id_product, p.url_img_product, p.name_product, p.star_review, p.description_product, " +
                     "p.quantity_product, p.date_inserted, sp.name_status_product, tp.name_type_product, st.name_subtype, " +
@@ -83,7 +83,7 @@ public class ProductService {
     }
 
     public static List<Product> getNewProducts() {
-        return queryProducts(QUERY_PRODUCTS_WHERE_DATE_INSERTED, 7);
+        return queryProducts(QUERY_PRODUCTS_WHERE_DATE_INSERTED, 30);
     }
 
     public static List<Product> getTodayDiscountProducts() {

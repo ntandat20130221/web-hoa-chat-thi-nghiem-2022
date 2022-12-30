@@ -163,27 +163,6 @@
             });
         })(jQuery);
 
-        /* [ Cart Plus-Minus Button ]
-        -------------------------------------------- */
-        const CartPlusMinus = $('.cart-plus-minus');
-        CartPlusMinus.prepend('<div class="dec qtybutton">-</div>');
-        CartPlusMinus.append('<div class="inc qtybutton">+</div>');
-        $(".qtybutton").on("click", function () {
-            let newVal;
-            const $button = $(this);
-            const oldValue = $button.parent().find("input").val();
-            if ($button.text() === "+") {
-                newVal = parseFloat(oldValue) + 1;
-            } else {
-                // Don't allow decrementing below zero
-                if (oldValue > 0)
-                    newVal = parseFloat(oldValue) - 1;
-                else
-                    newVal = 1;
-            }
-            $button.parent().find("input").val(newVal);
-        });
-
         /* [ Extra Scroll ]
         -------------------------------------------- */
         $('.scroll').on("click", function (e) {
@@ -276,6 +255,21 @@
         window.location.href = 'products?type=' + type + '&subtype=' + $(this).attr('data-st')
         return false
     })
+
+    /* [ Cart Plus-Minus Button ]
+    -------------------------------------------- */
+    $('.product-detail .input-group .minus').on('click', function () {
+        const input = $(this).closest('.input-group').find('.input-number')
+        if (input.val() > 1) {
+            input.val(input.val() - 1)
+        }
+    })
+
+    $('.product-detail .input-group .plus').on('click', function () {
+        const input = $(this).closest('.input-group').find('.input-number')
+        input.val(Number(input.val()) + 1)
+    })
+
 
     /* [ Sub Text ]
     -------------------------------------------- */

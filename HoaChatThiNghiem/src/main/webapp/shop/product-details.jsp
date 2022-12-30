@@ -287,7 +287,7 @@
                             <span class="hot">${pr.status}</span>
                         </a>
                         <div class="cart-container">
-                            <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                     <div class="product-content">
@@ -322,17 +322,6 @@
 <script>
     $('.image-list img').on('mouseover', function () {
         $('.product-image .active').attr('src', $(this).attr('src'))
-    })
-
-    $('.minus').on('click', function () {
-        const input = $('.input-number')
-        if (input.val() > 1)
-            input.val(input.val() - 1)
-    })
-
-    $('.plus').on('click', function () {
-        const input = $('.input-number')
-        input.val(Number(input.val()) + 1)
     })
 
     $('.rate-inner').each(function () {
@@ -416,6 +405,12 @@
             scrollTop: $('#product-reviews').offset().top - 250
         }, 1000);
     });
+
+    $('.add-to-cart a').on('click', function () {
+        const quantity = $('.quantity .input-number').val()
+        window.location.href = '${context}/shop/add-to-cart?product_id=${p.idProduct}' + '&action=add' + '&quantity=' + quantity
+        return false
+    })
 </script>
 </body>
 

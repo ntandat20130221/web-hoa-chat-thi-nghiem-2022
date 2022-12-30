@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="pu" uri="https://com.labchemicals.functions" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -40,160 +41,87 @@
     </div>
 </div>
 
-<!-- ===== SHOPPING CART ===== -->
-<div class="shopping-cart">
-    <div class="container">
-        <!-- Shopping Sumary -->
-        <table class="table shopping-summery bg-white">
-            <thead>
-            <tr class="main-hading">
-                <th>SẢN PHẨM</th>
-                <th>TÊN SẢN PHẨM</th>
-                <th class="text-center">GIÁ</th>
-                <th class="text-center">SỐ LƯỢNG</th>
-                <th class="text-center">TỔNG</th>
-                <th class="text-center">
-                    <i class="ti-trash remove-icon"></i>
-                </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td class="image" data-title="No">
-                    <img src="https://via.placeholder.com/100x100" alt="#"/>
-                </td>
-                <td class="product-des" data-title="Description">
-                    <p class="product-name">
-                        <a href="product-details.jsp">Axit Sunfuric loãng</a>
-                    </p>
-                    <p class="product-des">
-                        Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
-                        tính chất hóa học chung của axit.
-                    </p>
-                </td>
-                <td class="price text-center" data-title="Price">
-                    <span>1,000,000đ</span>
-                </td>
-                <td class="qty" data-title="Qty">
-                    <!-- Input Order -->
-                    <div class="input-group">
-                        <div class="button minus">
-                            <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                <i class="ti-minus"></i>
-                            </button>
-                        </div>
-                        <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100" value="1"/>
-                        <div class="button plus">
-                            <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-                                <i class="ti-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </td>
-                <td class="total-amount text-center" data-title="Total">
-                    <span>1,000,000đ</span>
-                </td>
-                <td class="action text-center" data-title="Remove">
-                    <a href="#"><i class="ti-trash remove-icon"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td class="image" data-title="No">
-                    <img src="https://via.placeholder.com/100x100" alt="#"/>
-                </td>
-                <td class="product-des" data-title="Description">
-                    <p class="product-name">
-                        <a href="product-details.jsp">Axit Sunfuric loãng</a>
-                    </p>
-                    <p class="product-des">
-                        Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
-                        tính chất hóa học chung của axit.
-                    </p>
-                </td>
-                <td class="price text-center" data-title="Price">
-                    <span>1,000,000đ</span>
-                </td>
-                <td class="qty" data-title="Qty">
-                    <!-- Input Order -->
-                    <div class="input-group">
-                        <div class="button minus">
-                            <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                <i class="ti-minus"></i>
-                            </button>
-                        </div>
-                        <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100" value="1"/>
-                        <div class="button plus">
-                            <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-                                <i class="ti-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </td>
-                <td class="total-amount text-center" data-title="Total">
-                    <span>1,000,000đ</span>
-                </td>
-                <td class="action text-center" data-title="Remove">
-                    <a href="#"><i class="ti-trash remove-icon"></i></a>
-                </td>
-            </tr>
-            <tr>
-                <td class="image" data-title="No">
-                    <img src="https://via.placeholder.com/100x100" alt="#"/>
-                </td>
-                <td class="product-des" data-title="Description">
-                    <p class="product-name">
-                        <a href="product-details.jsp">Axit Sunfuric loãng</a>
-                    </p>
-                    <p class="product-des">
-                        Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
-                        tính chất hóa học chung của axit.
-                    </p>
-                </td>
-                <td class="price text-center" data-title="Price">
-                    <span>1,000,000đ</span>
-                </td>
-                <td class="qty" data-title="Qty">
-                    <!-- Input Order -->
-                    <div class="input-group">
-                        <div class="button minus">
-                            <button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-                                <i class="ti-minus"></i>
-                            </button>
-                        </div>
-                        <input type="text" name="quant[1]" class="input-number" data-min="1" data-max="100" value="1"/>
-                        <div class="button plus">
-                            <button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-                                <i class="ti-plus"></i>
-                            </button>
-                        </div>
-                    </div>
-                </td>
-                <td class="total-amount text-center" data-title="Total">
-                    <span>1,000,000đ</span>
-                </td>
-                <td class="action text-center" data-title="Remove">
-                    <a href="#"><i class="ti-trash remove-icon"></i></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+<!-- Empty Cart -->
+<c:if test="${!sessionScope.containsKey('cart') || sessionScope.cart.map.size() == 0}">
+    <div class="no-data text-center my-5">
+        <img src="${context}/shop/images/empty_cart.png" alt="No data">
+        <p class="empty-search">Không có sản phẩm nào</p>
+        <a href="${context}/shop/home" id="btn-cart-buy">Mua ngay</a>
+    </div>
+</c:if>
 
-        <!-- Total Amount -->
-        <div class="total-amount">
-            <div class="row">
-                <div class="col-lg-6 col-md-4 col-12">
-                    <p class="last">Tổng trị giá<span>3,000,000đ</span></p>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <a href="${context}/shop/home" class="btn cont">Tiếp tục mua</a>
-                </div>
-                <div class="col-lg-3 col-md-4 col-12">
-                    <a href="checkout.jsp" class="btn buy">Mua hàng</a>
+<c:if test="${sessionScope.cart.map.size() > 0}">
+    <!-- ===== SHOPPING CART ===== -->
+    <div class="shopping-cart">
+        <div class="container">
+            <table class="table shopping-summery bg-white">
+                <thead>
+                <tr class="main-hading">
+                    <th>SẢN PHẨM</th>
+                    <th>TÊN SẢN PHẨM</th>
+                    <th class="text-center">GIÁ</th>
+                    <th class="text-center">SỐ LƯỢNG</th>
+                    <th class="text-center">TỔNG</th>
+                    <th class="text-center">
+                        <i class="ti-trash remove-icon"></i>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="item" items="${sessionScope.cart.map}">
+                    <tr data-product-id="${item.key}">
+                        <td class="image" data-title="No">
+                            <img src="${item.value.product.imgPath}" alt="#"/>
+                        </td>
+                        <td class="product-des" data-title="Description">
+                            <a class="product-name" href="${context}/shop/product-details?product_id=${item.key}">${item.value.product.name}</a>
+                            <p class="product-des">
+                                Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
+                                tính chất hóa học chung của axit.
+                            </p>
+                        </td>
+                        <td class="price text-center" data-title="Price">
+                            <span data-price="${item.value.product.newPrice}">${pu:format(item.value.product.newPrice)}đ</span>
+                        </td>
+                        <td class="qty" data-title="Qty">
+                            <div class="input-group">
+                                <div class="button minus">
+                                    <button type="button" class="btn btn-primary btn-number"><i class="ti-minus"></i></button>
+                                </div>
+                                <input type="text" class="input-number" value="${item.value.quantity}"/>
+                                <div class="button plus">
+                                    <button type="button" class="btn btn-primary btn-number"><i class="ti-plus"></i></button>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="total-amount text-center" data-title="Total">
+                            <span data-price>${pu:format(item.value.product.newPrice * item.value.quantity)}đ</span>
+                        </td>
+                        <td class="action text-center" data-title="Remove">
+                            <a href="#"><i class="ti-trash remove-icon"></i></a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+
+            <!-- Total Amount -->
+            <div class="total-amount">
+                <div class="row">
+                    <div class="col-lg-6 col-md-4 col-12">
+                        <p class="last">Tổng trị giá<span>${pu:format(sessionScope.cart.totalPrice)}đ</span></p>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-12">
+                        <a href="${context}/shop/home" class="btn cont">Tiếp tục mua</a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-12">
+                        <a href="checkout.jsp" class="btn buy">Mua hàng</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</c:if>
 
 <!-- ===== SHOP SERVICES ===== -->
 <jsp:include page="../common/shop-services.jsp"/>
@@ -204,6 +132,23 @@
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/shop-js.jsp"/>
 
+<script>
+    $('.minus .btn-number').on('click', function () {
+        const pId = $(this).closest('tr').attr('data-product-id')
+        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId + '&action=remove'
+    })
+
+    $('.plus .btn-number').on('click', function () {
+        const pId = $(this).closest('tr').attr('data-product-id')
+        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId + '&action=add'
+    })
+
+    $('.action a').on('click', function () {
+        const pId = $(this).closest('tr').attr('data-product-id')
+        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId + '&action=delete'
+        return false
+    })
+</script>
 </body>
 
 </html>

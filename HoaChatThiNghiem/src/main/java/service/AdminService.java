@@ -15,7 +15,6 @@ import java.util.List;
 
 public class AdminService {
 
-
     public static boolean updatePassword(String username, String new_pass) {
 
         DbConnection connectDB = DbConnection.getInstance();

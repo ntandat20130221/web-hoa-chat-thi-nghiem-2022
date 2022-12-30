@@ -77,7 +77,7 @@
                             <span class="hot">${p.status}</span>
                         </a>
                         <div class="cart-container">
-                            <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                     <div class="product-content">
@@ -135,7 +135,7 @@
                                                             <img class="default-img" src="${p.imgPath}" alt="#"/>
                                                         </a>
                                                         <div class="cart-container">
-                                                            <button class="btn-cart"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                                                         </div>
                                                     </div>
                                                     <div class="product-content">
@@ -304,6 +304,12 @@
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/shop-js.jsp"/>
 
+<script>
+    $('.btn-cart').on('click', function () {
+        const pId = $(this).attr('data-product-id')
+        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId
+    })
+</script>
 </body>
 
 </html>

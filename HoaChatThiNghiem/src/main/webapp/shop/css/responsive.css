@@ -125,7 +125,7 @@
     .header.shop .nav li .new {
         font-size: 8px;
         left: 21px;
-        top: 0px;
+        top: 0;
         font-weight: 500;
         height: 16px;
         line-height: 16px;
@@ -813,7 +813,6 @@
         padding-left: calc(50% + 20px) !important;
         width: 100%;
         position: relative;
-        padding-left: 91px;
         margin-top: 5px;
     }
 
