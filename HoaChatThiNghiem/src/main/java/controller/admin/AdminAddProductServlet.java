@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
 @MultipartConfig
@@ -26,12 +28,12 @@ public class AdminAddProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Object> results = ProductService.getTypeAndStatusAndSupplierForProduct();
-        List<TypeProduct> typeProducts = (List<TypeProduct>) results.get(0);
+        List<Object> results = ProductService.getSubTypeAndStatusAndSupplierForProduct();
+        List<SubTypeProduct> subtypeProducts = (List<SubTypeProduct>) results.get(0);
         List<StatusProduct> statusProducts = (List<StatusProduct>) results.get(1);
         List<Supplier> suppliers = (List<Supplier>) results.get(2);
 
-        request.getSession().setAttribute("ds-loai-san-pham", typeProducts);
+        request.getSession().setAttribute("ds-loai-san-pham", subtypeProducts);
         request.getSession().setAttribute("ds-trang-thai-san-pham", statusProducts);
         request.getSession().setAttribute("ds-nha-cung-cap", suppliers);
 
@@ -48,9 +50,10 @@ public class AdminAddProductServlet extends HttpServlet {
         String quantityProduct = request.getParameter("SoLuongSP");
         String listedPrice = request.getParameter("GiaNiemYetSP");
         String currentPrice = request.getParameter("GiaThucTeSP");
-        String id_typeProduct = request.getParameter("LoaiSP");
+        String id_subTypeProduct = request.getParameter("LoaiSP");
         String id_statusProduct = request.getParameter("TrangThaiSP");
         String id_supplier = request.getParameter("NhaCungCap");
+        String url_img = request.getParameter("UrlImage");
         String description = request.getParameter("MoTaSP");
 
         boolean validateName = true;
@@ -133,7 +136,7 @@ public class AdminAddProductServlet extends HttpServlet {
 
         try {
 
-            int id_type = Integer.parseInt(id_typeProduct);
+            int id_type = Integer.parseInt(id_subTypeProduct);
             if (id_type == 0) {
 
                 request.setAttribute(CommonString.TYPE_PRODUCT_ERROR,
@@ -189,6 +192,19 @@ public class AdminAddProductServlet extends HttpServlet {
             validateSupplier = false;
         }
 
+        if (url_img.isEmpty()) {
+            request.setAttribute(CommonString.UPLOAD_IMG_ERROR, "Hãy chọn hình ảnh cho sản phẩm !!!");
+            validateUrlImg = false;
+        } else {
+            var pattern = Pattern.compile("([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)");
+            var match = pattern.matcher(url_img);
+            if (match.matches() == false) {
+                request.setAttribute(CommonString.UPLOAD_IMG_ERROR, "Hình ảnh của sản phẩm không đúng định dạng, hãy chọn lại !!!");
+                validateUrlImg = false;
+            } else {
+                p.setImgPath(url_img);
+            }
+        }
 
         boolean validateAll = validateName && validateQuantity && validateListed && validateCurrent
                 && validateType && validateStatus && validateSupplier && validateUrlImg && validateDesc;
@@ -199,14 +215,14 @@ public class AdminAddProductServlet extends HttpServlet {
                 boolean checkAddProduct = ProductService.addNewProduct(p, admin);
                 if (checkAddProduct) {
 
-                    request.getSession().setAttribute(CommonString.MESS_ALERT,"success");
+                    request.getSession().setAttribute(CommonString.MESS_ALERT, "success");
                     response.sendRedirect(request.getContextPath() + "/admin/them-san-pham");
 
-                  /*
-                   * RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin/them-san-pham");
-                   * dispatcher.forward(request,response);
-                   * => chuyển tiếp đến một servlet khác
-                  */
+                    /*
+                     * RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/admin/them-san-pham");
+                     * dispatcher.forward(request,response);
+                     * => chuyển tiếp đến một servlet khác
+                     */
 
                 } else {
 

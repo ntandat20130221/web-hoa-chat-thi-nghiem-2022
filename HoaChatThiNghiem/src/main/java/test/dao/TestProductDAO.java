@@ -14,9 +14,9 @@ public class TestProductDAO {
         TestProductDAO test_dao = new TestProductDAO();
 //      test_dao.Test_InsertProduct();
 //      test_dao.Test_InsertPriceProduct();
-        test_dao.Test_GetTypeProducts();
-        test_dao.Test_GetStatusProduct();
-        test_dao.Test_GetSuppliers();
+        test_dao.Test_GetSubTypeProducts();
+//        test_dao.Test_GetStatusProduct();
+//        test_dao.Test_GetSuppliers();
 
     }
 
@@ -39,10 +39,10 @@ public class TestProductDAO {
 
     }
 
-    public void Test_GetTypeProducts() {
+    public void Test_GetSubTypeProducts() {
         DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
-        System.out.println(dao.getTypeProducts(connectDB));
+        System.out.println(dao.getSubTypeProducts(connectDB));
     }
 
     public void Test_GetStatusProduct(){
@@ -56,4 +56,5 @@ public class TestProductDAO {
         ProductDAO dao = new ProductDAO();
         System.out.println(dao.getSuppliers(connectDB));
     }
+
 }

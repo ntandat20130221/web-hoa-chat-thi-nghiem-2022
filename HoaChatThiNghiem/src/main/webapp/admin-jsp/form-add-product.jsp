@@ -1,4 +1,4 @@
-<%@ page import="model.TypeProduct" %>
+<%@ page import="model.SubTypeProduct" %>
 <%@ page import="java.util.List" %>
 <%@ page import="model.StatusProduct" %>
 <%@ page import="model.Supplier" %>
@@ -96,7 +96,7 @@
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
 
 <%
-    List<TypeProduct> typeProductList = (List<TypeProduct>) session.getAttribute("ds-loai-san-pham");
+    List<SubTypeProduct> subTypeProductList = (List<SubTypeProduct>) session.getAttribute("ds-loai-san-pham");
     List<StatusProduct> statusProductList = (List<StatusProduct>) session.getAttribute("ds-trang-thai-san-pham");
     List<Supplier> supplierList = (List<Supplier>) session.getAttribute("ds-nha-cung-cap");
 
@@ -105,10 +105,10 @@
     String ListedPrice = request.getParameter("GiaNiemYetSP") != null ? request.getParameter("GiaNiemYetSP") : "";
     String CurrentPrice = request.getParameter("GiaThucTeSP") != null ? request.getParameter("GiaThucTeSP") : "";
     String DescProduct = request.getParameter("MoTaSP") != null ? request.getParameter("MoTaSP") : "";
-    String TypeProduct = request.getParameter("LoaiSP") != null ? request.getParameter("LoaiSP") : "";
+    String SubTypeProduct = request.getParameter("LoaiSP") != null ? request.getParameter("LoaiSP") : "";
     String StatusProduct = request.getParameter("TrangThaiSP") != null ? request.getParameter("TrangThaiSP") : "";
     String Supplier = request.getParameter("NhaCungCap") != null ? request.getParameter("NhaCungCap") : "";
-
+    String UrlImg = request.getParameter("UrlImage") != null ? request.getParameter("UrlImage") : "";
 
     String ErrorNameProduct = (String) request.getAttribute(CommonString.NAME_PRODUCT_ERROR);
     String ErrorQuantityProduct = (String) request.getAttribute(CommonString.QUANTITY_PRODUCT_ERROR);
@@ -117,7 +117,7 @@
     String ErrorTypeProduct = (String) request.getAttribute(CommonString.TYPE_PRODUCT_ERROR);
     String ErrorStatusProduct = (String) request.getAttribute(CommonString.STATUS_PRODUCT_ERROR);
     String ErrorSupplier = (String) request.getAttribute(CommonString.SUPPLIER_ERROR);
-    String ErrorUpload = (String) request.getAttribute(CommonString.UPLOAD_IMG_ERROR);
+    String ErrorUploadImg = (String) request.getAttribute(CommonString.UPLOAD_IMG_ERROR);
     String ErrorDescProduct = (String) request.getAttribute(CommonString.DESC_PRODUCT_ERROR);
 
 %>
@@ -166,9 +166,9 @@
                         <div class="form-group col-md-3">
                             <label for="typeProduct" class="control-label">Loại sản phẩm</label>
                             <select class="form-control" id="typeProduct" name="LoaiSP">
-                                <%for (TypeProduct tp : typeProductList) { %>
-                                <option value="<%=tp.getId_type()%>"
-                                        <%=(tp.getId_type() + "").equals(TypeProduct) ? "selected" : ""%>><%=tp.getName_type()%>
+                                <%for (SubTypeProduct stp : subTypeProductList) { %>
+                                <option value="<%=stp.getId_subtype()%>"
+                                        <%=(stp.getId_subtype() + "").equals(SubTypeProduct) ? "selected" : ""%>><%=stp.getName_type()%>
                                 </option>
                                 <% } %>
                             </select>
@@ -207,13 +207,17 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label class="control-label">Ảnh sản phẩm</label>
-                            <div id="boxchoice" >
+                            <div id="boxchoice">
                                 <a href="javascript:" class="Choicefile" onClick="ChooseImage()">
                                     <i class="fas fa-cloud-upload-alt"></i>
                                     Chọn ảnh
                                 </a>
                                 <a id="myfileupload">
-                                    <input type="text" name="UrlImage" style="min-width:300px"/>
+                                    <input type="text" name="UrlImage" style="min-width:300px" value="<%=UrlImg%>"/>
+                                    <c:set var="ErrorUploadImg" value="<%=ErrorUploadImg%>"/>
+                                    <c:if test="${ErrorUploadImg!=null}">
+                                        <div class="text-danger">${ErrorUploadImg.toString()}</div>
+                                    </c:if>
                                 </a>
                                 <p style="clear:both"></p>
                             </div>
@@ -263,6 +267,7 @@
         finder.selectActionFunction = DienUrlVaoInput;
         finder.popup();
     }
+
     function DienUrlVaoInput(fileUrl) {
         $('input[name=UrlImage]').val(fileUrl);
     }
