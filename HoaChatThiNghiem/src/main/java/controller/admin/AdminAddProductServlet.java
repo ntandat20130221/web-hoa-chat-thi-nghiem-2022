@@ -63,8 +63,8 @@ public class AdminAddProductServlet extends HttpServlet {
         boolean validateType = true;
         boolean validateStatus = true;
         boolean validateSupplier = true;
-        boolean validateDesc = true;
         boolean validateUrlImg = true;
+        boolean validateDesc = true;
 
 
         if (nameProduct.isEmpty() || nameProduct.length() <= 5) {
@@ -197,8 +197,8 @@ public class AdminAddProductServlet extends HttpServlet {
             validateUrlImg = false;
         } else {
             var pattern = Pattern.compile("([^\\s]+(\\.(?i)(jpe?g|png|gif|bmp))$)");
-            var match = pattern.matcher(url_img);
-            if (match.matches() == false) {
+            var matcher = pattern.matcher(url_img);
+            if (matcher.matches() == false) {
                 request.setAttribute(CommonString.UPLOAD_IMG_ERROR, "Hình ảnh của sản phẩm không đúng định dạng, hãy chọn lại !!!");
                 validateUrlImg = false;
             } else {

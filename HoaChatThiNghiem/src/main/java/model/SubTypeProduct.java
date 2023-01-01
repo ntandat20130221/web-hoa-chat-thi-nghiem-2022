@@ -9,6 +9,9 @@ public class SubTypeProduct implements Serializable {
     private int id_type_product;
     private String sign;
 
+    public SubTypeProduct(int id_subtype) {
+        this.id_subtype = id_subtype;
+    }
 
     public SubTypeProduct(int id_subtype, String name_type) {
         this.id_subtype = id_subtype;

@@ -33,7 +33,26 @@ public class Product implements Serializable {
     private int status_product;
     private int supplier;
 
-    public Product() {}
+    private SubTypeProduct subTypeP;
+
+    private StatusProduct statusP;
+
+
+    public Product() {
+    }
+
+    public Product(int idProduct, String imgPath, String name, int quantity, int listed_price, int current_price, SubTypeProduct subTypeP, StatusProduct statusP) {
+        this.idProduct = idProduct;
+        this.imgPath = imgPath;
+        this.name = name;
+        this.quantity = quantity;
+        this.listed_price = listed_price;
+        this.current_price = current_price;
+        this.subTypeP = subTypeP;
+        this.statusP = statusP;
+
+        //Author : Minh Tuyên
+    }
 
     public Product(String imgPath, String name, String desc, int quantity, int listed_price, int current_price, int type_product, int status_product, int supplier) {
         this.imgPath = imgPath;
@@ -211,6 +230,14 @@ public class Product implements Serializable {
         return supplier;
     }
 
+    public SubTypeProduct getSubTypeP() {
+        return subTypeP;
+    }
+
+    public StatusProduct getStatusP() {
+        return statusP;
+    }
+
     public void setListed_price(int listed_price) {
         this.listed_price = listed_price;
     }
@@ -229,5 +256,19 @@ public class Product implements Serializable {
 
     public void setSupplier(int supplier) {
         this.supplier = supplier;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "idProduct=" + idProduct +
+                ", imgPath='" + imgPath + '\'' +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", listed_price=" + listed_price +
+                ", current_price=" + current_price +
+                ", subTypeP=" + subTypeP +
+                ", statusP=" + statusP +
+                '}'+"\n";
     }
 }

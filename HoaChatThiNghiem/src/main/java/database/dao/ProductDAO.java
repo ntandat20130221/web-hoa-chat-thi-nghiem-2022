@@ -123,6 +123,9 @@ public class ProductDAO {
             throw new RuntimeException(e);
         }
         return result;
+         /*
+        Author : Minh Tuyên
+         */
     }
 
     public List<Supplier> getSuppliers(DbConnection connectDB) {
@@ -141,6 +144,42 @@ public class ProductDAO {
             throw new RuntimeException(e);
         }
         return result;
+         /*
+        Author : Minh Tuyên
+         */
+    }
+
+    public List<Product> getAllProducts(DbConnection connectDB) {
+
+        /*
+        -- load danh sách sản phẩm và hiển thị danh sách sản phẩm này lên view
+        -- yêu cầu giá của sản phẩm phải là mới nhất
+        */
+        List<Product> list = new ArrayList<>();
+        String query = "SELECT P.id_product,P.name_product,P.url_img_product,P.quantity_product,P.id_subtype,SP.id_status_product,SP.name_status_product,PP.listed_price,PP.current_price " +
+                "FROM products P " +
+                "JOIN price_product PP ON P.id_product=PP.id_product " +
+                "JOIN status_product SP ON P.id_status_product = SP.id_status_product " +
+                "WHERE PP.date = (SELECT MAX(date) " +
+                "FROM price_product PP2 " +
+                "WHERE PP2.id_product = PP.id_product)";
+        Statement statement = connectDB.getStatement();
+        try {
+            ResultSet rs = statement.executeQuery(query);
+            while (rs.next()) {
+                StatusProduct statusP = new StatusProduct(rs.getInt("id_status_product"), rs.getString("name_status_product"));
+                SubTypeProduct subtypeP = new SubTypeProduct(rs.getInt("id_subtype"));
+                Product product = new Product(rs.getInt("id_product"), rs.getString("url_img_product"), rs.getString("name_product")
+                        , rs.getInt("quantity_product"), rs.getInt("listed_price"), rs.getInt("current_price"), subtypeP, statusP);
+                list.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return list;
+        /*
+        Author : Minh Tuyên
+         */
     }
 
     public List<StatusProduct> getStatusProducts(DbConnection connectDB) {
@@ -159,6 +198,9 @@ public class ProductDAO {
             throw new RuntimeException(e);
         }
         return result;
+         /*
+        Author : Minh Tuyên
+         */
     }
 
     public boolean addReview(Review review) {
