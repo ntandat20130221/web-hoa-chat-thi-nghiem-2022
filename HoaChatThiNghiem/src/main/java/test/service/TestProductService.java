@@ -25,11 +25,16 @@ public class TestProductService {
         }
     }
 
+    public void Test_GetAllProducts(){
+        System.out.println(ProductService.getAllProducts());
+    }
+
     public static void main(String[] args) {
 
         TestProductService test_service = new TestProductService();
-         test_service.Test_AddNewProduct();
+         // test_service.Test_AddNewProduct();
          // test_service.Test_GetSubTypeAndStatusAndSupplierForProduct();
+        test_service.Test_GetAllProducts();
 
     }
 }

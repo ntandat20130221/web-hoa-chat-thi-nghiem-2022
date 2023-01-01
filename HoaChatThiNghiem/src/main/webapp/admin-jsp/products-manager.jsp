@@ -31,7 +31,7 @@
                     <div class="tile-body">
                         <div class="row element-button">
                             <div class="col-sm-2">
-                                <a class="btn btn-add btn-sm" href="/HoaChatThiNghiem_war/admin/them-san-pham" title="Thêm"><i class="fas fa-plus"></i> Tạo mới sản phẩm</a>
+                                <a class="btn btn-add btn-sm" href="<%=request.getContextPath()%>/admin/them-san-pham" title="Thêm"><i class="fas fa-plus"></i> Tạo mới sản phẩm</a>
                             </div>
                             <div class="col-sm-2">
                                 <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i class="fas fa-print"></i> In dữ liệu</a>
@@ -70,9 +70,9 @@
                                     <th>Tên sản phẩm</th>
                                     <th>Ảnh</th>
                                     <th>Số lượng</th>
-                                    <th>Tình trạng</th>
-                                    <th>Giá tiền</th>
-                                    <th>Danh mục</th>
+                                    <th>Trạng thái</th>
+                                    <th>Giá niêm yết</th>
+                                    <th>Giá bán thực tế</th>
                                     <th>Chức năng</th>
                                 </tr>
                             </thead>
@@ -129,7 +129,7 @@
                             <input class="form-control" type="number" value="4.600.000">
                         </div>
                         <div class="form-group col-md-6 ">
-                            <label for="exampleSelect1" class="control-label">Tình trạng sản phẩm</label>
+                            <label for="exampleSelect1" class="control-label">Trạng tháis sản phẩm</label>
                             <select class="form-control" id="exampleSelect1">
                                 <option>Còn hàng</option>
                                 <option>Hết hàng</option>

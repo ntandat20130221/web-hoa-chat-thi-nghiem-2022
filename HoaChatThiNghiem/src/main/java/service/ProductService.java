@@ -314,6 +314,19 @@ public final class ProductService {
         return result;
     }
 
+    public static List<Product> getAllProducts(){
+        DbConnection connectDB = DbConnection.getInstance();
+        ProductDAO dao = new ProductDAO();
+        try{
+            return dao.getAllProducts(connectDB);
+        }finally {
+            connectDB.close();
+        }
+         /*
+        Author : Minh Tuyên
+         */
+    }
+
     public static void main(String[] args) {
         System.out.println(getProductsByBillId(1));
     }
