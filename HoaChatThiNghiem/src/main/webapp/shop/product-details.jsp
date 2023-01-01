@@ -81,9 +81,9 @@
                             <span class="percent">-${pu:discount(p.oldPrice, p.newPrice)}%</span></c:if>
                         </h3>
                         <c:choose>
-                            <c:when test="${p.quantity > 0}"><span class="label label-in-stock">Còn hàng</span></c:when>
+                            <c:when test="${p.status == 'Cấm bán'}"><span class="label label-forbidden">Cấm bán</span></c:when>
                             <c:when test="${p.quantity == 0}"><span class="label label-out-stock">Hết hàng</span></c:when>
-                            <c:otherwise><span class="label label-forbidden">Cấm bán</span></c:otherwise>
+                            <c:otherwise><span class="label label-in-stock">Còn hàng</span></c:otherwise>
                         </c:choose>
                     </div>
                     <div class="product-paragraph">
@@ -100,9 +100,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="add-to-cart d-inline-block mt-3">
-                        <a href="#" class="btn"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</a>
-                    </div>
+                    <c:if test="${p.status != 'Cấm bán'}">
+                        <div class="add-to-cart d-inline-block mt-3">
+                            <a href="#" class="btn"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</a>
+                        </div>
+                    </c:if>
                     <div class="product-stock">
                         <span>${p.quantity} sản phẩm có sẵn</span>
                     </div>

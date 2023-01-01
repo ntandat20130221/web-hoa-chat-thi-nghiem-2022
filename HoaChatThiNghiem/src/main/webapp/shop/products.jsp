@@ -1,5 +1,3 @@
-<%@ page import="model.Product" %>
-<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="pu" uri="https://com.labchemicals.functions" %>
@@ -174,28 +172,11 @@
                                 <div class="product-img">
                                     <a href="${context}/shop/product-details?product_id=${p.idProduct}">
                                         <img class="default-img" src="${p.imgPath}" alt="#"/>
-                                        <% Product product = (Product) pageContext.getAttribute("p");
-                                            @SuppressWarnings("unchecked") List<Product> newProducts = (List<Product>) request.getAttribute("new_products");
-                                            @SuppressWarnings("unchecked") List<Product> hotProducts = (List<Product>) request.getAttribute("hot_products");
-                                            for (Product np : newProducts) {
-                                                if (np.getIdProduct() == product.getIdProduct()) {
-                                                    pageContext.setAttribute(String.valueOf(product.getIdProduct()), "new");
-                                                    break;
-                                                }
-                                            }
-                                            for (Product hp : hotProducts) {
-                                                if (hp.getIdProduct() == product.getIdProduct()) {
-                                                    pageContext.setAttribute(String.valueOf(product.getIdProduct()), "hot");
-                                                    break;
-                                                }
-                                            }
-                                        %>
-
                                         <c:choose>
-                                            <c:when test="${pageContext.getAttribute(p.idProduct) eq 'new'}">
+                                            <c:when test="${pu:inList(p, requestScope.new_products)}">
                                                 <span class="new">Mới</span>
                                             </c:when>
-                                            <c:when test="${pageContext.getAttribute(p.idProduct) eq 'hot'}">
+                                            <c:when test="${pu:inList(p, requestScope.hot_products)}">
                                                 <span class="hot">Hot</span>
                                             </c:when>
                                             <c:when test="${p.oldPrice != p.newPrice}">
@@ -203,9 +184,11 @@
                                             </c:when>
                                         </c:choose>
                                     </a>
-                                    <div class="cart-container">
-                                        <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
-                                    </div>
+                                    <c:if test="${p.status != 'Cấm bán'}">
+                                        <div class="cart-container">
+                                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                        </div>
+                                    </c:if>
                                 </div>
                                 <div class="product-content">
                                     <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
@@ -221,6 +204,13 @@
                                         <span>${pu:format(p.newPrice)}đ</span>
                                     </div>
                                 </div>
+                                <c:if test="${p.status == 'Cấm bán'}">
+                                    <div class="banned">
+                                        <div class="banned-inner">
+                                            <span>Cấm bán</span>
+                                        </div>
+                                    </div>
+                                </c:if>
                             </div>
                         </div>
                     </c:forEach>
@@ -236,8 +226,9 @@
 
                 <!-- No Data -->
                 <div class="no-data hidden text-center">
-                    <img src="${context}/shop/images/no_data.png" alt="No data">
+                    <img src="${context}/shop/images/no_data.png" alt="No data"> o
                     <c:choose>
+                        <%--suppress ELSpecValidationInJSP--%>
                         <c:when test="${param.search != null && param.size() == 1}">
                             <p class="empty-search">Không tìm thấy kết quả</p>
                             <p>Chúng tôi không thể tìm thấy bất kỳ kết quả phù hợp cho cụm từ tìm kiếm của bạn.</p>

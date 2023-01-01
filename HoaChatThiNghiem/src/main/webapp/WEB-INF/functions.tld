@@ -20,4 +20,10 @@
         <function-class>utils.PriceUtil</function-class>
         <function-signature>int percentDiscount(double,double)</function-signature>
     </function>
+
+    <function>
+        <name>inList</name>
+        <function-class>utils.PriceUtil</function-class>
+        <function-signature>boolean inList(model.Product,java.util.List)</function-signature>
+    </function>
 </taglib>

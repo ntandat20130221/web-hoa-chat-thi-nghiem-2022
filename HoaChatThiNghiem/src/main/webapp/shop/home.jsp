@@ -76,9 +76,11 @@
                             <img class="default-img" src="${p.imgPath}" alt="#"/>
                             <span class="hot">${p.status}</span>
                         </a>
-                        <div class="cart-container">
-                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
-                        </div>
+                        <c:if test="${p.status != 'Cấm bán'}">
+                            <div class="cart-container">
+                                <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                            </div>
+                        </c:if>
                     </div>
                     <div class="product-content">
                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
@@ -94,6 +96,13 @@
                             <span>${pu:format(p.newPrice)}đ</span>
                         </div>
                     </div>
+                    <c:if test="${p.status == 'Cấm bán'}">
+                        <div class="banned">
+                            <div class="banned-inner">
+                                <span>Cấm bán</span>
+                            </div>
+                        </div>
+                    </c:if>
                 </div>
             </c:forEach>
         </div>
@@ -134,9 +143,11 @@
                                                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">
                                                             <img class="default-img" src="${p.imgPath}" alt="#"/>
                                                         </a>
-                                                        <div class="cart-container">
-                                                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
-                                                        </div>
+                                                        <c:if test="${p.status != 'Cấm bán'}">
+                                                            <div class="cart-container">
+                                                                <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                            </div>
+                                                        </c:if>
                                                     </div>
                                                     <div class="product-content">
                                                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
@@ -152,6 +163,13 @@
                                                             <span>${pu:format(p.newPrice)}đ</span>
                                                         </div>
                                                     </div>
+                                                    <c:if test="${p.status == 'Cấm bán'}">
+                                                        <div class="banned">
+                                                            <div class="banned-inner">
+                                                                <span>Cấm bán</span>
+                                                            </div>
+                                                        </div>
+                                                    </c:if>
                                                 </div>
                                             </div>
                                         </c:forEach>

@@ -1,6 +1,9 @@
 package utils;
 
+import model.Product;
+
 import java.text.NumberFormat;
+import java.util.List;
 
 public final class PriceUtil {
     private PriceUtil() {}
@@ -12,5 +15,9 @@ public final class PriceUtil {
 
     public static int percentDiscount(double oldPrice, double newPrice) {
         return (int) (100 * (1 - newPrice / oldPrice));
+    }
+
+    public static boolean inList(Product product, List<Product> products) {
+        return products.stream().anyMatch(p -> p.getIdProduct() == product.getIdProduct());
     }
 }
