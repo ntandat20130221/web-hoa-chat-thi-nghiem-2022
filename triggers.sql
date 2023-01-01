@@ -23,3 +23,10 @@ AFTER INSERT ON `products` FOR EACH ROW
 BEGIN
 	INSERT INTO `sold_product` VALUES (NEW.id_product, NOW(), 0);
 END;
+
+CREATE TRIGGER `delete_product`
+AFTER DELETE ON `price_product` FOR EACH ROW
+BEGIN
+	DELETE FROM `sold_product` WHERE `id_product` = OLD.id_product;
+	DELETE FROM `products` WHERE `id_product` = OLD.id_product;
+END;
