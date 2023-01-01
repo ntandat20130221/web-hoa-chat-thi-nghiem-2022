@@ -297,16 +297,16 @@ public final class ProductService {
         return false;
     }
 
-    public static List<Object> getTypeAndStatusAndSupplierForProduct() {
+    public static List<Object> getSubTypeAndStatusAndSupplierForProduct() {
         DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         List<Object> result = new ArrayList<>();
 
-        List<TypeProduct> typeProducts = dao.getTypeProducts(connectDB);
+        List<SubTypeProduct> subtypeProducts = dao.getSubTypeProducts(connectDB);
         List<StatusProduct> statusProducts = dao.getStatusProducts(connectDB);
         List<Supplier> suppliers = dao.getSuppliers(connectDB);
 
-        result.add(typeProducts);
+        result.add(subtypeProducts);
         result.add(statusProducts);
         result.add(suppliers);
 

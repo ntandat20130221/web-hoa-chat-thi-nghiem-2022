@@ -18,8 +18,8 @@ public class TestProductService {
         System.out.println(ProductService.addNewProduct(p,admin));
     }
 
-    public void Test_GetTypeAndStatusAndSupplierForProduct(){
-        List<Object> listResult = ProductService.getTypeAndStatusAndSupplierForProduct();
+    public void Test_GetSubTypeAndStatusAndSupplierForProduct(){
+        List<Object> listResult = ProductService.getSubTypeAndStatusAndSupplierForProduct();
         for(Object o : listResult){
             System.out.println(o);
         }
@@ -29,7 +29,7 @@ public class TestProductService {
 
         TestProductService test_service = new TestProductService();
          test_service.Test_AddNewProduct();
-      //  test_service.Test_GetTypeAndStatusAndSupplierForProduct();
+         // test_service.Test_GetSubTypeAndStatusAndSupplierForProduct();
 
     }
 }

@@ -17,7 +17,7 @@ public class ProductDAO {
 
     public boolean insertProduct(DbConnection connectDB, Product p, String nameAdmin) {
         String sql = "insert into products (name_product,description_product,url_img_product,quantity_product" +
-                ",id_type_product,id_status_product,id_supplier,nameAdmin) " +
+                ",id_subtype,id_status_product,id_supplier,nameAdmin) " +
                 "values(?,?,?,?,?,?,?,?)";
         PreparedStatement preStatement = connectDB.getPreparedStatement(sql);
         try {
@@ -85,7 +85,7 @@ public class ProductDAO {
     public int getIdProduct(DbConnection connectDB, Product p) {
         String sql = "SELECT id_product FROM products" +
                 " WHERE name_product=? AND description_product= ? AND url_img_product= ? AND quantity_product= ?" +
-                " AND id_type_product=? AND id_status_product= ? AND id_supplier= ?";
+                " AND id_subtype=? AND id_status_product= ? AND id_supplier= ?";
         PreparedStatement preStatement = connectDB.getPreparedStatement(sql);
         try {
             preStatement.setString(1, p.getName());
@@ -107,16 +107,16 @@ public class ProductDAO {
          */
     }
 
-    public List<TypeProduct> getTypeProducts(DbConnection connectDB) {
-        List<TypeProduct> result = new ArrayList<>();
-        String sql = "select id_type_product,name_type_product from type_product";
+    public List<SubTypeProduct> getSubTypeProducts(DbConnection connectDB) {
+        List<SubTypeProduct> result = new ArrayList<>();
+        String sql = "select id_subtype,name_subtype from subtype_product";
         Statement statement = connectDB.getStatement();
         try {
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                int id_type = rs.getInt("id_type_product");
-                String name_type = rs.getString("name_type_product");
-                TypeProduct tp = new TypeProduct(id_type, name_type);
+                int id_type = rs.getInt("id_subtype");
+                String name_type = rs.getString("name_subtype");
+                SubTypeProduct tp = new SubTypeProduct(id_type, name_type);
                 result.add(tp);
             }
         } catch (SQLException e) {
