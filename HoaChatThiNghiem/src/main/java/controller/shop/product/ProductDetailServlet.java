@@ -1,4 +1,4 @@
-package controller.shop;
+package controller.shop.product;
 
 import database.dao.ProductDAO;
 import model.Product;

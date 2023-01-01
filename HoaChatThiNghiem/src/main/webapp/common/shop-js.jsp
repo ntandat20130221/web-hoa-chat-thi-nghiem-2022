@@ -16,6 +16,7 @@
 <script src="${context}/shop/js/scrollup.js"></script>
 <script src="${context}/shop/js/onepage-nav.min.js"></script>
 <script src="${context}/shop/js/easing.js"></script>
+<script src="${context}/shop/js/jquery-confirm.min.js"></script>
 <script src="${context}/shop/js/active.js"></script>
 <script src="${context}/shop/js/main.js"></script>
 

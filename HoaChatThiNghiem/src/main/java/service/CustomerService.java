@@ -1,22 +1,21 @@
 package service;
 
 import database.DbConnection;
-import model.Bill;
 import model.Customer;
-import model.Product;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CustomerService {
     public static Customer checkLogin(String email, String password) {
         List<Customer> customers = new ArrayList<>();
         DbConnection connectDB = DbConnection.getInstance();
-        String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname " +
+        String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname, phone_customer, address " +
                 "from account_customer where username = ?";
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
         try {
@@ -29,8 +28,10 @@ public class CustomerService {
                 int id_status_acc_customer = rs.getInt("id_status_acc");
                 int id_city_customer = rs.getInt("id_city");
                 String fullname_customer = rs.getString("fullname");
+                String phone = rs.getString("phone_customer");
+                String address = rs.getString("address");
                 Customer customer = new Customer(id_customer, email_customer, password_customer, id_status_acc_customer,
-                        id_city_customer, fullname_customer);
+                        id_city_customer, fullname_customer, phone, address);
                 customers.add(customer);
             }
             if (customers.size() != 1) {
@@ -73,7 +74,7 @@ public class CustomerService {
     public static boolean checkExist(String email) {
         DbConnection connectDb = DbConnection.getInstance();
         List<Customer> customers = new ArrayList<>();
-        String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname " +
+        String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname, phone_customer, address " +
                 "from account_customer where username = ?";
         PreparedStatement preState = connectDb.getPreparedStatement(sql);
         try {
@@ -86,8 +87,10 @@ public class CustomerService {
                 int id_status_acc_customer = rs.getInt("id_status_acc");
                 int id_city_customer = rs.getInt("id_city");
                 String fullname_customer = rs.getString("fullname");
+                String phone = rs.getString("phone_customer");
+                String address = rs.getString("address");
                 Customer customer = new Customer(id_customer, email_customer, password_customer, id_status_acc_customer,
-                        id_city_customer, fullname_customer);
+                        id_city_customer, fullname_customer, phone, address);
                 customers.add(customer);
             }
             if (customers.size() == 0) {
@@ -143,7 +146,68 @@ public class CustomerService {
         return customers;
     }
 
+    public static double getTransportFee(int cityId) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT transport FROM city WHERE id_city = ?")) {
+            ps.setInt(1, cityId);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getDouble("transport");
+        } catch (SQLException e) {
+            return -1;
+        }
+    }
+
+    public static Map<Integer, String> getCities() {
+        Map<Integer, String> map = new HashMap<>();
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_city, name_city FROM city")) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                map.put(rs.getInt("id_city"), rs.getString("name_city"));
+            }
+            return map;
+        } catch (SQLException e) {
+            return new HashMap<>();
+        }
+    }
+
+    public static int addBill(int userId, int cityId, String name, String phone, String email, String address, double price, double totalPrice) {
+        try (var ps = DbConnection.getInstance()
+                .getPreparedStatement("INSERT INTO bills VALUES (0,?,4,?,?,?,?,?,?,?,NOW())")) {
+            ps.setInt(1, userId);
+            ps.setInt(2, cityId);
+            ps.setString(3, name);
+            ps.setString(4, phone);
+            ps.setString(5, email);
+            ps.setString(6, address);
+            ps.setDouble(7, price);
+            ps.setDouble(8, totalPrice);
+            ps.executeUpdate();
+            try (var ps2 = DbConnection.getInstance().getPreparedStatement("SELECT LAST_INSERT_ID()")) {
+                ResultSet rs = ps2.executeQuery();
+                rs.next();
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            return -1;
+        }
+    }
+
+    public static void addBillDetail(int billId, int productId, int quantity, double listedPrice, double currentPrice) {
+        try (var ps = DbConnection.getInstance()
+                .getPreparedStatement("INSERT INTO bill_detail VALUES (?,?,?,?,?)")) {
+            ps.setInt(1, billId);
+            ps.setInt(2, productId);
+            ps.setInt(3, quantity);
+            ps.setDouble(4, listedPrice);
+            ps.setDouble(5, currentPrice);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(getRecentCustomers(30));
+        int id = addBill(4, 1, "John Wick", "0865744333", "john@gmail.com", "12, Honest St", 12000, 15000);
+        System.out.println(id);
     }
 }

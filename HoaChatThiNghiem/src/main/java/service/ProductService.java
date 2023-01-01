@@ -133,9 +133,9 @@ public final class ProductService {
 
     public static List<Product> getProductsByBillId(int id) {
         List<Product> products = new ArrayList<>();
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT id_product FROM bill_detail WHERE id_bill = ?")) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_product FROM bill_detail WHERE id_bill = ?")) {
             ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
             while (rs.next()) {
                 products.add(getProductById(rs.getInt(1)));
             }
@@ -171,9 +171,9 @@ public final class ProductService {
     }
 
     public static int getTypeBySubtypeId(int subtypeId) {
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(QUERY_TYPE_ID)) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(QUERY_TYPE_ID)) {
             ps.setInt(1, subtypeId);
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
             rs.next();
             return rs.getInt("id_type_product");
         } catch (SQLException e) {
@@ -184,9 +184,9 @@ public final class ProductService {
     public static Map<Integer, String> getSubtypesByType(int type) {
         Map<Integer, String> map = new HashMap<>();
         String query = "SELECT id_subtype, name_subtype FROM subtype_product WHERE id_type_product=?";
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(query)) {
             ps.setInt(1, type);
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_subtype");
                 String name = rs.getString("name_subtype");
@@ -200,9 +200,8 @@ public final class ProductService {
 
     public static Map<Integer, String> getTypes() {
         Map<Integer, String> map = new HashMap<>();
-        String query = "SELECT id_type_product, name_type_product FROM type_product";
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
-            ResultSet rs = ps.executeQuery();
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_type_product, name_type_product FROM type_product")) {
+            var rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_type_product");
                 String name = rs.getString("name_type_product");
@@ -215,11 +214,10 @@ public final class ProductService {
     }
 
     public static String getTypeName(int typeId) {
-        try (PreparedStatement ps = DbConnection
-                .getInstance()
+        try (var ps = DbConnection.getInstance()
                 .getPreparedStatement("SELECT name_type_product FROM type_product WHERE id_type_product=?")) {
             ps.setInt(1, typeId);
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
             rs.next();
             return rs.getString("name_type_product");
         } catch (SQLException e) {
@@ -229,9 +227,8 @@ public final class ProductService {
 
     public static Map<Integer, String> getSuppliers() {
         Map<Integer, String> map = new HashMap<>();
-        String query = "SELECT id_supplier, name_supplier FROM suppliers";
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
-            ResultSet rs = ps.executeQuery();
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_supplier, name_supplier FROM suppliers")) {
+            var rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id_supplier");
                 String name = rs.getString("name_supplier");
@@ -244,12 +241,11 @@ public final class ProductService {
     }
 
     public static ProductReview getReviewByProductId(int id) {
-        ProductReview pr = new ProductReview();
+        var pr = new ProductReview();
         pr.setProductId(id);
 
         int[] stars = new int[5];
-
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(QUERY_STAR_REVIEW)) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(QUERY_STAR_REVIEW)) {
             for (int i = 0; i < 5; i++) {
                 ps.setInt(1, id);
                 ps.setInt(2, i + 1);

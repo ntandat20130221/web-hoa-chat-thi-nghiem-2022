@@ -35,8 +35,8 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="cart.jsp">Giỏ hàng</a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/home">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="">Giỏ hàng</a></li>
         </ul>
     </div>
 </div>
@@ -115,7 +115,7 @@
                         <a href="${context}/shop/home" class="btn cont">Tiếp tục mua</a>
                     </div>
                     <div class="col-lg-3 col-md-4 col-12">
-                        <a href="checkout.jsp" class="btn buy">Mua hàng</a>
+                        <a href="${context}/shop/checkout" class="btn buy">Mua hàng</a>
                     </div>
                 </div>
             </div>
@@ -146,6 +146,29 @@
     $('.action a').on('click', function () {
         const pId = $(this).closest('tr').attr('data-product-id')
         window.location.href = '${context}/shop/add-to-cart?product_id=' + pId + '&action=delete'
+        return false
+    })
+
+    $('.btn.buy').on('click', function () {
+        const isLogin = Boolean(${sessionScope.containsKey('auth_customer')})
+        if (!isLogin) {
+            $.alert({
+                title: 'Đăng nhập',
+                content: 'Vui lòng đăng nhập để mua hàng',
+                closeIcon: true,
+                animateFromElement: false,
+                theme: 'material',
+                buttons: {
+                    login : {
+                        text: 'Đăng nhập',
+                        action: () => window.location.href = '${context}/shop/login'
+                    }
+                }
+            })
+
+        } else
+            window.location.href = '${context}/shop/checkout'
+
         return false
     })
 </script>

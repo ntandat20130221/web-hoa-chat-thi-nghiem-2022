@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="pu" uri="https://com.labchemicals.functions" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,9 +35,9 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="cart.jsp">Giỏ hàng<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="checkout.jsp">Thanh toán</a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/home">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/cart">Giỏ hàng<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="">Thanh toán</a></li>
         </ul>
     </div>
 </div>
@@ -52,45 +55,39 @@
                             được thuận lợi
                         </p>
                     </div>
-                    <form class="form" method="post">
+                    <form class="form" id="checkout_form" method="POST" action="${context}/shop/checkout">
                         <div class="row">
                             <div class="col-lg-12 col-12">
                                 <div class="form-group mb-4">
                                     <label>Họ và tên</label>
-                                    <input name="name" type="text" placeholder=""/>
+                                    <input name="name" type="text" value="${sessionScope.auth_customer.fullname}"/>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="form-group mb-4">
                                     <label>Số điện thoại<span>*</span></label>
-                                    <input name="subject" type="text" placeholder=""/>
+                                    <input name="phone" type="text" value="${sessionScope.auth_customer.phone}"/>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-12">
                                 <div class="form-group mb-4">
                                     <label>Email<span>*</span></label>
-                                    <input name="email" type="email" placeholder=""/>
+                                    <input name="email" type="email" value="${sessionScope.auth_customer.email}"/>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-12">
                                 <div class="form-group">
                                     <label>Địa chỉ<span>*</span></label>
-                                    <input name="company_name" type="text" placeholder=""/>
+                                    <input name="address" type="text" value="${sessionScope.auth_customer.address}"/>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-12">
                                 <div class="form-group">
                                     <label>Tỉnh / Thành phố<span>*</span></label>
                                     <select name="company_name" id="company">
-                                        <option value="company" selected="selected">
-                                            TP.Hồ Chí Minh
-                                        </option>
-                                        <option>Hà Nội</option>
-                                        <option>Lâm Đồng</option>
-                                        <option>Bến Tre</option>
-                                        <option>Đồng Tháp</option>
-                                        <option>Sóc Trăng</option>
-                                        <option>Kiên Giang</option>
+                                        <c:forEach var="c" items="${requestScope.cities}" varStatus="i">
+                                            <option value="${c.key}" <c:if test="${i.first}">selected</c:if>>${c.value}</option>
+                                        </c:forEach>
                                     </select>
                                 </div>
                             </div>
@@ -105,9 +102,9 @@
                         <h2>TỔNG CỘNG</h2>
                         <div class="content mt-3">
                             <ul>
-                                <li>Hóa đơn<span>1,000,000đ</span></li>
-                                <li>(+) Vận chuyển<span>10,000đ</span></li>
-                                <li>Tổng<span class="total">1,010,000đ</span></li>
+                                <li>Hóa đơn<span>${pu:format(requestScope['bill_price'])}đ</span></li>
+                                <li>(+) Vận chuyển<span>${pu:format(requestScope['transport_fee'])}đ</span></li>
+                                <li>Tổng<span class="total">${pu:format(requestScope['bill_price'] + requestScope['transport_fee'])}đ</span></li>
                             </ul>
                         </div>
                     </div>
@@ -125,7 +122,7 @@
                     <div class="single-widget get-button">
                         <div class="content">
                             <div class="button">
-                                <a href="#" class="btn">Thanh toán</a>
+                                <button class="btn" type="submit" form="checkout_form">Thanh toán</button>
                             </div>
                         </div>
                     </div>

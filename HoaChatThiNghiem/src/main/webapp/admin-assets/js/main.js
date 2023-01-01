@@ -42,7 +42,6 @@
         })
     })
 
-    Remove row
     $(function () {
         $('.trash').click(function () {
             swal({

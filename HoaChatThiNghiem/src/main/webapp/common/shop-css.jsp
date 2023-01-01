@@ -14,5 +14,6 @@
 <link rel="stylesheet" href="${context}/shop/css/flex-slider.min.css"/>
 <link rel="stylesheet" href="${context}/shop/css/owl-carousel.css"/>
 <link rel="stylesheet" href="${context}/shop/css/slicknav.min.css"/>
+<link rel="stylesheet" href="${context}/shop/css/jquery-confirm.min.css"/>
 <link rel="stylesheet" href="${context}/shop/css/style.css"/>
 <link rel="stylesheet" href="${context}/shop/css/responsive.css"/>
