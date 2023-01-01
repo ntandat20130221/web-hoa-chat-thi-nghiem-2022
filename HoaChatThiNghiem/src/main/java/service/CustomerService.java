@@ -1,6 +1,7 @@
 package service;
 
 import database.DbConnection;
+import model.Bill;
 import model.Customer;
 
 import java.sql.PreparedStatement;
@@ -206,8 +207,28 @@ public class CustomerService {
         }
     }
 
+    public static List<Bill> getBills() {
+        List<Bill> bills = new ArrayList<>();
+        try (var ps = DbConnection.getInstance()
+                .getPreparedStatement("SELECT b.id_bill, fullname_customer, s.name_status_bill, address_customer, bd.quantity, total_price, time_order " +
+                        "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
+                        "JOIN status_bill s ON b.id_status_bill = s.id_status_bill")) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Bill bill = new Bill(rs.getInt("b.id_bill"), ProductService.getProductsByBillId(rs.getInt("b.id_bill")),
+                        rs.getString("s.name_status_bill"), rs.getString("address_customer"),
+                        rs.getString("fullname_customer"), rs.getInt("bd.quantity"), rs.getDouble("total_price"),
+                        rs.getDate("time_order"));
+                bills.add(bill);
+            }
+            return bills;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
-        int id = addBill(4, 1, "John Wick", "0865744333", "john@gmail.com", "12, Honest St", 12000, 15000);
-        System.out.println(id);
+        System.out.println(getBills().get(0).getProducts().get(0).getName());
     }
 }

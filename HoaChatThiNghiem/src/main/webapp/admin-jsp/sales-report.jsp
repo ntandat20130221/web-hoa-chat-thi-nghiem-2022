@@ -132,7 +132,7 @@
         <div class="col-md-12">
             <div class="tile">
                 <div>
-                    <h3 class="tile-title">ĐƠN HÀNG THÁNG <%=LocalDate.now().getMonth().getValue() - 1%>
+                    <h3 class="tile-title">ĐƠN HÀNG THÁNG <%=LocalDate.now().getMonth().getValue()%>
                     </h3>
                 </div>
                 <div class="tile-body">

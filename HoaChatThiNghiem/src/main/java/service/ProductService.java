@@ -315,6 +315,6 @@ public final class ProductService {
     }
 
     public static void main(String[] args) {
-        System.out.println(getAddedProductIn(12));
+        System.out.println(getProductsByBillId(1));
     }
 }

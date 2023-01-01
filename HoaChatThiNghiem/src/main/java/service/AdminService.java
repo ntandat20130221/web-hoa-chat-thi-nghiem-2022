@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AdminService {
@@ -91,10 +92,12 @@ public class AdminService {
                 int id = rs.getInt("id_bill");
                 List<Product> products = ProductService.getProductsByBillId(id);
                 String status = rs.getString("name_status_bill");
+                String address = rs.getString("address_customer");
                 String customerName = rs.getString("fullname_customer");
                 int quantity = getQuantityByBillId(id);
                 double totalPrice = rs.getDouble("total_price");
-                Bill bill = new Bill(id, products, status, customerName, quantity, totalPrice);
+                Date timeOrder = rs.getDate("time_order");
+                Bill bill = new Bill(id, products, status, address, customerName, quantity, totalPrice, timeOrder);
                 bills.add(bill);
             }
         } catch (SQLException e) {
@@ -212,9 +215,11 @@ public class AdminService {
                 List<Product> products = ProductService.getProductsByBillId(id);
                 String status = rs.getString("name_status_bill");
                 String customerName = rs.getString("fullname_customer");
+                String address = rs.getString("address_customer");
                 int quantity = getQuantityByBillId(id);
                 double totalPrice = rs.getDouble("total_price");
-                Bill bill = new Bill(id, products, status, customerName, quantity, totalPrice);
+                Date timeOrder = rs.getDate("time_order");
+                Bill bill = new Bill(id, products, status, address, customerName, quantity, totalPrice, timeOrder);
                 bills.add(bill);
             }
         } catch (SQLException e) {

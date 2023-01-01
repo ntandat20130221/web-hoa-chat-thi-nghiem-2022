@@ -149,7 +149,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="tile">
-                        <h3 class="tile-title">Thống kê doanh thu năm 2022</h3>
+                        <h3 class="tile-title">Thống kê doanh thu năm 2023</h3>
                         <div class="embed-responsive embed-responsive-16by9">
                             <canvas class="embed-responsive-item" id="bar-chart"></canvas>
                         </div>

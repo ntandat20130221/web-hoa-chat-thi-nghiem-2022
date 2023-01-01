@@ -1,4 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="pu" uri="https://com.labchemicals.functions" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +13,7 @@
     <title>Quản lý đơn hàng | Quản trị Admin</title>
 
     <!-- ===== STYLESHEET ===== -->
-    <jsp:include page="../common/admin-css.jsp"></jsp:include>
+    <jsp:include page="../common/admin-css.jsp"/>
 </head>
 
 <body class="app sidebar-mini rtl">
@@ -40,58 +44,50 @@
                         </div>
                         <div class="col-sm-2">
                             <a class="btn btn-delete btn-sm pdf-file" type="button" title="In"
-                               onclick="myFunction(this)"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
+                               onclick="myApp.printTable()"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
                         </div>
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
+                            <a class="btn btn-delete btn-sm" type="button" title="Xóa"><i
                                     class="fas fa-trash-alt"></i> Xóa tất cả </a>
-                        </div>
-                    </div>
-                    <!-- Search -->
-                    <div class="search-bar d-flex justify-content-between my-3">
-                        <div class="d-flex align-items-center">
-                            <%--                                <span class="status">Hiện <span class="quantity">10</span> danh mục</span>--%>
-                        </div>
-                        <div class="search-wrap">
-                            <label class="font-weight-bold m-0" for="search">Tìm kiếm theo tên: </label>
-                            <input type="text" placeholder="" id="search">
-                            <label for="by" class="font-weight-bold m-0 ml-3">Theo địa chỉ: </label>
-                            <select id="by">
-                                <option>Hồ Chí Minh</option>
-                                <option>Hà Nội</option>
-                            </select>
                         </div>
                     </div>
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th width="10"><input type="checkbox" id="all"></th>
+                            <th><input type="checkbox" id="all"></th>
                             <th>ID đơn hàng</th>
                             <th>Khách hàng</th>
                             <th>Đơn hàng</th>
                             <th>Tổng tiền</th>
                             <th>Tình trạng</th>
                             <th>Địa chỉ giao hàng</th>
-                            <th>Thời gian đặt hàng</th>
+                            <th>Ngày đặt hàng</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>MD0837</td>
-                            <td>Triệu Thanh Phú</td>
-                            <td>Ghế làm việc Zuno, Bàn ăn gỗ Theresa</td>
-                            <td>9,400,000 đ</td>
-                            <td><span class="badge bg-success">Hoàn thành</span></td>
-                            <td>đại học Nông Lâm</td>
-                            <td>9/8/2002</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"><i
-                                        class="fas fa-trash-alt"></i></button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i
-                                        class="fa fa-edit"></i></button>
-                            </td>
-                        </tr>
+                        <c:forEach var="b" items="${requestScope.bills}">
+                            <c:choose>
+                                <c:when test="${b.status == 'Đã bán'}"><c:set var="bg" value="bg-success"/></c:when>
+                                <c:when test="${b.status == 'Đang vận chuyển'}"><c:set var="bg" value="bg-warning"/></c:when>
+                                <c:when test="${b.status == 'Bị hủy'}"><c:set var="bg" value="bg-danger"/></c:when>
+                                <c:when test="${b.status == 'Chờ xử lý'}"><c:set var="bg" value="bg-info"/></c:when>
+                            </c:choose>
+                            <tr>
+                                <td><input type="checkbox" name="check1" value="1"></td>
+                                <td>${b.id}</td>
+                                <td>${b.customerName}</td>
+                                <td>
+                                    <c:forEach var="p" items="${b.products}" varStatus="ii">
+                                        <c:out value="${p.name}"/>
+                                        <c:if test="${!ii.last}"><c:out value=", "/></c:if>
+                                    </c:forEach>
+                                </td>
+                                <td>${pu:format(b.totalPrice)}đ</td>
+                                <td><span class="badge ${bg}">${b.status}</span></td>
+                                <td>${b.address}</td>
+                                <td>${b.timeOrder}</td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -101,19 +97,52 @@
 </main>
 
 <!-- ===== JAVASCRIPT ===== -->
-<jsp:include page="../common/admin-js.jsp"></jsp:include>
+<jsp:include page="../common/admin-js.jsp"/>
 <!-- ================================================================================================== -->
 <script>
-    // In dữ liệu
-    var myApp = new function () {
+    const myApp = new function () {
         this.printTable = function () {
-            var tab = document.getElementById('sampleTable');
-            var win = window.open('', '', 'height=700,width=700');
+            const tab = document.getElementById('sampleTable');
+            const win = window.open('', '', 'height=700,width=700');
             win.document.write(tab.outerHTML);
             win.document.close();
             win.print();
         }
     }
+
+    $('#sampleTable').dataTable({
+        order: false
+    });
+
+    $('.btn-excel').on('click', function () {
+        TableToExcel.convert(document.getElementById('sampleTable'), {
+            name: `bill_management.xlsx`
+        });
+        return false
+    })
+
+    $('.pdf-file').on('click', function () {
+        const pdf = new jsPDF('p', 'pt', 'letter');
+        const source = $('#sampleTable');
+
+        const margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+
+        pdf.fromHTML(
+            source,
+            margins.left,
+            margins.top, {
+                'width': margins.width
+            },
+
+            function () {
+                pdf.save('Test.pdf');
+            }, margins);
+    })
 </script>
 </body>
 

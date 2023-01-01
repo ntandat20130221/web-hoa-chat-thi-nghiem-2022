@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 public class Bill implements Serializable {
@@ -8,18 +9,22 @@ public class Bill implements Serializable {
     private List<Product> products;
     private String status;
     private String customerName;
+    private String address;
     private int quantity;
     private double totalPrice;
+    private Date timeOrder;
 
     public Bill() {}
 
-    public Bill(int id, List<Product> products, String status, String customerName, int quantity, double totalPrice) {
+    public Bill(int id, List<Product> products, String status, String address, String customerName, int quantity, double totalPrice, Date timeOrder) {
         this.id = id;
         this.products = products;
         this.status = status;
         this.customerName = customerName;
+        this.address = address;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
+        this.timeOrder = timeOrder;
     }
 
     public List<Product> getProducts() {
@@ -54,6 +59,14 @@ public class Bill implements Serializable {
         this.customerName = customerName;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -68,5 +81,13 @@ public class Bill implements Serializable {
 
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Date getTimeOrder() {
+        return timeOrder;
+    }
+
+    public void setTimeOrder(Date timeOrder) {
+        this.timeOrder = timeOrder;
     }
 }
