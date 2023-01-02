@@ -10,42 +10,19 @@ import java.sql.SQLException;
 import java.util.*;
 
 public final class ProductService {
-    private static final String QUERY_PRODUCTS =
-            "SELECT p.id_product, p.url_img_product, p.name_product, p.star_review, p.description_product, " +
-                    "p.quantity_product, p.date_inserted, sp.name_status_product, tp.name_type_product, st.name_subtype, " +
-                    "s.name_supplier, sp2.quantity_sold, p.views, pp.current_price, pp.listed_price " +
-                    "FROM products p JOIN price_product pp ON p.id_product = pp.id_product " +
-                    "JOIN status_product sp ON p.id_status_product = sp.id_status_product " +
-                    "JOIN subtype_product st ON p.id_subtype = st.id_subtype " +
-                    "JOIN suppliers s ON p.id_supplier = s.id_supplier " +
-                    "JOIN sold_product sp2 ON p.id_product = sp2.id_product " +
-                    "JOIN type_product tp ON st.id_type_product = tp.id_type_product";
+    private static final String QUERY_PRODUCTS = "SELECT p.id_product, p.url_img_product, p.name_product, p.star_review, p.description_product, " + "p.quantity_product, p.date_inserted, sp.name_status_product, tp.name_type_product, st.name_subtype, " + "s.name_supplier, sp2.quantity_sold, p.views, pp.current_price, pp.listed_price " + "FROM products p JOIN price_product pp ON p.id_product = pp.id_product " + "JOIN status_product sp ON p.id_status_product = sp.id_status_product " + "JOIN subtype_product st ON p.id_subtype = st.id_subtype " + "JOIN suppliers s ON p.id_supplier = s.id_supplier " + "JOIN sold_product sp2 ON p.id_product = sp2.id_product " + "JOIN type_product tp ON st.id_type_product = tp.id_type_product";
 
-    private static final String QUERY_SELLING_BY_TIME_ORDER =
-            QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT id_product " +
-                    "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
-                    "WHERE DATE(time_order) > (NOW() - INTERVAL ? DAY) " +
-                    "GROUP BY id_product ORDER BY SUM(quantity) DESC)";
+    private static final String QUERY_SELLING_BY_TIME_ORDER = QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT id_product " + "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " + "WHERE DATE(time_order) > (NOW() - INTERVAL ? DAY) " + "GROUP BY id_product ORDER BY SUM(quantity) DESC)";
 
-    private static final String QUERY_SELLING =
-            QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT id_product " +
-                    "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
-                    "GROUP BY id_product ORDER BY SUM(quantity) DESC)";
+    private static final String QUERY_SELLING = QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT id_product " + "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " + "GROUP BY id_product ORDER BY SUM(quantity) DESC)";
 
-    private static final String QUERY_PRODUCTS_WHERE_DATE_INSERTED =
-            QUERY_PRODUCTS + " WHERE DATE(p.date_inserted) > (NOW() - INTERVAL ? DAY) " +
-                    "ORDER BY DATE(p.date_inserted) DESC";
+    private static final String QUERY_PRODUCTS_WHERE_DATE_INSERTED = QUERY_PRODUCTS + " WHERE DATE(p.date_inserted) > (NOW() - INTERVAL ? DAY) " + "ORDER BY DATE(p.date_inserted) DESC";
 
-    private static final String QUERY_TODAY_DISCOUNT =
-            QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT p.id_product " +
-                    "FROM products p JOIN price_product pp on p.id_product = pp.id_product " +
-                    "WHERE DATE(pp.date) = CURDATE())";
+    private static final String QUERY_TODAY_DISCOUNT = QUERY_PRODUCTS + " WHERE p.id_product IN (SELECT p.id_product " + "FROM products p JOIN price_product pp on p.id_product = pp.id_product " + "WHERE DATE(pp.date) = CURDATE())";
 
     private static final String QUERY_TYPE_ID = "SELECT id_type_product FROM subtype_product WHERE id_subtype=?";
 
-    private static final String QUERY_STAR_REVIEW = "SELECT COUNT(*)" +
-            "FROM review_product " +
-            "WHERE id_product=? AND stars=?";
+    private static final String QUERY_STAR_REVIEW = "SELECT COUNT(*)" + "FROM review_product " + "WHERE id_product=? AND stars=?";
 
     public static List<Product> queryProducts(String query, Object... params) {
         try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(query)) {
@@ -117,11 +94,7 @@ public final class ProductService {
     }
 
     public static int getTotalSoldIn(int month) {
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
-                "SELECT b.id_bill, SUM(bd.quantity) quantity " +
-                        "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
-                        "WHERE MONTH(time_order) = ? AND YEAR(time_order) = YEAR(CURRENT_DATE) " +
-                        "GROUP BY b.id_bill")) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement("SELECT b.id_bill, SUM(bd.quantity) quantity " + "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " + "WHERE MONTH(time_order) = ? AND YEAR(time_order) = YEAR(CURRENT_DATE) " + "GROUP BY b.id_bill")) {
             ps.setInt(1, month);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -163,8 +136,7 @@ public final class ProductService {
             int sold = rs.getInt("quantity_sold");
             Date date = rs.getDate("date_inserted");
             int views = rs.getInt("views");
-            Product product = new Product(id, imgPath, name, review, status, desc, quantity, type, subtype,
-                    supply, sold, date, views, oldPrice, newPrice);
+            Product product = new Product(id, imgPath, name, review, status, desc, quantity, type, subtype, supply, sold, date, views, oldPrice, newPrice);
             products.add(product);
         }
         return products;
@@ -214,8 +186,7 @@ public final class ProductService {
     }
 
     public static String getTypeName(int typeId) {
-        try (var ps = DbConnection.getInstance()
-                .getPreparedStatement("SELECT name_type_product FROM type_product WHERE id_type_product=?")) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT name_type_product FROM type_product WHERE id_type_product=?")) {
             ps.setInt(1, typeId);
             var rs = ps.executeQuery();
             rs.next();
@@ -312,17 +283,53 @@ public final class ProductService {
 
         connectDB.close();
         return result;
+         /*
+        Author : Minh Tuyên
+         */
     }
 
-    public static List<Product> getAllProducts(){
+    public static List<Product> getAllProducts() {
         DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
-        try{
+        try {
             return dao.getAllProducts(connectDB);
-        }finally {
+        } finally {
             connectDB.close();
         }
          /*
+        Author : Minh Tuyên
+         */
+    }
+
+    public static boolean deleteProductById(int id) {
+        /*
+         * B1: xóa sản phẩm trên bảng price_product theo id
+         * B2: xóa sản phẩm trên bảng products theo id
+         * => cần phải sử dụng Transaction bởi vì thao tác trên nhiều bảng dữ liệu
+         */
+        DbConnection connectDB = DbConnection.getInstance();
+        ProductDAO dao = new ProductDAO();
+        try {
+            connectDB.getConn().setAutoCommit(false);
+            boolean checkDelete1 = dao.deleteProductByIdOnTable_price_product(connectDB, id);
+            boolean checkDelete2 = dao.deleteProductByIdOnTable_products(connectDB, id);
+            if (checkDelete1 && checkDelete2) {
+                connectDB.getConn().commit();
+                connectDB.getConn().setAutoCommit(true);
+                return true;
+            }
+        } catch (SQLException e) {
+            try {
+                System.out.println("rollback");
+                connectDB.getConn().rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        } finally {
+            connectDB.close();
+        }
+        return false;
+        /*
         Author : Minh Tuyên
          */
     }

@@ -60,4 +60,8 @@ public class DbConnection {
             return null;
         }
     }
+
+    public Connection getConn() {
+        return conn;
+    }
 }
