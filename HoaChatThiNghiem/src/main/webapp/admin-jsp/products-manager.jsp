@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="pu" uri="https://com.labchemicals.functions" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
@@ -9,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý sản phẩm | Quản trị Admin</title>
+    <title>Quản lý sản phẩm</title>
 
     <!-- ===== STYLESHEET ===== -->
     <jsp:include page="../common/admin-css.jsp"></jsp:include>
@@ -53,7 +55,6 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th width="10"><input type="checkbox" id="all"></th>
                             <th>Mã sản phẩm</th>
                             <th>Tên sản phẩm</th>
                             <th>Ảnh</th>
@@ -67,14 +68,13 @@
                         <tbody>
                         <c:forEach var="p" items="${requestScope.products}">
                             <tr>
-                                <td width="10"><input type="checkbox" name="check1" value="1"></td>
                                 <td>${p.idProduct}</td>
                                 <td>${p.name}</td>
-                                <td><img src="${p.imgPath}" alt="" width="100px;"></td>
+                                <td><img src="${context}/${p.imgPath}" alt="" width="100px;"></td>
                                 <td>${p.quantity}</td>
                                 <td><span class="badge bg-success">${p.statusP.name_status}</span></td>
-                                <td>${p.listed_price}</td>
-                                <td>${p.current_price}</td>
+                                <td>${pu:format(p.listed_price)}</td>
+                                <td>${pu:format(p.current_price)}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
                                             onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
@@ -122,7 +122,7 @@
                         <input class="form-control" type="number" value="4.600.000">
                     </div>
                     <div class="form-group col-md-6 ">
-                        <label for="exampleSelect1" class="control-label">Trạng tháis sản phẩm</label>
+                        <label for="exampleSelect1" class="control-label">Trạng thái sản phẩm</label>
                         <select class="form-control" id="exampleSelect1">
                             <option>Còn hàng</option>
                             <option>Hết hàng</option>

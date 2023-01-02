@@ -11,8 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thêm sản phẩm | Quản trị Admin</title>
-
+    <title>Thêm sản phẩm</title>
     <!-- ===== STYLESHEET ===== -->
     <jsp:include page="../common/admin-css.jsp"></jsp:include>
 </head>
@@ -88,7 +87,6 @@
         margin-top: -2px;
     }
 </style>
-
 <%--    Header--%>
 <jsp:include page="../common/admin-header.jsp"/>
 
@@ -242,8 +240,9 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/admin-js.jsp"></jsp:include>
-<!--Hiển thị thông báo dùng sweetalert-->
+<script src="../libraries/ckfinder/ckfinder.js"></script>
 <script>
+    <!--Hiển thị thông báo dùng sweetalert-->
     <% HttpSession sessionAlert = request.getSession();
         String ALERT = sessionAlert.getAttribute(CommonString.MESS_ALERT)!=null?(String) sessionAlert.getAttribute(CommonString.MESS_ALERT):"";
     %>
@@ -259,15 +258,13 @@
     </c:if>
     <%request.getSession().removeAttribute(CommonString.MESS_ALERT);%>
 </script>
-<!--Đưa dường dẫn hình ảnh vào TextField input-->
-<script src="../libraries/ckfinder/ckfinder.js"></script>
 <script>
     function ChooseImage() {
         var finder = new CKFinder();
         finder.selectActionFunction = DienUrlVaoInput;
         finder.popup();
     }
-
+    <!--Đưa dường dẫn hình ảnh vào TextField input-->
     function DienUrlVaoInput(fileUrl) {
         $('input[name=UrlImage]').val(fileUrl);
     }

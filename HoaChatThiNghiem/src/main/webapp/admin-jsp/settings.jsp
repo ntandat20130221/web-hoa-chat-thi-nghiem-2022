@@ -48,11 +48,11 @@
                     <input type="text" id="name" value="<%=admin.getFullname()%>">
                     <h4 class=" position-relative mt-3 mb-4">Đổi mật khẩu</h4>
                     <label class="d-block mt-3" for="old">Mật khẩu cũ <span>*</span></label>
-                    <input type="text" id="old" name="old-pass">
+                    <input type="password" id="old" name="old-pass">
                     <label class="d-block mt-3" for="new">Mật khẩu mới</label>
-                    <input type="text" id="new" name="new-pass">
+                    <input type="password" id="new" name="new-pass">
                     <label class="d-block mt-3" for="confirm">Xác nhận mật khẩu mới</label>
-                    <input type="text" id="confirm" name="retype-new-pass">
+                    <input type="password" id="confirm" name="retype-new-pass">
                     <button type="submit">Lưu thay đổi</button>
                     <div class="error" style="color: #ff4c3b"><%= error != null ? error : ""%>
                     </div>
@@ -73,7 +73,6 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/admin-js.jsp"/>
-
 <script>
     function validateFormChangePass() {
         var x = document.forms["form-change-pass"]["old-pass"].value;
