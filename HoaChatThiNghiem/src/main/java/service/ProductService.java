@@ -302,31 +302,33 @@ public final class ProductService {
     }
 
     public static boolean deleteProductById(int id) {
-        /*
-         * B1: xóa sản phẩm trên bảng price_product theo id
-         * B2: xóa sản phẩm trên bảng products theo id
-         * => cần phải sử dụng Transaction bởi vì thao tác trên nhiều bảng dữ liệu
-         */
+
         DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         try {
             connectDB.getConn().setAutoCommit(false);
             boolean checkDelete1 = dao.deleteProductByIdOnTable_price_product(connectDB, id);
-            boolean checkDelete2 = dao.deleteProductByIdOnTable_products(connectDB, id);
-            if (checkDelete1 && checkDelete2) {
+            boolean checkDelete2 = dao.deleteProductByIdOnTable_sold_product(connectDB, id);
+            boolean checkDelete3 = dao.deleteProductByIdOnTable_review_product(connectDB, id);
+            boolean checkDelete4 = dao.deleteProductByIdOnTable_products(connectDB, id);
+            if (checkDelete1 && checkDelete2 && checkDelete3 && checkDelete4) {
                 connectDB.getConn().commit();
-                connectDB.getConn().setAutoCommit(true);
                 return true;
             }
         } catch (SQLException e) {
             try {
-                System.out.println("rollback");
+                System.out.println("rollback: "+id);
                 connectDB.getConn().rollback();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
         } finally {
-            connectDB.close();
+            try {
+                connectDB.getConn().setAutoCommit(true);
+                connectDB.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
         return false;
         /*

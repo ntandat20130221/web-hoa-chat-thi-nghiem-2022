@@ -41,26 +41,5 @@
             $('.search-bar span.quantity').html(String(rows - 1))
         })
     })
-
-    $(function () {
-        $('.trash').click(function () {
-            swal({
-                title: 'Cảnh báo',
-                text: 'Bạn có chắc chắn là muốn xóa sản phẩm này?',
-                buttons: ['Hủy bỏ', 'Đồng ý'],
-            })
-                .then((agree) => {
-                    if (agree) {
-                        $(this).closest('tr').remove()  // remove row
-                        swal({
-                            text: 'Đã xóa thành công.',
-                            icon: 'success',
-                            timer: 1000,
-                            buttons: false
-                        });
-                    }
-                });
-        });
-    });
 })();
 

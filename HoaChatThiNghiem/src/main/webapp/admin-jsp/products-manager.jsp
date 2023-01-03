@@ -68,7 +68,7 @@
                         <tbody>
                         <c:forEach var="p" items="${requestScope.products}">
                             <tr>
-                                <td>${p.idProduct}</td>
+                                <td id="idProduct">${p.idProduct}</td>
                                 <td>${p.name}</td>
                                 <td><img src="${context}/${p.imgPath}" alt="" width="100px;"></td>
                                 <td>${p.quantity}</td>
@@ -77,7 +77,7 @@
                                 <td>${pu:format(p.current_price)}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                            onclick="myFunction(this)"><i class="fas fa-trash-alt"></i></button>
+                                            onclick=""><i class="fas fa-trash-alt"></i></button>
                                     <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
                                             data-toggle="modal" data-target="#modal-up"><i
                                             class="fas fa-edit"></i></button>
@@ -155,6 +155,47 @@
     $(document).ready(function () {
         $('#sampleTable').DataTable();
     });
+    <%--Xóa sản phẩm sử dụng Ajax --%>
+    $('.trash').on('click', function () {
+        swal({
+            title: 'Cảnh báo',
+            text: 'Bạn có chắc chắn là muốn xóa sản phẩm này?',
+            buttons: ['Hủy bỏ', 'Đồng ý']
+        }).then((agree) => {
+                if (agree) {
+                    // call Ajax for action delete product
+                    $.ajax({
+                        url: '${context}/AjaxDeleteProductServlet',
+                        type: 'POST',
+                        data: {IdProduct: $('#idProduct').text()},
+                        data_type: 'text',
+                        success: (function (resultData) {
+                            // alert(resultData)
+                            if (resultData.toString() == "success") {
+                                $(this).closest('tr').remove()  // remove row
+                                swal({
+                                    text: 'Đã xóa thành công.',
+                                    icon: 'success',
+                                    timer: 1000,
+                                    buttons: false
+                                });
+                            } else {
+                                swal({
+                                    text: 'Xóa không thành công.',
+                                    icon: 'error',
+                                    timer: 1000,
+                                    buttons: false
+                                });
+                            }
+                        }),
+                        error: (function () {
+                            // error no call ajax
+                        })
+                    })
+                }
+            }
+        );
+    })
 
     $('.btn-excel').on('click', function () {
         TableToExcel.convert(document.getElementById('sampleTable'), {

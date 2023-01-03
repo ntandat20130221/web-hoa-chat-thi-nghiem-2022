@@ -208,7 +208,31 @@ public class ProductDAO {
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
         preState.setInt(1, id);
         int row = preState.executeUpdate();
-        if (row > 0) return true;
+        if (row >= 0) return true;
+        return false;
+         /*
+        Author : Minh Tuyên
+         */
+    }
+
+    public boolean deleteProductByIdOnTable_sold_product(DbConnection connectDB, int id) throws SQLException {
+        String sql = "DELETE FROM sold_product WHERE id_product=?";
+        PreparedStatement preState = connectDB.getPreparedStatement(sql);
+        preState.setInt(1, id);
+        int row = preState.executeUpdate();
+        if (row >= 0) return true;
+        return false;
+         /*
+        Author : Minh Tuyên
+         */
+    }
+
+    public boolean deleteProductByIdOnTable_review_product(DbConnection connectDB, int id) throws SQLException {
+        String sql = "DELETE FROM review_product WHERE id_product=?";
+        PreparedStatement preState = connectDB.getPreparedStatement(sql);
+        preState.setInt(1, id);
+        int row = preState.executeUpdate();
+        if (row >= 0) return true;
         return false;
          /*
         Author : Minh Tuyên

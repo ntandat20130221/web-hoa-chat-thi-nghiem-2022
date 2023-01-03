@@ -45,13 +45,13 @@ public class TestProductDAO {
         System.out.println(dao.getSubTypeProducts(connectDB));
     }
 
-    public void Test_GetStatusProduct(){
+    public void Test_GetStatusProduct() {
         DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         System.out.println(dao.getStatusProducts(connectDB));
     }
 
-    public void Test_GetSuppliers(){
+    public void Test_GetSuppliers() {
         DbConnection connectDB = DbConnection.getInstance();
         ProductDAO dao = new ProductDAO();
         System.out.println(dao.getSuppliers(connectDB));
