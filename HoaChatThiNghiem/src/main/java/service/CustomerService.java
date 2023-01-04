@@ -29,6 +29,9 @@ public class CustomerService {
                 int id_status_acc_customer = rs.getInt("id_status_acc");
                 int id_city_customer = rs.getInt("id_city");
                 String fullname_customer = rs.getString("fullname");
+                if(fullname_customer == null){
+                    fullname_customer = email_customer;
+                }
                 String phone = rs.getString("phone_customer");
                 String address = rs.getString("address");
                 Customer customer = new Customer(id_customer, email_customer, password_customer, id_status_acc_customer,
@@ -95,6 +98,8 @@ public class CustomerService {
                 customers.add(customer);
             }
             if (customers.size() == 0) {
+                return false;
+            }else{
                 return true;
             }
         } catch (Exception e) {
@@ -102,7 +107,6 @@ public class CustomerService {
         } finally {
             connectDb.close();
         }
-        return false;
     }
 
     public static void signUp(String email, String password) {
