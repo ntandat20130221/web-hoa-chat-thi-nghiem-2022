@@ -67,8 +67,8 @@
                         </thead>
                         <tbody>
                         <c:forEach var="p" items="${requestScope.products}">
-                            <tr>
-                                <td id="idProduct">${p.idProduct}</td>
+                            <tr class="rowProduct">
+                                <td class="idProduct">${p.idProduct}</td>
                                 <td>${p.name}</td>
                                 <td><img src="${context}/${p.imgPath}" alt="" width="100px;"></td>
                                 <td>${p.quantity}</td>
@@ -156,23 +156,24 @@
         $('#sampleTable').DataTable();
     });
     <%--Xóa sản phẩm sử dụng Ajax --%>
-    $('.trash').on('click', function () {
+    $('#sampleTable .trash').on('click', function () {
         swal({
             title: 'Cảnh báo',
             text: 'Bạn có chắc chắn là muốn xóa sản phẩm này?',
             buttons: ['Hủy bỏ', 'Đồng ý']
         }).then((agree) => {
                 if (agree) {
-                    // call Ajax for action delete product
-                    $.ajax({
-                        url: '${context}/AjaxDeleteProductServlet',
-                        type: 'POST',
-                        data: {IdProduct: $('#idProduct').text()},
-                        data_type: 'text',
+                    var rowDelete = $(this).closest('tr')                       // row can be deleted
+                    var id = $(this).closest('tr').find('.idProduct').text()    // get data from row in table
+                    $.ajax({    // call Ajax for action delete product
+                        url: '${context}/AjaxDeleteProductServlet',     //-- địa chỉ server
+                        type: 'POST',                                   //-- phương thức truyền : GET,POST,PUT,DELETE,...
+                        data: {IdProduct: id},                          //-- tham số truyền đến server
+                        data_type: 'text',                              //-- kiểu dữ liệu nhận về từ server text,xml,json,...
                         success: (function (resultData) {
                             // alert(resultData)
                             if (resultData.toString() == "success") {
-                                $(this).closest('tr').remove()  // remove row
+                                rowDelete.remove();
                                 swal({
                                     text: 'Đã xóa thành công.',
                                     icon: 'success',
@@ -187,15 +188,15 @@
                                     buttons: false
                                 });
                             }
-                        }),
+                        }),         //-- xử lí phản hồi từ server
                         error: (function () {
                             // error no call ajax
                         })
                     })
                 }
             }
-        );
-    })
+        )
+    });
 
     $('.btn-excel').on('click', function () {
         TableToExcel.convert(document.getElementById('sampleTable'), {
