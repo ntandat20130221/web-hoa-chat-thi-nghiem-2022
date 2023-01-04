@@ -42,6 +42,7 @@
 </div>
 
 <!-- Empty Cart -->
+<%--suppress ELSpecValidationInJSP--%>
 <c:if test="${!sessionScope.containsKey('cart') || sessionScope.cart.map.size() == 0}">
     <div class="no-data text-center my-5">
         <img src="${context}/shop/images/empty_cart.png" alt="No data">
@@ -50,6 +51,7 @@
     </div>
 </c:if>
 
+<%--suppress ELSpecValidationInJSP--%>
 <c:if test="${sessionScope.cart.map.size() > 0}">
     <!-- ===== SHOPPING CART ===== -->
     <div class="shopping-cart">
@@ -71,7 +73,7 @@
                 <c:forEach var="item" items="${sessionScope.cart.map}">
                     <tr data-product-id="${item.key}">
                         <td class="image" data-title="No">
-                            <img src="${item.value.product.imgPath}" alt="#"/>
+                            <img src="${context}/${item.value.product.imgPath}" alt="#"/>
                         </td>
                         <td class="product-des" data-title="Description">
                             <a class="product-name" href="${context}/shop/product-details?product_id=${item.key}">${item.value.product.name}</a>
@@ -150,6 +152,7 @@
     })
 
     $('.btn.buy').on('click', function () {
+        <%--suppress ELSpecValidationInJSP--%>
         const isLogin = Boolean(${sessionScope.containsKey('auth_customer')})
         if (!isLogin) {
             $.alert({

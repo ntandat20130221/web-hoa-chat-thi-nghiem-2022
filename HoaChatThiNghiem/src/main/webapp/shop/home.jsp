@@ -73,7 +73,7 @@
                 <div class="single-product mt-0 mb-0 mr-3 ml-3">
                     <div class="product-img">
                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">
-                            <img class="default-img" src="${p.imgPath}" alt="#"/>
+                            <img class="default-img" src="${context}/${p.imgPath}" alt="#"/>
                             <span class="hot">${p.status}</span>
                         </a>
                         <c:if test="${p.status != 'Cấm bán'}">
@@ -141,7 +141,7 @@
                                                 <div class="single-product">
                                                     <div class="product-img">
                                                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">
-                                                            <img class="default-img" src="${p.imgPath}" alt="#"/>
+                                                            <img class="default-img" src="${context}/${p.imgPath}" alt="#"/>
                                                         </a>
                                                         <c:if test="${p.status != 'Cấm bán'}">
                                                             <div class="cart-container">
@@ -215,7 +215,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12">
                                     <div class="list-image">
-                                        <a href="${context}/shop/product-details?product_id=${p.idProduct}"><img src="${p.imgPath}" alt="#"/></a>
+                                        <a href="${context}/shop/product-details?product_id=${p.idProduct}"><img src="${context}/${p.imgPath}" alt="#"/></a>
                                         <a href="${context}/shop/product-details?product_id=${p.idProduct}" class="buy"><i
                                                 class="fa fa-shopping-bag"></i></a>
                                     </div>
@@ -243,7 +243,7 @@
             <div class="row h-100 m-0">
                 <div class="col-lg-5 col-12 h-100 m-0 p-0">
                     <div class="image h-100">
-                        <img src="${tp.imgPath}" alt="#"/>
+                        <img src="${context}/${tp.imgPath}" alt="#"/>
                     </div>
                 </div>
                 <div class="col-lg-7 col-12 h-100 m-0 p-0">

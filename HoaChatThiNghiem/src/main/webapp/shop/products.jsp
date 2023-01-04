@@ -171,7 +171,7 @@
                             <div class="single-product">
                                 <div class="product-img">
                                     <a href="${context}/shop/product-details?product_id=${p.idProduct}">
-                                        <img class="default-img" src="${p.imgPath}" alt="#"/>
+                                        <img class="default-img" src="${context}/${p.imgPath}" alt="#"/>
                                         <c:choose>
                                             <c:when test="${pu:inList(p, requestScope.new_products)}">
                                                 <span class="new">Mới</span>

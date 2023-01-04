@@ -51,13 +51,13 @@
             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                 <div class="product-slider">
                     <div class="product-image">
-                        <img class="active" src="${p.imgPath}" alt="">
+                        <img class="active" src="${context}/${p.imgPath}" alt="">
                     </div>
                     <ul class="image-list">
-                        <li><img src="${p.imgPath}" alt=""></li>
-                        <li><img src="${p.imgPath}" alt=""></li>
-                        <li><img src="${p.imgPath}" alt=""></li>
-                        <li><img src="${p.imgPath}" alt=""></li>
+                        <li><img src="${context}/${p.imgPath}" alt=""></li>
+                        <li><img src="${context}/${p.imgPath}" alt=""></li>
+                        <li><img src="${context}/${p.imgPath}" alt=""></li>
+                        <li><img src="${context}/${p.imgPath}" alt=""></li>
                     </ul>
                 </div>
             </div>
@@ -285,7 +285,7 @@
                 <div class="single-product mt-0 mb-0 mr-3 ml-3">
                     <div class="product-img">
                         <a href="${context}/shop/product-details?product_id=${pr.idProduct}">
-                            <img class="default-img" src="${pr.imgPath}" alt="#"/>
+                            <img class="default-img" src="${context}/${pr.imgPath}" alt="#"/>
                             <span class="hot">${pr.status}</span>
                         </a>
                         <div class="cart-container">
