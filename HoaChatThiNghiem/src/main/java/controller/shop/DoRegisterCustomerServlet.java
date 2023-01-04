@@ -1,11 +1,15 @@
 package controller.shop;
 
+import mail.Email;
+import mail.sendMail;
+import model.Customer_register;
 import service.CustomerService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.UUID;
 
 @WebServlet(name = "DoRegisterCustomerServlet", value = "/shop/register")
 public class DoRegisterCustomerServlet extends HttpServlet {
@@ -16,20 +20,47 @@ public class DoRegisterCustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        String email = request.getParameter("email");
+//        String password = request.getParameter("password");
+//        String confirm_pass = request.getParameter("confirm-pass");
+//        if(CustomerService.checkExist(email)){
+//            if(password.equals(confirm_pass)){
+//                CustomerService.signUp(email,password);
+//                response.sendRedirect(request.getContextPath()+"/shop/login");
+//            }else{
+//                request.setAttribute("text_register", "Không hợp lệ, hãy xác nhận lại mật khẩu");
+//                request.getServletContext().getRequestDispatcher("/shop/register.jsp").forward(request, response);
+//            }
+//        }else{
+//            request.setAttribute("text_register", "Email đã tồn tại, vui lòng chọn Email khác");
+//            request.getServletContext().getRequestDispatcher("/shop/register.jsp");
+//        }
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirm_pass = request.getParameter("confirm-pass");
-        if(CustomerService.checkExist(email)){
-            if(password.equals(confirm_pass)){
-                CustomerService.signUp(email,password);
-                response.sendRedirect(request.getContextPath()+"/shop/login");
-            }else{
-                request.setAttribute("text_register", "Không hợp lệ, hãy xác nhận lại mật khẩu");
+        if (CustomerService.checkExist(email)) {
+            request.setAttribute("text_register", "Email đã tồn tại, vui lòng chọn Email khác");
+            request.getServletContext().getRequestDispatcher("/shop/register.jsp").forward(request, response);
+        } else {
+            if (password.equals(confirm_pass)) {
+                UUID uuid = UUID.randomUUID();
+                String id = uuid.toString();
+                Customer_register customer_register = new Customer_register(id, email, password);
+                HttpSession session = request.getSession(true);
+                request.setAttribute("session_cus", session);
+                session.setAttribute("cus", customer_register);
+                String body = "Để tạo tài khoản và sử dụng các dịch vụ của chúng tôi hãy " +
+//                        "http://localhost:8080/HoaChatThiNghiem_war/shop/verify-register";
+                        "<a href='http://localhost:8080/HoaChatThiNghiem_war/shop/verify-register?key=" + id + "'>nhấn vào đây!</a>";
+                Email sendEmailForVerify = new Email("nguyenphutai840@gmail.com", "nlrtjmzdmlihnlrz",
+                        "Chào mừng bạn trở thành một phần của LAB CHEMICALS", body);
+                sendMail.sendMail(email, sendEmailForVerify);
+                request.setAttribute("success_register", "Vui lòng kiểm tra lại hộp thư trong email mà bạn đăng ký");
+                request.getServletContext().getRequestDispatcher("/shop/register.jsp").forward(request, response);
+            } else {
+                request.setAttribute("text_register", "Xác thực mật khẩu không hợp lệ, vui lòng thử lại");
                 request.getServletContext().getRequestDispatcher("/shop/register.jsp").forward(request, response);
             }
-        }else{
-            request.setAttribute("text_register", "Email đã tồn tại, vui lòng chọn Email khác");
-            request.getServletContext().getRequestDispatcher("/shop/register.jsp");
         }
     }
 }

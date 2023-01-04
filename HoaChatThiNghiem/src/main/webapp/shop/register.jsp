@@ -48,6 +48,7 @@
 
 <!-- ===== FORM INPUT ===== -->
 <%String text = (String) request.getAttribute("text_register");%>
+<%String success = (String) request.getAttribute("success_register");%>
 <section class="form-input py-5">
     <div class="container">
         <div class="row">
@@ -63,7 +64,13 @@
                             <%=text%>
                         </div>
                         <%}%>
-                        <input class="w-100 mb-3" type="text" placeholder="Email" name="email"/>
+                        <%if(success != null){%>
+                        <div class="w-100 mb-3 alert alert-success notification" role="alert">
+                            <%=success%>
+                        </div>
+                        <%}%>
+                        <input class="w-100 mb-3" type="text" placeholder="Email" name="email"
+                               value="<%=request.getParameter("email") != null ? request.getParameter("email") : ""%>"/>
                         <input class="w-100 mb-3" type="password" placeholder="Mật khẩu" name="password"/>
                         <input class="w-100 mb-4" type="password" placeholder="Nhập lại mật khẩu" name="confirm-pass"/>
                         <button class="next w-100 mb-3">Tiếp theo</button>

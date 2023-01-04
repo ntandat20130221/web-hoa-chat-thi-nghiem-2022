@@ -28,7 +28,7 @@
                 <%
                     if (error != null) {
                 %>
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger notification" role="alert">
                     <%= error %>
                 </div>
                 <%
