@@ -30,7 +30,6 @@ public class TestProductService {
     }
 
     public void Test_DeleteProduct() {
-
         System.out.println(ProductService.deleteProductById(1));
     }
 
@@ -39,8 +38,8 @@ public class TestProductService {
         TestProductService test_service = new TestProductService();
         // test_service.Test_AddNewProduct();
         // test_service.Test_GetSubTypeAndStatusAndSupplierForProduct();
-        //test_service.Test_GetAllProducts();
         test_service.Test_DeleteProduct();
+        test_service.Test_GetAllProducts();
 
     }
 }
