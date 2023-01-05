@@ -2,17 +2,17 @@ package service;
 
 import database.DbConnection;
 import model.Bill;
+import model.CartItem;
 import model.Customer;
+import model.Order;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CustomerService {
+
     public static Customer checkLogin(String email, String password) {
         List<Customer> customers = new ArrayList<>();
         DbConnection connectDB = DbConnection.getInstance();
@@ -29,7 +29,7 @@ public class CustomerService {
                 int id_status_acc_customer = rs.getInt("id_status_acc");
                 int id_city_customer = rs.getInt("id_city");
                 String fullname_customer = rs.getString("fullname");
-                if(fullname_customer == null){
+                if (fullname_customer == null) {
                     fullname_customer = email_customer;
                 }
                 String phone = rs.getString("phone_customer");
@@ -93,15 +93,11 @@ public class CustomerService {
                 String fullname_customer = rs.getString("fullname");
                 String phone = rs.getString("phone_customer");
                 String address = rs.getString("address");
-                Customer customer = new Customer(id_customer, email_customer, password_customer, id_status_acc_customer,
-                        id_city_customer, fullname_customer, phone, address);
+                Customer customer = new Customer(id_customer, email_customer, password_customer,
+                        id_status_acc_customer, id_city_customer, fullname_customer, phone, address);
                 customers.add(customer);
             }
-            if (customers.size() == 0) {
-                return false;
-            }else{
-                return true;
-            }
+            return customers.size() != 0;
         } catch (Exception e) {
             throw new RuntimeException();
         } finally {
@@ -152,7 +148,8 @@ public class CustomerService {
     }
 
     public static double getTransportFee(int cityId) {
-        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT transport FROM city WHERE id_city = ?")) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT transport FROM city WHERE id_city = ?")) {
             ps.setInt(1, cityId);
             ResultSet rs = ps.executeQuery();
             rs.next();
@@ -164,7 +161,8 @@ public class CustomerService {
 
     public static Map<Integer, String> getCities() {
         Map<Integer, String> map = new HashMap<>();
-        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_city, name_city FROM city")) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT id_city, name_city FROM city")) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 map.put(rs.getInt("id_city"), rs.getString("name_city"));
@@ -175,7 +173,8 @@ public class CustomerService {
         }
     }
 
-    public static int addBill(int userId, int cityId, String name, String phone, String email, String address, double price, double totalPrice) {
+    public static int addBill(int userId, int cityId, String name, String phone, String email,
+                              String address, double price, double totalPrice) {
         try (var ps = DbConnection.getInstance()
                 .getPreparedStatement("INSERT INTO bills VALUES (0,?,4,?,?,?,?,?,?,?,NOW())")) {
             ps.setInt(1, userId);
@@ -197,7 +196,8 @@ public class CustomerService {
         }
     }
 
-    public static void addBillDetail(int billId, int productId, int quantity, double listedPrice, double currentPrice) {
+    public static void addBillDetail(int billId, int productId, int quantity,
+                                     double listedPrice, double currentPrice) {
         try (var ps = DbConnection.getInstance()
                 .getPreparedStatement("INSERT INTO bill_detail VALUES (?,?,?,?,?)")) {
             ps.setInt(1, billId);
@@ -214,14 +214,17 @@ public class CustomerService {
     public static List<Bill> getBills() {
         List<Bill> bills = new ArrayList<>();
         try (var ps = DbConnection.getInstance()
-                .getPreparedStatement("SELECT b.id_bill, fullname_customer, s.name_status_bill, address_customer, bd.quantity, total_price, time_order " +
+                .getPreparedStatement("SELECT b.id_bill, fullname_customer, s.name_status_bill, " +
+                        "address_customer, bd.quantity, total_price, time_order " +
                         "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
                         "JOIN status_bill s ON b.id_status_bill = s.id_status_bill")) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Bill bill = new Bill(rs.getInt("b.id_bill"), ProductService.getProductsByBillId(rs.getInt("b.id_bill")),
+                Bill bill = new Bill(rs.getInt("b.id_bill"),
+                        ProductService.getProductsByBillId(rs.getInt("b.id_bill")),
                         rs.getString("s.name_status_bill"), rs.getString("address_customer"),
-                        rs.getString("fullname_customer"), rs.getInt("bd.quantity"), rs.getDouble("total_price"),
+                        rs.getString("fullname_customer"),
+                        rs.getInt("bd.quantity"), rs.getDouble("total_price"),
                         rs.getDate("time_order"));
                 bills.add(bill);
             }
@@ -232,7 +235,60 @@ public class CustomerService {
         return null;
     }
 
+    public static List<Order> getOrderByUser(int userId) {
+        List<Order> orders = new ArrayList<>();
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT DISTINCT b.id_bill, s.name_status_bill, time_order, total_price " +
+                        "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
+                        "JOIN status_bill s ON s.id_status_bill = b.id_status_bill " +
+                        "WHERE id_user = ?")) {
+            ps.setInt(1, userId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int billId = rs.getInt("id_bill");
+                List<CartItem> items = getCartItemsByBillId(billId);
+                Order order = new Order(billId, items, rs.getTimestamp("time_order"),
+                        rs.getDouble("total_price"),
+                        rs.getString("name_status_bill"));
+                orders.add(order);
+            }
+            return orders;
+        } catch (SQLException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<CartItem> getCartItemsByBillId(int billId) {
+        List<CartItem> result = new ArrayList<>();
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT id_product, quantity FROM bill_detail WHERE id_bill = ?")) {
+            ps.setInt(1, billId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                CartItem cartItem = new CartItem(
+                        ProductService.getProductById(rs.getInt("id_product")),
+                        rs.getInt("quantity"));
+                result.add(cartItem);
+            }
+            return result;
+        } catch (SQLException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    public static void cancelOrder(int idBill) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
+                "UPDATE bills SET id_status_bill = 3 WHERE id_bill = ?"
+        )) {
+            ps.setInt(1, idBill);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(getBills().get(0).getProducts().get(0).getName());
+        System.out.println(getCartItemsByBillId(61));
+        System.out.println(getOrderByUser(1));
     }
 }

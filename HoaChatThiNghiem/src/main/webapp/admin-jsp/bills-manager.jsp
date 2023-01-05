@@ -67,9 +67,9 @@
                         <tbody>
                         <c:forEach var="b" items="${requestScope.bills}">
                             <c:choose>
-                                <c:when test="${b.status == 'Đã bán'}"><c:set var="bg" value="bg-success"/></c:when>
+                                <c:when test="${b.status == 'Đã giao'}"><c:set var="bg" value="bg-success"/></c:when>
                                 <c:when test="${b.status == 'Đang vận chuyển'}"><c:set var="bg" value="bg-warning"/></c:when>
-                                <c:when test="${b.status == 'Bị hủy'}"><c:set var="bg" value="bg-danger"/></c:when>
+                                <c:when test="${b.status == 'Đã hủy'}"><c:set var="bg" value="bg-danger"/></c:when>
                                 <c:when test="${b.status == 'Chờ xử lý'}"><c:set var="bg" value="bg-info"/></c:when>
                             </c:choose>
                             <tr>

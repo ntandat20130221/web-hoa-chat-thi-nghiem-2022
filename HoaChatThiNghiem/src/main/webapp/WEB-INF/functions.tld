@@ -26,4 +26,10 @@
         <function-class>utils.PriceUtil</function-class>
         <function-signature>boolean inList(model.Product,java.util.List)</function-signature>
     </function>
+
+    <function>
+        <name>formatTime</name>
+        <function-class>utils.DateUtil</function-class>
+        <function-signature>java.lang.String formatTimestamp(java.sql.Timestamp)</function-signature>
+    </function>
 </taglib>

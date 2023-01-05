@@ -246,13 +246,14 @@
 
     $('.header-menu .nav a[data-t]').on('click', function () {
         const type = $(this).attr('data-t')
-        window.location.href = 'products?type=' + type
+        window.location.href = $('.header-menu').attr('data-context') + '/shop/products?type=' + type
         return false
     })
 
     $('.header-menu .dropdown a').on('click', function () {
         const type = $(this).closest('.dropdown').prev('a').attr('data-t')
-        window.location.href = 'products?type=' + type + '&subtype=' + $(this).attr('data-st')
+        window.location.href = $('.header-menu').attr('data-context') +
+            '/shop/products?type=' + type + '&subtype=' + $(this).attr('data-st')
         return false
     })
 

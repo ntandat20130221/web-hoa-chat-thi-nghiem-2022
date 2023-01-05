@@ -1,5 +1,7 @@
 package utils;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -20,5 +22,10 @@ public final class DateUtil {
         calendar.set(Calendar.MILLISECOND, 0);
         Date today = calendar.getTime();
         return date.after(today);
+    }
+
+    public static String formatTimestamp(Timestamp timestamp) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        return sdf.format(timestamp);
     }
 }
