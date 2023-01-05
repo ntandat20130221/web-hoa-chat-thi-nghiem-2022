@@ -336,7 +336,7 @@ public final class ProductService {
             boolean checkDelete3 = dao.deleteProductByIdOnTable_review_product(connectDB, id);
             boolean checkDelete4 = dao.deleteProductByIdOnTable_products(connectDB, id);
             if (checkDelete1 && checkDelete2 && checkDelete3 && checkDelete4) {
-                connectDB.getConn().commit();
+                connectDB.getConn().commit();                           // kết thúc giao tác
                 return true;
             }
         } catch (SQLException e) {
@@ -359,6 +359,39 @@ public final class ProductService {
         Author : Minh Tuyên
          */
     }
+
+    public static boolean updateProductById(Product p, Admin admin) {
+        DbConnection connectDB = DbConnection.getInstance();
+        ProductDAO dao = new ProductDAO();
+        try {
+            connectDB.getConn().setAutoCommit(false);
+            boolean update1 = dao.AdminUpdateProductOnTable_products(connectDB, p, admin.getUsername());
+            boolean update2 = dao.AdminInsertPriceProductOnTable_price_product(connectDB, p, admin.getUsername());
+            if (update1 && update2) {
+                connectDB.getConn().commit();                    // kết thúc giao tác
+                return true;
+            }
+        } catch (SQLException e) {
+            try {
+                System.out.println("rollback");
+                connectDB.getConn().rollback();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        } finally {
+            try {
+                connectDB.getConn().setAutoCommit(true);
+                connectDB.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return false;
+         /*
+        Author : Minh Tuyên
+         */
+    }
+
 
     public static void main(String[] args) {
         System.out.println(getProducts().size());

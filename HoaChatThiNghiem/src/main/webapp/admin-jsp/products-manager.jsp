@@ -36,12 +36,12 @@
                 <div class="tile-body">
                     <div class="row element-button">
                         <div class="col-sm-2">
-                            <a class="btn btn-add btn-sm" href="<%=request.getContextPath()%>/admin/them-san-pham"
+                            <a class="btn btn-add btn-sm" href="${context}/admin/them-san-pham"
                                title="Thêm"><i class="fas fa-plus"></i> Tạo mới sản phẩm</a>
                         </div>
                         <div class="col-sm-2">
                             <a class="btn btn-delete btn-sm print-file" type="button" title="In"
-                               onclick="myApp.printTable()"><i class="fas fa-print"></i> In dữ liệu</a>
+                               onclick=""><i class="fas fa-print"></i> In dữ liệu</a>
                         </div>
                         <div class="col-sm-2">
                             <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-sm-2">
                             <a class="btn btn-delete btn-sm pdf-file" type="button" title="In"
-                               onclick="myFunction(this)"><i class="fas fa-file-pdf"></i> Xuất PDF</a>
+                               onclick=""><i class="fas fa-file-pdf"></i> Xuất PDF</a>
                         </div>
                     </div>
                     <table class="table table-hover table-bordered" id="sampleTable">
@@ -67,12 +67,20 @@
                         </thead>
                         <tbody>
                         <c:forEach var="p" items="${requestScope.products}">
+                            <c:choose>
+                                <c:when test="${p.statusP.name_status=='Mới'}"><c:set var="bg"
+                                                                                      value="bg-success"></c:set></c:when>
+                                <c:when test="${p.statusP.name_status=='Hot'}"><c:set var="bg"
+                                                                                      value="bg-warning"></c:set></c:when>
+                                <c:when test="${p.statusP.name_status=='Cấm bán'}"><c:set var="bg"
+                                                                                          value="bg-danger"></c:set></c:when>
+                            </c:choose>
                             <tr class="rowProduct">
                                 <td class="idProduct">${p.idProduct}</td>
                                 <td>${p.name}</td>
                                 <td><img src="${context}/${p.imgPath}" alt="" width="100px;"></td>
                                 <td>${p.quantity}</td>
-                                <td><span class="badge bg-success">${p.statusP.name_status}</span></td>
+                                <td><span class="badge ${bg}">${p.statusP.name_status}</span></td>
                                 <td>${pu:format(p.listed_price)}</td>
                                 <td>${pu:format(p.current_price)}</td>
                                 <td>
@@ -107,39 +115,41 @@
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label class="control-label">Tên sản phẩm</label>
-                        <input class="form-control" type="text" required value="Bàn ăn gỗ Theresa">
+                        <input id="inNameProduct" class="form-control" type="text" required value="">
                     </div>
                     <div class="form-group  col-md-6">
                         <label class="control-label">Số lượng</label>
-                        <input class="form-control" type="number" required value="20">
+                        <input id="inQuantityProduct" class="form-control" type="number" value="">
                     </div>
                     <div class="form-group col-md-6">
                         <label class="control-label">Giá niêm yết</label>
-                        <input class="form-control" type="number" value="5.600.000">
+                        <input id="inListedPrice" class="form-control" type="number" value="">
                     </div>
                     <div class="form-group col-md-6">
                         <label class="control-label">Giá bán thực tế</label>
-                        <input class="form-control" type="number" value="4.600.000">
+                        <input id="inCurrentPrice" class="form-control" type="number" value="">
                     </div>
                     <div class="form-group col-md-6 ">
-                        <label for="exampleSelect1" class="control-label">Trạng thái sản phẩm</label>
-                        <select class="form-control" id="exampleSelect1">
-                            <option>Còn hàng</option>
-                            <option>Hết hàng</option>
-                            <option>Cấm bán</option>
+                        <label for="SelectStatusProd" class="control-label">Trạng thái sản phẩm</label>
+                        <select class="form-control" id="SelectStatusProd">
+                            <option value="0">-- Chọn trạng thái --</option>
+                            <c:forEach var="statusProd" items="${requestScope.statusProducts}">
+                                <option value="${statusProd.id_status}">${statusProd.name_status}</option>
+                            </c:forEach>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="exampleSelect1" class="control-label">Loại sản phẩm</label>
-                        <select class="form-control" id="exampleSelect2">
-                            <option>Hóa chất</option>
-                            <option>Dụng cụ</option>
-                            <option>Thiết bị</option>
+                        <label for="SelectStatusProd" class="control-label">Loại sản phẩm</label>
+                        <select class="form-control" id="SelectTypeProd">
+                            <option value="0">-- Chọn loại sản phẩm --</option>
+                            <c:forEach var="st" items="${requestScope.subtypeProducts}">
+                                <option value="${st.id_subtype}">${st.name_type}</option>
+                            </c:forEach>
                         </select>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end mt-3">
-                    <button class="btn btn-save mr-3" type="submit">Lưu lại</button>
+                    <button id="btUpdateProduct" class="btn btn-save mr-3" type="submit">Lưu lại</button>
                     <button class="btn btn-cancel" data-dismiss="modal">Hủy bỏ</button>
                 </div>
             </div>
@@ -155,6 +165,7 @@
     $(document).ready(function () {
         $('#sampleTable').DataTable();
     });
+
     <%--Xóa sản phẩm sử dụng Ajax --%>
     $('#sampleTable .trash').on('click', function () {
         swal({
@@ -198,12 +209,105 @@
         )
     });
 
+    <%-- Kiểm lỗi khi người dùng nhập vào các input trong form cập nhật sản phẩm --%>
+    $('#sampleTable .edit').on('click', function () {
+        /*
+        --  Blur là sự kiện xảy ra khi con trỏ chuột đi ra ngoài đối tượng.
+        --  Ví dụ bạn có một ô input, khi người dùng nhập dữ liệu xong và nhấn tab để di chuyển con trỏ sang ô input khác
+        --  thì sẽ xảy ra sự kiện blur.
+        */
+        $('#inNameProduct').blur(function () {
+            var nameProd = $('#inNameProduct').val()
+
+            if (nameProd.length < 5) {
+                $('#inNameProduct').after('<div class="text-danger">Tên sản phẩm không được để trống và phải lớn hơn 5 kí tự !!!</div>')
+            } else $('#inNameProduct').next('.text-danger').remove()
+        })
+        $('#inQuantityProduct').blur(function () {
+            var quantProd = $('#inQuantityProduct').val()
+
+            if (quantProd.length == 0) {
+                $('#inQuantityProduct').after('<div class="text-danger">Số lượng sản phẩm không được để trống !!!</div>')
+            } else if (quantProd < 0 || quantProd > 10000) {
+                $('#inQuantityProduct').after('<div class="text-danger">Số lượng sản phẩm không được âm và không được vượt quá 1000 sản phẩm !!!</div>')
+            } else $('#inQuantityProduct').next('.text-danger').remove()
+        })
+        $('#inListedPrice').blur(function () {
+            var listedPriceProd = $('#inListedPrice').val()
+
+            if (listedPriceProd.length == 0) {
+                $('#inListedPrice').after('<div class="text-danger">Giá sản phẩm không được để trống !!!</div>')
+            } else if (listedPriceProd < 0 || listedPriceProd > Math.pow(10, 6) * 500) {
+                $('#inListedPrice').after('<div class="text-danger">Giá sản phẩm không được âm và không được vượt quá 500 triệu đồng !!!</div>')
+            } else $('#inListedPrice').next('.text-danger').remove()
+        })
+        $('#inCurrentPrice').blur(function () {
+            var currentPriceProd = $('#inCurrentPrice').val()
+
+            if (currentPriceProd.length == 0) {
+                $('#inCurrentPrice').after('<div class="text-danger">Giá sản phẩm không được để trống !!!</div>')
+            } else if (currentPriceProd < 0 || currentPriceProd > Math.pow(10, 6) * 500) {
+                $('#inCurrentPrice').after('<div class="text-danger">Giá sản phẩm không được âm và không được vượt quá 500 triệu đồng !!!</div>')
+            } else $('#inCurrentPrice').next('.text-danger').remove()
+        })
+        $('#SelectStatusProd').blur(function () {
+            var idSelect = $('#SelectStatusProd').val()
+            if (idSelect == '0') {
+                $('#SelectStatusProd').after('<div class="text-danger">Hãy chọn trạng thái sản phẩm !!!</div>')
+            } else $('#SelectStatusProd').next('.text-danger').remove()
+        })
+        $('#SelectTypeProd').blur(function () {
+
+            var idSelect = $('#SelectTypeProd').val()
+            if (idSelect == '0') {
+                $('#SelectTypeProd').after('<div class="text-danger">Hãy chọn loại sản phẩm !!!</div>')
+            } else $('#SelectTypeProd').next('.text-danger').remove()
+        })
+    });
+
+    <%-- Reset lại form cập nhật thông tin sản phẩm --%>
+    $('#modal-up .btn-cancel').on('click',function (){
+        $('#inNameProduct').val('')
+        $('#inQuantityProduct').val('')
+        $('#inListedPrice').val('')
+        $('#inCurrentPrice').val('')
+        $('#SelectStatusProd').val('0')
+        $('#SelectTypeProd').val('0')
+    });
+
+    <%--Cập nhật thông tin sản phẩm sử dụng Ajax --%>
+    $('#btUpdateProduct').on('click', function () {
+        // alert('Đây là chức năng cập nhật thông tin sản phẩm')
+        var nameProd = $('#inNameProduct').val()
+        var quantProd = $('#inQuantityProduct').val()
+        var listedPriceProd = $('#inListedPrice').val()
+        var currentPriceProd = $('#inCurrentPrice').val()
+        var statusProd = $('#SelectStatusProd').val()
+        var subtypeProd = $('#SelectTypeProd').val()
+
+        if (nameProd.length == 0 || quantProd.length == 0 || listedPriceProd.length == 0 || currentPriceProd.length == 0
+            || statusProd.length == 0 || subtypeProd.length == 0 || statusProd == '0' || subtypeProd == '0') {
+            swal({
+                title: 'Cảnh báo !!!',
+                text: 'Bạn hãy nhập đầy đủ thông tin cho sản phẩm này',
+                icon: 'error',
+                timer: 3000,
+                buttons: false
+            })
+        } else {
+            $.ajax({ // call ajax for action update product
+
+            })
+        }
+    });
+
+    <%-- Xuất danh sách sản phẩm ra file excel --%>
     $('.btn-excel').on('click', function () {
         TableToExcel.convert(document.getElementById('sampleTable'), {
             name: `danh-sach-san-pham.xlsx`
         });
         return false
-    })
+    });
 </script>
 </body>
 </html>

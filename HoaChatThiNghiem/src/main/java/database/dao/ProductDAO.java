@@ -16,9 +16,7 @@ public class ProductDAO {
     }
 
     public boolean insertProduct(DbConnection connectDB, Product p, String nameAdmin) {
-        String sql = "insert into products (name_product,description_product,url_img_product,quantity_product" +
-                ",id_subtype,id_status_product,id_supplier,nameAdmin) " +
-                "values(?,?,?,?,?,?,?,?)";
+        String sql = "insert into products (name_product,description_product,url_img_product,quantity_product" + ",id_subtype,id_status_product,id_supplier,nameAdmin) " + "values(?,?,?,?,?,?,?,?)";
         PreparedStatement preStatement = connectDB.getPreparedStatement(sql);
         try {
             preStatement.setString(1, p.getName());
@@ -83,9 +81,7 @@ public class ProductDAO {
     }
 
     public int getIdProduct(DbConnection connectDB, Product p) {
-        String sql = "SELECT id_product FROM products" +
-                " WHERE name_product=? AND description_product= ? AND url_img_product= ? AND quantity_product= ?" +
-                " AND id_subtype=? AND id_status_product= ? AND id_supplier= ?";
+        String sql = "SELECT id_product FROM products" + " WHERE name_product=? AND description_product= ? AND url_img_product= ? AND quantity_product= ?" + " AND id_subtype=? AND id_status_product= ? AND id_supplier= ?";
         PreparedStatement preStatement = connectDB.getPreparedStatement(sql);
         try {
             preStatement.setString(1, p.getName());
@@ -156,21 +152,14 @@ public class ProductDAO {
         -- yêu cầu giá của sản phẩm phải là mới nhất
         */
         List<Product> list = new ArrayList<>();
-        String query = "SELECT P.id_product,P.name_product,P.url_img_product,P.quantity_product,P.id_subtype,SP.id_status_product,SP.name_status_product,PP.listed_price,PP.current_price " +
-                "FROM products P " +
-                "JOIN price_product PP ON P.id_product=PP.id_product " +
-                "JOIN status_product SP ON P.id_status_product = SP.id_status_product " +
-                "WHERE PP.date = (SELECT MAX(date) " +
-                "FROM price_product PP2 " +
-                "WHERE PP2.id_product = PP.id_product)";
+        String query = "SELECT P.id_product,P.name_product,P.url_img_product,P.quantity_product,P.id_subtype,SP.id_status_product,SP.name_status_product,PP.listed_price,PP.current_price " + "FROM products P " + "JOIN price_product PP ON P.id_product=PP.id_product " + "JOIN status_product SP ON P.id_status_product = SP.id_status_product " + "WHERE PP.date = (SELECT MAX(date) " + "FROM price_product PP2 " + "WHERE PP2.id_product = PP.id_product)";
         Statement statement = connectDB.getStatement();
         try {
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
                 StatusProduct statusP = new StatusProduct(rs.getInt("id_status_product"), rs.getString("name_status_product"));
                 SubTypeProduct subtypeP = new SubTypeProduct(rs.getInt("id_subtype"));
-                Product product = new Product(rs.getInt("id_product"), rs.getString("url_img_product"), rs.getString("name_product")
-                        , rs.getInt("quantity_product"), rs.getInt("listed_price"), rs.getInt("current_price"), subtypeP, statusP);
+                Product product = new Product(rs.getInt("id_product"), rs.getString("url_img_product"), rs.getString("name_product"), rs.getInt("quantity_product"), rs.getInt("listed_price"), rs.getInt("current_price"), subtypeP, statusP);
                 list.add(product);
             }
         } catch (SQLException e) {
@@ -243,6 +232,39 @@ public class ProductDAO {
         String sql = "DELETE FROM products WHERE id_product=?";
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
         preState.setInt(1, id);
+        int row = preState.executeUpdate();
+        if (row > 0) return true;
+        return false;
+         /*
+        Author : Minh Tuyên
+         */
+    }
+
+    public boolean AdminUpdateProductOnTable_products(DbConnection connectDB, Product p, String nameAdmin) throws SQLException {
+        String sql = "UPDATE products SET name_product = ? " +
+                ",id_subtype = ?,id_status_product = ?,quantity_product = ?,date_inserted=CURRENT_TIMESTAMP,nameAdmin = ? WHERE id_product = ?";
+        PreparedStatement preState = connectDB.getPreparedStatement(sql);
+        preState.setString(1, p.getName());
+        preState.setInt(2, p.getType_product());
+        preState.setInt(3, p.getStatus_product());
+        preState.setInt(4, p.getQuantity());
+        preState.setString(5, nameAdmin);
+        preState.setInt(6, p.getIdProduct());
+        int row = preState.executeUpdate();
+        if (row > 0) return true;
+        return false;
+         /*
+        Author : Minh Tuyên
+         */
+    }
+
+    public boolean AdminInsertPriceProductOnTable_price_product(DbConnection connectDB, Product p, String nameAdmin) throws SQLException {
+        String sql = "INSERT INTO price_product(id_product,listed_price,current_price,nameAdmin) VALUES (?, ?, ?, ?)";
+        PreparedStatement preState = connectDB.getPreparedStatement(sql);
+        preState.setInt(1, p.getIdProduct());
+        preState.setInt(2, p.getListed_price());
+        preState.setInt(3, p.getCurrent_price());
+        preState.setString(4, nameAdmin);
         int row = preState.executeUpdate();
         if (row > 0) return true;
         return false;
