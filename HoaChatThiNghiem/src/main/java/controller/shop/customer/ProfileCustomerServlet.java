@@ -21,7 +21,7 @@ public class ProfileCustomerServlet extends HttpServlet {
             HttpSession session1 = request.getSession(true);
             request.setAttribute("session_city", session1);
             session1.setAttribute("citiess", CustomerService.getCities());
-            request.getServletContext().getRequestDispatcher("/shop/profile.jsp").forward(request, response);
+            request.getRequestDispatcher("/shop/profile.jsp").forward(request, response);
         }
     }
 
@@ -52,7 +52,7 @@ public class ProfileCustomerServlet extends HttpServlet {
             session1.invalidate();
         }else{
             request.setAttribute("error_profile", "Cập nhập không thành công");
-            request.getServletContext().getRequestDispatcher("/shop/profile.jsp").forward(request,response);
+            request.getRequestDispatcher("/shop/profile.jsp").forward(request,response);
         }
         
     }
