@@ -16,6 +16,7 @@ CREATE TRIGGER `trigger_sold`
 AFTER INSERT ON `bill_detail` FOR EACH ROW
 BEGIN	
 	UPDATE `sold_product` SET quantity_sold = (SELECT SUM(quantity) FROM bill_detail WHERE id_product = NEW.id_product) WHERE id_product = NEW.id_product;
+	UPDATE `products` SET `quantity_product` = `quantity_product` - NEW.quantity WHERE `id_product` = NEW.id_product;
 END;
 
 CREATE TRIGGER `insert_sold_product`
