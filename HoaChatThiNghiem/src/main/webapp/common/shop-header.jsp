@@ -106,7 +106,7 @@
     </div>
 
     <!-- ===== HEADER MENU ===== -->
-    <div class="header-menu">
+    <div class="header-menu" data-context="${context}">
         <div class="container">
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="navbar-collapse">

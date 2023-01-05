@@ -86,7 +86,8 @@
                                     <label>Tỉnh / Thành phố<span>*</span></label>
                                     <select name="company_name" id="company">
                                         <c:forEach var="c" items="${requestScope.cities}" varStatus="i">
-                                            <option value="${c.key}" <c:if test="${i.first}">selected</c:if>>${c.value}</option>
+                                            <option value="${c.key}" <c:if test="${i.count == sessionScope.auth_customer.id_city}">selected</c:if>>
+                                                    ${c.value}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -141,6 +142,11 @@
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/shop-js.jsp"/>
 
+<script>
+    $('#company').on('change', function () {
+        window.location.href = '${context}/shop/update-checkout?city=' + $(this).val()
+    })
+</script>
 </body>
 
 </html>

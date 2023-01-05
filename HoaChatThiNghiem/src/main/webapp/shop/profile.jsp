@@ -35,8 +35,8 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="profile.jsp">Hồ sơ của tôi</a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/home">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="">Hồ sơ của tôi</a></li>
         </ul>
     </div>
 </div>
@@ -58,7 +58,7 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="purchase-history.jsp"><i class="bi bi-receipt"></i> Lịch sử mua hàng</a>
+                                <a href="${context}/shop/profile/order-history"><i class="bi bi-receipt"></i> Lịch sử mua hàng</a>
                             </li>
                             <li>
                                 <a href="${context}/shop/change-password"><i class="bi bi-lock"></i> Đổi mật khẩu</a>

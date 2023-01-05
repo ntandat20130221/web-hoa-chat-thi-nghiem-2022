@@ -76,7 +76,8 @@
                             <img src="${context}/${item.value.product.imgPath}" alt="#"/>
                         </td>
                         <td class="product-des" data-title="Description">
-                            <a class="product-name" href="${context}/shop/product-details?product_id=${item.key}">${item.value.product.name}</a>
+                            <a data-product-name="${item.value.product.name}"
+                               class="product-name" href="${context}/shop/product-details?product_id=${item.key}">${item.value.product.name}</a>
                             <p class="product-des">
                                 Axit sunfuric là một axit mạnh, hóa chất này có đầy đủ các
                                 tính chất hóa học chung của axit.
@@ -146,8 +147,24 @@
     })
 
     $('.action a').on('click', function () {
-        const pId = $(this).closest('tr').attr('data-product-id')
-        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId + '&action=delete'
+        $.alert({
+            title: 'Xác nhận xóa',
+            content: 'Xóa sản phẩm ' + $(this).closest('tr').find('a[data-product-name]').attr('data-product-name'),
+            closeIcon: true,
+            animateFromElement: false,
+            theme: 'material',
+            buttons: {
+                login: {
+                    text: 'Xóa',
+                    btnClass: 'btn-danger',
+                    action: () => {
+                        const pId = $(this).closest('tr').attr('data-product-id')
+                        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId + '&action=delete'
+                    }
+                }
+            }
+        })
+
         return false
     })
 
@@ -162,7 +179,7 @@
                 animateFromElement: false,
                 theme: 'material',
                 buttons: {
-                    login : {
+                    login: {
                         text: 'Đăng nhập',
                         action: () => window.location.href = '${context}/shop/login'
                     }

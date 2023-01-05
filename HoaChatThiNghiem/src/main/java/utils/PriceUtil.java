@@ -6,7 +6,10 @@ import java.text.NumberFormat;
 import java.util.List;
 
 public final class PriceUtil {
-    private PriceUtil() {}
+
+    private PriceUtil() {
+        throw new AssertionError();
+    }
 
     public static String format(double price) {
         NumberFormat nf = NumberFormat.getNumberInstance();

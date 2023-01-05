@@ -13,6 +13,11 @@
     src: url('../fonts/Heebo/Heebo-Regular.ttf');
 }
 
+@font-face {
+    font-family: Roboto;
+    src: url('../fonts/Roboto/Roboto-Regular.ttf');
+}
+
 :root {
     --main-color: #167DCC;
     --color-top-bar: #0058CC;
@@ -2689,7 +2694,7 @@ a:focus {
     PRODUCT DETAIL
 ============================================ */
 .main-detail {
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
     border-radius: 5px;
 }
 
@@ -2697,8 +2702,6 @@ a:focus {
     width: 100%;
     height: auto;
     border-radius: 3px;
-    /*-o-object-fit: cover;*/
-    /*object-fit: cover;*/
 }
 
 .product-slider .product-image {
@@ -3438,4 +3441,182 @@ a:focus {
 
 .form-input form .shotcut a:hover {
     color: #0058CC;
+}
+
+/* ============================================
+    ORDER HISTORY
+============================================ */
+#purchase-history {
+    background-color: #fefefe;
+    padding: 60px 0;
+}
+
+.item {
+    width: 100%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+    border-radius: 3px;
+}
+
+#purchase-history .yellow {
+    color: gold !important;
+}
+
+#purchase-history .item-header {
+    border-bottom: 1px solid #d7d7d7;
+}
+
+#purchase-history .item-footer {
+    border-top: 1px solid #d7d7d7;
+}
+
+#purchase-history .sub-item:not(:last-child) {
+    border-bottom: 1px solid #d7d7d7;
+}
+
+#purchase-history .supplier {
+    color: rgb(62, 62, 62);
+    font-weight: bold;
+    font-family: 'Inter', serif;
+}
+
+#purchase-history .total {
+    font-family: 'Roboto', serif;
+    font-size: 17px;
+}
+
+#purchase-history .total i {
+    font-size: 22px;
+}
+
+#purchase-history .total span {
+    font-size: 24px;
+    color: var(--color-price);
+    font-weight: bolder;
+}
+
+#purchase-history .action button {
+    width: 200px;
+}
+
+#purchase-history .button-rebuy {
+    outline: unset;
+    border: none;
+    background-color: rgb(75, 119, 249);
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    font-family: 'Inter', serif;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: ease all .2s;
+}
+
+#purchase-history .button-rebuy:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
+
+#purchase-history .button-cancel {
+    outline: unset;
+    border: 1px solid rgb(162, 162, 162);
+    border-radius: 4px;
+    background-color: white;
+    color: rgb(92, 92, 92);
+    font-size: 16px;
+    font-family: 'Inter', serif;
+    padding: 8px 0;
+    cursor: pointer;
+    transition: ease all .3s;
+}
+
+#purchase-history .button-cancel:hover {
+    border-color: #333;
+    background-color: #333;
+    color: white;
+}
+
+#purchase-history .image-thumbnail img {
+    width: 100px;
+    border-radius: 3px;
+}
+
+#purchase-history .details * {
+    display: block;
+}
+
+#purchase-history .details p {
+    color: rgb(81, 81, 81);
+}
+
+#purchase-history .details span {
+    font-family: 'Roboto', serif;
+    font-weight: bolder;
+}
+
+#purchase-history .price {
+    font-size: 18px;
+    color: var(--color-price);
+    font-family: 'Roboto', serif;
+}
+
+#purchase-history .price span {
+    text-decoration: line-through;
+    font-size: 14px;
+    color: rgb(104, 104, 104);
+}
+
+#purchase-history .stars i {
+    font-size: 14px;
+    color: rgb(104, 104, 104);
+}
+
+#purchase-history .rating-number {
+    font-size: 22px;
+}
+
+#purchase-history .rating-number span {
+    font-size: 16px;
+    color: rgb(78, 78, 78);
+}
+
+#purchase-history .rating-count {
+    color: rgb(93, 93, 93);
+    padding: 0;
+}
+
+#purchase-history .item-name {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+#purchase-history .item-name:hover {
+    color: var(--main-color);
+}
+
+#purchase-history .status {
+    padding: 3px 12px 3px 12px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: #fff;
+}
+
+#purchase-history .status.bought {
+    background-color: rgb(71, 139, 71);
+}
+
+#purchase-history .status.progressing {
+    background-color: rgb(45, 161, 197);
+}
+
+#purchase-history .status.canceled {
+    background-color: #707070FF;
+}
+
+#purchase-history .status.transporting {
+    background-color: rgb(171, 146, 10);
+}
+
+#purchase-history .no-rating {
+    color: rgb(96, 96, 96);
 }

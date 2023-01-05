@@ -260,6 +260,23 @@ public class AdminService {
         }
     }
 
+    public static void updateBill(int billId, String cus, double price, int status, String address) {
+        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
+                "UPDATE bills " +
+                        "SET fullname_customer = ?, address_customer = ?, total_price = ?, id_status_bill = ? " +
+                        "WHERE id_bill = ?"
+        )) {
+            ps.setString(1, cus);
+            ps.setString(2, address);
+            ps.setDouble(3, price);
+            ps.setInt(4, status);
+            ps.setInt(5, billId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(getBillsIn(7));
     }
