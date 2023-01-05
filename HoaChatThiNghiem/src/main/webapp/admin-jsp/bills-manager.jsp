@@ -22,7 +22,7 @@
 <!-- Sidebar Menu -->
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
 
-<main class="app-content">
+<main class="app-content" id="bill-page">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb side">
             <li class="breadcrumb-item active"><a href="#"><b>Quản lý đơn hàng</b></a></li>
@@ -51,17 +51,17 @@
                                     class="fas fa-trash-alt"></i> Xóa tất cả </a>
                         </div>
                     </div>
-                    <table class="table table-hover table-bordered" id="sampleTable">
+                    <table class="table table-hover table-bordered bill-table" id="sampleTable">
                         <thead>
                         <tr>
-                            <th><input type="checkbox" id="all"></th>
-                            <th>ID đơn hàng</th>
-                            <th>Khách hàng</th>
-                            <th>Đơn hàng</th>
-                            <th>Tổng tiền</th>
-                            <th>Tình trạng</th>
-                            <th>Địa chỉ giao hàng</th>
-                            <th>Ngày đặt hàng</th>
+                            <th class="text-center">ID đơn hàng</th>
+                            <th class="text-center">Khách hàng</th>
+                            <th class="text-center">Đơn hàng</th>
+                            <th class="text-center">Tổng tiền</th>
+                            <th class="text-center">Tình trạng</th>
+                            <th class="text-center">Địa chỉ giao hàng</th>
+                            <th class="text-center">Ngày đặt hàng</th>
+                            <th class="text-center">Chỉnh sửa</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -73,8 +73,7 @@
                                 <c:when test="${b.status == 'Chờ xử lý'}"><c:set var="bg" value="bg-info"/></c:when>
                             </c:choose>
                             <tr>
-                                <td><input type="checkbox" name="check1" value="1"></td>
-                                <td>${b.id}</td>
+                                <td class="text-center">${b.id}</td>
                                 <td>${b.customerName}</td>
                                 <td>
                                     <c:forEach var="p" items="${b.products}" varStatus="ii">
@@ -82,10 +81,14 @@
                                         <c:if test="${!ii.last}"><c:out value=", "/></c:if>
                                     </c:forEach>
                                 </td>
-                                <td>${pu:format(b.totalPrice)}đ</td>
-                                <td><span class="badge ${bg}">${b.status}</span></td>
+                                <td data-price="${b.totalPrice}" class="text-center">${pu:format(b.totalPrice)}đ</td>
+                                <td data-ss="${bg}" class="text-center"><span class="badge ${bg}">${b.status}</span></td>
                                 <td>${b.address}</td>
                                 <td>${b.timeOrder}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"><i
+                                            class="fas fa-edit"></i></button>
+                                </td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -96,10 +99,87 @@
     </div>
 </main>
 
+<div class="modal fade modal-bill" id="modal-up" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
+     data-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content mt-5">
+            <div class="modal-body p-4">
+                <div class="row">
+                    <div class="form-group col-md-12">
+                            <span class="thong-tin-thanh-toan">
+                                <h5>Chỉnh sửa đơn hàng</h5>
+                            </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="hidden" id="input-bill-id">
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Tên khách hàng</label>
+                        <input class="form-control" type="text" required name="bill-customer">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Địa chỉ giao hàng</label>
+                        <input class="form-control" type="text" required name="bill-address">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="control-label">Tổng thanh toán</label>
+                        <input class="form-control" type="number" name="bill-price">
+                    </div>
+                    <div class="form-group col-md-6 ">
+                        <label for="select-status" class="control-label">Tình trạng đơn hàng</label>
+                        <select class="form-control" id="select-status" name="bill-status">
+                            <option value="bg-info">Chờ xử lý</option>
+                            <option value="bg-warning">Đang vận chuyển</option>
+                            <option value="bg-success">Đã giao</option>
+                            <option value="bg-danger">Đã hủy</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-3">
+                    <button class="btn btn-save mr-3" type="submit">Lưu lại</button>
+                    <button class="btn btn-cancel" data-dismiss="modal">Hủy bỏ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/admin-js.jsp"/>
 <!-- ================================================================================================== -->
 <script>
+    $('.edit').on('click', function () {
+        const modal = $('#modal-up')
+        modal.find('#input-bill-id').val($(this).closest('tr').find('td:first-child').text())
+        modal.find('input[name=bill-customer]').val($(this).closest('tr').find('td:nth-child(2)').text())
+        modal.find('input[name=bill-address]').val($(this).closest('tr').find('td:nth-child(6)').text())
+        modal.find('input[name=bill-price]').val($(this).closest('tr').find('td:nth-child(4)').attr('data-price'))
+        const bg = String($(this).closest('tr').find('td:nth-child(5)').attr('data-ss'))
+        modal.find('select[name=bill-status] option').each(function () {
+            if (String($(this).val()) === bg)
+                $(this).attr('selected', 'selected')
+        })
+        modal.modal('show')
+    })
+
+    $('.btn-save').on('click', function () {
+        const form = $('<form></form>').attr('method', 'post').attr('action', '${context}/admin/quan-ly-don-hang')
+        const fieldId = $('<input>').attr('type', 'hidden').attr('name', 'bill_id')
+            .attr('value', $('#input-bill-id').val())
+        const fieldCus = $('<input>').attr('type', 'hidden').attr('name', 'bill_cus')
+            .attr('value', $('input[name=bill-customer]').val())
+        const fieldPrice = $('<input>').attr('type', 'hidden').attr('name', 'bill_price')
+            .attr('value', $('input[name=bill-price]').val())
+        const fieldStatus = $('<input>').attr('type', 'hidden').attr('name', 'bill_status')
+            .attr('value', $('#select-status').find(':selected').val())
+        const fieldAddress = $('<input>').attr('type', 'hidden').attr('name', 'bill_address')
+            .attr('value', $('input[name=bill-address]').val())
+        form.append(fieldId).append(fieldCus).append(fieldPrice).append(fieldStatus).append(fieldAddress)
+
+        $(document.body).append(form)
+        form.submit()
+    })
+
     const myApp = new function () {
         this.printTable = function () {
             const tab = document.getElementById('sampleTable');
@@ -111,7 +191,8 @@
     }
 
     $('#sampleTable').dataTable({
-        order: false
+        // order: false,
+        order: [[ 0, 'asc' ]]
     });
 
     $('.btn-excel').on('click', function () {

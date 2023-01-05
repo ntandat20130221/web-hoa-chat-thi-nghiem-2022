@@ -2239,10 +2239,12 @@ pre code {
     border: 1px solid #dadada;
     border-radius: .357rem;
     -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     -o-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+select.form-control {
+    cursor: pointer;
 }
 
 .control-label {
@@ -2460,7 +2462,6 @@ select.form-control-lg:not([size]):not([multiple]),
 }
 
 .form-check-inline {
-    display: -webkit-inline-box;
     display: -ms-inline-flexbox;
     display: inline-flex;
     -webkit-box-align: center;
@@ -16912,5 +16913,37 @@ th {
 }
 
 .system-settings .right form button:hover {
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
+}
+
+/* ============================================
+    MODAL BILL
+============================================ */
+
+.modal-bill input[type=number]::-webkit-inner-spin-button,
+.modal-bill input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#bill-page .bg-success {
+    background-color: #bfefc4 !important;
+    color: #02790c !important;
+}
+
+#bill-page .bg-warning {
+    background-color: rgb(232, 228, 168) !important;
+    color: #b9882d !important;
+}
+
+#bill-page .bg-danger {
+    background-color: #c9c9c9 !important;
+    color: #525252 !important;
+}
+
+#bill-page .bg-info {
+    background-color: rgb(167, 229, 248) !important;
+    color: #1b6398 !important;
 }
