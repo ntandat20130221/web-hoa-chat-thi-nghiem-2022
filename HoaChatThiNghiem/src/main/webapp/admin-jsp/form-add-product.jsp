@@ -87,8 +87,9 @@
         margin-top: -2px;
     }
 </style>
+
 <%--    Header--%>
-<jsp:include page="../common/admin-header.jsp"/>
+<%--<jsp:include page="../common/admin-header.jsp"/>--%>
 
 <!-- Sidebar Menu -->
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>

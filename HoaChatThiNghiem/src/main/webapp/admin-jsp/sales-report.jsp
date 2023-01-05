@@ -17,7 +17,9 @@
 </head>
 
 <body class="app sidebar-mini rtl">
-<jsp:include page="../common/admin-header.jsp"/>
+
+<%--<jsp:include page="../common/admin-header.jsp"/>--%>
+
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
 
 <main class="app-content">
