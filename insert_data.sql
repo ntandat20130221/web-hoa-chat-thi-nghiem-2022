@@ -49,7 +49,6 @@ where username ="nguyentandat";
 -- ----------------------------
 -- STATUS PRODUCT
 -- ----------------------------
-INSERT INTO status_product VALUES (0, '-- Chọn trạng thái --');
 INSERT INTO status_product VALUES (1, 'Mới');
 INSERT INTO status_product VALUES (2, 'Hot');
 INSERT INTO status_product VALUES (3, 'Cấm bán');
@@ -64,7 +63,6 @@ INSERT INTO type_product VALUES (3, 'Thiết Bị');
 -- ----------------------------
 -- SUBTYPE PRODUCT
 -- ----------------------------
-INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (0,'-- Chọn loại sản phẩm --', 1);
 INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (1,'Acid', 1);
 INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (2, 'Bazo', 1);
 INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (3, 'Muối', 1);
@@ -86,7 +84,6 @@ INSERT INTO subtype_product(id_subtype,name_subtype,id_type_product) VALUES (17,
 -- ----------------------------
 -- SUPPLIERS
 -- ----------------------------
-INSERT INTO suppliers VALUES (0, '-- Chọn nhà cung cấp --');
 INSERT INTO suppliers VALUES (1, 'Merck - Đức');
 INSERT INTO suppliers VALUES (2, 'Acros Organics - Mỹ');
 INSERT INTO suppliers VALUES (3, 'Fisher - Mỹ');
