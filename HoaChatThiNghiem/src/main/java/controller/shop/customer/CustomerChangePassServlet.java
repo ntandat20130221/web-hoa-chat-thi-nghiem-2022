@@ -1,4 +1,4 @@
-package controller.shop;
+package controller.shop.customer;
 
 import model.Customer;
 import service.CustomerService;
@@ -21,6 +21,11 @@ public class CustomerChangePassServlet extends HttpServlet {
         String new_pass = request.getParameter("new-pass");
         String old_pass = request.getParameter("old-pass");
         String confirm_pass = request.getParameter("confirm-pass");
+        if(new_pass.equals("") || old_pass.equals("") || confirm_pass.equals("")){
+            request.setAttribute("text", "Vui lòng hãy nhập vào những trường còn thiếu");
+            request.getServletContext().getRequestDispatcher("/shop/change-pass.jsp").forward(request, response);
+            return;
+        }
         Customer customer = (Customer) request.getSession().getAttribute("auth_customer");
         System.out.println(customer);
         if(old_pass.equals(customer.getPassword())){

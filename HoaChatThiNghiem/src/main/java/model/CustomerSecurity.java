@@ -1,11 +1,11 @@
 package model;
 
-public class Customer_register {
+public class CustomerSecurity {
     private String id;
     private String email;
     private String password;
 
-    public Customer_register(String id, String email, String password) {
+    public CustomerSecurity(String id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;

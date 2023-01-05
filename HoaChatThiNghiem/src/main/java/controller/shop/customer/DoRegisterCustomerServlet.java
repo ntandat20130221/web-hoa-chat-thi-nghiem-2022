@@ -1,8 +1,8 @@
-package controller.shop;
+package controller.shop.customer;
 
 import mail.Email;
 import mail.sendMail;
-import model.Customer_register;
+import model.CustomerSecurity;
 import service.CustomerService;
 
 import javax.servlet.*;
@@ -20,24 +20,14 @@ public class DoRegisterCustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String email = request.getParameter("email");
-//        String password = request.getParameter("password");
-//        String confirm_pass = request.getParameter("confirm-pass");
-//        if(CustomerService.checkExist(email)){
-//            if(password.equals(confirm_pass)){
-//                CustomerService.signUp(email,password);
-//                response.sendRedirect(request.getContextPath()+"/shop/login");
-//            }else{
-//                request.setAttribute("text_register", "Không hợp lệ, hãy xác nhận lại mật khẩu");
-//                request.getServletContext().getRequestDispatcher("/shop/register.jsp").forward(request, response);
-//            }
-//        }else{
-//            request.setAttribute("text_register", "Email đã tồn tại, vui lòng chọn Email khác");
-//            request.getServletContext().getRequestDispatcher("/shop/register.jsp");
-//        }
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String confirm_pass = request.getParameter("confirm-pass");
+        if(email.equals("") || password.equals("") || confirm_pass.equals("")){
+            request.setAttribute("text_register", "Vui lòng hãy nhập vào những trường còn thiếu");
+            request.getServletContext().getRequestDispatcher("/shop/register.jsp").forward(request, response);
+            return;
+        }
         if (CustomerService.checkExist(email)) {
             request.setAttribute("text_register", "Email đã tồn tại, vui lòng chọn Email khác");
             request.getServletContext().getRequestDispatcher("/shop/register.jsp").forward(request, response);
@@ -45,7 +35,7 @@ public class DoRegisterCustomerServlet extends HttpServlet {
             if (password.equals(confirm_pass)) {
                 UUID uuid = UUID.randomUUID();
                 String id = uuid.toString();
-                Customer_register customer_register = new Customer_register(id, email, password);
+                CustomerSecurity customer_register = new CustomerSecurity(id, email, password);
                 HttpSession session = request.getSession(true);
                 request.setAttribute("session_cus", session);
                 session.setAttribute("cus", customer_register);
