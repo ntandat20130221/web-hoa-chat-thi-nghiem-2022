@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@WebServlet(name = "ProfileCustomerServlet", value = "/shop/profile")
+@WebServlet(name = "ProfileCustomerServlet", value = "/shop/profile_customer")
 public class ProfileCustomerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

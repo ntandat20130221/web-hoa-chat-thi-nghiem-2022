@@ -78,7 +78,7 @@
                         <p class="m-0">Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
                     </div>
 
-                    <form class="form" action="${context}/shop/profile" method="post">
+                    <form class="form" action="${context}shop/profile_customer" method="post">
                         <div class="row">
                             <div class="col-lg-12 col-12">
                                 <div class="form-group">
