@@ -175,7 +175,7 @@
         }).then((agree) => {
                 if (agree) {
                     var rowDelete = $(this).closest('tr')                       // row can be deleted
-                    var id = $(this).closest('tr').find('.idProduct').text()    // get data from row in table
+                    var id = $(this).closest('tr').find('.idProduct').text()    // get data id of row after click in table
                     $.ajax({    // call Ajax for action delete product
                         url: '${context}/AjaxDeleteProductServlet',     //-- địa chỉ server
                         type: 'POST',                                   //-- phương thức truyền : GET,POST,PUT,DELETE,...
@@ -209,6 +209,8 @@
         )
     });
 
+    var idProduct; // -- biến này có thể thay đổi mỗi khi click vào icon chỉnh sửa sản phẩm
+
     <%-- Kiểm lỗi khi người dùng nhập vào các input trong form cập nhật sản phẩm --%>
     $('#sampleTable .edit').on('click', function () {
         /*
@@ -216,12 +218,14 @@
         --  Ví dụ bạn có một ô input, khi người dùng nhập dữ liệu xong và nhấn tab để di chuyển con trỏ sang ô input khác
         --  thì sẽ xảy ra sự kiện blur.
         */
+        idProduct = $(this).closest('tr').find('.idProduct').text()
+
         $('#inNameProduct').blur(function () {
             var nameProd = $('#inNameProduct').val()
 
             if (nameProd.length < 5) {
                 $('#inNameProduct').after('<div class="text-danger">Tên sản phẩm không được để trống và phải lớn hơn 5 kí tự !!!</div>')
-            } else $('#inNameProduct').next('.text-danger').remove()
+            } else $('#inNameProduct').nextAll('.text-danger').remove()
         })
         $('#inQuantityProduct').blur(function () {
             var quantProd = $('#inQuantityProduct').val()
@@ -230,7 +234,7 @@
                 $('#inQuantityProduct').after('<div class="text-danger">Số lượng sản phẩm không được để trống !!!</div>')
             } else if (quantProd < 0 || quantProd > 10000) {
                 $('#inQuantityProduct').after('<div class="text-danger">Số lượng sản phẩm không được âm và không được vượt quá 1000 sản phẩm !!!</div>')
-            } else $('#inQuantityProduct').next('.text-danger').remove()
+            } else $('#inQuantityProduct').nextAll('.text-danger').remove()
         })
         $('#inListedPrice').blur(function () {
             var listedPriceProd = $('#inListedPrice').val()
@@ -239,7 +243,7 @@
                 $('#inListedPrice').after('<div class="text-danger">Giá sản phẩm không được để trống !!!</div>')
             } else if (listedPriceProd < 0 || listedPriceProd > Math.pow(10, 6) * 500) {
                 $('#inListedPrice').after('<div class="text-danger">Giá sản phẩm không được âm và không được vượt quá 500 triệu đồng !!!</div>')
-            } else $('#inListedPrice').next('.text-danger').remove()
+            } else $('#inListedPrice').nextAll('.text-danger').remove()
         })
         $('#inCurrentPrice').blur(function () {
             var currentPriceProd = $('#inCurrentPrice').val()
@@ -248,25 +252,25 @@
                 $('#inCurrentPrice').after('<div class="text-danger">Giá sản phẩm không được để trống !!!</div>')
             } else if (currentPriceProd < 0 || currentPriceProd > Math.pow(10, 6) * 500) {
                 $('#inCurrentPrice').after('<div class="text-danger">Giá sản phẩm không được âm và không được vượt quá 500 triệu đồng !!!</div>')
-            } else $('#inCurrentPrice').next('.text-danger').remove()
+            } else $('#inCurrentPrice').nextAll('.text-danger').remove()
         })
         $('#SelectStatusProd').blur(function () {
             var idSelect = $('#SelectStatusProd').val()
             if (idSelect == '0') {
                 $('#SelectStatusProd').after('<div class="text-danger">Hãy chọn trạng thái sản phẩm !!!</div>')
-            } else $('#SelectStatusProd').next('.text-danger').remove()
+            } else $('#SelectStatusProd').nextAll('.text-danger').remove()
         })
         $('#SelectTypeProd').blur(function () {
 
             var idSelect = $('#SelectTypeProd').val()
             if (idSelect == '0') {
                 $('#SelectTypeProd').after('<div class="text-danger">Hãy chọn loại sản phẩm !!!</div>')
-            } else $('#SelectTypeProd').next('.text-danger').remove()
+            } else $('#SelectTypeProd').nextAll('.text-danger').remove()
         })
     });
 
     <%-- Reset lại form cập nhật thông tin sản phẩm --%>
-    $('#modal-up .btn-cancel').on('click',function (){
+    $('#modal-up .btn-cancel').on('click', function () {
         $('#inNameProduct').val('')
         $('#inQuantityProduct').val('')
         $('#inListedPrice').val('')
@@ -295,8 +299,40 @@
                 buttons: false
             })
         } else {
+            // alert('call ajax')
             $.ajax({ // call ajax for action update product
-
+                url: '${context}/AjaxUpdateProductServlet',
+                type: 'POST',
+                data: {
+                    IdSP: idProduct,
+                    TenSP: nameProd,
+                    SoLuongSP: quantProd,
+                    GiaNiemYetSP: listedPriceProd,
+                    GiaHienTaiSP: currentPriceProd,
+                    IdTrangThaiSP: statusProd,
+                    IdLoaiSP: subtypeProd
+                },
+                data_type: 'text',
+                success: function (resultData) {
+                    if (resultData.toString() == 'success') {
+                        swal({
+                            text: 'Đã cập nhật sản phẩm thành công.',
+                            icon: 'success',
+                            timer: 1000,
+                            buttons: false
+                        });
+                    } else {
+                        swal({
+                            text: 'Cập nhật sản phẩm không thành công.',
+                            icon: 'error',
+                            timer: 1000,
+                            buttons: false
+                        });
+                    }
+                },
+                error: function () {
+                    // error no call ajax
+                }
             })
         }
     });

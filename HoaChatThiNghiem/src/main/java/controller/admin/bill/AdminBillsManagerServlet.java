@@ -1,4 +1,4 @@
-package controller.admin;
+package controller.admin.bill;
 
 import model.Bill;
 import service.AdminService;

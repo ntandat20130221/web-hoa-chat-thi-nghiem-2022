@@ -1,4 +1,4 @@
-package controller.admin;
+package controller.admin.product;
 
 import model.Product;
 import model.SubTypeProduct;
