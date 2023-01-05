@@ -1,6 +1,7 @@
 package controller.admin;
 
 import model.Product;
+import model.SubTypeProduct;
 import service.ProductService;
 
 import javax.servlet.*;
@@ -16,6 +17,10 @@ public class AdminProductsManagerServlet extends HttpServlet {
 
         List<Product> listProducts = ProductService.getAllProducts();
         request.setAttribute("products",listProducts);
+
+        List<Object> SubTypeAndStatusAndSupplier = ProductService.getSubTypeAndStatusAndSupplierForProduct();
+        request.setAttribute("subtypeProducts",SubTypeAndStatusAndSupplier.get(0));
+        request.setAttribute("statusProducts",SubTypeAndStatusAndSupplier.get(1));
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/products-manager.jsp");
         dispatcher.forward(request,response);

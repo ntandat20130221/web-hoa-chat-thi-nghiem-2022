@@ -3,12 +3,16 @@ package model;
 import java.io.Serializable;
 
 public class Admin implements Serializable {
-
     private String username;
     private String passAD;
     private int id_role_admin;
     private int id_status_acc;
     private String fullname;
+
+    public Admin(String username, String passAD) {
+        this.username = username;
+        this.passAD = passAD;
+    }
 
     public Admin(String username, String passAD, int id_role_admin, int id_status_acc, String fullname) {
         this.username = username;
