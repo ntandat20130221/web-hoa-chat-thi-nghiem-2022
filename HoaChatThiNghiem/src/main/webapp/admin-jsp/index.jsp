@@ -85,8 +85,8 @@
                                 <c:forEach var="bill" items="${requestScope.recent_bills}">
                                     <c:choose>
                                         <c:when test="${bill.status == 'Đang vận chuyển'}"><c:set var="badge" value="bg-warning"/></c:when>
-                                        <c:when test="${bill.status == 'Đã bán'}"><c:set var="badge" value="bg-success"/></c:when>
-                                        <c:when test="${bill.status == 'Bị hủy'}"><c:set var="badge" value="bg-danger"/></c:when>
+                                        <c:when test="${bill.status == 'Đã giao'}"><c:set var="badge" value="bg-success"/></c:when>
+                                        <c:when test="${bill.status == 'Đã hủy'}"><c:set var="badge" value="bg-danger"/></c:when>
                                         <c:when test="${bill.status == 'Chờ xử lý'}"><c:set var="badge" value="bg-info"/></c:when>
                                     </c:choose>
                                     <tr>

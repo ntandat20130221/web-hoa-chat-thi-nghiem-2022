@@ -1,4 +1,4 @@
-package controller.shop;
+package controller.shop.customer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

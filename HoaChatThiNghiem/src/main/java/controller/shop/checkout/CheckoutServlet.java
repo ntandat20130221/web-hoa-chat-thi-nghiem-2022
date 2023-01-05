@@ -26,9 +26,7 @@ public class CheckoutServlet extends HttpServlet {
                 req.setAttribute("bill_price", billPrice);
                 double transportFee = CustomerService.getTransportFee(customer.getId_city());
                 req.setAttribute("transport_fee", transportFee);
-
                 req.setAttribute("cities", CustomerService.getCities());
-
                 req.getRequestDispatcher("/shop/checkout.jsp").forward(req, resp);
             }
         }
@@ -40,8 +38,10 @@ public class CheckoutServlet extends HttpServlet {
         String phone = req.getParameter("phone");
         String email = req.getParameter("email");
         String address = req.getParameter("address");
+
         Customer cus = (Customer) req.getSession().getAttribute("auth_customer");
         Cart cart = (Cart) req.getSession().getAttribute("cart");
+
         int billId = CustomerService.addBill(cus.getId(), cus.getId_city(), name, phone, email, address, cart.getTotalPrice(),
                 cart.getTotalPrice() + CustomerService.getTransportFee(cus.getId_city()));
 
@@ -50,6 +50,7 @@ public class CheckoutServlet extends HttpServlet {
                     item.getValue().getProduct().getOldPrice(), item.getValue().getProduct().getNewPrice());
         }
 
+        req.getSession().removeAttribute("cart");
         resp.sendRedirect(req.getContextPath() + "/shop/home");
     }
 }

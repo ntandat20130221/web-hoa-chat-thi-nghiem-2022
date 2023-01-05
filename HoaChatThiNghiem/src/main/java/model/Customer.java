@@ -11,6 +11,8 @@ public class Customer implements Serializable {
     private int id_city;
     private String sex;
     private String phone;
+
+    private String email_customer;
     private String fullname;
     private String address;
     private String status;
@@ -27,6 +29,14 @@ public class Customer implements Serializable {
         this.fullname = fullname;
         this.phone = phone;
         this.address = address;
+    }
+
+    public String getEmail_customer() {
+        return email_customer;
+    }
+
+    public void setEmail_customer(String email_customer) {
+        this.email_customer = email_customer;
     }
 
     public int getId() {

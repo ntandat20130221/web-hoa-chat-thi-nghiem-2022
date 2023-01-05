@@ -1,6 +1,7 @@
 package controller.admin;
 
 import model.Bill;
+import service.AdminService;
 import service.CustomerService;
 
 import javax.servlet.*;
@@ -19,5 +20,26 @@ public class AdminBillsManagerServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/bills-manager.jsp");
         dispatcher.forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("bill_id");
+        String cus = req.getParameter("bill_cus");
+        String price = req.getParameter("bill_price");
+        String status = req.getParameter("bill_status");
+        String address = req.getParameter("bill_address");
+        AdminService.updateBill(Integer.parseInt(id), cus, Double.parseDouble(price), extractStatusId(status), address);
+        doGet(req, resp);
+    }
+
+    private int extractStatusId(String status) {
+        switch (status) {
+            case "bg-success": return 1;
+            case "bg-warning": return 2;
+            case "bg-info": return 4;
+            case "bg-danger": return 3;
+        }
+        return -1;
     }
 }

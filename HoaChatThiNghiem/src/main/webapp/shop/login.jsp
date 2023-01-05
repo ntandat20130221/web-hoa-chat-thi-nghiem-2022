@@ -55,23 +55,23 @@
             </div>
             <div class="col-lg-5 col-md-5 col-12">
                 <div class="h-100 d-flex align-items-center">
-                    <form class="m-0 p-5 text-center" action="/HoaChatThiNghiem_war/shop/login" method="post">
+                    <form class="m-0 p-5 text-center" action="/HoaChatThiNghiem_war/shop/login" method="post" name="form_login">
                         <h5 class="mb-4">Đăng Nhập</h5>
                             <%if(error != null){%>
                                 <div class="w-100 mb-3 alert alert-danger" role="alert">
                                     <%=error%>
                                 </div>
                             <%}%>
-                            <input class="w-100 mb-3" type="email" placeholder="Email" name = "email"
+                            <input class="w-100 mb-3" type="email" placeholder="Email" name="email"
                                 value="<%=request.getParameter("email") != null ? request.getParameter("email"):""%>"/>
-                            <input class="w-100 mb-4" type="password" placeholder="Mật khẩu" name = "password"/>
+                            <input class="w-100 mb-4" type="password" placeholder="Mật khẩu" name="password"/>
                             <button class="next w-100">Đăng nhập</button>
                         <span class="or d-inline-block text-uppercase my-4 position-relative">Hoặc</span>
                         <a class="google d-flex justify-content-center w-100 mb-3"><img width="25px" class="mr-2" src="images/logo-google.png"
                                                                                         alt=""/>Google</a>
                         <span class="shotcut">
-                                <a class="mr-3" href="fogot-pass.jsp">Quên mật khẩu?</a>
-                                <a href="register.jsp">Đăng ký?</a></span>
+                                <a class="mr-3" href="${context}/shop/forgot-password">Quên mật khẩu?</a>
+                                <a href="${context}/shop/register">Đăng ký?</a></span>
                     </form>
                 </div>
             </div>

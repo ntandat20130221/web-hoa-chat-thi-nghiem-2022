@@ -30,7 +30,7 @@
                         <%} else {%>
                         <ul>
                             <li>
-                                <a href="${context}/shop/profile.jsp">
+                                <a href="${context}/shop/profile">
                                     <i class="bi bi-person-plus"></i>Xin chào <%=customer.getFullname()%>
                                 </a>
                             </li>
@@ -93,7 +93,7 @@
                                 </c:if>
                         </div>
                         <div class="right-bar-item d-inline-block ">
-                            <a href="${context}/shop/profile.jsp" class="single-icon">
+                            <a href="${context}/shop/profile" class="single-icon">
                                 <%if (customer != null) {%>
                                 <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                                 <%} %>
@@ -106,7 +106,7 @@
     </div>
 
     <!-- ===== HEADER MENU ===== -->
-    <div class="header-menu">
+    <div class="header-menu" data-context="${context}">
         <div class="container">
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="navbar-collapse">
