@@ -77,12 +77,12 @@
                             </c:choose>
                             <tr class="rowProduct">
                                 <td class="idProduct">${p.idProduct}</td>
-                                <td>${p.name}</td>
+                                <td class="nameProduct">${p.name}</td>
                                 <td><img src="${context}/${p.imgPath}" alt="" width="100px;"></td>
-                                <td>${p.quantity}</td>
+                                <td class="quantityProduct">${p.quantity}</td>
                                 <td><span class="badge ${bg}">${p.statusP.name_status}</span></td>
-                                <td>${pu:format(p.listed_price)}</td>
-                                <td>${pu:format(p.current_price)}</td>
+                                <td class="listedPriceProduct">${pu:format(p.listed_price)}</td>
+                                <td class="currentPriceProduct">${pu:format(p.current_price)}</td>
                                 <td>
                                     <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
                                             onclick=""><i class="fas fa-trash-alt"></i></button>
@@ -210,6 +210,10 @@
     });
 
     var idProduct; // -- biến này có thể thay đổi mỗi khi click vào icon chỉnh sửa sản phẩm
+    var nameProduct;
+    var quantityProduct;
+    var listedPriceProduct;
+    var currentPriceProduct;
 
     <%-- Kiểm lỗi khi người dùng nhập vào các input trong form cập nhật sản phẩm --%>
     $('#sampleTable .edit').on('click', function () {
@@ -219,6 +223,15 @@
         --  thì sẽ xảy ra sự kiện blur.
         */
         idProduct = $(this).closest('tr').find('.idProduct').text()
+        nameProduct= $(this).closest('tr').find('.nameProduct').text()
+        quantityProduct =$(this).closest('tr').find('.quantityProduct').text()
+        listedPriceProduct = parseInt($(this).closest('tr').find('.listedPriceProduct').text().replace(',',''))
+        currentPriceProduct = parseInt($(this).closest('tr').find('.currentPriceProduct').text().replace(',',''))
+
+        $('#inNameProduct').val(nameProduct)
+        $('#inQuantityProduct').val(quantityProduct)
+        $('#inListedPrice').val(listedPriceProduct)
+        $('#inCurrentPrice').val(currentPriceProduct)
 
         $('#inNameProduct').blur(function () {
             var nameProd = $('#inNameProduct').val()
