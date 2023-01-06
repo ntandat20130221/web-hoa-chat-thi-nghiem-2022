@@ -1,7 +1,7 @@
 package controller.admin.bill;
 
+import database.dao.CustomerDao;
 import model.Bill;
-import service.AdminService;
 import service.CustomerService;
 
 import javax.servlet.*;
@@ -12,10 +12,11 @@ import java.util.List;
 
 @WebServlet(name = "AdminBillsManager", value = "/admin/quan-ly-don-hang")
 public class AdminBillsManagerServlet extends HttpServlet {
+    private final CustomerDao customerDao = new CustomerDao();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Bill> bills = CustomerService.getBills();
+        List<Bill> bills = CustomerService.getAllBills();
         request.setAttribute("bills", bills);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/bills-manager.jsp");
@@ -29,8 +30,8 @@ public class AdminBillsManagerServlet extends HttpServlet {
         String price = req.getParameter("bill_price");
         String status = req.getParameter("bill_status");
         String address = req.getParameter("bill_address");
-        AdminService.updateBill(Integer.parseInt(id), cus, Double.parseDouble(price), extractStatusId(status), address);
-        doGet(req, resp);
+        customerDao.updateBill(Integer.parseInt(id), cus, Double.parseDouble(price), extractStatusId(status), address);
+        resp.sendRedirect(req.getContextPath() + "/admin/quan-ly-don-hang");
     }
 
     private int extractStatusId(String status) {

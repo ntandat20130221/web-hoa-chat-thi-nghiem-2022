@@ -16,20 +16,20 @@
 </head>
 
 <body>
-<%String error = (String) request.getAttribute("error");%>;
+<%String error = (String) request.getAttribute("error");%>
     <!-- ===== HEADER ===== -->
     <header class="header-account">
         <div class="container">
             <div class="row py-3">
                 <div class="col-lg-7 col-md-7 col-12">
                     <div class="title-left d-flex justify-content-start h-100 align-items-center">
-                        <a class="w-25 mr-4"  href="home.jsp"><img src="images/labchemicals-logo.png" alt="" /></a>
-                        <span class="d-inline-block">Đăng Nhập</span>
+                        <a class="w-25 mr-4" href="${context}/shop/home"><img src="images/labchemicals-logo.png" alt="" /></a>
+                        <span class="d-inline-block mt-1">Đăng Nhập</span>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-12">
                     <div class="title-right d-flex h-100 justify-content-end align-items-center">
-                        <a href="${context}/admin/dang-nhap" style="color:rgb(13, 58, 236);">Đăng nhập với tài khoản admin</a>
+                        <a href="${context}/admin/dang-nhap">Đăng nhập với tài khoản admin</a>
                     </div>
                 </div>
             </div>
@@ -40,8 +40,8 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="login.jsp">Đăng nhập</a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/home">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="">Đăng nhập</a></li>
         </ul>
     </div>
 </div>
@@ -65,7 +65,7 @@
                             <input class="w-100 mb-3" type="email" placeholder="Email" name="email"
                                 value="<%=request.getParameter("email") != null ? request.getParameter("email"):""%>"/>
                             <input class="w-100 mb-4" type="password" placeholder="Mật khẩu" name="password"/>
-                            <button class="next w-100">Đăng nhập</button>
+                            <button class="btn next w-100">Đăng nhập</button>
                         <span class="or d-inline-block text-uppercase my-4 position-relative">Hoặc</span>
                         <a class="google d-flex justify-content-center w-100 mb-3"><img width="25px" class="mr-2" src="images/logo-google.png"
                                                                                         alt=""/>Google</a>

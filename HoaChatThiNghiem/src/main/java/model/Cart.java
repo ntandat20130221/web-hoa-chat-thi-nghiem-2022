@@ -1,5 +1,8 @@
 package model;
 
+import database.dao.ProductDAO;
+import service.ProductService;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,5 +42,11 @@ public class Cart implements Serializable {
         totalPrice = 0;
         map.forEach((id, item) -> totalPrice += item.getProduct().getNewPrice() * item.getQuantity());
         return totalPrice;
+    }
+
+    public void invalidate() {
+        final var dao = new ProductDAO();
+        map.forEach((id, cartItem) ->
+                dao.updateQuantity(id, cartItem.getQuantity() + ProductService.getRemainQuantity(id)));
     }
 }

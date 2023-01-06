@@ -23,8 +23,8 @@
         <div class="row py-3">
             <div class="col-lg-7 col-md-7 col-12">
                 <div class="title-left d-flex justify-content-start h-100 align-items-center">
-                    <a class="w-25 mr-4" href="home.jsp"><img src="images/labchemicals-logo.png" alt=""/></a>
-                    <span class="d-inline-block">Quên Mật Khẩu</span>
+                    <a class="w-25 mr-4" href="${context}/shop/home"><img src="images/labchemicals-logo.png" alt=""/></a>
+                    <span class="d-inline-block mt-1">Quên Mật Khẩu</span>
                 </div>
             </div>
             <div class="col-lg-5 col-md-5 col-12">
@@ -40,8 +40,8 @@
 <div class="breadcrumbs py-4">
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
-            <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="forgot-pass.jsp">Quên mật khẩu</a></li>
+            <li class="d-inline-block text-capitalize"><a href="${context}/shop/home">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
+            <li class="d-inline-block text-capitalize"><a href="">Quên mật khẩu</a></li>
         </ul>
     </div>
 </div>
@@ -71,7 +71,7 @@
                         <%}%>
                         <input class="w-100 mb-4" type="text" placeholder="Email" name="email"
                                value="<%=request.getParameter("email") != null ? request.getParameter("email") : ""%>"/>
-                        <button type="submit" class="next w-100 mb-3">Xác nhận</button>
+                        <button type="submit" class="btn next w-100 mb-3">Xác nhận</button>
                         <span class="shotcut">
                                 <a class="mr-3" href="${context}/shop/login">Đăng nhập?</a>
                                 <a href="${context}/shop/register">Đăng ký?</a></span>

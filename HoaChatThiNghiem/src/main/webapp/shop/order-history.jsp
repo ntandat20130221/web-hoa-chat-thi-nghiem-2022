@@ -166,9 +166,7 @@
                             .attr('action', '${context}/shop/profile/order-history')
                         const field = $('<input>').attr('type', 'hidden').attr('name', 'cancel')
                             .attr('value', $(_this).closest('.item').attr('data-order-id'))
-                        form.append(field)
-
-                        $(document.body).append(form)
+                        $(document.body).append(form.append(field))
                         form.submit()
                     }
                 },

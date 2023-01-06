@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class ProductDAO {
 
@@ -38,24 +39,6 @@ public class ProductDAO {
         /*
         Author : Minh Tuyên
          */
-    }
-
-    public void updateProduct(Product newProduct) {
-        String query = "SELECT * FROM products WHERE id_product=" + newProduct.getIdProduct();
-        Statement st = DbConnection.getInstance().getUpdatableStatement();
-        try {
-            ResultSet rs = st.executeQuery(query);
-            while (rs.next()) {
-                int id = rs.getInt("id_product");
-                if (id == newProduct.getIdProduct()) {
-                    rs.updateInt("views", newProduct.getViews());
-                    rs.updateRow();
-                    break;
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public boolean insertPriceProduct(DbConnection connectDB, Product p, String nameAdmin) {
@@ -273,21 +256,56 @@ public class ProductDAO {
          */
     }
 
-    public boolean addReview(Review review) {
-        try (Statement st = DbConnection.getInstance().getUpdatableStatement()) {
-            st.execute("ALTER TABLE review_product AUTO_INCREMENT = 0");
-            ResultSet rs = st.executeQuery("SELECT * FROM review_product");
-            rs.moveToInsertRow();
-            rs.updateInt("id_product", review.getProductId());
-            rs.updateInt("stars", review.getStars());
-            rs.updateString("content", review.getContent());
-            rs.updateString("fullname", review.getFullName());
-            rs.updateString("phone", review.getPhone());
-            rs.updateString("email", review.getEmail());
-            rs.insertRow();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return true;
+    public void updateProduct(Product newProduct) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            String query = "SELECT * FROM products WHERE id_product=" + newProduct.getIdProduct();
+            Statement st = DbConnection.getInstance().getUpdatableStatement();
+            try {
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    int id = rs.getInt("id_product");
+                    if (id == newProduct.getIdProduct()) {
+                        rs.updateInt("views", newProduct.getViews());
+                        rs.updateRow();
+                        break;
+                    }
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
+    }
+
+    public void updateQuantity(int productId, int quantity) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            try (var ps = DbConnection.getInstance().getPreparedStatement(
+                    "UPDATE products SET quantity_product = ? WHERE id_product = ?"
+            )) {
+                ps.setInt(1, quantity);
+                ps.setInt(2, productId);
+                ps.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void addReview(Review review) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            try (Statement st = DbConnection.getInstance().getUpdatableStatement()) {
+                st.execute("ALTER TABLE review_product AUTO_INCREMENT = 0");
+                var rs = st.executeQuery("SELECT * FROM review_product");
+                rs.moveToInsertRow();
+                rs.updateInt("id_product", review.getProductId());
+                rs.updateInt("stars", review.getStars());
+                rs.updateString("content", review.getContent());
+                rs.updateString("fullname", review.getFullName());
+                rs.updateString("phone", review.getPhone());
+                rs.updateString("email", review.getEmail());
+                rs.insertRow();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

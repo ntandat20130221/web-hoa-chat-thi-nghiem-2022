@@ -83,10 +83,10 @@ public class ProductsServlet extends HttpServlet {
 
         req.setAttribute("products", products);
 
-        List<Product> hotProducts = ProductService.getHotProducts();
+        List<Product> hotProducts = ProductService.getSellingProducts(7);
         req.setAttribute("hot_products", hotProducts);
 
-        List<Product> newProducts = ProductService.getNewProducts();
+        List<Product> newProducts = ProductService.getNewProducts(30);
         req.setAttribute("new_products", newProducts);
 
         req.setAttribute("suppliers", ProductService.getSuppliers());
