@@ -1,12 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
-
 <%@ page import="model.Admin" %>
 <%@ page import="utils.CommonString" %>
-
-<% Admin admin = (Admin) session.getAttribute(CommonString.ADMIN_SESSION);%>
-
+<%
+    Admin admin = (Admin) session.getAttribute(CommonString.ADMIN_SESSION);%>
 <%
     String url = request.getRequestURL().toString(), c1 = "", c2 = "", c3 = "", c4 = "", c5 = "", c6 = "";
     if (url.contains("index")) c1 = "haha";
@@ -16,7 +14,6 @@
     else if (url.contains("admins-manager")) c5 = "haha";
     else if (url.contains("settings")) c6 = "haha";
 %>
-
 <div class="app-sidebar-overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
     <div class="app-sidebar-user"><img class="admin-avatar"
@@ -47,8 +44,7 @@
                 <span class="app-menu-label">Báo cáo doanh thu</span></a>
         </li>
         <li>
-            <a class="app-menu-item <%=c5%>" href="${context}/admin/quan-ly-admin"><i
-                    class='bx bxs-user-account'></i>
+            <a class="app-menu-item <%=c5%>" href="#" onclick="funcAjax()"><i class='bx bxs-user-account'></i>
                 <span class="app-menu-label">Quản lý admin</span></a>
         </li>
         <li>
@@ -61,3 +57,35 @@
         </li>
     </ul>
 </aside>
+<script>
+    <%--
+    Phân quyền chức năng quản lý admin
+    Admin nào có id_role = 3 thì được sử dụng chức năng này
+    --%>
+
+    function funcAjax() {
+        var idRoleAdmin = <%=admin.getId_role_admin()%>
+            $.ajax({
+                url: '${context}/admin/quan-ly-admin',
+                type: 'POST',                           //-- mặc định type của ajax là GET
+                data: {IdRoleAdmin: idRoleAdmin},
+                data_type: "text",
+                success: (function (resultData) {
+                    if (resultData.toString() == 'fail') {
+                        swal({
+                            text: 'Bạn không có quyền sử dụng chức năng này',
+                            icon: 'error',
+                            timer: 1000,
+                            buttons: false
+                        });
+                    } else {
+                        // alert(resultData)
+                        window.location = resultData;
+                    }
+                }),
+                error: (function () {
+                    // error no call ajax
+                })
+            })
+    }
+</script>

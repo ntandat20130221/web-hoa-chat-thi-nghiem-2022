@@ -233,7 +233,7 @@
             if (quantProd.length == 0) {
                 $('#inQuantityProduct').after('<div class="text-danger">Số lượng sản phẩm không được để trống !!!</div>')
             } else if (quantProd < 0 || quantProd > 10000) {
-                $('#inQuantityProduct').after('<div class="text-danger">Số lượng sản phẩm không được âm và không được vượt quá 1000 sản phẩm !!!</div>')
+                $('#inQuantityProduct').after('<div class="text-danger">Số lượng sản phẩm không được âm và không được vượt quá 10000 sản phẩm !!!</div>')
             } else $('#inQuantityProduct').nextAll('.text-danger').remove()
         })
         $('#inListedPrice').blur(function () {

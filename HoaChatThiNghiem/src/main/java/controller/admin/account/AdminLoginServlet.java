@@ -38,7 +38,7 @@ public class AdminLoginServlet extends HttpServlet {
 
                 response.sendRedirect(request.getContextPath()+"/admin/root-trang-chu");
 
-            } else if (role_admin == 2) {
+            } else if (role_admin != 1) {
 
                 response.sendRedirect(request.getContextPath()+"/admin/trang-chu");
 
