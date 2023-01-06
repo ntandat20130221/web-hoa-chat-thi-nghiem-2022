@@ -3595,7 +3595,8 @@ a:focus {
 #purchase-history .item-name {
     text-decoration: none;
     font-size: 18px;
-    color: #333;
+    font-weight: bolder;
+    color: #505050;
     margin-bottom: 3px;
 }
 

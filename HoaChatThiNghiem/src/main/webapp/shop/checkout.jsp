@@ -123,7 +123,7 @@
                     <div class="single-widget get-button">
                         <div class="content">
                             <div class="button">
-                                <button class="btn" type="submit" form="checkout_form">Thanh toán</button>
+                                <button class="btn" id="btn-checkout">Thanh toán</button>
                             </div>
                         </div>
                     </div>
@@ -141,10 +141,35 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/shop-js.jsp"/>
+<script src="../shop/js/sweetalert2.js"></script>
 
 <script>
     $('#company').on('change', function () {
         window.location.href = '${context}/shop/update-checkout?city=' + $(this).val()
+    })
+
+    $('#btn-checkout').on('click', function () {
+        Swal.fire({
+            icon: 'success',
+            title: 'Thanh toán thành công',
+            html: '<span class="d-block mt-2">Đơn hàng của bạn đã thanh toán thành công.</span>' +
+                '<span class="d-block mt-3 mb-2">' +
+                'Bạn có thể xem chi tiết trong <span id="s-marker">lịch sử mua hàng</span>.</span>',
+            didOpen: () => {
+                const marker = Swal.getHtmlContainer().querySelector('#s-marker')
+                $(marker).css('color', '#2880e7').css('cursor', 'pointer').on('click', function () {
+                    $('#checkout_form').append($('<input>').attr('type', 'hidden').attr('name', 'nav'))
+                        .submit()
+                })
+            },
+            confirmButtonColor: '#166bcc',
+            confirmButtonText: 'TIẾP TỤC MUA HÀNG',
+            allowOutsideClick: () =>  $('#checkout_form').submit()
+        }).then(result => {
+            if (result.isConfirmed) {
+                $('#checkout_form').submit()
+            }
+        })
     })
 </script>
 </body>

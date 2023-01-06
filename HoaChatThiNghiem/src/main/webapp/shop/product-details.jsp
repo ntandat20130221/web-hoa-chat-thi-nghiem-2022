@@ -422,8 +422,8 @@
     });
 
     $('.add-to-cart a').on('click', function () {
-        const remainQuantity = Number(${p.quantity})
-        if (remainQuantity === 0) {
+        const remainQuantity = Number(${p.quantity}), quantity = $('.quantity .input-number').val()
+        if (remainQuantity === 0 || remainQuantity < quantity) {
             $.alert({
                 title: 'Hết hàng',
                 content: 'Số lượng sản phẩm không đủ.',
@@ -432,8 +432,8 @@
                 theme: 'material'
             })
         } else {
-            const quantity = $('.quantity .input-number').val()
-            window.location.href = '${context}/shop/add-to-cart?product_id=${p.idProduct}' + '&action=add' + '&quantity=' + quantity
+            window.location.href =
+                '${context}/shop/add-to-cart?product_id=${p.idProduct}' + '&action=add' + '&quantity=' + quantity
         }
 
         return false

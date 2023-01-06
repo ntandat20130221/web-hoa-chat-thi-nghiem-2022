@@ -51,6 +51,10 @@ public class CheckoutServlet extends HttpServlet {
         }
 
         req.getSession().removeAttribute("cart");
-        resp.sendRedirect(req.getContextPath() + "/shop/home");
+        String nav = req.getParameter("nav");
+        if (nav != null)
+            resp.sendRedirect(req.getContextPath() + "/shop/profile/order-history");
+        else
+            resp.sendRedirect(req.getContextPath() + "/shop/home");
     }
 }
