@@ -813,8 +813,12 @@ a:focus {
     line-height: 25px;
 }
 
+.single-product .product-img a span.out {
+    background-color: #ec2d2d;
+}
+
 .single-product .product-img a span.dis {
-    background-color: #ed1b24;
+    background-color: #6da4cb;
 }
 
 .single-product .product-img a span.new {
@@ -1593,7 +1597,6 @@ a:focus {
 --------------------------------------- */
 .products .shop-top {
     height: 66px;
-    margin-bottom: 30px;
     background: #f6f7fb;
     padding: 0 20px;
     border-radius: 5px;
@@ -3471,6 +3474,12 @@ a:focus {
 
 #purchase-history .sub-item:not(:last-child) {
     border-bottom: 1px solid #d7d7d7;
+}
+
+#purchase-history .span-id {
+    color: rgb(62, 62, 62);
+    font-weight: bold;
+    font-family: 'Inter', serif;
 }
 
 #purchase-history .supplier {

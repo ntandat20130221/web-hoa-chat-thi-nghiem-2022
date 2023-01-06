@@ -131,7 +131,7 @@ public final class ProductService {
 
     public static List<Product> getProductsByBillId(int id) {
         List<Product> products = new ArrayList<>();
-        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_product FROM bill_detail WHERE id_bill = ?")) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT DISTINCT id_product FROM bill_detail WHERE id_bill = ?")) {
             ps.setInt(1, id);
             var rs = ps.executeQuery();
             while (rs.next()) {
@@ -234,6 +234,31 @@ public final class ProductService {
             return new HashMap<>();
         }
         return map;
+    }
+
+    public static int getRemainQuantity(int productId) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT quantity_product FROM products WHERE id_product = ?"
+        )) {
+            ps.setInt(1, productId);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            return -1;
+        }
+    }
+
+    public static void updateQuantity(int productId, int quantity) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(
+                "UPDATE products SET quantity_product = ? WHERE id_product = ?"
+        )) {
+            ps.setInt(1, quantity);
+            ps.setInt(2, productId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static ProductReview getReviewByProductId(int id) {
@@ -361,6 +386,6 @@ public final class ProductService {
     }
 
     public static void main(String[] args) {
-        System.out.println(getProducts().size());
+        updateQuantity(1, 5);
     }
 }

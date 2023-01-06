@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <script src="${context}/shop/js/jquery.min.js"></script>
@@ -17,7 +18,7 @@
 <script src="${context}/shop/js/onepage-nav.min.js"></script>
 <script src="${context}/shop/js/easing.js"></script>
 <script src="${context}/shop/js/jquery-confirm.min.js"></script>
-<script src="${context}/shop/js/active.js"></script>
+<script src="${context}/shop/js/active.js" charset="utf-8"></script>
 <script src="${context}/shop/js/main.js"></script>
 
 

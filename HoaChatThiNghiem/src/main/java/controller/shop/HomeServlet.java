@@ -22,6 +22,9 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().removeAttribute("type");
 
+        List<Product> hotProducts = ProductService.getHotProducts();
+        req.setAttribute("hot_products", hotProducts);
+
         List<Product> newProducts = ProductService.getNewProducts();
         req.setAttribute("new_products", newProducts);
 

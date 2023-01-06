@@ -278,4 +278,5 @@
     pdName.each(function () {
         $(this).html($(this).html().replace(/(\d+)/g, '<sub>$1</sub>'))
     })
+
 })(jQuery);

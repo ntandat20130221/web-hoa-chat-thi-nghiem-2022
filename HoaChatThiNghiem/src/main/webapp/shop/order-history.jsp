@@ -62,10 +62,13 @@
             </c:choose>
             <div data-order-id="${order.id}" class="item <c:if test="${!i.last}">mb-5</c:if>">
                 <div class="item-header w-100 px-4 py-3 d-flex justify-content-between align-items-center">
-                    <span class="supplier">
-                        <i class="fa fa-calendar-o mr-1"></i>
-                        <span class="d-inline-block pt-2">${pu:formatTime(order.orderTime)}</span>
-                    </span>
+                    <div>
+                        <span class="span-id mr-4">#${order.id}</span>
+                        <span class="supplier">
+                            <i class="fa fa-calendar-o mr-1"></i>
+                            <span class="d-inline-block pt-2">${pu:formatTime(order.orderTime)}</span>
+                        </span>
+                    </div>
                     <span class="status ${bg}">${order.status}</span>
                 </div>
                 <div class="item-body w-100 px-4 py-3">
@@ -177,7 +180,7 @@
     })
 
     $('.button-rebuy').on('click', function () {
-        window.location.href = 
+        window.location.href =
             '${context}/shop/profile/order-history?order_id=' + $(this).closest('.item').attr('data-order-id')
     })
 </script>

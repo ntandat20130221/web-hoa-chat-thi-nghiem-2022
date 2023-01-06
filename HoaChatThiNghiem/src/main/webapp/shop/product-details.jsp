@@ -282,14 +282,27 @@
         </div>
         <div class="owl-carousel newest-slider">
             <c:forEach var="pr" items="${requestScope.related_products}">
-                <div class="single-product mt-0 mb-0 mr-3 ml-3">
+                <div class="single-product mt-0 mb-0 mr-2 ml-2" data-quantity="${pr.quantity}">
                     <div class="product-img">
                         <a href="${context}/shop/product-details?product_id=${pr.idProduct}">
                             <img class="default-img" src="${context}/${pr.imgPath}" alt="#"/>
-                            <span class="hot">${pr.status}</span>
+                            <c:choose>
+                                <c:when test="${pr.quantity == 0}">
+                                    <span class="out">Hết</span>
+                                </c:when>
+                                <c:when test="${pu:inList(pr, requestScope.new_products)}">
+                                    <span class="new">Mới</span>
+                                </c:when>
+                                <c:when test="${pu:inList(pr, requestScope.hot_products)}">
+                                    <span class="hot">Hot</span>
+                                </c:when>
+                                <c:when test="${pr.oldPrice != pr.newPrice}">
+                                    <span class="dis">-${pu:discount(pr.oldPrice, pr.newPrice)}%</span>
+                                </c:when>
+                            </c:choose>
                         </a>
                         <div class="cart-container">
-                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                            <button data-context="${context}" class="btn-cart" data-product-id="${pr.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                         </div>
                     </div>
                     <div class="product-content">
@@ -409,9 +422,39 @@
     });
 
     $('.add-to-cart a').on('click', function () {
-        const quantity = $('.quantity .input-number').val()
-        window.location.href = '${context}/shop/add-to-cart?product_id=${p.idProduct}' + '&action=add' + '&quantity=' + quantity
+        const remainQuantity = Number(${p.quantity})
+        if (remainQuantity === 0) {
+            $.alert({
+                title: 'Hết hàng',
+                content: 'Số lượng sản phẩm không đủ.',
+                closeIcon: true,
+                animateFromElement: false,
+                theme: 'material'
+            })
+        } else {
+            const quantity = $('.quantity .input-number').val()
+            window.location.href = '${context}/shop/add-to-cart?product_id=${p.idProduct}' + '&action=add' + '&quantity=' + quantity
+        }
+
         return false
+    })
+
+    /* [ Add To Cart ]
+    -------------------------------------------- */
+    $('.btn-cart').on('click', function () {
+        const quantity = Number($(this).closest('.single-product').attr('data-quantity'))
+        if (quantity === 0) {
+            $.alert({
+                title: 'Hết hàng',
+                content: 'Số lượng sản phẩm không đủ.',
+                closeIcon: true,
+                animateFromElement: false,
+                theme: 'material'
+            })
+        } else {
+            const pId = $(this).attr('data-product-id')
+            window.location.href = $(this).attr('data-context') + '/shop/add-to-cart?product_id=' + pId
+        }
     })
 </script>
 </body>

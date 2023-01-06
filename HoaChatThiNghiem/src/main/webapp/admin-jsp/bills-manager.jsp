@@ -73,7 +73,7 @@
                                 <c:when test="${b.status == 'Chờ xử lý'}"><c:set var="bg" value="bg-info"/></c:when>
                             </c:choose>
                             <tr>
-                                <td class="text-center">${b.id}</td>
+                                <td data-bbid="${b.id}" class="text-center">#${b.id}</td>
                                 <td>${b.customerName}</td>
                                 <td>
                                     <c:forEach var="p" items="${b.products}" varStatus="ii">
@@ -150,7 +150,7 @@
 <script>
     $('.edit').on('click', function () {
         const modal = $('#modal-up')
-        modal.find('#input-bill-id').val($(this).closest('tr').find('td:first-child').text())
+        modal.find('#input-bill-id').val($(this).closest('tr').find('td:first-child').attr('data-bbid'))
         modal.find('input[name=bill-customer]').val($(this).closest('tr').find('td:nth-child(2)').text())
         modal.find('input[name=bill-address]').val($(this).closest('tr').find('td:nth-child(6)').text())
         modal.find('input[name=bill-price]').val($(this).closest('tr').find('td:nth-child(4)').attr('data-price'))

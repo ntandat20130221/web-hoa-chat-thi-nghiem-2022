@@ -149,30 +149,35 @@
                     </div>
                 </c:if>
                 <!-- Shop Top -->
-                <div class="shop-top d-flex justify-content-start">
-                    <div class="single-shorter">
-                        <label class="float-left" for="sl">Sắp xếp theo</label>
-                        <select id="sl">
-                            <option
-                                    <c:if test="${param['sortBy'] == 'name'}">selected</c:if> value="name">Tên
-                            </option>
-                            <option
-                                    <c:if test="${param['sortBy'] == 'price_up'}">selected</c:if> value="price_up">Giá: Thấp đến Cao
-                            </option>
-                            <option
-                                    <c:if test="${param['sortBy'] == 'price_down'}">selected</c:if> value="price_down">Giá: Cao đến Thấp
-                            </option>
-                        </select>
+                <div class="mb-3 pl-2 w-100" style="margin-left: -15px;">
+                    <div class="shop-top w-100">
+                        <div class="single-shorter">
+                            <label class="float-left" for="sl">Sắp xếp theo</label>
+                            <select id="sl">
+                                <option
+                                        <c:if test="${param['sortBy'] == 'name'}">selected</c:if> value="name">Tên
+                                </option>
+                                <option
+                                        <c:if test="${param['sortBy'] == 'price_up'}">selected</c:if> value="price_up">Giá: Thấp đến Cao
+                                </option>
+                                <option
+                                        <c:if test="${param['sortBy'] == 'price_down'}">selected</c:if> value="price_down">Giá: Cao đến Thấp
+                                </option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="row" id="products-container">
                     <c:forEach var="p" items="${requestScope.products}">
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="single-product">
+                        <div class="col-lg-4 col-md-6 col-12 m-0 p-0">
+                            <div class="single-product mt-2 mb-2 mr-2 ml-2" data-quantity="${p.quantity}">
                                 <div class="product-img">
                                     <a href="${context}/shop/product-details?product_id=${p.idProduct}">
                                         <img class="default-img" src="${context}/${p.imgPath}" alt="#"/>
                                         <c:choose>
+                                            <c:when test="${p.quantity == 0}">
+                                                <span class="out">Hết</span>
+                                            </c:when>
                                             <c:when test="${pu:inList(p, requestScope.new_products)}">
                                                 <span class="new">Mới</span>
                                             </c:when>
@@ -186,7 +191,7 @@
                                     </a>
                                     <c:if test="${p.status != 'Cấm bán'}">
                                         <div class="cart-container">
-                                            <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                            <button data-context="${context}" class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                                         </div>
                                     </c:if>
                                 </div>
@@ -217,7 +222,7 @@
                 </div>
 
                 <!-- Pagination -->
-                <div class="pagination d-flex justify-content-center mt-2">
+                <div class="pagination d-flex justify-content-center mt-4">
                     <div class="pagination-container">
                         <a class="control mr-3" id="control-prev"><i class="bi-chevron-left"></i></a>
                         <a class="control ml-3" id="control-next"><i class="bi-chevron-right"></i></a>
@@ -400,9 +405,22 @@
         })
     }
 
+    /* [ Add To Cart ]
+    -------------------------------------------- */
     $('.btn-cart').on('click', function () {
-        const pId = $(this).attr('data-product-id')
-        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId
+        const quantity = Number($(this).closest('.single-product').attr('data-quantity'))
+        if (quantity === 0) {
+            $.alert({
+                title: 'Hết hàng',
+                content: 'Số lượng sản phẩm không đủ.',
+                closeIcon: true,
+                animateFromElement: false,
+                theme: 'material'
+            })
+        } else {
+            const pId = $(this).attr('data-product-id')
+            window.location.href = $(this).attr('data-context') + '/shop/add-to-cart?product_id=' + pId
+        }
     })
 </script>
 </body>

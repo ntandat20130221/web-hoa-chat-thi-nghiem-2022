@@ -211,28 +211,44 @@ public class CustomerService {
         }
     }
 
+    private static int getTotalsQuantityByBillId(int billId) {
+        try (var ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT SUM(quantity) FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
+                        "WHERE b.id_bill = ? " +
+                        "GROUP BY b.id_bill"
+        )) {
+            ps.setInt(1, billId);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public static List<Bill> getBills() {
         List<Bill> bills = new ArrayList<>();
         try (var ps = DbConnection.getInstance()
-                .getPreparedStatement("SELECT b.id_bill, fullname_customer, s.name_status_bill, " +
-                        "address_customer, bd.quantity, total_price, time_order " +
-                        "FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
+                .getPreparedStatement("SELECT DISTINCT id_bill, fullname_customer, name_status_bill, " +
+                        "address_customer, total_price, time_order FROM bills b " +
                         "JOIN status_bill s ON b.id_status_bill = s.id_status_bill")) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                int idBill = rs.getInt("id_bill");
                 Bill bill = new Bill(rs.getInt("b.id_bill"),
-                        ProductService.getProductsByBillId(rs.getInt("b.id_bill")),
-                        rs.getString("s.name_status_bill"), rs.getString("address_customer"),
+                        ProductService.getProductsByBillId(idBill),
+                        rs.getString("name_status_bill"), rs.getString("address_customer"),
                         rs.getString("fullname_customer"),
-                        rs.getInt("bd.quantity"), rs.getDouble("total_price"),
+                        CustomerService.getTotalsQuantityByBillId(idBill),
+                        rs.getDouble("total_price"),
                         rs.getDate("time_order"));
                 bills.add(bill);
             }
             return bills;
         } catch (SQLException e) {
-            e.printStackTrace();
+            return new ArrayList<>();
         }
-        return null;
     }
 
     public static List<Order> getOrderByUser(int userId) {
@@ -288,7 +304,7 @@ public class CustomerService {
     }
 
     public static void main(String[] args) {
-        System.out.println(getCartItemsByBillId(61));
-        System.out.println(getOrderByUser(1));
+//        System.out.println(getTotalsQuantityByBillId(2));
+        System.out.println(getBills().size());
     }
 }

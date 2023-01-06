@@ -70,15 +70,28 @@
         </div>
         <div class="owl-carousel newest-slider">
             <c:forEach var="p" items="${requestScope.new_products}">
-                <div class="single-product mt-0 mb-0 mr-3 ml-3">
+                <div class="single-product mt-0 mb-0 mr-2 ml-2" data-quantity="${p.quantity}">
                     <div class="product-img">
                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">
                             <img class="default-img" src="${context}/${p.imgPath}" alt="#"/>
-                            <span class="hot">${p.status}</span>
+                            <c:choose>
+                                <c:when test="${p.quantity == 0}">
+                                    <span class="out">Hết</span>
+                                </c:when>
+                                <c:when test="${pu:inList(p, requestScope.new_products)}">
+                                    <span class="new">Mới</span>
+                                </c:when>
+                                <c:when test="${pu:inList(p, requestScope.hot_products)}">
+                                    <span class="hot">Hot</span>
+                                </c:when>
+                                <c:when test="${p.oldPrice != p.newPrice}">
+                                    <span class="dis">-${pu:discount(p.oldPrice, p.newPrice)}%</span>
+                                </c:when>
+                            </c:choose>
                         </a>
                         <c:if test="${p.status != 'Cấm bán'}">
                             <div class="cart-container">
-                                <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                <button data-context="${context}" class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                             </div>
                         </c:if>
                     </div>
@@ -135,17 +148,31 @@
                         <c:forEach var="tpr" items="${requestScope.product_map}" varStatus="i">
                             <div class="tab-pane fade <c:if test="${i.first}">show active</c:if>" id="${tpr.key}" role="tabpanel">
                                 <div class="tab-single">
-                                    <div class="row">
+                                    <div class="row mt-0 p-0">
                                         <c:forEach var="p" begin="0" end="7" items="${tpr.value}">
-                                            <div class="col-xl-3 col-lg-4 col-md-4 col-12">
-                                                <div class="single-product">
+                                            <div class="col-xl-3 col-lg-4 col-md-4 col-12 m-0 p-0">
+                                                <div class="single-product mt-2 mb-2 mr-2 ml-2" data-quantity="${p.quantity}">
                                                     <div class="product-img">
                                                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">
                                                             <img class="default-img" src="${context}/${p.imgPath}" alt="#"/>
+                                                            <c:choose>
+                                                                <c:when test="${p.quantity == 0}">
+                                                                    <span class="out">Hết</span>
+                                                                </c:when>
+                                                                <c:when test="${pu:inList(p, requestScope.new_products)}">
+                                                                    <span class="new">Mới</span>
+                                                                </c:when>
+                                                                <c:when test="${pu:inList(p, requestScope.hot_products)}">
+                                                                    <span class="hot">Hot</span>
+                                                                </c:when>
+                                                                <c:when test="${p.oldPrice != p.newPrice}">
+                                                                    <span class="dis">-${pu:discount(p.oldPrice, p.newPrice)}%</span>
+                                                                </c:when>
+                                                            </c:choose>
                                                         </a>
                                                         <c:if test="${p.status != 'Cấm bán'}">
                                                             <div class="cart-container">
-                                                                <button class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
+                                                                <button data-context="${context}" class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                                                             </div>
                                                         </c:if>
                                                     </div>
@@ -323,9 +350,22 @@
 <jsp:include page="../common/shop-js.jsp"/>
 
 <script>
+    /* [ Add To Cart ]
+    -------------------------------------------- */
     $('.btn-cart').on('click', function () {
-        const pId = $(this).attr('data-product-id')
-        window.location.href = '${context}/shop/add-to-cart?product_id=' + pId
+        const quantity = Number($(this).closest('.single-product').attr('data-quantity'))
+        if (quantity === 0) {
+            $.alert({
+                title: 'Hết hàng',
+                content: 'Số lượng sản phẩm không đủ.',
+                closeIcon: true,
+                animateFromElement: false,
+                theme: 'material'
+            })
+        } else {
+            const pId = $(this).attr('data-product-id')
+            window.location.href = $(this).attr('data-context') + '/shop/add-to-cart?product_id=' + pId
+        }
     })
 </script>
 </body>
