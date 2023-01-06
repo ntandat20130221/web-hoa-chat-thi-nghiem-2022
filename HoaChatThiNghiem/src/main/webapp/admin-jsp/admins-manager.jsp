@@ -49,41 +49,32 @@
                                     class="fas fa-file-pdf"></i> Xuất PDF</a>
                         </div>
                     </div>
-                    <!-- Search -->
-                    <div class="search-bar d-flex justify-content-between my-3">
-                        <div class="d-flex align-items-center">
-                            <!-- <span class="status">Hiện <span class="quantity">10</span> tài khoản</span> -->
-                        </div>
-                        <div class="search-wrap">
-                            <label class="font-weight-bold m-0" for="search">Tìm kiếm : </label>
-                            <input type="text" placeholder="" id="search">
-                            <label for="by" class="font-weight-bold m-0 ml-3">Theo: </label>
-                            <select id="by">
-                                <option>Tài khoản</option>
-                                <option>Quyền</option>
-                            </select>
-                        </div>
-                    </div>
                     <!-- Table -->
                     <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0"
                            id="sampleTable">
                         <thead>
                         <tr>
                             <th>Tài khoản</th>
+                            <th>Trạng thái</th>
                             <th>Quyền</th>
+                            <th>Họ tên</th>
                             <th>Sửa</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>tranminhtuyen1@gmail.com</td>
-                            <td>Quản lí admin</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal" data-target="#modal-up"><i
-                                        class="fas fa-edit"></i></button>
-                            </td>
-                        </tr>
+                        <c:forEach var="a" items="${requestScope.adminList}">
+                            <tr>
+                                <td>${a.username}</td>
+                                <td>${a.name_status_acc}</td>
+                                <td>${a.name_role_admin}</td>
+                                <td>${a.fullname}</td>
+                                <td>
+                                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
+                                            data-toggle="modal" data-target="#modal-up"><i
+                                            class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -109,17 +100,21 @@
                     <input class="form-control" type="text" placeholder="it_nlu_2022">
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="exampleSelect1" class="control-label">Quyền</label>
-                    <select class="form-control" id="exampleSelect1">
-                        <option>Root - Admin</option>
-                        <option>Normal - Admin</option>
+                    <label for="SelectRole" class="control-label">Quyền</label>
+                    <select class="form-control" id="SelectRole">
+                        <option value="0">-- Chọn quyền tài khoản --</option>
+                        <c:forEach var="r" items="${requestScope.allRoleAdmin}">
+                            <option value="${r.id_role}">${r.name_role}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="exampleSelect1" class="control-label">Trạng thái tài khoản</label>
-                    <select class="form-control" id="exampleSelect2">
-                        <option>Tạm khóa</option>
-                        <option>Bình thường</option>
+                    <label for="SelectStatus" class="control-label">Trạng thái tài khoản</label>
+                    <select class="form-control" id="SelectStatus">
+                        <option value="0">-- Chọn trạng thái tài khoản --</option>
+                        <c:forEach var="stt" items="${requestScope.allStatusAcc}">
+                            <option value="${stt.id_status}">${stt.name_status}</option>
+                        </c:forEach>
                     </select>
                 </div>
             </div>
@@ -134,5 +129,13 @@
 
 <!-- ===== JAVASCRIPT ===== -->
 <jsp:include page="../common/admin-js.jsp"/>
+<script>
+    <%--  Hiển thị danh sách sản phẩm sử dụng DataTable  --%>
+    $(document).ready(function () {
+        $('#sampleTable').DataTable();
+    });
+
+
+</script>
 </body>
 </html>

@@ -13,8 +13,7 @@
 <body>
 
 <div>
-    <h1>Xin chào</h1>
-    <img src="/HoaChatThiNghiem_war/DATA/binh-thi-nghiem-1.png" alt="" width="500" height="600">
+    <h1>Xin chào,đây là trang dành cho tester</h1>
 </div>
 </body>
 </html>

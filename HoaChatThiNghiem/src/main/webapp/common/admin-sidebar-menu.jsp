@@ -62,11 +62,10 @@
     Phân quyền chức năng quản lý admin
     Admin nào có id_role = 3 thì được sử dụng chức năng này
     --%>
-
     function funcAjax() {
         var idRoleAdmin = <%=admin.getId_role_admin()%>
             $.ajax({
-                url: '${context}/admin/quan-ly-admin',
+                url: '${context}/AjaxAdminsManagerServlet',
                 type: 'POST',                           //-- mặc định type của ajax là GET
                 data: {IdRoleAdmin: idRoleAdmin},
                 data_type: "text",
