@@ -1,20 +1,17 @@
-package controller.admin;
-
-import utils.CommonString;
+package controller.admin.account;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "AdminLogoutServlet", value = "/admin/dang-xuat")
-public class AdminLogoutServlet extends HttpServlet {
+@WebServlet(name = "RootAdminsManager", value = "/admin/root-quan-ly-admin")
+public class RootAdminsManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getSession().removeAttribute(CommonString.ADMIN_SESSION); // hủy session
-        response.sendRedirect(request.getContextPath()+"/admin/dang-nhap");
-
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/root-manager-admin.jsp");
+        dispatcher.forward(request,response);
     }
 
     @Override

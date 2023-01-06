@@ -17,7 +17,9 @@
 </head>
 
 <body class="app sidebar-mini rtl">
-<jsp:include page="../common/admin-header.jsp"/>
+
+<%--<jsp:include page="../common/admin-header.jsp"/>--%>
+
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
 <% String error = (String) request.getAttribute("error");
     String noti = (String) request.getAttribute("notification");

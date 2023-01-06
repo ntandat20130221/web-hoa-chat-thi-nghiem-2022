@@ -1,4 +1,4 @@
-package controller.admin;
+package controller.admin.home;
 
 import model.Bill;
 import model.Customer;

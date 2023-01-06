@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="context" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +41,14 @@
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
             <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="fogot-pass.jsp">Quên mật khẩu</a></li>
+            <li class="d-inline-block text-capitalize"><a href="forgot-pass.jsp">Quên mật khẩu</a></li>
         </ul>
     </div>
 </div>
 
 <!-- ===== FORM INPUT ===== -->
+<%String error = (String)request.getAttribute("error_forgot");%>
+<%String success = (String)request.getAttribute("success_forgot");%>
 <section class="form-input py-5">
     <div class="container">
         <div class="row">
@@ -53,13 +57,24 @@
             </div>
             <div class="col-lg-5 col-md-5 col-12">
                 <div class="h-100 d-flex align-items-center">
-                    <form class="m-0 p-5 text-center" action="confirm-pass.jsp">
+                    <form class="m-0 p-5 text-center" action="${context}/shop/forgot-password" method="post">
                         <h5 class="mb-4">Quên Mật Khẩu</h5>
-                        <input class="w-100 mb-4" type="text" placeholder="Email"/>
+                        <%if(error != null){%>
+                        <div class="w-100 mb-3 alert alert-danger notification" role="alert">
+                            <%=error%>
+                        </div>
+                        <%}%>
+                        <%if(success != null){%>
+                        <div class="w-100 mb-3 alert alert-success notification" role="alert">
+                            <%=success%>
+                        </div>
+                        <%}%>
+                        <input class="w-100 mb-4" type="text" placeholder="Email" name="email"
+                               value="<%=request.getParameter("email") != null ? request.getParameter("email") : ""%>"/>
                         <button type="submit" class="next w-100 mb-3">Xác nhận</button>
                         <span class="shotcut">
-                                <a class="mr-3" href="login.jsp">Đăng nhập?</a>
-                                <a href="register.jsp">Đăng ký?</a></span>
+                                <a class="mr-3" href="${context}/shop/login">Đăng nhập?</a>
+                                <a href="${context}/shop/register">Đăng ký?</a></span>
                     </form>
                 </div>
             </div>

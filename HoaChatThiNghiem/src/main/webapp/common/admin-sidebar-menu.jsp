@@ -8,19 +8,23 @@
 <% Admin admin = (Admin) session.getAttribute(CommonString.ADMIN_SESSION);%>
 
 <%
-    String url = request.getRequestURL().toString(), c1 = "", c2 = "", c3 = "", c4 = "", c5 = "";
+    String url = request.getRequestURL().toString(), c1 = "", c2 = "", c3 = "", c4 = "", c5 = "", c6 = "";
     if (url.contains("index")) c1 = "haha";
     else if (url.contains("product")) c2 = "haha";
     else if (url.contains("bills")) c3 = "haha";
     else if (url.contains("sales")) c4 = "haha";
-    else if (url.contains("settings")) c5 = "haha";
+    else if (url.contains("admins-manager")) c5 = "haha";
+    else if (url.contains("settings")) c6 = "haha";
 %>
 
 <div class="app-sidebar-overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar">
-    <div class="app-sidebar-user"><img class="admin-avatar" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="User Image">
+    <div class="app-sidebar-user"><img class="admin-avatar"
+                                       src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                       alt="User Image">
         <p class="app-sidebar-user-name"><b>Admin</b></p>
-        <p class="app-sidebar-user-designation"><%=admin.getFullname()%></p>
+        <p class="app-sidebar-user-designation"><%=admin.getFullname()%>
+        </p>
     </div>
     <hr>
     <ul class="app-menu">
@@ -29,7 +33,8 @@
                 <span class="app-menu-label">Trang chủ</span></a>
         </li>
         <li>
-            <a class="app-menu-item <%=c2%>" href="${context}/admin/quan-ly-san-pham"><i class='bx bx-purchase-tag-alt'></i>
+            <a class="app-menu-item <%=c2%>" href="${context}/admin/quan-ly-san-pham"><i
+                    class='bx bx-purchase-tag-alt'></i>
                 <span class="app-menu-label">Quản lý sản phẩm</span></a>
         </li>
         <li>
@@ -37,12 +42,22 @@
                 <span class="app-menu-label">Quản lý đơn hàng</span></a>
         </li>
         <li>
-            <a class="app-menu-item <%=c4%>" href="${context}/admin/bao-cao-doanh-thu"><i class='bx bx-pie-chart-alt-2'></i>
+            <a class="app-menu-item <%=c4%>" href="${context}/admin/bao-cao-doanh-thu"><i
+                    class='bx bx-pie-chart-alt-2'></i>
                 <span class="app-menu-label">Báo cáo doanh thu</span></a>
         </li>
         <li>
-            <a class="app-menu-item <%=c5%>" href="${context}/admin/doi-mat-khau"><i class='bx bx-cog'></i>
+            <a class="app-menu-item <%=c5%>" href="${context}/admin/quan-ly-admin"><i
+                    class='bx bxs-user-account'></i>
+                <span class="app-menu-label">Quản lý admin</span></a>
+        </li>
+        <li>
+            <a class="app-menu-item <%=c6%>" href="${context}/admin/doi-mat-khau"><i class='bx bx-cog'></i>
                 <span class="app-menu-label">Đổi mật khẩu</span></a>
+        </li>
+        <li>
+            <a class="app-menu-item" href="${context}/admin/dang-xuat"><i class='bx bx-log-out'></i>
+                <span class="app-menu-label">Đăng xuất</span></a>
         </li>
     </ul>
 </aside>

@@ -1,4 +1,4 @@
-package controller.admin;
+package controller.admin.report;
 
 import service.AdminService;
 import service.CustomerService;

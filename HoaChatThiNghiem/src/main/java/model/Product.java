@@ -68,6 +68,19 @@ public class Product implements Serializable {
         // Author : Minh Tuyên
     }
 
+    public Product(int idProduct, String name, int quantity, int listed_price, int current_price, int type_product, int status_product) {
+        this.idProduct = idProduct;
+        this.name = name;
+        this.quantity = quantity;
+        this.listed_price = listed_price;
+        this.current_price = current_price;
+        this.type_product = type_product;
+        this.status_product = status_product;
+
+        //-- Author : Minh Tuyên
+        //-- đây là constructor dành cho chức năng cập nhật sản phẩm
+    }
+
     public Product(int idProduct, String imgPath, String name, ProductReview review,
                    String status, String desc, int quantity, String type, String subtype,
                    String supply, int sold, Date date, int views, double oldPrice, double newPrice) {
@@ -269,6 +282,6 @@ public class Product implements Serializable {
                 ", current_price=" + current_price +
                 ", subTypeP=" + subTypeP +
                 ", statusP=" + statusP +
-                '}'+"\n";
+                '}' + "\n";
     }
 }

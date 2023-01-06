@@ -1,17 +1,16 @@
-package controller.admin;
+package controller.admin.account;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "RootCustomersManager", value = "/admin/root-quan-ly-khach-hang")
-public class RootCustomersManagerServlet extends HttpServlet {
+@WebServlet(name = "AdminsManagerServlet", value = "/admin/quan-ly-admin")
+public class AdminsManagerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/admin-jsp/root-manager-customer.jsp");
-        dispatcher.forward(request,response);
+        request.getRequestDispatcher("/admin-jsp/admins-manager.jsp").forward(request, response);
     }
 
     @Override

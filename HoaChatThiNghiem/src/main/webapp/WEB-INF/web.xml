@@ -11,6 +11,7 @@
     <filter-mapping>
         <filter-name>PreventAccessShop</filter-name>
         <url-pattern>/shop/profile.jsp</url-pattern>
+        <url-pattern>/shop/change-pass.jsp</url-pattern>
     </filter-mapping>
     <filter>
         <!-- tất cả tài nguyên của hệ thống bao gồm các file html,css,js,images hay là servlet

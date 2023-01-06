@@ -87,8 +87,9 @@
         margin-top: -2px;
     }
 </style>
+
 <%--    Header--%>
-<jsp:include page="../common/admin-header.jsp"/>
+<%--<jsp:include page="../common/admin-header.jsp"/>--%>
 
 <!-- Sidebar Menu -->
 <jsp:include page="../common/admin-sidebar-menu.jsp"/>
@@ -164,6 +165,8 @@
                         <div class="form-group col-md-3">
                             <label for="typeProduct" class="control-label">Loại sản phẩm</label>
                             <select class="form-control" id="typeProduct" name="LoaiSP">
+                                <option value="0" <%="0".equals(SubTypeProduct) ? "selected" : "" %>>
+                                    -- Chọn loại sản phẩm -- </option>
                                 <%for (SubTypeProduct stp : subTypeProductList) { %>
                                 <option value="<%=stp.getId_subtype()%>"
                                         <%=(stp.getId_subtype() + "").equals(SubTypeProduct) ? "selected" : ""%>><%=stp.getName_type()%>
@@ -178,6 +181,8 @@
                         <div class="form-group col-md-3 ">
                             <label for="statusProduct" class="control-label">Tình trạng</label>
                             <select class="form-control" id="statusProduct" name="TrangThaiSP">
+                                <option value="0" <%="0".equals(StatusProduct) ? "selected" : "" %>>
+                                    -- Chọn trạng thái -- </option>
                                 <% for (StatusProduct sp : statusProductList) { %>
                                 <option value="<%=sp.getId_status()%>"
                                         <%=(sp.getId_status() + "").equals(StatusProduct) ? "selected" : ""%>><%=sp.getName_status()%>
@@ -192,6 +197,8 @@
                         <div class="form-group col-md-3 ">
                             <label for="supplier" class="control-label">Nhà cung cấp</label>
                             <select class="form-control" id="supplier" name="NhaCungCap">
+                                <option value="0" <%="0".equals(Supplier) ? "selected" : "" %>>
+                                    -- Chọn nhà cung cấp -- </option>
                                 <%for (Supplier sl : supplierList) {%>
                                 <option value="<%=sl.getId_supplier()%>"
                                         <%=(sl.getId_supplier() + "").equals(Supplier) ? "selected" : ""%>><%=sl.getName_supplier()%>
@@ -264,6 +271,7 @@
         finder.selectActionFunction = DienUrlVaoInput;
         finder.popup();
     }
+
     <!--Đưa dường dẫn hình ảnh vào TextField input-->
     function DienUrlVaoInput(fileUrl) {
         $('input[name=UrlImage]').val(fileUrl);

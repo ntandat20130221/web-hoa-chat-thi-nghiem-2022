@@ -40,7 +40,7 @@
     <div class="container text-left">
         <ul class="bread-list d-inline-block">
             <li class="d-inline-block text-capitalize"><a href="home.jsp">Trang chủ<i class="ti-arrow-right mx-2"></i></a></li>
-            <li class="d-inline-block text-capitalize"><a href="fogot-pass.jsp">Đổi mật khẩu</a></li>
+            <li class="d-inline-block text-capitalize"><a href="forgot-pass.jsp">Đổi mật khẩu</a></li>
         </ul>
     </div>
 </div>
@@ -71,9 +71,6 @@
                         <input class="w-100 mb-3 insert" type="password" placeholder="Mật khẩu mới" name="new-pass"/>
                         <input class="w-100 mb-4 insert" type="password" placeholder="Xác nhận lại mật khẩu mới" name="confirm-pass"/>
                         <button class="next w-100 mb-3" id="confirm-change">Xác nhận</button>
-                        <span class="shotcut">
-                                <a class="mr-3" href="login.jsp">Đăng nhập?</a>
-                                <a href="register.jsp">Đăng ký?</a></span>
                     </form>
                 </div>
             </div>

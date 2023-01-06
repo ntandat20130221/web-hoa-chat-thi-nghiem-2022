@@ -16,7 +16,7 @@ public class CustomerService {
     public static Customer checkLogin(String email, String password) {
         List<Customer> customers = new ArrayList<>();
         DbConnection connectDB = DbConnection.getInstance();
-        String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname, phone_customer, address " +
+        String sql = "SELECT id_user_customer, username, pass, id_status_acc, id_city, fullname, phone_customer, address, sex, email_customer " +
                 "from account_customer where username = ?";
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
         try {
@@ -34,8 +34,12 @@ public class CustomerService {
                 }
                 String phone = rs.getString("phone_customer");
                 String address = rs.getString("address");
+                String sex = rs.getString("sex");
+                String email_cus = rs.getString("email_customer");
                 Customer customer = new Customer(id_customer, email_customer, password_customer, id_status_acc_customer,
                         id_city_customer, fullname_customer, phone, address);
+                customer.setSex(sex);
+                customer.setEmail_customer(email_cus);
                 customers.add(customer);
             }
             if (customers.size() != 1) {
@@ -71,6 +75,48 @@ public class CustomerService {
             throw new RuntimeException(e);
         } finally {
             connectDb.close();
+        }
+        return false;
+    }
+
+    public static int getIdOfCity(String city_name){
+        DbConnection connnectDb = DbConnection.getInstance();
+        String sql = "select id_city from city where name_city = ?";
+        PreparedStatement pre = connnectDb.getPreparedStatement(sql);
+        try{
+            pre.setString(1, city_name);
+            ResultSet rs = pre.executeQuery();
+            if(rs.next()){
+                return rs.getInt("id_city");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+    public static boolean profile(String email, String fullname, int city, String sex,
+                               String email_customer, String phone, String address){
+        DbConnection connnectDb = DbConnection.getInstance();
+        String sql = "update account_customer " +
+                "set fullname = ?, id_city = ?, sex = ?, email_customer = ?, phone_customer = ?, address = ? " +
+                "where username = ?";
+        PreparedStatement pre = connnectDb.getPreparedStatement(sql);
+        try{
+            pre.setString(1, fullname);
+            pre.setInt(2, city);
+            pre.setString(3, sex);
+            pre.setString(4, email_customer);
+            pre.setString(5, phone);
+            pre.setString(6, address);
+            pre.setString(7, email);
+            int rs = pre.executeUpdate();
+            if(rs > 0){
+                return true;
+            }else {
+                return false;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return false;
     }

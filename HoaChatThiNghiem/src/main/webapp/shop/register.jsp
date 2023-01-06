@@ -74,7 +74,7 @@
                         <input class="w-100 mb-3" type="password" placeholder="Mật khẩu" name="password"/>
                         <input class="w-100 mb-4" type="password" placeholder="Nhập lại mật khẩu" name="confirm-pass"/>
                         <button class="next w-100 mb-3">Tiếp theo</button>
-                        <span class="shotcut">Bạn đã có tài khoản? <a href="login.jsp">Đăng nhập</a></span>
+                        <span class="shotcut">Bạn đã có tài khoản? <a href="${context}/shop/login">Đăng nhập</a></span>
                     </form>
                 </div>
             </div>
