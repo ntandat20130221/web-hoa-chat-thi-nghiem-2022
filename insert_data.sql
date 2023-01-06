@@ -24,13 +24,14 @@ VALUES("nguyentandat@gmail.com", "123", 1, 1, "Nguyễn Tấn Đạt", "Nam", "n
 "Bến Tre");
 
 -- ROLE_ADMIN
-insert into role_admin values (1,"root");
+insert into role_admin values (1,"super-root");
 insert into role_admin values (2,"member");
-
+insert into role_admin values (3,"root");
 -- ACCOUNT_ADMIN
-insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("tranminhtuyen",1,1,"123456");
+insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("tuyenkun",1,1,"123456");
 insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("nguyenphutai",2,1,"123456");
 insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("nguyentandat",2,1,"123456");
+insert into account_admin (username,id_role_admin,id_status_acc,passwordAD) values ("tranminhtuyen",3,1,"123456");
 
 -- UPDATE TABLE ACCOUNT_ADMIN
 UPDATE account_admin
