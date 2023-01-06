@@ -22,10 +22,10 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().removeAttribute("type");
 
-        List<Product> hotProducts = ProductService.getHotProducts();
+        List<Product> hotProducts = ProductService.getSellingProducts(7);
         req.setAttribute("hot_products", hotProducts);
 
-        List<Product> newProducts = ProductService.getNewProducts();
+        List<Product> newProducts = ProductService.getNewProducts(30);
         req.setAttribute("new_products", newProducts);
 
         List<Product> hoaChat = ProductService.getProductsByType(1).stream()
@@ -48,7 +48,7 @@ public class HomeServlet extends HttpServlet {
                 .collect(Collectors.toList());
         req.setAttribute("discount_products", discountProducts);
 
-        List<Product> sellingProducts = ProductService.getSellingProducts(true).stream()
+        List<Product> sellingProducts = ProductService.getBestSellingProducts().stream()
                 .sorted((p1, p2) -> p2.getViews() - p1.getViews())
                 .collect(Collectors.toList());
         req.setAttribute("selling_products", sellingProducts);

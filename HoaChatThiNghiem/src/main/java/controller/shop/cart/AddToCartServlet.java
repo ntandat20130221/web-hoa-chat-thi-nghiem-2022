@@ -1,7 +1,7 @@
 package controller.shop.cart;
 
+import database.dao.ProductDAO;
 import model.Cart;
-import model.CartItem;
 import model.Product;
 import service.ProductService;
 
@@ -14,6 +14,7 @@ import java.io.IOException;
 
 @WebServlet(name = "add_to_cart", urlPatterns = "/shop/add-to-cart")
 public class AddToCartServlet extends HttpServlet {
+    private final ProductDAO dao = new ProductDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,21 +38,21 @@ public class AddToCartServlet extends HttpServlet {
                         }
 
                         cart.addProduct(product, qnt);
-                        ProductService.updateQuantity(product.getIdProduct(), remainQuantity - qnt);
+                        dao.updateQuantity(product.getIdProduct(), remainQuantity - qnt);
                         break;
                     case "remove":
                         cart.removeProduct(product);
-                        ProductService.updateQuantity(product.getIdProduct(), remainQuantity + 1);
+                        dao.updateQuantity(product.getIdProduct(), remainQuantity + 1);
                         break;
                     case "delete":
-                        int deleteQuantity = cart.getMap().get(product.getIdProduct()).getQuantity();
+                        int deleteQuantities = cart.getMap().get(product.getIdProduct()).getQuantity();
                         cart.deleteProduct(product);
-                        ProductService.updateQuantity(product.getIdProduct(), remainQuantity + deleteQuantity);
+                        dao.updateQuantity(product.getIdProduct(), remainQuantity + deleteQuantities);
                         break;
                 }
             } else if (remainQuantity >= 1) {
                 cart.addProduct(product, 1);
-                ProductService.updateQuantity(product.getIdProduct(), remainQuantity - 1);
+                dao.updateQuantity(product.getIdProduct(), remainQuantity - 1);
             }
 
             req.getSession().setAttribute("cart", cart);

@@ -1,5 +1,6 @@
 package controller.shop.profile;
 
+import database.dao.CustomerDao;
 import model.Cart;
 import model.CartItem;
 import model.Customer;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @WebServlet(name = "OrderHistoryServlet", urlPatterns = "/shop/profile/order-history")
 public class OrderHistoryServlet extends HttpServlet {
+    private final CustomerDao customerDao = new CustomerDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,8 +45,8 @@ public class OrderHistoryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("cancel");
         if (id != null) {
-            CustomerService.cancelOrder(Integer.parseInt(id));
+            customerDao.cancelOrder(Integer.parseInt(id));
         }
-        doGet(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/shop/profile/order-history");
     }
 }

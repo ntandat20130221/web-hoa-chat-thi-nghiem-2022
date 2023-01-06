@@ -1,5 +1,6 @@
 package controller.shop.checkout;
 
+import database.dao.CustomerDao;
 import model.Cart;
 import model.CartItem;
 import model.Customer;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 @WebServlet(name = "checkout-servlet", urlPatterns = "/shop/checkout")
 public class CheckoutServlet extends HttpServlet {
+    private final CustomerDao customerDao = new CustomerDao();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,11 +44,11 @@ public class CheckoutServlet extends HttpServlet {
         Customer cus = (Customer) req.getSession().getAttribute("auth_customer");
         Cart cart = (Cart) req.getSession().getAttribute("cart");
 
-        int billId = CustomerService.addBill(cus.getId(), cus.getId_city(), name, phone, email, address, cart.getTotalPrice(),
+        int billId = customerDao.addBill(cus.getId(), cus.getId_city(), name, phone, email, address, cart.getTotalPrice(),
                 cart.getTotalPrice() + CustomerService.getTransportFee(cus.getId_city()));
 
         for (Map.Entry<Integer, CartItem> item : cart.getMap().entrySet()) {
-            CustomerService.addBillDetail(billId, item.getKey(), item.getValue().getQuantity(),
+            customerDao.addBillDetail(billId, item.getKey(), item.getValue().getQuantity(),
                     item.getValue().getProduct().getOldPrice(), item.getValue().getProduct().getNewPrice());
         }
 

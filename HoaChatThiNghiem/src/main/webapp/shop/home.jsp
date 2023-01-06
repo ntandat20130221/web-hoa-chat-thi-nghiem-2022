@@ -52,7 +52,7 @@
                                 1000ml.
                             </p>
                             <div class="button">
-                                <a href="product-details.jsp" class="btn">Mua Ngay</a>
+                                <a href="${context}/shop/products" class="btn">Mua Ngay</a>
                             </div>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                                 </c:when>
                             </c:choose>
                         </a>
-                        <c:if test="${p.status != 'Cấm bán'}">
+                        <c:if test="${p.status != 'Cấm Bán'}">
                             <div class="cart-container">
                                 <button data-context="${context}" class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                             </div>
@@ -99,7 +99,7 @@
                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
                         <div class="rating">
                             <c:forEach begin="1" end="5" varStatus="i">
-                                <i class="fa fa-star <c:if test="${i.index <= p.review.totals}">yellow</c:if>"></i>
+                                <i class="fa fa-star <c:if test="${i.index <= p.review.average}">yellow</c:if>"></i>
                             </c:forEach>
                         </div>
                         <div class="product-price">
@@ -109,7 +109,7 @@
                             <span>${pu:format(p.newPrice)}đ</span>
                         </div>
                     </div>
-                    <c:if test="${p.status == 'Cấm bán'}">
+                    <c:if test="${p.status == 'Cấm Bán'}">
                         <div class="banned">
                             <div class="banned-inner">
                                 <span>Cấm bán</span>
@@ -170,7 +170,7 @@
                                                                 </c:when>
                                                             </c:choose>
                                                         </a>
-                                                        <c:if test="${p.status != 'Cấm bán'}">
+                                                        <c:if test="${p.status != 'Cấm Bán'}">
                                                             <div class="cart-container">
                                                                 <button data-context="${context}" class="btn-cart" data-product-id="${p.idProduct}"><i class="fa fa-cart-plus"></i> Thêm vào giỏ hàng</button>
                                                             </div>
@@ -180,7 +180,7 @@
                                                         <a href="${context}/shop/product-details?product_id=${p.idProduct}">${p.name}</a>
                                                         <div class="rating">
                                                             <c:forEach begin="1" end="5" varStatus="i">
-                                                                <i class="fa fa-star <c:if test="${i.index <= p.review.totals}">yellow</c:if>"></i>
+                                                                <i class="fa fa-star <c:if test="${i.index <= p.review.average}">yellow</c:if>"></i>
                                                             </c:forEach>
                                                         </div>
                                                         <div class="product-price">
@@ -190,7 +190,7 @@
                                                             <span>${pu:format(p.newPrice)}đ</span>
                                                         </div>
                                                     </div>
-                                                    <c:if test="${p.status == 'Cấm bán'}">
+                                                    <c:if test="${p.status == 'Cấm Bán'}">
                                                         <div class="banned">
                                                             <div class="banned-inner">
                                                                 <span>Cấm bán</span>
@@ -350,6 +350,9 @@
 <jsp:include page="../common/shop-js.jsp"/>
 
 <script>
+    const height = $(window).height() - $('.header.shop').height()
+    $('.single-slider').height(height)
+
     /* [ Add To Cart ]
     -------------------------------------------- */
     $('.btn-cart').on('click', function () {

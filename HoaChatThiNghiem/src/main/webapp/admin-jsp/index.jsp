@@ -35,7 +35,7 @@
                     <div class="widget-small primary coloured-icon"><i class='icon bx bxs-user-account fa-3x'></i>
                         <div class="info">
                             <h4>Tổng khách hàng</h4>
-                            <p><b>${requestScope.int_array[0]} khách hàng</b></p>
+                            <p><b>${requestScope.stats[0]} khách hàng</b></p>
                             <p class="info-tong">Tổng số khách hàng được quản lý.</p>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                     <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
                         <div class="info">
                             <h4>Tổng sản phẩm</h4>
-                            <p><b>${requestScope.int_array[1]} sản phẩm</b></p>
+                            <p><b>${requestScope.stats[1]} sản phẩm</b></p>
                             <p class="info-tong">Tổng số sản phẩm được quản lý.</p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
                         <div class="info">
                             <h4>Tổng đơn hàng</h4>
-                            <p><b>${requestScope.int_array[2]} đơn hàng</b></p>
+                            <p><b>${requestScope.stats[2]} đơn hàng</b></p>
                             <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                     <div class="widget-small danger coloured-icon"><i class='icon bx bxs-error-alt fa-3x'></i>
                         <div class="info">
                             <h4>Sắp hết hàng</h4>
-                            <p><b>${requestScope.int_array[3]} sản phẩm</b></p>
+                            <p><b>${requestScope.stats[3]} sản phẩm</b></p>
                             <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
                         </div>
                     </div>
@@ -174,9 +174,9 @@
 
     <c:forEach begin="0" end="11" varStatus="i">
         labels['${i.index}'] = 'Tháng ${i.count}'
-        cusArr['${i.index}'] = '${requestScope.cus_created[i.index]}'
-        billArr['${i.index}'] = '${requestScope.bill_created[i.index]}'
-        saleArr['${i.index}'] = '${requestScope.sales[i.index]}'
+        cusArr['${i.index}'] = '${requestScope.created_customers[i.index]}'
+        billArr['${i.index}'] = '${requestScope.ordered_bills[i.index]}'
+        saleArr['${i.index}'] = '${requestScope.revenue[i.index]}'
     </c:forEach>
 
     const lineChart = new Chart($('#line-chart').get(0).getContext('2d')).Line({

@@ -8,9 +8,10 @@ import java.io.IOException;
 public class Utf8Filter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        servletRequest.setCharacterEncoding("utf8");
-        servletResponse.setCharacterEncoding("utf8");
-        filterChain.doFilter(servletRequest, servletResponse);
+    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain filter)
+            throws IOException, ServletException {
+        req.setCharacterEncoding("utf8");
+        resp.setCharacterEncoding("utf8");
+        filter.doFilter(req, resp);
     }
 }

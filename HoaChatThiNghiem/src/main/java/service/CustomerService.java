@@ -110,11 +110,7 @@ public class CustomerService {
             pre.setString(6, address);
             pre.setString(7, email);
             int rs = pre.executeUpdate();
-            if(rs > 0){
-                return true;
-            }else {
-                return false;
-            }
+            return rs > 0;
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -168,13 +164,14 @@ public class CustomerService {
         }
     }
 
-    public static List<Customer> getRecentCustomers(int time) {
+    // return customers created within the last ? days
+    public static List<Customer> getRecentCustomers(int day) {
         List<Customer> customers = new ArrayList<>();
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
-                "SELECT id_user_customer, fullname, sex, phone_customer, address, time_created, s.name_status_acc " +
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_user_customer, fullname, " +
+                "sex, phone_customer, address, time_created, s.name_status_acc " +
                         "FROM account_customer a JOIN status_acc s ON a.id_status_acc = s.id_status_acc " +
                         "WHERE DATE(time_created) > (NOW() - INTERVAL ? DAY)")) {
-            ps.setInt(1, time);
+            ps.setInt(1, day);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Customer c = new Customer();
@@ -187,10 +184,10 @@ public class CustomerService {
                 c.setStatus(rs.getString("name_status_acc"));
                 customers.add(c);
             }
+            return customers;
         } catch (SQLException e) {
             return new ArrayList<>();
         }
-        return customers;
     }
 
     public static double getTransportFee(int cityId) {
@@ -207,61 +204,19 @@ public class CustomerService {
 
     public static Map<Integer, String> getCities() {
         Map<Integer, String> map = new HashMap<>();
-        try (var ps = DbConnection.getInstance().getPreparedStatement(
-                "SELECT id_city, name_city FROM city")) {
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                map.put(rs.getInt("id_city"), rs.getString("name_city"));
-            }
+        try (var ps = DbConnection.getInstance().getPreparedStatement("SELECT id_city, name_city FROM city")) {
+            var rs = ps.executeQuery();
+            while (rs.next()) map.put(rs.getInt("id_city"), rs.getString("name_city"));
             return map;
         } catch (SQLException e) {
             return new HashMap<>();
         }
     }
 
-    public static int addBill(int userId, int cityId, String name, String phone, String email,
-                              String address, double price, double totalPrice) {
-        try (var ps = DbConnection.getInstance()
-                .getPreparedStatement("INSERT INTO bills VALUES (0,?,4,?,?,?,?,?,?,?,NOW())")) {
-            ps.setInt(1, userId);
-            ps.setInt(2, cityId);
-            ps.setString(3, name);
-            ps.setString(4, phone);
-            ps.setString(5, email);
-            ps.setString(6, address);
-            ps.setDouble(7, price);
-            ps.setDouble(8, totalPrice);
-            ps.executeUpdate();
-            try (var ps2 = DbConnection.getInstance().getPreparedStatement("SELECT LAST_INSERT_ID()")) {
-                ResultSet rs = ps2.executeQuery();
-                rs.next();
-                return rs.getInt(1);
-            }
-        } catch (SQLException e) {
-            return -1;
-        }
-    }
-
-    public static void addBillDetail(int billId, int productId, int quantity,
-                                     double listedPrice, double currentPrice) {
-        try (var ps = DbConnection.getInstance()
-                .getPreparedStatement("INSERT INTO bill_detail VALUES (?,?,?,?,?)")) {
-            ps.setInt(1, billId);
-            ps.setInt(2, productId);
-            ps.setInt(3, quantity);
-            ps.setDouble(4, listedPrice);
-            ps.setDouble(5, currentPrice);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private static int getTotalsQuantityByBillId(int billId) {
+    public static int getQuantityByBillId(int billId) {
         try (var ps = DbConnection.getInstance().getPreparedStatement(
                 "SELECT SUM(quantity) FROM bills b JOIN bill_detail bd ON b.id_bill = bd.id_bill " +
-                        "WHERE b.id_bill = ? " +
-                        "GROUP BY b.id_bill"
+                        "WHERE b.id_bill = ? GROUP BY b.id_bill"
         )) {
             ps.setInt(1, billId);
             ResultSet rs = ps.executeQuery();
@@ -273,10 +228,10 @@ public class CustomerService {
         return -1;
     }
 
-    public static List<Bill> getBills() {
+    public static List<Bill> getAllBills() {
         List<Bill> bills = new ArrayList<>();
-        try (var ps = DbConnection.getInstance()
-                .getPreparedStatement("SELECT DISTINCT id_bill, fullname_customer, name_status_bill, " +
+        try (var ps = DbConnection.getInstance().getPreparedStatement(
+                "SELECT DISTINCT id_bill, fullname_customer, name_status_bill, " +
                         "address_customer, total_price, time_order FROM bills b " +
                         "JOIN status_bill s ON b.id_status_bill = s.id_status_bill")) {
             ResultSet rs = ps.executeQuery();
@@ -286,7 +241,7 @@ public class CustomerService {
                         ProductService.getProductsByBillId(idBill),
                         rs.getString("name_status_bill"), rs.getString("address_customer"),
                         rs.getString("fullname_customer"),
-                        CustomerService.getTotalsQuantityByBillId(idBill),
+                        CustomerService.getQuantityByBillId(idBill),
                         rs.getDouble("total_price"),
                         rs.getDate("time_order"));
                 bills.add(bill);
@@ -322,13 +277,12 @@ public class CustomerService {
 
     public static List<CartItem> getCartItemsByBillId(int billId) {
         List<CartItem> result = new ArrayList<>();
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
+        try (var ps = DbConnection.getInstance().getPreparedStatement(
                 "SELECT id_product, quantity FROM bill_detail WHERE id_bill = ?")) {
             ps.setInt(1, billId);
-            ResultSet rs = ps.executeQuery();
+            var rs = ps.executeQuery();
             while (rs.next()) {
-                CartItem cartItem = new CartItem(
-                        ProductService.getProductById(rs.getInt("id_product")),
+                var cartItem = new CartItem(ProductService.getProductById(rs.getInt("id_product")),
                         rs.getInt("quantity"));
                 result.add(cartItem);
             }
@@ -336,21 +290,5 @@ public class CustomerService {
         } catch (SQLException e) {
             return new ArrayList<>();
         }
-    }
-
-    public static void cancelOrder(int idBill) {
-        try (PreparedStatement ps = DbConnection.getInstance().getPreparedStatement(
-                "UPDATE bills SET id_status_bill = 3 WHERE id_bill = ?"
-        )) {
-            ps.setInt(1, idBill);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-//        System.out.println(getTotalsQuantityByBillId(2));
-        System.out.println(getBills().size());
     }
 }

@@ -1,4 +1,4 @@
-package controller.shop.customer;
+package controller.shop.profile;
 
 import model.Customer;
 import service.CustomerService;

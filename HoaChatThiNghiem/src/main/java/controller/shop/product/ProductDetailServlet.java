@@ -21,10 +21,10 @@ public class ProductDetailServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Product> hotProducts = ProductService.getHotProducts();
+        List<Product> hotProducts = ProductService.getSellingProducts(7);
         req.setAttribute("hot_products", hotProducts);
 
-        List<Product> newProducts = ProductService.getNewProducts();
+        List<Product> newProducts = ProductService.getNewProducts(30);
         req.setAttribute("new_products", newProducts);
 
         String id = req.getParameter("product_id");

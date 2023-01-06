@@ -150,7 +150,7 @@
                         </thead>
                         <tbody>
                         <c:set var="totalPrice"/>
-                        <c:forEach var="b" items="${requestScope.bills_previous}">
+                        <c:forEach var="b" items="${requestScope.bills}">
                             <c:set var="totalPrice" value="${totalPrice + b.totalPrice}"/>
                             <tr>
                                 <td>${b.id}</td>
@@ -200,7 +200,7 @@
                                 <td>${oosp.subtype}</td>
                                 <td><img src="${oosp.imgPath}" alt="" width="100px"></td>
                                 <td><span class="badge bg-danger">Hết hàng</span></td>
-                                <td>${oosp.newPrice}đ</td>
+                                <td>${pu:format(oosp.newPrice)}đ</td>
                             </tr>
                         </c:forEach>
                         </tbody>
@@ -249,7 +249,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="tile">
-                <h3 class="tile-title">THỐNG KÊ SẢN PHẨM THÊM VÀO VÀ BÁN RA</h3>
+                <h3 class="tile-title">THỐNG KÊ TỔNG SẢN PHẨM THÊM VÀO VÀ BÁN RA</h3>
                 <div class="embed-responsive embed-responsive-16by9">
                     <canvas class="embed-responsive-item" id="line-chart"></canvas>
                 </div>
@@ -257,7 +257,7 @@
         </div>
         <div class="col-md-6">
             <div class="tile">
-                <h3 class="tile-title">THỐNG KÊ DOANH SỐ</h3>
+                <h3 class="tile-title">THỐNG KÊ TỔNG DOANH SỐ</h3>
                 <div class="embed-responsive embed-responsive-16by9">
                     <canvas class="embed-responsive-item" id="bar-chart"></canvas>
                 </div>
