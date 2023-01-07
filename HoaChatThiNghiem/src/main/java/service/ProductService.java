@@ -297,7 +297,7 @@ public final class ProductService {
             }
         } catch (SQLException e) {
             try {
-                System.out.println("rollback: " + id);
+                System.out.println("DeleteProduct rollback: " + id);
                 connectDB.getConn().rollback();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);

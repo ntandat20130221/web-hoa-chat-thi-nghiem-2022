@@ -2,6 +2,7 @@ package controller.admin.account;
 
 import model.Admin;
 import service.AdminService;
+import service.AdminService_MT;
 import utils.CommonString;
 
 import javax.servlet.RequestDispatcher;
@@ -29,7 +30,7 @@ public class RootChangePassServlet extends HttpServlet {
         Admin admin = (Admin) request.getSession().getAttribute(CommonString.ADMIN_SESSION);
         if (old_pass.equals(admin.getPassAD())) {
 
-            boolean checkUpdate = AdminService.updatePassword(admin.getUsername(), new_pass);
+            boolean checkUpdate = AdminService_MT.updatePassword(admin.getUsername(), new_pass);
             if (checkUpdate == true) {
 
                 response.sendRedirect(request.getContextPath()+"/admin/dang-nhap");

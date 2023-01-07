@@ -216,7 +216,7 @@ public class ProductDAO {
         PreparedStatement preState = connectDB.getPreparedStatement(sql);
         preState.setInt(1, id);
         int row = preState.executeUpdate();
-        if (row > 0) return true;
+        if (row >= 0) return true;
         return false;
          /*
         Author : Minh Tuyên
