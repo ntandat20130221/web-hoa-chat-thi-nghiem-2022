@@ -66,6 +66,15 @@ public class AdminService_MT {
         return false;
     }
 
+    public static boolean updateAccount(Admin admin) {
+        DbConnection connectDB = DbConnection.getInstance();
+        AdminDAO dao = new AdminDAO();
+        try {
+            return dao.updateAccount(connectDB, admin);
+        } finally {
+            connectDB.close();
+        }
+    }
     public static List<Admin> getAllAdmin() {
         DbConnection connectDB = DbConnection.getInstance();
         AdminDAO dao = new AdminDAO();
@@ -90,4 +99,5 @@ public class AdminService_MT {
         }
         return result;
     }
+
 }

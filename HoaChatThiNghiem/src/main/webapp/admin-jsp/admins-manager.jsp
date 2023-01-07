@@ -64,7 +64,7 @@
                         <tbody>
                         <c:forEach var="a" items="${requestScope.adminList}">
                             <tr>
-                                <td>${a.username}</td>
+                                <td class="UserName">${a.username}</td>
                                 <td>${a.name_status_acc}</td>
                                 <td>${a.name_role_admin}</td>
                                 <td>${a.fullname}</td>
@@ -97,7 +97,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label class="control-label">Mật khẩu</label>
-                    <input class="form-control" type="text" placeholder="it_nlu_2022">
+                    <input id="InputPass" class="form-control" type="text" placeholder="it_nlu_2022">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="SelectRole" class="control-label">Quyền</label>
@@ -119,8 +119,8 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end mt-3">
-                <button class="btn btn-save mr-3">Lưu lại</button>
-                <button class="btn btn-cancel" data-dismiss="modal">Hủy bỏ</button>
+                <button id="btUpdateAdmin" class="btn btn-save mr-3">Cập nhật</button>
+                <button id="btCancel" class="btn btn-cancel" data-dismiss="modal">Hủy bỏ</button>
             </div>
         </div>
     </div>
@@ -135,6 +135,68 @@
         $('#sampleTable').DataTable();
     });
 
+    <%-- Lấy dữ liệu từ row khi vừa click vào icon edit của row đó --%>
+    var username;
+    $('#sampleTable .edit').on('click', function () {
+        username = $(this).closest('tr').find('.UserName').text()
+    })
+
+    <%--    Reset form chỉnh sửa thông tin Admin  --%>
+    $('#btCancel').on('click', function () {
+        $('#InputPass').val('')
+        $('#SelectRole').val('0')
+        $('#SelectStatus').val('0')
+    })
+
+    <%-- Chỉnh sửa thông tin Admin sử dụng Ajax --%>
+    $('#btUpdateAdmin').on('click', function () {
+        var pass_admin = $('#InputPass').val()
+        var id_role_admin = $('#SelectRole').val()
+        var id_status_acc = $('#SelectStatus').val()
+
+        if (pass_admin == null || id_role_admin == 0 || id_status_acc == 0) {
+            swal({
+                title: 'Cảnh báo !!!',
+                text: 'Bạn hãy nhập đầy đủ thông tin cho tài khoản này.',
+                icon: 'error',
+                timer: 3000,
+                buttons: false
+            })
+        } else {
+            $.ajax({
+                url: '${context}/admin/quan-ly-admin',
+                type: 'POST',
+                data: {
+                    UserName: username,
+                    PassAd: pass_admin,
+                    IdRole: id_role_admin,
+                    IdStatus: id_status_acc
+                },
+                data_type: 'text',
+                success: function (resultData) {
+                    if (resultData.toString() == 'success') {
+                        swal({
+                            text: 'Cập nhật thành công.',
+                            icon: 'success',
+                            timer: 2000,
+                            buttons: false
+                        });
+                    } else {
+                        swal({
+                            text: 'Không thể cập nhật tài khoản này.',
+                            icon: 'error',
+                            timer: 2000,
+                            buttons: false
+                        });
+                    }
+                },
+                error: function () {
+                    // error no call ajax
+                }
+            })
+        }
+
+    })
 
 </script>
 </body>
