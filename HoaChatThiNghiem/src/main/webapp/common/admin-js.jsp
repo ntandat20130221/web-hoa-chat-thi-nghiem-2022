@@ -13,5 +13,6 @@
 <script src="<c:url value="../admin-assets/js/plugins/chart.js"/>"></script>
 <script src="../admin-assets/js/plugins/jquery.dataTables.js"></script>
 <script src="../admin-assets/js/plugins/tableToExcel.js"></script>
+<script src="../admin-assets/js/plugins/sweetalert2.js"></script>
 <script src="<c:url value="../admin-assets/js/main.js"/>"></script>
 
