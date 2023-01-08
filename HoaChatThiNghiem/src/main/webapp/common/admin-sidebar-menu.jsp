@@ -31,11 +31,6 @@
                 <span class="app-menu-label">Trang chủ</span></a>
         </li>
         <li>
-            <a class="app-menu-item <%=c7%>" href="${context}/admin/quan-ly-tai-khoan"><i
-                    class='bx bx-purchase-tag-alt'></i>
-                <span class="app-menu-label">Quản lý tài khoản</span></a>
-        </li>
-        <li>
             <a class="app-menu-item <%=c2%>" href="${context}/admin/quan-ly-san-pham"><i
                     class='bx bx-purchase-tag-alt'></i>
                 <span class="app-menu-label">Quản lý sản phẩm</span></a>
