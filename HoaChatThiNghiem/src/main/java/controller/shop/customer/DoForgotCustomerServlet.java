@@ -26,6 +26,11 @@ public class DoForgotCustomerServlet extends HttpServlet {
             request.getServletContext().getRequestDispatcher("/shop/forgot-pass.jsp").forward(request, response);
             return;
         }
+        if(!CustomerService.checkExist(email)){
+            request.setAttribute("error_forgot", "Email không tồn tại trong hệ thống");
+            request.getServletContext().getRequestDispatcher("/shop/forgot-pass.jsp").forward(request, response);
+            return;
+        }
         if(CustomerService.checkExist(email)){
             UUID uuid = UUID.randomUUID();
             String id = uuid.toString();
