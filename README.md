@@ -18,3 +18,15 @@ This e-commerce web application provides a comprehensive online shopping experie
 - Java Core, Java 8 Stream API, Java EE, Java JSP/Servlet.
 - HTML/CSS/JavaScript, jQuery, Bootstrap 4, Fontawesome.
 - MySQL, JDBC, DAO support.
+
+## Screenshots
+
+| ![](Screenshots/home_page.png) | ![](Screenshots/product_catalog.png) |
+|--------------------------------|-------------------------------------------|
+| ![](Screenshots/product_detail.png) | ![](Screenshots/rating.png) |
+| ![](Screenshots/product_detail.png) | ![](Screenshots/rating.png) |
+| ![](Screenshots/cart_page.png) | ![](Screenshots/checkout.png) |
+| ![](Screenshots/order_history.png) | ![](Screenshots/login.png) |
+| ![](Screenshots/register.png) | ![](Screenshots/admin_login.png) |
+| ![](Screenshots/admin_dashboard.png) | ![](Screenshots/product_management.png) |
+| ![](Screenshots/add_product.png) | ![](Screenshots/order_management.png) |
